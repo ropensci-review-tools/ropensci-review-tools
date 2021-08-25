@@ -1,13 +1,21 @@
 
+# ropensci-review-tools
+
+
 This repository is used to build and store the central documentation for the
 `ropensci-review-tools` organization, which contains a suite of tools developed
 and used by rOpenSci to support their software peer-review processes. The
 documentation uses [`readthedocs`](https://readthedocs.org), and is hosted at
 [`ropensci-review-tools.readthedocs.io`](https://ropensci-review-tools.readthedocs.io/).
 
-The site itself bundles documentation from all repositories within the
-`ropensci-review-tools` organisation, a process executed by the single
-[`pkgdocs-script.R`
+## How the site is built
+
+Most of you should just head straight to
+[`ropensci-review-tools.readthedocs.io`](https://ropensci-review-tools.readthedocs.io/).
+The rest of this is technical detail on how that site is actually created. The
+[`readthedocs`](https://readthedocs.org) site bundles documentation from all
+repositories within the `ropensci-review-tools` organisation, a process
+executed by the single [`pkgdocs-script.R`
 file](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/pkgdocs-script.R).
 The [`readthedocs`](https://readthedocs.org) files all reside in the `docs`
 folder of this repository, and can be recreated anew with the following steps:
