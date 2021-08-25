@@ -18,3 +18,6 @@ clean:
 	cd docs;	\
 	make clean;	\
 	cd ..
+
+count:
+	find * -type f | wc -l
