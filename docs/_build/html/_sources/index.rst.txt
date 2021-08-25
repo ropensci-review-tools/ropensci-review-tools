@@ -19,7 +19,7 @@ statistical software.
 
 .. toctree::
    :maxdepth: 1
-   :caption: packages
+   :caption: Packages
 
    autotest
    pkgstats

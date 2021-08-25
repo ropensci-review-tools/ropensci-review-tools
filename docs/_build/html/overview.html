@@ -90,7 +90,12 @@
             
               <p class="caption" role="heading"><span class="caption-text">Main Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#srr"><code class="docutils literal notranslate"><span class="pre">srr</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#autotest"><code class="docutils literal notranslate"><span class="pre">autotest</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#pkgcheck"><code class="docutils literal notranslate"><span class="pre">pkgcheck</span></code></a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">packages</span></p>
 <ul>
@@ -175,6 +180,41 @@ relationships between some of the main packages:</p>
 <p><img alt="" src="_images/package-flow.png" /></p>
 <p>Each package has it’s own repository, linked to below along with brief
 descriptions.</p>
+<section id="srr">
+<h2><code class="docutils literal notranslate"><span class="pre">srr</span></code><a class="headerlink" href="#srr" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/ropensci-review-tools/srr"><code class="docutils literal notranslate"><span class="pre">srr</span></code> package</a> helps
+authors document compliance with our <a class="reference external" href="https://stats-devguide.ropensci.org/standards.html">standards for statistical
+software</a> within
+their actual code. The <a class="reference external" href="https://docs.ropensci.org/srr/">package website</a>
+has detailed descriptions of the procedure, including a <a class="reference external" href="https://docs.ropensci.org/srr/articles/srr-stats.html">demonstration
+which authors can first “walk through” to understand how the <code class="docutils literal notranslate"><span class="pre">srr</span></code>
+package works</a>.</p>
+</section>
+<section id="autotest">
+<h2><code class="docutils literal notranslate"><span class="pre">autotest</span></code><a class="headerlink" href="#autotest" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://github.com/ropensci-review-tools/autotest"><code class="docutils literal notranslate"><span class="pre">autotest</span></code>
+package</a> is intended
+to be used from the first moments of package development, and throughout
+the preparation of packages for submission to our peer review system. It
+implements a form of mutation testing in an attempt to ensure all
+parameters of all functions respond appropriately to as many different
+forms and values of those parameters as possible. Continuous application
+of <a class="reference external" href="https://github.com/ropensci-review-tools/autotest">the <code class="docutils literal notranslate"><span class="pre">autotest</span></code>
+package</a> throughout
+package development should ensure review processes are much less likely
+to uncover bugs in package behaviour.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pkgcheck">
+<h1><code class="docutils literal notranslate"><span class="pre">pkgcheck</span></code><a class="headerlink" href="#pkgcheck" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://github.com/ropensci-review-tools/pkgcheck"><code class="docutils literal notranslate"><span class="pre">pkgcheck</span></code>
+package</a> represents
+the final steps towards submitting a package for review with rOpenSci.
+Authors should only need the one function,
+<a class="reference external" href="https://docs.ropensci.org/pkgcheck/reference/pkgcheck.html"><code class="docutils literal notranslate"><span class="pre">pkgcheck()</span></code></a>,
+which will confirm whether or not a package is ready to be submitted.
+The object returned by this function contains detailed information on
+various aspects of a package.</p>
 </section>
 
 
