@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>autotest &mdash; ropensci-review-tools 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="at_yaml_template" href="autotest/at_yaml_template.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ropensci-review-tools
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Main Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">packages</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">autotest <a href='https://docs.ropensci.org/autotest'></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-tested">What is tested?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-it-work">How Does It Work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-autotest-automatically-create-tests-in-my-tests-directory">Can <code class="docutils literal notranslate"><span class="pre">autotest</span></code> automatically create tests in my <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prior-work">Prior work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autotest/at_yaml_template.html"><code class="docutils literal notranslate"><span class="pre">at_yaml_template</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/autotest_obj.html"><code class="docutils literal notranslate"><span class="pre">autotest_obj</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/autotest_package.html"><code class="docutils literal notranslate"><span class="pre">autotest_package</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/autotest_types.html"><code class="docutils literal notranslate"><span class="pre">autotest_types</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/autotest_yaml.html"><code class="docutils literal notranslate"><span class="pre">autotest_yaml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/autotest-package.html"><code class="docutils literal notranslate"><span class="pre">autotest-package</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/examples_to_yaml.html"><code class="docutils literal notranslate"><span class="pre">examples_to_yaml</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/expect_autotest_no_err.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_no_err</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/expect_autotest_no_testdata.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_no_testdata</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/expect_autotest_no_warn.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_no_warn</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/expect_autotest_notes.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_notes</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="autotest/expect_autotest_testdata.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_testdata</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pkgstats.html">pkgstats</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pkgcheck.html">pkgcheck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roreviewapi.html">roreviewapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srr.html">rOpenSci <strong>S</strong>oftware <strong>R</strong>eview <strong>R</strong>oclets (srr)</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ropensci-review-tools</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>autotest <a href='https://docs.ropensci.org/autotest'></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/autotest.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="autotest-a-href-https-docs-ropensci-org-autotest">
+<h1>autotest <a href='https://docs.ropensci.org/autotest'><a class="headerlink" href="#autotest-a-href-https-docs-ropensci-org-autotest" title="Permalink to this headline">¶</a></h1>
+<p><img src='_static/autotest/autotest.png' align="right" height=210 width=182></a></p>
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+<p><a class="reference external" href="https://github.com/ropensci-review-tools/autotest/actions?query=workflow%3AR-CMD-check"><img alt="R buildstatus" src="https://github.com/ropensci-review-tools/autotest/workflows/R-CMD-check/badge.svg" /></a>
+<a class="reference external" href="https://codecov.io/gh/ropensci-review-tools/autotest"><img alt="codecov" src="https://codecov.io/gh/ropensci-review-tools/autotest/branch/master/graph/badge.svg" /></a>
+<a class="reference external" href="https://www.repostatus.org/#concept"><img alt="Project Status:Concept" src="https://www.repostatus.org/badges/latest/concept.svg" /></a></p>
+<!-- badges: end -->
+<p>Automatic mutation testing of R packages. Mutation in the sense of
+mutating inputs (parameters) to function calls. <code class="docutils literal notranslate"><span class="pre">autotest</span></code> primarily
+works by scraping documented examples for all functions, and mutating
+the parameters input to those functions.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to install this package is via the associated
+<a class="reference external" href="https://ropensci-review-tools.r-universe.dev/ui#builds"><code class="docutils literal notranslate"><span class="pre">r-universe</span></code></a>.
+As shown there, simply enable the universe with</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repos</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span>
+    <span class="n">ropenscireviewtools</span> <span class="o">=</span> <span class="s">&quot;https://ropensci-review-tools.r-universe.dev&quot;</span><span class="p">,</span>
+    <span class="n">CRAN</span> <span class="o">=</span> <span class="s">&quot;https://cloud.r-project.org&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>And then install the usual way with,</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;autotest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Alternatively, the package can be installed by running one of the
+following lines:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># install.packages(&quot;remotes&quot;)</span>
+<span class="n">remotes</span><span class="o">::</span><span class="nf">install_git</span><span class="p">(</span><span class="s">&quot;https://git.sr.ht/~mpadge/autotest&quot;</span><span class="p">)</span>
+<span class="n">remotes</span><span class="o">::</span><span class="nf">install_bitbucket</span><span class="p">(</span><span class="s">&quot;mpadge/autotest&quot;</span><span class="p">)</span>
+<span class="n">remotes</span><span class="o">::</span><span class="nf">install_gitlab</span><span class="p">(</span><span class="s">&quot;mpadge/autotest&quot;</span><span class="p">)</span>
+<span class="n">remotes</span><span class="o">::</span><span class="nf">install_github</span><span class="p">(</span><span class="s">&quot;ropensci-review-tools/autotest&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The package can then be loaded the usual way:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library </span><span class="p">(</span><span class="n">autotest</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<p>The simply way to use the package is</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">autotest_package </span><span class="p">(</span><span class="s">&quot;&lt;package&gt;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The main argument to the <a class="reference external" href="https://docs.ropensci.org/autotest/reference/autotest_package.html"><code class="docutils literal notranslate"><span class="pre">autotest_package()</span></code>
+function</a>
+can either be the name of an installed package, or a path to a local
+directory containing the source for a package. The result is a
+<code class="docutils literal notranslate"><span class="pre">data.frame</span></code> of errors, warnings, and other diagnostic messages issued
+during package <code class="docutils literal notranslate"><span class="pre">auotest</span></code>-ing. The function has an additional parameter,
+<code class="docutils literal notranslate"><span class="pre">functions</span></code>, to restrict tests to specified functions only.</p>
+<p>By default,
+<a class="reference external" href="https://docs.ropensci.org/autotest/reference/autotest_package.html"><code class="docutils literal notranslate"><span class="pre">autotest_package()</span></code></a>
+returns a list of all tests applied to a package without actually
+running them. To implement those tests, set the parameter <code class="docutils literal notranslate"><span class="pre">test</span></code> to
+<code class="docutils literal notranslate"><span class="pre">TRUE</span></code>. Results are only returned for tests in which functions do not
+behave as expected, whether through triggering errors, warnings, or
+other behaviour as described below. The ideal behaviour of
+<code class="docutils literal notranslate"><span class="pre">autotest_package()</span></code> is to return nothing (or strictly, <code class="docutils literal notranslate"><span class="pre">NULL</span></code>),
+indicating that all tests passed successfully. See the <a class="reference external" href="https://docs.ropensci.org/autotest/articles/autotest.html">main package
+vignette</a> for
+an introductory tour of the package.</p>
+</section>
+<section id="what-is-tested">
+<h2>What is tested?<a class="headerlink" href="#what-is-tested" title="Permalink to this headline">¶</a></h2>
+<p>The package includes a function which lists all tests currently
+implemented.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">autotest_types </span><span class="p">()</span>
+<span class="c1">#&gt; # A tibble: 27 × 8</span>
+<span class="c1">#&gt;    type  test_name  fn_name parameter parameter_type operation   content   test </span>
+<span class="c1">#&gt;    &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt;     &lt;lgl&gt;</span>
+<span class="c1">#&gt;  1 dummy rect_as_o… &lt;NA&gt;    &lt;NA&gt;      rectangular    Convert on… &quot;check f… TRUE </span>
+<span class="c1">#&gt;  2 dummy rect_comp… &lt;NA&gt;    &lt;NA&gt;      rectangular    Convert on… &quot;expect … TRUE </span>
+<span class="c1">#&gt;  3 dummy rect_comp… &lt;NA&gt;    &lt;NA&gt;      rectangular    Convert on… &quot;expect … TRUE </span>
+<span class="c1">#&gt;  4 dummy rect_comp… &lt;NA&gt;    &lt;NA&gt;      rectangular    Convert on… &quot;expect … TRUE </span>
+<span class="c1">#&gt;  5 dummy extend_re… &lt;NA&gt;    &lt;NA&gt;      rectangular    Extend exi… &quot;(Should… TRUE </span>
+<span class="c1">#&gt;  6 dummy replace_r… &lt;NA&gt;    &lt;NA&gt;      rectangular    Replace cl… &quot;(Should… TRUE </span>
+<span class="c1">#&gt;  7 dummy vector_to… &lt;NA&gt;    &lt;NA&gt;      vector         Convert ve… &quot;(Should… TRUE </span>
+<span class="c1">#&gt;  8 dummy vector_cu… &lt;NA&gt;    &lt;NA&gt;      vector         Custom cla… &quot;(Should… TRUE </span>
+<span class="c1">#&gt;  9 dummy double_is… &lt;NA&gt;    &lt;NA&gt;      numeric        Check whet… &quot;int par… TRUE </span>
+<span class="c1">#&gt; 10 dummy trivial_n… &lt;NA&gt;    &lt;NA&gt;      numeric        Add trivia… &quot;(Should… TRUE </span>
+<span class="c1">#&gt; # … with 17 more rows</span>
+</pre></div>
+</div>
+<p>That functions returns a <a class="reference external" href="https://tibble.tidyverse.org"><code class="docutils literal notranslate"><span class="pre">tibble</span></code></a>
+describing 27 unique tests. The default behaviour of
+<a class="reference external" href="https://docs.ropensci.org/autotest/reference/autotest_package.html"><code class="docutils literal notranslate"><span class="pre">autotest_package()</span></code></a>
+with <code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> uses these test types to identify which tests will
+be applied to each parameter and function. The table returned from
+<a class="reference external" href="https://docs.ropensci.org/autotest/reference/autotest_types.html"><code class="docutils literal notranslate"><span class="pre">autotest_types()</span></code></a>
+can be used to selectively switch tests off by setting values in the
+<code class="docutils literal notranslate"><span class="pre">test</span></code> column to <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>, as demonstrated below.</p>
+</section>
+<section id="how-does-it-work">
+<h2>How Does It Work?<a class="headerlink" href="#how-does-it-work" title="Permalink to this headline">¶</a></h2>
+<p>The package works by scraping documented examples from all <code class="docutils literal notranslate"><span class="pre">.Rd</span></code> help
+files, and using those to identify the types of all parameters to all
+functions. Usage therefore first requires that the usage of all
+parameters be demonstrated in example code.</p>
+<p>As described above, tests can also be selectively applied to particular
+functions through the parameters <code class="docutils literal notranslate"><span class="pre">functions</span></code>, used to nominate functions
+to include in tests, or <code class="docutils literal notranslate"><span class="pre">exclude</span></code>, used to nominate functions to exclude
+from tests. The following code illustrates.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">autotest_package </span><span class="p">(</span><span class="n">package</span> <span class="o">=</span> <span class="s">&quot;stats&quot;</span><span class="p">,</span> <span class="n">functions</span> <span class="o">=</span> <span class="s">&quot;var&quot;</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<span class="c1">#&gt; </span>
+<span class="c1">#&gt; ── autotesting stats ──</span>
+<span class="c1">#&gt; </span>
+<span class="c1">#&gt; ✔ [1 / 6]: var</span>
+<span class="c1">#&gt; ✔ [2 / 6]: cor</span>
+<span class="c1">#&gt; ✔ [3 / 6]: cor</span>
+<span class="c1">#&gt; ✔ [4 / 6]: cov</span>
+<span class="c1">#&gt; ✔ [5 / 6]: cov</span>
+<span class="c1">#&gt; ✔ [6 / 6]: cor</span>
+<span class="nf">print </span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="c1">#&gt; # A tibble: 185 × 9</span>
+<span class="c1">#&gt;    type    test_name  fn_name parameter parameter_type operation  content  test </span>
+<span class="c1">#&gt;    &lt;chr&gt;   &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt;    &lt;lgl&gt;</span>
+<span class="c1">#&gt;  1 warning par_is_de… var     use       &lt;NA&gt;           Check tha… Example… TRUE </span>
+<span class="c1">#&gt;  2 warning par_is_de… cov     y         &lt;NA&gt;           Check tha… Example… TRUE </span>
+<span class="c1">#&gt;  3 dummy   trivial_n… var     x         numeric        Add trivi… (Should… TRUE </span>
+<span class="c1">#&gt;  4 dummy   vector_cu… var     x         vector         Custom cl… (Should… TRUE </span>
+<span class="c1">#&gt;  5 dummy   vector_to… var     x         vector         Convert v… (Should… TRUE </span>
+<span class="c1">#&gt;  6 dummy   negate_lo… var     na.rm     single logical Negate de… (Functi… TRUE </span>
+<span class="c1">#&gt;  7 dummy   subst_int… var     na.rm     single logical Substitut… (Functi… TRUE </span>
+<span class="c1">#&gt;  8 dummy   subst_cha… var     na.rm     single logical Substitut… should … TRUE </span>
+<span class="c1">#&gt;  9 dummy   single_pa… var     na.rm     single logical Length 2 … Should … TRUE </span>
+<span class="c1">#&gt; 10 dummy   return_su… var     (return … (return objec… Check tha… &lt;NA&gt;     TRUE </span>
+<span class="c1">#&gt; # … with 175 more rows, and 1 more variable: yaml_hash &lt;chr&gt;</span>
+</pre></div>
+</div>
+<p>Testing the <code class="docutils literal notranslate"><span class="pre">var</span></code> function also tests <code class="docutils literal notranslate"><span class="pre">cor</span></code> and <code class="docutils literal notranslate"><span class="pre">cov</span></code>, because these are
+all documented within a single <code class="docutils literal notranslate"><span class="pre">.Rd</span></code> help file. Typing <code class="docutils literal notranslate"><span class="pre">?var</span></code> shows that
+the help topic is <code class="docutils literal notranslate"><span class="pre">cor</span></code>, and that the examples include the three
+functions, <code class="docutils literal notranslate"><span class="pre">var</span></code>, <code class="docutils literal notranslate"><span class="pre">cor</span></code>, and <code class="docutils literal notranslate"><span class="pre">cov</span></code>. That result details the 185 tests
+which would be applied to the <code class="docutils literal notranslate"><span class="pre">var</span></code> function from the <code class="docutils literal notranslate"><span class="pre">stats</span></code> package.
+These 185 tests yield the following results when actually applied:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">autotest_package </span><span class="p">(</span><span class="n">package</span> <span class="o">=</span> <span class="s">&quot;stats&quot;</span><span class="p">,</span> <span class="n">functions</span> <span class="o">=</span> <span class="s">&quot;var&quot;</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="c1">#&gt; ── autotesting stats ──</span>
+<span class="c1">#&gt; </span>
+<span class="c1">#&gt; ✔ [1 / 6]: var</span>
+<span class="c1">#&gt; ✔ [2 / 6]: cor</span>
+<span class="c1">#&gt; ✔ [3 / 6]: cor</span>
+<span class="c1">#&gt; ✔ [4 / 6]: cov</span>
+<span class="c1">#&gt; ✔ [5 / 6]: cov</span>
+<span class="c1">#&gt; ✔ [6 / 6]: cor</span>
+<span class="nf">print </span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="c1">#&gt; # A tibble: 23 × 9</span>
+<span class="c1">#&gt;    type       test_name fn_name parameter parameter_type operation content test </span>
+<span class="c1">#&gt;    &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;   &lt;lgl&gt;</span>
+<span class="c1">#&gt;  1 warning    par_is_d… var     use       &lt;NA&gt;           Check th… &quot;Examp… TRUE </span>
+<span class="c1">#&gt;  2 warning    par_is_d… cov     y         &lt;NA&gt;           Check th… &quot;Examp… TRUE </span>
+<span class="c1">#&gt;  3 diagnostic vector_t… var     x         vector         Convert … &quot;Funct… TRUE </span>
+<span class="c1">#&gt;  4 diagnostic vector_t… var     x         vector         Convert … &quot;Funct… TRUE </span>
+<span class="c1">#&gt;  5 diagnostic vector_t… var     y         vector         Convert … &quot;Funct… TRUE </span>
+<span class="c1">#&gt;  6 diagnostic single_c… cor     use       single charac… upper-ca… &quot;is ca… TRUE </span>
+<span class="c1">#&gt;  7 diagnostic single_c… cor     method    single charac… upper-ca… &quot;is ca… TRUE </span>
+<span class="c1">#&gt;  8 diagnostic vector_c… cor     x         vector         Custom c… &quot;Funct… TRUE </span>
+<span class="c1">#&gt;  9 diagnostic single_c… cor     method    single charac… upper-ca… &quot;is ca… TRUE </span>
+<span class="c1">#&gt; 10 diagnostic single_c… cor     use       single charac… upper-ca… &quot;is ca… TRUE </span>
+<span class="c1">#&gt; # … with 13 more rows, and 1 more variable: yaml_hash &lt;chr&gt;</span>
+</pre></div>
+</div>
+<p>And only 23 of the original 185 tests produced unexpected behaviour.
+There were in fact only 4 kinds of tests which produced these 23
+results:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">unique </span><span class="p">(</span><span class="n">y</span><span class="o">$</span><span class="n">operation</span><span class="p">)</span>
+<span class="c1">#&gt; [1] &quot;Check that parameter usage is demonstrated&quot;</span>
+<span class="c1">#&gt; [2] &quot;Convert vector input to list-columns&quot;      </span>
+<span class="c1">#&gt; [3] &quot;upper-case character parameter&quot;            </span>
+<span class="c1">#&gt; [4] &quot;Custom class definitions for vector input&quot;</span>
+</pre></div>
+</div>
+<p>One of these involves conversion of a vector to a list-column
+representation (via <code class="docutils literal notranslate"><span class="pre">I(as.list(&lt;vec&gt;))</span></code>). Relatively few packages accept
+this kind of input, even though doing so is relatively straightforward.
+The following lines demonstrate how these tests can be switched off when
+<code class="docutils literal notranslate"><span class="pre">autotest</span></code>-ing a package. The <code class="docutils literal notranslate"><span class="pre">autotest_types()</span></code> function, used above to
+extract information on all types of tests, also accepts a single
+argument listing the <code class="docutils literal notranslate"><span class="pre">test_name</span></code> entries of any tests which are to be
+switched off.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">types</span> <span class="o">&lt;-</span> <span class="nf">autotest_types </span><span class="p">(</span><span class="n">notest</span> <span class="o">=</span> <span class="s">&quot;vector_to_list_col&quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">autotest_package </span><span class="p">(</span><span class="n">package</span> <span class="o">=</span> <span class="s">&quot;stats&quot;</span><span class="p">,</span> <span class="n">functions</span> <span class="o">=</span> <span class="s">&quot;var&quot;</span><span class="p">,</span>
+                       <span class="n">test</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">types</span><span class="p">)</span>
+<span class="c1">#&gt; ── autotesting stats ──</span>
+<span class="c1">#&gt; </span>
+<span class="c1">#&gt; ✔ [1 / 6]: var</span>
+<span class="c1">#&gt; ✔ [2 / 6]: cor</span>
+<span class="c1">#&gt; ✔ [3 / 6]: cor</span>
+<span class="c1">#&gt; ✔ [4 / 6]: cov</span>
+<span class="c1">#&gt; ✔ [5 / 6]: cov</span>
+<span class="c1">#&gt; ✔ [6 / 6]: cor</span>
+<span class="nf">print </span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="c1">#&gt; # A tibble: 28 × 9</span>
+<span class="c1">#&gt;    type       test_name fn_name parameter parameter_type operation content test </span>
+<span class="c1">#&gt;    &lt;chr&gt;      &lt;chr&gt;     &lt;chr&gt;   &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;     &lt;chr&gt;   &lt;lgl&gt;</span>
+<span class="c1">#&gt;  1 warning    par_is_d… var     use       &lt;NA&gt;           Check th… Exampl… TRUE </span>
+<span class="c1">#&gt;  2 warning    par_is_d… cov     y         &lt;NA&gt;           Check th… Exampl… TRUE </span>
+<span class="c1">#&gt;  3 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE </span>
+<span class="c1">#&gt;  4 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE </span>
+<span class="c1">#&gt;  5 diagnostic vector_c… cor     x         vector         Custom c… Functi… TRUE </span>
+<span class="c1">#&gt;  6 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE </span>
+<span class="c1">#&gt;  7 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE </span>
+<span class="c1">#&gt;  8 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE </span>
+<span class="c1">#&gt;  9 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE </span>
+<span class="c1">#&gt; 10 diagnostic vector_c… cov     x         vector         Custom c… Functi… TRUE </span>
+<span class="c1">#&gt; # … with 18 more rows, and 1 more variable: yaml_hash &lt;chr&gt;</span>
+</pre></div>
+</div>
+<p>Those tests are still returned from <code class="docutils literal notranslate"><span class="pre">autotest_package()</span></code>, but with
+<code class="docutils literal notranslate"><span class="pre">test</span> <span class="pre">=</span> <span class="pre">FALSE</span></code> to indicate they were not run, and a <code class="docutils literal notranslate"><span class="pre">type</span></code> of “no_test”
+rather than the previous “diagnostic”.</p>
+</section>
+<section id="can-autotest-automatically-create-tests-in-my-tests-directory">
+<h2>Can <code class="docutils literal notranslate"><span class="pre">autotest</span></code> automatically create tests in my <code class="docutils literal notranslate"><span class="pre">tests</span></code> directory?<a class="headerlink" href="#can-autotest-automatically-create-tests-in-my-tests-directory" title="Permalink to this headline">¶</a></h2>
+<p>Not yet, but that should be possible soon. In the meantime, there are
+<a class="reference external" href="https://testthat.r-lib.org"><code class="docutils literal notranslate"><span class="pre">testthat</span></code></a> expectations, listed in the
+<a class="reference external" href="https://docs.ropensci.org/autotest/reference/index.html">main package
+functions</a>,
+which enable <code class="docutils literal notranslate"><span class="pre">autotest</span></code> to be used in a package’s test suite.</p>
+</section>
+<section id="prior-work">
+<h2>Prior work<a class="headerlink" href="#prior-work" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>The
+<a class="reference external" href="https://github.com/great-expectations/great_expectations"><code class="docutils literal notranslate"><span class="pre">great-expectations</span></code></a>
+framework for python, described in <a class="reference external" href="https://medium.com/&#64;expectgreatdata/down-with-pipeline-debt-introducing-great-expectations-862ddc46782a">this medium
+article</a>.</p></li>
+<li><p><a class="reference external" href="https://hackage.haskell.org/package/QuickCheck"><code class="docutils literal notranslate"><span class="pre">QuickCheck</span></code></a> for
+Haskell</p></li>
+<li><p><a class="reference external" href="https://github.com/mbj/mutant"><code class="docutils literal notranslate"><span class="pre">mutate</span></code></a> for ruby</p></li>
+<li><p><a class="reference external" href="https://github.com/ropensci/mutant"><code class="docutils literal notranslate"><span class="pre">mutant</span></code></a> for mutation of R
+code itself</p></li>
+</ol>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autotest/at_yaml_template.html"><code class="docutils literal notranslate"><span class="pre">at_yaml_template</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/autotest_obj.html"><code class="docutils literal notranslate"><span class="pre">autotest_obj</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/autotest_package.html"><code class="docutils literal notranslate"><span class="pre">autotest_package</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/autotest_types.html"><code class="docutils literal notranslate"><span class="pre">autotest_types</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/autotest_yaml.html"><code class="docutils literal notranslate"><span class="pre">autotest_yaml</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/autotest-package.html"><code class="docutils literal notranslate"><span class="pre">autotest-package</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/examples_to_yaml.html"><code class="docutils literal notranslate"><span class="pre">examples_to_yaml</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/expect_autotest_no_err.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_no_err</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/expect_autotest_no_testdata.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_no_testdata</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/expect_autotest_no_warn.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_no_warn</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/expect_autotest_notes.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_notes</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="autotest/expect_autotest_testdata.html"><code class="docutils literal notranslate"><span class="pre">expect_autotest_testdata</span></code></a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="autotest/at_yaml_template.html" class="btn btn-neutral float-right" title="at_yaml_template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Mark Padgham.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

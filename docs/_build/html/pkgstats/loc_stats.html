@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>loc_stats &mdash; ropensci-review-tools 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pkgstats_from_archive" href="pkgstats_from_archive.html" />
+    <link rel="prev" title="extract_tarball" href="extract_tarball.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> ropensci-review-tools
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption" role="heading"><span class="caption-text">Main Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Overview</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">packages</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../autotest.html">autotest <a href='https://docs.ropensci.org/autotest'></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../pkgstats.html">pkgstats</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../pkgstats.html#what-statistics">What statistics?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pkgstats.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pkgstats.html#demonstration">Demonstration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../pkgstats.html#functions">Functions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="ctags_test.html"><code class="docutils literal notranslate"><span class="pre">ctags_test</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="desc_stats.html"><code class="docutils literal notranslate"><span class="pre">desc_stats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="extract_tarball.html"><code class="docutils literal notranslate"><span class="pre">extract_tarball</span></code></a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">loc_stats</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#value">Value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note">Note</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pkgstats_from_archive.html"><code class="docutils literal notranslate"><span class="pre">pkgstats_from_archive</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pkgstats_summary.html"><code class="docutils literal notranslate"><span class="pre">pkgstats_summary</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pkgstats-package.html"><code class="docutils literal notranslate"><span class="pre">pkgstats-package</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pkgstats.html"><code class="docutils literal notranslate"><span class="pre">pkgstats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="plot_network.html"><code class="docutils literal notranslate"><span class="pre">plot_network</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="rd_stats.html"><code class="docutils literal notranslate"><span class="pre">rd_stats</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="tags_data.html"><code class="docutils literal notranslate"><span class="pre">tags_data</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pkgcheck.html">pkgcheck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../roreviewapi.html">roreviewapi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../srr.html">rOpenSci <strong>S</strong>oftware <strong>R</strong>eview <strong>R</strong>oclets (srr)</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">ropensci-review-tools</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../pkgstats.html">pkgstats</a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">loc_stats</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/pkgstats/loc_stats.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="loc-stats">
+<h1><code class="docutils literal notranslate"><span class="pre">loc_stats</span></code><a class="headerlink" href="#loc-stats" title="Permalink to this headline">¶</a></h1>
+<p>Internal calculation of Lines-of-Code Statistics</p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Internal calculation of Lines-of-Code Statistics</p>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">loc_stats</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="arguments">
+<h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Argument</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">path</span></code></p></td>
+<td><p>Directory to package being analysed</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="value">
+<h2>Value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h2>
+<p>A list of statistics for each of three directories, ‘R’, ‘src’, and
+‘inst/include’, each one having 5 statistics of total numbers of lines,
+numbers of empty lines, total numbers of white spaces, total numbers of
+characters, and indentation used in files in that directory.</p>
+</section>
+<section id="note">
+<h2>Note<a class="headerlink" href="#note" title="Permalink to this headline">¶</a></h2>
+<p>NA values are returned for directories which do not exist.</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="pkgstats_from_archive.html" class="btn btn-neutral float-right" title="pkgstats_from_archive" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="extract_tarball.html" class="btn btn-neutral float-left" title="extract_tarball" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Mark Padgham.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
