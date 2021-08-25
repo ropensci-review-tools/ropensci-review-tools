@@ -12,7 +12,8 @@ documentation uses [`readthedocs`](https://readthedocs.org), and is hosted at
 
 Most of you should just head straight to
 [`ropensci-review-tools.readthedocs.io`](https://ropensci-review-tools.readthedocs.io/).
-The rest of this is technical detail on how that site is actually created. The
+The rest of this is technical detail on how that site is actually created. It
+will work only on Linux-type systems. The
 [`readthedocs`](https://readthedocs.org) site bundles documentation from all
 repositories within the `ropensci-review-tools` organisation, a process
 executed by the single [`pkgdocs-script.R`
@@ -35,10 +36,14 @@ folder of this repository, and can be recreated anew with the following steps:
 
 2. Within the directory of this repository (`cd ropensci-review-tools`), run
    `make clean` to remove all of the actual documentation files, leaving only
-   the [`readthedocs`](https://readthedocs.org) configuration files.
+   the [`readthedocs`](https://readthedocs.org) configuration files. That
+   should reduce 300 individual files down to just over ten. (There's even a
+   `make count` to check those numbers).
 
 4. Type `make` to rebuild everything
 
 5. Finally `make open` will open the locally-generated documentation in your default web browser.
 
-Check out the contents of the [`makefile`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/makefile) to see how it works.
+Check out the contents of the
+[`makefile`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/makefile)
+to see how it works.
