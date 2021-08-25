@@ -1,9 +1,10 @@
 INDEX=docs/_build/html/index
+SCRIPT=pkgdocs-script
 
 all: grab build
 
 grab:
-	Rscript pkgdocs-script.R
+	Rscript $(SCRIPT).R
 
 build:
 	cd docs;	\
