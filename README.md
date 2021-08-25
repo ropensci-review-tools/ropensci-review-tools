@@ -40,7 +40,7 @@ folder of this repository, and can be recreated anew with the following steps:
    should reduce 300 individual files down to just over ten. (There's even a
    `make count` to check those numbers).
 
-4. Type `make` to rebuild everything
+4. Type `make` to rebuild everything.
 
 5. Finally `make open` will open the locally-generated documentation in your default web browser.
 
