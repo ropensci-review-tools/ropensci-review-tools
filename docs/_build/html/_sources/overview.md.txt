@@ -34,7 +34,7 @@ package](https://github.com/ropensci-review-tools/autotest) throughout
 package development should ensure review processes are much less likely
 to uncover bugs in package behaviour.
 
-# `pkgcheck`
+## `pkgcheck`
 
 The [`pkgcheck`
 package](https://github.com/ropensci-review-tools/pkgcheck) represents
