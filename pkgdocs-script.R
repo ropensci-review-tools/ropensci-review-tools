@@ -41,7 +41,7 @@ one_readme <- function (p, path) {
         stop ("directory [", pkg_path, "] not found")
 
     dest <- file.path (docs_path, p, paste0 (p, ".md"))
-    chk <- file.copy (orig, dest)
+    chk <- file.copy (orig, dest, overwrite = TRUE)
 
     x <- c (brio::read_lines (dest),
             "",
@@ -52,11 +52,11 @@ one_readme <- function (p, path) {
             "   :maxdepth: 1",
             "")
 
-    for (f in list.files (p)) {
+    fns_path <- file.path (docs_path, p, "functions")
+    for (f in list.files (fns_path)) {
 
-        psub <- gsub (paste0 ("docs", .Platform$file.sep), "", p)
         x <- c (x,
-                paste0 ("   ", psub, "/", f))
+                paste0 ("   functions/", f))
     }
     x <- c (x, "```")
 
