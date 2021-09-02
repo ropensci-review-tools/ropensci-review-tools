@@ -4,22 +4,27 @@ pkgs <- c ("autotest",
            "roreviewapi",
            "srr")
 
-path <- ".."
+path <- normalizePath ("..")
 
 one_docs2md <- function (p, path) {
 
     flist <- list.files (file.path (path, p, "man"),
                          full.names = TRUE,
                          pattern = "\\.Rd$")
-    path_loc <- normalizePath (file.path ("docs", p),
-                               mustWork = FALSE)
+
+    path_loc <- file.path (path, "ropensci-review-tools", "docs", p)
+    path_loc <- normalizePath (path_loc, mustWork = FALSE)
     if (!dir.exists (path_loc))
         dir.create (path_loc, recursive = TRUE)
+
+    path_loc_fns <- file.path (path_loc, "functions")
+    if (!dir.exists (path_loc_fns))
+        dir.create (path_loc_fns, recursive = TRUE)
 
     for (f in flist) {
 
         fshort <- utils::tail (strsplit (f, .Platform$file.sep) [[1]], 1L)
-        fout <- file.path (path_loc, gsub ("\\.Rd$", ".md", fshort))
+        fout <- file.path (path_loc_fns, gsub ("\\.Rd$", ".md", fshort))
         Rd2md::Rd2markdown (f, outfile = fout)
     }
 }
@@ -30,12 +35,13 @@ one_readme <- function (p, path) {
     if (!file.exists (orig))
         stop ("file [", orig, "] not found")
 
-    dest <- file.path ("docs", paste0 (p, ".md"))
-    chk <- file.copy (orig, dest)
+    docs_path <- file.path (path, "ropensci-review-tools", "docs")
+    pkg_path <- file.path (path, p)
+    if (!dir.exists (pkg_path))
+        stop ("directory [", pkg_path, "] not found")
 
-    p <- file.path ("docs", p)
-    if (!dir.exists (p))
-        stop ("directory [", p, "] not found")
+    dest <- file.path (docs_path, p, paste0 (p, ".md"))
+    chk <- file.copy (orig, dest)
 
     x <- c (brio::read_lines (dest),
             "",
@@ -62,7 +68,9 @@ one_readme <- function (p, path) {
 # images to a separate line so they only appear in the readme docs themselves.
 move_hex <- function (p, path) {
 
-    f <- file.path ("docs", paste0 (p, ".md"))
+    docs_path <- file.path (path, "ropensci-review-tools", "docs")
+    pkg_path <- file.path (docs_path, p)
+    f <- file.path (pkg_path, paste0 (p, ".md"))
 
     x <- gsub ("^\\s+$", "", brio::read_lines (f))
     x <- x [(which (nchar (x) > 0L) [1]):length (x)]
@@ -75,7 +83,7 @@ move_hex <- function (p, path) {
         fig_src_name <- strsplit (fig_src, .Platform$file.sep) [[1]]
         fig_src_name <- utils::tail (fig_src_name, 1)
 
-        dir_dest <- file.path ("docs", "_static", p)
+        dir_dest <- file.path (docs_path, "_static", p)
         fig_dest <- file.path (dir_dest, fig_src_name)
         if (!file.exists (fig_dest)) {
             if (!dir.exists (dir_dest))
