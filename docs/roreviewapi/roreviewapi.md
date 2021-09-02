@@ -55,16 +55,4 @@ by inserting a GitHub token, and associated `git config` options.
 .. toctree::
    :maxdepth: 1
 
-   roreviewapi/check_cache.md
-   roreviewapi/dl_gh_repo.md
-   roreviewapi/editor_check.md
-   roreviewapi/pkgrep_install_deps.md
-   roreviewapi/post_to_issue.md
-   roreviewapi/push_to_gh_pages.md
-   roreviewapi/roreviewapi-package.md
-   roreviewapi/serve_api.md
-   roreviewapi/stats_badge.md
-   roreviewapi/stdout_stderr_cache.md
-   roreviewapi/symbol_crs.md
-   roreviewapi/symbol_tck.md
 ```

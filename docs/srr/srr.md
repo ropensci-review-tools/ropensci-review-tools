@@ -287,13 +287,4 @@ which they are actually addressed.
 .. toctree::
    :maxdepth: 1
 
-   srr/srr_report.md
-   srr/srr_stats_categories.md
-   srr/srr_stats_checklist_check.md
-   srr/srr_stats_checklist.md
-   srr/srr_stats_pkg_skeleton.md
-   srr/srr_stats_pre_submit.md
-   srr/srr_stats_roclet.md
-   srr/srr_stats_roxygen.md
-   srr/srr-package.md
 ```

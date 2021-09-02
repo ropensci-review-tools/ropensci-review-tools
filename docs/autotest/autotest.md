@@ -1,6 +1,6 @@
 # autotest <a href='https://docs.ropensci.org/autotest'>
 
-<img src='_static/autotest/autotest.png' align="right" height=210 width=182></a>
+<img src='/data/mega/code/repos/ropensci-review-tools/ropensci-review-tools/_static/autotest/autotest.png' align="right" height=210 width=182></a>
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
@@ -266,16 +266,4 @@ which enable `autotest` to be used in a package’s test suite.
 .. toctree::
    :maxdepth: 1
 
-   autotest/at_yaml_template.md
-   autotest/autotest_obj.md
-   autotest/autotest_package.md
-   autotest/autotest_types.md
-   autotest/autotest_yaml.md
-   autotest/autotest-package.md
-   autotest/examples_to_yaml.md
-   autotest/expect_autotest_no_err.md
-   autotest/expect_autotest_no_testdata.md
-   autotest/expect_autotest_no_warn.md
-   autotest/expect_autotest_notes.md
-   autotest/expect_autotest_testdata.md
 ```
