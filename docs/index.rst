@@ -26,3 +26,9 @@ statistical software.
    pkgcheck/pkgcheck.md
    roreviewapi/roreviewapi.md
    srr/srr.md
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Maintenance
+
+   maintenance/pkgstats
