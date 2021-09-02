@@ -266,4 +266,16 @@ which enable `autotest` to be used in a package’s test suite.
 .. toctree::
    :maxdepth: 1
 
+   functions/at_yaml_template.md
+   functions/autotest_obj.md
+   functions/autotest_package.md
+   functions/autotest_types.md
+   functions/autotest_yaml.md
+   functions/autotest-package.md
+   functions/examples_to_yaml.md
+   functions/expect_autotest_no_err.md
+   functions/expect_autotest_no_testdata.md
+   functions/expect_autotest_no_warn.md
+   functions/expect_autotest_notes.md
+   functions/expect_autotest_testdata.md
 ```

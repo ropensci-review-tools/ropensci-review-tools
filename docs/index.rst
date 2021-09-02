@@ -21,8 +21,8 @@ statistical software.
    :maxdepth: 1
    :caption: Packages
 
-   autotest
-   pkgstats
-   pkgcheck
-   roreviewapi
-   srr
+   autotest/autotest.md
+   pkgstats/pkgstats.md
+   pkgcheck/pkgcheck.md
+   roreviewapi/roreviewapi.md
+   srr/srr.md

@@ -492,4 +492,15 @@ function](https://docs.ropensci.org/pkgstats/reference/plot_network.html).
 .. toctree::
    :maxdepth: 1
 
+   functions/ctags_test.md
+   functions/desc_stats.md
+   functions/extract_tarball.md
+   functions/loc_stats.md
+   functions/pkgstats_from_archive.md
+   functions/pkgstats_summary.md
+   functions/pkgstats-package.md
+   functions/pkgstats.md
+   functions/plot_network.md
+   functions/rd_stats.md
+   functions/tags_data.md
 ```

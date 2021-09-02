@@ -304,4 +304,14 @@ may be called to quickly re-load the cached results.
 .. toctree::
    :maxdepth: 1
 
+   functions/checks_to_markdown.md
+   functions/get_default_branch.md
+   functions/get_gh_token.md
+   functions/get_latest_commit.md
+   functions/logfile_names.md
+   functions/pkgcheck_bg.md
+   functions/pkgcheck-package.md
+   functions/pkgcheck.md
+   functions/pkgstats_data.md
+   functions/render_markdown.md
 ```

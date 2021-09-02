@@ -55,4 +55,18 @@ by inserting a GitHub token, and associated `git config` options.
 .. toctree::
    :maxdepth: 1
 
+   functions/check_cache.md
+   functions/collate_editor_check.md
+   functions/dl_gh_repo.md
+   functions/editor_check.md
+   functions/file_pkgcheck_issue.md
+   functions/pkgrep_install_deps.md
+   functions/post_to_issue.md
+   functions/push_to_gh_pages.md
+   functions/roreviewapi-package.md
+   functions/serve_api.md
+   functions/stats_badge.md
+   functions/stdout_stderr_cache.md
+   functions/symbol_crs.md
+   functions/symbol_tck.md
 ```
