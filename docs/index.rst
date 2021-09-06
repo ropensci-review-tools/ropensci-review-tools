@@ -32,3 +32,6 @@ statistical software.
    :caption: Maintenance
 
    maintenance/pkgstats
+   maintenance/pkgcheck
+   maintenance/roreviewapi
+   maintenance/ropensci-review-bot
