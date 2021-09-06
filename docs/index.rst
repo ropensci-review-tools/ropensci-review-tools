@@ -17,6 +17,10 @@ statistical software.
 
    overview
 
+The following are links to the primary documentation for each package. Those
+wanting to use any one of these individual packages should follow the
+appropriate link.
+
 .. toctree::
    :maxdepth: 1
    :caption: Packages
@@ -26,6 +30,9 @@ statistical software.
    pkgcheck/pkgcheck.md
    roreviewapi/roreviewapi.md
    srr/srr.md
+
+The following are links to notes on maintaining the individual components of
+the ``ropensci-review-tool`` software ecosystem.
 
 .. toctree::
    :maxdepth: 1
