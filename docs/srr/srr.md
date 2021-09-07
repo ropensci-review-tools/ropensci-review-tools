@@ -297,3 +297,14 @@ which they are actually addressed.
    functions/srr_stats_roxygen.md
    functions/srr-package.md
 ```
+
+## Vignettes
+
+```eval_rst
+.. toctree::
+   :maxdepth: 1
+
+   vignettes/README.md
+   vignettes/review-tools.md
+   vignettes/srr-stats.md
+```

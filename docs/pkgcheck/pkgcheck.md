@@ -315,3 +315,12 @@ may be called to quickly re-load the cached results.
    functions/pkgstats_data.md
    functions/render_markdown.md
 ```
+
+## Vignettes
+
+```eval_rst
+.. toctree::
+   :maxdepth: 1
+
+   vignettes/extending-checks.md
+```

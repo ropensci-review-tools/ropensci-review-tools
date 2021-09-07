@@ -279,3 +279,13 @@ which enable `autotest` to be used in a package’s test suite.
    functions/expect_autotest_notes.md
    functions/expect_autotest_testdata.md
 ```
+
+## Vignettes
+
+```eval_rst
+.. toctree::
+   :maxdepth: 1
+
+   vignettes/autotest-control.md
+   vignettes/autotest.md
+```
