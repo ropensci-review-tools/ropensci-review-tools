@@ -29,6 +29,60 @@ one_docs2md <- function (p, path) {
     }
 }
 
+#' Render vignettes for one package to markdown and move to docs
+#'
+#' All vignettes are presumed to have `.Rmd` source files. If these do not also
+#' exist as `.md`, then they are first rendered before copying across.
+#' @noRd
+one_vignettes <- function (p, path) {
+
+    flist <- list.files (file.path (path, p, "vignettes"),
+                         full.names = TRUE,
+                         recursive = TRUE,
+                         pattern = "\\.Rmd")
+
+    flist_md <- vapply (flist, function (i) {
+                            i_rmd <- basename (i)
+                            i_md <- gsub ("\\.Rmd$", ".md", i_rmd)
+                            return (gsub (i_rmd, i_md, i))
+                         }, character (1),
+                         USE.NAMES = FALSE)
+
+    if (length (flist_md) == 0L)
+        return (NULL)
+
+    for (i in seq_along (flist_md)) {
+        
+        if (!file.exists (flist_md [i])) {
+
+            rmarkdown::render (flist [i],
+                               output_format = rmarkdown::md_document (variant = "gfm"))
+                               #output_file = flist_md [i])
+            message ("[", flist [i], "] has been rendered to [",
+                     flist_md [i], "]")
+        }
+
+        x <- brio::read_lines (flist_md [i])
+        if (!any (grepl ("^\\#\\s", x))) {
+            x_rmd <- brio::read_lines (flist [i])
+            titl <- grep ("^title\\:\\s", x_rmd) [1]
+            titl <- gsub ("^title\\:\\s", "", x_rmd [titl])
+            titl <- gsub ("\\\"", "", titl)
+            x <- c (paste0 ("# ", titl),
+                    "",
+                    x)
+            brio::write_lines (x, flist_md [i])
+        }
+    }
+
+    docs_path <- file.path (path, "ropensci-review-tools", "docs")
+    v_path <- file.path (docs_path, p, "vignettes")
+    if (!dir.exists (v_path))
+        dir.create (v_path, recursive = TRUE)
+
+    file.copy (flist_md, v_path, overwrite = TRUE)
+}
+
 one_readme <- function (p, path) {
 
     orig <- file.path (path, p, "README.md")
@@ -59,6 +113,25 @@ one_readme <- function (p, path) {
                 paste0 ("   functions/", f))
     }
     x <- c (x, "```")
+
+    v_dir <- file.path (docs_path, p, "vignettes")
+    if (dir.exists (v_dir)) {
+
+        x <- c (x,
+                "",
+                "## Vignettes",
+                "",
+                "```eval_rst",
+                ".. toctree::",
+                "   :maxdepth: 1",
+                "")
+
+        v_files <- list.files (v_dir, pattern = "\\.md$")
+        for (f in v_files)
+            x <- c (x,
+                    paste0 ("   vignettes/", f))
+        x <- c (x, "```")
+    }
 
     brio::write_lines (x, dest)
 }
@@ -107,6 +180,7 @@ move_hex <- function (p, path) {
 for (p in pkgs) {
 
     one_docs2md (p, path)
+    one_vignettes (p, path)
     one_readme (p, path)
     move_hex (p, path)
 }
