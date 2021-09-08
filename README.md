@@ -25,7 +25,7 @@ folder of this repository, and can be recreated anew with the following steps:
 
     - `sphinx`, `myst-parser`, `sphinx-rtd-theme`, `recommonmark`
 
-1. Clone all the following repositories in a single directory:
+1. Clone the following repositories from this GitHub organization in a single directory:
 
     - [`autotest`](https://github.com/ropensci-review-tools/autotest)
     - [`pkgcheck`](https://github.com/ropensci-review-tools/pkgcheck)
@@ -46,4 +46,15 @@ folder of this repository, and can be recreated anew with the following steps:
 
 Check out the contents of the
 [`makefile`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/makefile)
-to see how it works.
+to see how it works, or just type `make help`:
+
+``` bash
+$ make help
+all                  The default `make` command = grab + build
+build                readthedocs 'make html' command
+clean                Run readthedocs 'make clean' + clean all 'grab' targets (R pkg files)
+count                count some stuff
+grab                 Grab all files from the R packages by calling 'pkgdocs-script'
+help                 Show this help
+open                 Open the main 'html' page
+```
