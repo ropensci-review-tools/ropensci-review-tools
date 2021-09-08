@@ -22,7 +22,9 @@ clean: ## Run readthedocs 'make clean' + clean all 'grab' targets (R pkg files)
 	cd ..
 
 count: ## count some stuff
-	find * -type f | wc -l
+	@cd docs;                                          \
+	cat <(echo File count:) <(find * -type f | wc -l); \
+	cd ..
 
 # Lots of variants at:
 # https://gist.github.com/prwhite/8168133
