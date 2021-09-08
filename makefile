@@ -1,24 +1,28 @@
 INDEX=docs/_build/html/index
 SCRIPT=pkgdocs-script
 
-all: grab build
+all: ## The default `make` command = grab + build
+	grab build
 
-grab:
+grab: ## Grab all files from the R packages by calling 'pkgdocs-script'
 	Rscript $(SCRIPT).R
 
-build:
+build: ## readthedocs 'make html' command
 	cd docs;	\
 	make html;	\
 	cd ..
 
-open: $(INDEX).html
+open: $(INDEX).html ## Open the main 'html' page
 	xdg-open $(INDEX).html &
 
-clean:
+clean: ## Run readthedocs 'make clean' + clean all 'grab' targets (R pkg files)
 	rm -rf docs/autotest* docs/pkgcheck* docs/pkgstats* docs/roreviewapi* docs/srr*; \
 	cd docs;	\
 	make clean;	\
 	cd ..
 
-count:
+count: ## count some stuff
 	find * -type f | wc -l
+
+help: ## Show this help
+		@egrep '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
