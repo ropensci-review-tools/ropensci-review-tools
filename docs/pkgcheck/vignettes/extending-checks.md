@@ -181,14 +181,18 @@ described in section 4, above. Packages which contain scrap files will
 then produce the message specified by that function, including the name
 of each scrap file as a list item.
 
-Once again, the green ticks and red crosses need to be converted to a
-different format, using the following markdown conversions:
+Any new functions must ensure that they return `NULL` when the nominated
+component of the `checks` list is itself `NULL` – do not presume that
+components processed within a given markdown conversion function
+actually exist. Note also that the text output of these
+markdown-formatted checks generally starts and ends with a blank line
+(`""`). These lines are important to ensure appropriate rendering of
+HTML components.
+
+Finally, note that the green ticks and red crosses need to be converted
+to a different format, using the following markdown conversions:
 
 | `summary` symbol | markdown symbol          |
 |------------------|--------------------------|
 | symbol_crs()     | :heavy_multiplication_x: |
 | symbol_tck()     | :heavy_check_mark:       |
-
-Note also that the text output of these markdown-formatted checks
-generally starts and ends with a blank line (`""`). These lines are
-important to ensure appropriate rendering of HTML components.
