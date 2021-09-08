@@ -2,7 +2,7 @@ INDEX=docs/_build/html/index
 SCRIPT=pkgdocs-script
 
 all: ## The default 'make' command = grab + build
-	grab build
+	make grab; make build
 
 grab: ## Grab all files from the R packages by calling 'pkgdocs-script'
 	Rscript $(SCRIPT).R
