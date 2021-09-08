@@ -24,5 +24,9 @@ clean: ## Run readthedocs 'make clean' + clean all 'grab' targets (R pkg files)
 count: ## count some stuff
 	find * -type f | wc -l
 
+# Lots of variants at:
+# https://gist.github.com/prwhite/8168133
+# https://stackoverflow.com/questions/35730218/how-to-automatically-generate-a-makefile-help-command
+
 help: ## Show this help
 		@egrep '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
