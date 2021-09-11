@@ -21,6 +21,40 @@ and package structure checks expected for rOpenSci submissions. The
 output of this function immediately indicates whether or not a package
 is “Ready to Submit”.
 
+## Installation
+
+The easiest way to install this package is via the [associated
+`r-universe`](https://ropensci-review-tools.r-universe.dev/ui#builds).
+As shown there, simply enable the universe with
+
+``` r
+options(repos = c(
+    ropenscireviewtools = "https://ropensci-review-tools.r-universe.dev",
+    CRAN = "https://cloud.r-project.org"))
+```
+
+And then install the usual way with,
+
+``` r
+install.packages("pkgcheck")
+```
+
+Alternatively, the package can be installed by running one of the
+following lines:
+
+``` r
+remotes::install_github ("ropensci-review-tools/pkgcheck")
+pak::pkg_install ("ropensci-review-tools/pkgcheck")
+```
+
+The package can then loaded for use with
+
+``` r
+library (pkgcheck)
+```
+
+## Setup
+
 The [`pkgstats`
 package](https://github.com/ropensci-review-tools/pkgstats) also
 requires the system libraries [`ctags`](https://ctags.io) and [GNU
@@ -118,8 +152,9 @@ proceed in spite of such failures.)
 The full list of checks which packages are expected to pass currently
 includes:
 
-1.  Package must use [`roxygen2`](https://roxygen2.r-lib.org) for
-    documentation.
+1.  Package must use
+    [`roxygen2`](https://devguide.ropensci.org/building.html#roxygen2-use)
+    for documentation.
 2.  Package must have a [`contributing.md`
     file](https://devguide.ropensci.org/collaboration.html#contributing-guide).
 3.  Package must have a [`CITATION` file in the `inst`
@@ -161,7 +196,7 @@ names (x)
 
     ##  [1] "package"      "version"      "url"          "license"      "summary"     
     ##  [6] "git"          "srr"          "file_list"    "fns_have_exs" "left_assigns"
-    ## [11] "pkgstats"     "network_file" "gp"           "pkg_versions"
+    ## [11] "pkgstats"     "network_file" "gp"           "scrap"        "pkg_versions"
 
 The first four of these contain information on the package. The
 remainder include:
@@ -252,13 +287,22 @@ location determined by
 rappdirs::user_cache_dir()
 ```
 
-You may manually erase the contents of this subdirectory at any time at
-no risk beyond additional time required to re-generate contents. This
-default location may also be over-ridden by setting an environmental
-variable named `pkgcheck_cache_dir`. By default checks presume packages
-use `git` for version control, with checks updated only when code is
-updated via `git commit`. Checks for packages that do not use `git` are
-updated when any files are modified.
+As explained in the help file for that function, these locations are:
+
+| System   | location                                                                                                 |
+|----------|----------------------------------------------------------------------------------------------------------|
+| Mac OS X | `~/Library/Caches/pkgcheck`                                                                              |
+| Linux    | `~/.cache/pkgcheck`                                                                                      |
+| Win XP   | `C:\\Documents and Settings\\<username>\\Local Settings\\Application Data\\<AppAuthor>\\pkgcheck\\Cache` |
+| Vista    | `C:\\Users\\<username>\\AppData\\Local\\<AppAuthor>\\pkgcheck\\Cache`                                    |
+
+You may manually erase the contents of this `pkgcheck` subdirectory at
+any time at no risk beyond additional time required to re-generate
+contents. This default location may also be over-ridden by setting an
+environmental variable named `PKGCHECK_CACHE_DIR`. By default checks
+presume packages use `git` for version control, with checks updated only
+when code is updated via `git commit`. Checks for packages that do not
+use `git` are updated when any files are modified.
 
 The first time
 [`pkgcheck()`](https://docs.ropensci.org/pkgcheck/reference/pkgcheck.html)
@@ -298,6 +342,12 @@ may be called to quickly re-load the cached results.
 [The `checklist` package](https://github.com/inbo/checklist) for
 “checking packages and R code”.
 
+# Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
 ## Functions
 
 ```eval_rst
@@ -308,6 +358,7 @@ may be called to quickly re-load the cached results.
    functions/get_default_branch.md
    functions/get_gh_token.md
    functions/get_latest_commit.md
+   functions/list_pkgchecks.md
    functions/logfile_names.md
    functions/pkgcheck_bg.md
    functions/pkgcheck-package.md
