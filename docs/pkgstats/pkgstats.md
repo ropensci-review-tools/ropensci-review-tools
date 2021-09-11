@@ -486,6 +486,12 @@ The network can be viewed as an interactive
 `pkgstats` – here, `p` – to the [`plot_network()`
 function](https://docs.ropensci.org/pkgstats/reference/plot_network.html).
 
+# Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
+
 ## Functions
 
 ```eval_rst
