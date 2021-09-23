@@ -310,7 +310,6 @@ project, you agree to abide by its terms.
 .. toctree::
    :maxdepth: 1
 
-   vignettes/README.md
    vignettes/review-tools.md
    vignettes/srr-stats.md
 ```
