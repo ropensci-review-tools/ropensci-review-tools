@@ -13,7 +13,7 @@ Generate report on package compliance with rOpenSci Statistical Software
 ## Usage
 
 ```r
-pkgcheck(path)
+pkgcheck(path = ".")
 ```
 
 
