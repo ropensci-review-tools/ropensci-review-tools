@@ -133,7 +133,7 @@ system.time (
 ```
 
     ##    user  system elapsed 
-    ##   0.877   0.173   1.942
+    ##   0.976   0.195   2.062
 
 ``` r
 names (p)
@@ -382,7 +382,7 @@ summary is represented as a single character string:
 s$external_calls
 ```
 
-    ## [1] "base:20:9,magrittr:1:1"
+    ## [1] "base:22:12,magrittr:16:11"
 
 This is structured to allow numbers of calls to all packages to be
 readily extracted with code like the following:
@@ -397,8 +397,8 @@ print (calls)
 ```
 
     ##    package n_total n_unique
-    ## 1     base      20        9
-    ## 2 magrittr       1        1
+    ## 1     base      22       12
+    ## 2 magrittr      16       11
 
 The two numeric columns respectively show the total number of calls made
 to each package, and the total number of unique functions used within
@@ -535,26 +535,57 @@ function](https://docs.ropensci.org/pkgstats/reference/plot_network.html).
 ### External Calls
 
 The `external_calls` item is structured similar to the `network` object,
-but identifies all calls to functions from external packages, like this:
+but identifies all calls to functions from external packages. However,
+unlike the `netowrk` and `object` data, which provide information on
+objects and relationships in all computer languages used within a
+package, the `external_calls` object maps calls within R code only, in
+order to provide insight into the use within a package of of functions
+from other packages, including R’s base and recommended packages. The
+object looks like this:
 
 ``` r
 head (p$external_calls)
 ```
 
-    ##   tags_line         call                  tag        kind start end  package
-    ## 1         7       lapply     `_function_list` functionVar   294 294     base
-    ## 2        11      freduce anonFunc71fa9f300100    function   297 297 magrittr
-    ## 3        13    invisible anonFunc9ec39b760100    function    35  35     base
-    ## 4        13       lapply anonFunc9ec39b760100    function    35  35     base
-    ## 5        13        debug anonFunc9ec39b760100    function    35  35     base
-    ## 7        19 parent.frame                  env functionVar   134 134     base
-    ##             file
-    ## 1       R/pipe.R
-    ## 2       R/pipe.R
-    ## 3 R/debug_pipe.R
-    ## 4 R/debug_pipe.R
-    ## 5 R/debug_pipe.R
-    ## 7       R/pipe.R
+    ##   tags_line       call                  tag           file        kind start
+    ## 1         1    .onLoad              .onLoad   R/magrittr.R    function    45
+    ## 2         7     lapply     `_function_list`       R/pipe.R functionVar   294
+    ## 3         7 as_pipe_fn     `_function_list`       R/pipe.R functionVar   294
+    ## 4        11        cat anonFunc57d476a50100  R/functions.R    function    30
+    ## 5        12    freduce anonFunc84fb0cda0100       R/pipe.R    function   297
+    ## 6        13  invisible anonFunc9bce20a00100 R/debug_pipe.R    function    35
+    ##   end  package
+    ## 1  47 magrittr
+    ## 2 294     base
+    ## 3 294 magrittr
+    ## 4  30     base
+    ## 5 297 magrittr
+    ## 6  35     base
+
+These data are converted to a summary form by the [`pkgstats_summary()`
+function](https://docs.ropensci.org/pkgstats/reference/pkgstats_summary.html),
+which tabulates numbers of external calls and unique functions from each
+package. These data are presented as a single character string which can
+be easily converted to the corresponding numeric values using code like
+the following:
+
+``` r
+x <- strsplit (s$external_calls, ",") [[1]]
+x <- do.call (rbind, strsplit (x, ":"))
+x <- data.frame (pkg = x [, 1],
+                 n_total = as.integer (x [, 2]),
+                 n_unique = as.integer (x [, 3]))
+x$n_total_rel <- round (x$n_total / sum (x$n_total), 3)
+x$n_unique_rel <- round (x$n_unique / sum (x$n_unique), 3)
+print (x)
+```
+
+    ##        pkg n_total n_unique n_total_rel n_unique_rel
+    ## 1     base      22       12       0.579        0.522
+    ## 2 magrittr      16       11       0.421        0.478
+
+Those data reveal, for example, that the `magrittr` package makes 22
+individual calls to 12 unique functions from the “base” package.
 
 # Code of Conduct
 
