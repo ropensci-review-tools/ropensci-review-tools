@@ -77,3 +77,12 @@ project, you agree to abide by its terms.
    functions/symbol_crs.md
    functions/symbol_tck.md
 ```
+
+## Vignettes
+
+```eval_rst
+.. toctree::
+   :maxdepth: 1
+
+   vignettes/endpoints.md
+```
