@@ -62,6 +62,7 @@ project, you agree to abide by its terms.
    :maxdepth: 1
 
    functions/check_cache.md
+   functions/check_issue_template.md
    functions/collate_editor_check.md
    functions/dl_gh_repo.md
    functions/editor_check.md
