@@ -1,18 +1,25 @@
 # `list_pkgchecks`
 
-Print to screen a list of all checks currently implemented
+List all checks currently implemented
 
 
 ## Description
 
-Print to screen a list of all checks currently implemented
+List all checks currently implemented
 
 
 ## Usage
 
 ```r
-list_pkgchecks()
+list_pkgchecks(quiet = FALSE)
 ```
+
+
+## Arguments
+
+Argument      |Description
+------------- |----------------
+`quiet`     |     If `TRUE` , print all checks to screen. Function invisibly returns list of checks regardless.
 
 
 ## Value
