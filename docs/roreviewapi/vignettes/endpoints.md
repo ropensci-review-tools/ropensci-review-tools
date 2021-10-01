@@ -17,11 +17,11 @@ an [external service call in
 \`ropensci-org/buffy](https://github.com/ropensci-org/buffy/blob/82dd29bae4aeaa6bf5ca77b27be82cacd3a1ba04/config/settings-production.yml#L18-L32),
 which passes the parameters specified there of:
 
- 1.  `repo` The GitHub repository from where the call originates,
+1.  `repo` The GitHub repository from where the call originates,
     generally `ropensci/software-review`;
- 2.  `issue_id` as the number of the issue in `repo` describing the
+2.  `issue_id` as the number of the issue in `repo` describing the
     software submission; and
- 3.  `repourl` as specified in the submission template, and specifying
+3.  `repourl` as specified in the submission template, and specifying
     the GitHub repository of the software being submitted, also in the
     format `<org>/<repo>`.
 
