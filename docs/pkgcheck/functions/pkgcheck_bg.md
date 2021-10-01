@@ -42,5 +42,9 @@ The return object will by default display whether it is still running,
  or whether it has finished. Once it has finished, the results can be obtained
  by calling $get_result() , or the main [pkgcheck](#pkgcheck) function can be
  called to quickly retrieve the main results from local cache.
+ 
+ This function does not accept the `extra_env` parameter of the main
+ [pkgcheck](#pkgcheck) function, and can not be used to run extra, locally-defined
+ checks.
 
 

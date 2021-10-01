@@ -13,7 +13,7 @@ Generate report on package compliance with rOpenSci Statistical Software
 ## Usage
 
 ```r
-pkgcheck(path = ".", extra_env = .GlobalEnv)
+pkgcheck(path = ".", goodpractice = TRUE, extra_env = .GlobalEnv)
 ```
 
 
@@ -22,6 +22,7 @@ pkgcheck(path = ".", extra_env = .GlobalEnv)
 Argument      |Description
 ------------- |----------------
 `path`     |     Path to local repository
+`goodpractice`     |     If `FALSE` , skip goodpractice checks. May be useful in development stages to more quickly check other aspects.
 `extra_env`     |     Additional environments from which to collate checks. Other package names may be appended using `c` , as in `c(.GlobalEnv, "mypkg")` .
 
 
