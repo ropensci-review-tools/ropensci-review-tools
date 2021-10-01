@@ -13,7 +13,7 @@ Generate report on package compliance with rOpenSci Statistical Software
 ## Usage
 
 ```r
-pkgcheck(path = ".")
+pkgcheck(path = ".", extra_env = .GlobalEnv)
 ```
 
 
@@ -22,6 +22,7 @@ pkgcheck(path = ".")
 Argument      |Description
 ------------- |----------------
 `path`     |     Path to local repository
+`extra_env`     |     Additional environments from which to collate checks. Other package names may be appended using `c` , as in `c(.GlobalEnv, "mypkg")` .
 
 
 ## Value
