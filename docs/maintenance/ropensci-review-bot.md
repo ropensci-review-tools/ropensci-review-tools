@@ -30,8 +30,8 @@ This Docker image contains most of the system libraries required to build the
 Ubuntu 20.04
 runner](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md), 
 and a selection of R packages. The image is [stored on
-Dockerhub](https://hub.docker.com/repository/docker/mpadge/pkgcheck), and
-rebuild as a [GitHub
+Dockerhub](https://hub.docker.com/r/mpadge/pkgcheck), and
+rebuilt as a [GitHub
 action](https://github.com/ropensci-review-tools/pkgcheck/blob/main/.github/workflows/docker.yaml)
 as a weekly cron job (as well as on every push).
 
