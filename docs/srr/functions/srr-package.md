@@ -5,8 +5,7 @@ srr: 'rOpenSci' Review Roclets
 
 ## Description
 
-Companion package to 'rOpenSci' statistical software review
- project.
+Companion package to 'rOpenSci' statistical software review project.
 
 
 ## Seealso

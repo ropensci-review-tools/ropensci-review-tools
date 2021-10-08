@@ -25,7 +25,7 @@ srr_stats_roxygen(
 
 Argument      |Description
 ------------- |----------------
-`category`     |     One of the names of files given in the directory contents of [https://github.com/ropenscilabs/statistical-software-review-book/tree/main/standards](https://github.com/ropenscilabs/statistical-software-review-book/tree/main/standards) , each of which is ultimately formatted into a sub-section of the standards.
+`category`     |     One of the names of files given in the directory contents of [https://github.com/ropensci/statistical-software-review-book/tree/main/standards](https://github.com/ropensci/statistical-software-review-book/tree/main/standards) , each of which is ultimately formatted into a sub-section of the standards.
 `filename`     |     Name of 'R' source file in which to write roxygen2 -formatted lists of standards.
 `overwrite`     |     If `FALSE` (default) and `filename` already exists, a dialog will ask whether file should be overwritten.
 

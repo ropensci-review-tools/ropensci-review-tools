@@ -21,7 +21,7 @@ srr_stats_checklist(category = NULL, filename = NULL)
 
 Argument      |Description
 ------------- |----------------
-`category`     |     One of the names of files given in the directory contents of [https://github.com/ropenscilabs/statistical-software-review-book/tree/main/standards](https://github.com/ropenscilabs/statistical-software-review-book/tree/main/standards) , each of which is ultimately formatted into a sub-section of the standards.
+`category`     |     One of the names of files given in the directory contents of [https://github.com/ropensci/statistical-software-review-book/tree/main/standards](https://github.com/ropensci/statistical-software-review-book/tree/main/standards) , each of which is ultimately formatted into a sub-section of the standards.
 `filename`     |     Optional name of local file to save markdown-formatted checklist. A suffix of `.md` will be automatically appended.
 
 
