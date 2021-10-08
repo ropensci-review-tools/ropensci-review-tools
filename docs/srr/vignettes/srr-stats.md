@@ -5,12 +5,11 @@ package containing roclets for general use in helping those developing
 and reviewing packages submitted to rOpenSci. At present, the `srr`
 package only contains roclets and associated functions to help those
 developing and reviewing packages submitted to rOpenSci’s system for
-[Statistical Software
-Review](https://ropenscilabs.github.io/statistical-software-review-book/index.html).
+[Statistical Software Review](https://stats-devguide.ropensci.org/).
 This vignette demonstrates how developers are intended to use this
 package to document the alignment of their software with rOpenSci’s
 [standards for statistical
-software](https://ropenscilabs.github.io/statistical-software-review-book/standards.html).
+software](https://stats-devguide.ropensci.org/standards.html).
 
 The main functions of the package are constructed as [`roxygen2`
 “roclets”](https://roxygen2.r-lib.org), meaning that these functions are
@@ -49,7 +48,7 @@ d <- srr_stats_pkg_skeleton (pkg_name = "package")
 fs::dir_tree (d)
 ```
 
-    ## /tmp/RtmpSDxCtk/package
+    ## /tmp/RtmpZ6XmTi/package
     ## ├── DESCRIPTION
     ## ├── NAMESPACE
     ## ├── R
@@ -99,9 +98,10 @@ which will produce output like the following:
 roxygen2::roxygenise (d)
 ```
 
+    ## Updating roxygen version in /tmp/RtmpZ6XmTi/package/DESCRIPTION
     ## ℹ Loading package
     ## Writing NAMESPACE
-    ## ─────────────────────────────────────── rOpenSci Statistical Software Standards ──────────────────────────────────────
+    ## ─────────────────────────────────────────────────────────────────────────────────────────────────── rOpenSci Statistical Software Standards ──────────────────────────────────────────────────────────────────────────────────────────────────
     ## 
     ## ── @srrstats standards:
     ##   * [G1.1, G1.2, G1.3, G2.0, G2.1] in function 'test_fn()' on line#11 of file [R/test.R]
@@ -116,7 +116,7 @@ roxygen2::roxygenise (d)
     ##   * [RE4.4] on line#14 of file [R/srr-stats-standards.R]
     ##   * [RE1.1] on line#11 of file [R/test.R]
     ##   * [G1.5] on line#17 of file [./README.Rmd]
-    ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## Writing package-package.Rd
     ## Writing test_fn.Rd
     ## Writing NAMESPACE
