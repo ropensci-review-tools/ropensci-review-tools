@@ -48,7 +48,7 @@ d <- srr_stats_pkg_skeleton (pkg_name = "package")
 fs::dir_tree (d)
 ```
 
-    ## /tmp/RtmpZ6XmTi/package
+    ## /tmp/Rtmp0qdxnP/package
     ## ├── DESCRIPTION
     ## ├── NAMESPACE
     ## ├── R
@@ -98,10 +98,10 @@ which will produce output like the following:
 roxygen2::roxygenise (d)
 ```
 
-    ## Updating roxygen version in /tmp/RtmpZ6XmTi/package/DESCRIPTION
+    ## Updating roxygen version in /tmp/Rtmp0qdxnP/package/DESCRIPTION
     ## ℹ Loading package
     ## Writing NAMESPACE
-    ## ─────────────────────────────────────────────────────────────────────────────────────────────────── rOpenSci Statistical Software Standards ──────────────────────────────────────────────────────────────────────────────────────────────────
+    ## ─────────────────────────────────────── rOpenSci Statistical Software Standards ──────────────────────────────────────
     ## 
     ## ── @srrstats standards:
     ##   * [G1.1, G1.2, G1.3, G2.0, G2.1] in function 'test_fn()' on line#11 of file [R/test.R]
@@ -116,7 +116,7 @@ roxygen2::roxygenise (d)
     ##   * [RE4.4] on line#14 of file [R/srr-stats-standards.R]
     ##   * [RE1.1] on line#11 of file [R/test.R]
     ##   * [G1.5] on line#17 of file [./README.Rmd]
-    ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## Writing package-package.Rd
     ## Writing test_fn.Rd
     ## Writing NAMESPACE
@@ -340,26 +340,26 @@ an example as follows:
 readLines (file.path (d, "README.Rmd"))
 ```
 
-    ##  [1] "# package"                                                                        
-    ##  [2] ""                                                                                 
-    ##  [3] "This is a skeleton of an [`srr` statistics](https://github.com/ropenscilabs/srr)" 
-    ##  [4] "package, intended developers to tweak as they like, in order to understand "      
-    ##  [5] "how the package's roclets work."                                                  
-    ##  [6] ""                                                                                 
-    ##  [7] "This `README.Rmd` file is here to demonstrate how to embed `srr` roclet tags."    
-    ##  [8] "These tags need to be within dedicated *code chunks*, like the following:"        
-    ##  [9] ""                                                                                 
-    ## [10] "```{r srr-tags, eval = FALSE, echo = FALSE}"                                      
-    ## [11] "#' roxygen_block_name"                                                            
-    ## [12] "#'"                                                                               
-    ## [13] "#' (Add some text if you like)"                                                   
-    ## [14] "#'"                                                                               
-    ## [15] "#' @srrstats {G1.4} Here is a reference to a standard"                            
-    ## [16] "#' @srrstatsTODO {G1.5} And here is a reference to a standard yet to be addressed"
-    ## [17] "```"                                                                              
-    ## [18] ""                                                                                 
-    ## [19] "Note the chunk contains only [`roxygen2`](https://roxygen2.r-lib.org) lines,"     
-    ## [20] "and nothing else at all. Please change the `eval` and `echo` parameters to"       
+    ##  [1] "# package"                                                                                
+    ##  [2] ""                                                                                         
+    ##  [3] "This is a skeleton of an [`srr` statistics](https://github.com/ropensci-review-tools/srr)"
+    ##  [4] "package, intended developers to tweak as they like, in order to understand "              
+    ##  [5] "how the package's roclets work."                                                          
+    ##  [6] ""                                                                                         
+    ##  [7] "This `README.Rmd` file is here to demonstrate how to embed `srr` roclet tags."            
+    ##  [8] "These tags need to be within dedicated *code chunks*, like the following:"                
+    ##  [9] ""                                                                                         
+    ## [10] "```{r srr-tags, eval = FALSE, echo = FALSE}"                                              
+    ## [11] "#' roxygen_block_name"                                                                    
+    ## [12] "#'"                                                                                       
+    ## [13] "#' (Add some text if you like)"                                                           
+    ## [14] "#'"                                                                                       
+    ## [15] "#' @srrstats {G1.4} Here is a reference to a standard"                                    
+    ## [16] "#' @srrstatsTODO {G1.5} And here is a reference to a standard yet to be addressed"        
+    ## [17] "```"                                                                                      
+    ## [18] ""                                                                                         
+    ## [19] "Note the chunk contains only [`roxygen2`](https://roxygen2.r-lib.org) lines,"             
+    ## [20] "and nothing else at all. Please change the `eval` and `echo` parameters to"               
     ## [21] "see what happens when you knit the document."
 
 Those lines illustrate the expected form. `@srrstats` tags should be
