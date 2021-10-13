@@ -84,5 +84,6 @@ project, you agree to abide by its terms.
 .. toctree::
    :maxdepth: 1
 
+   vignettes/debugging.md
    vignettes/endpoints.md
 ```
