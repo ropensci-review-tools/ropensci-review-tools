@@ -24,3 +24,9 @@ Argument      |Description
 `os_release`     |     Name of operating system release, passed to remotes  package to install system dependencies.
 
 
+## Value
+
+Hopefully a character vector of length zero, otherwise a list of any
+ R packages unable to be installed.
+
+
