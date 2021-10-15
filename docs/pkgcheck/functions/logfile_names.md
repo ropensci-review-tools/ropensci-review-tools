@@ -33,6 +33,7 @@ Vector of two strings holding respective local paths to `stdout` and
 
 Other extra:
  [`checks_to_markdown`](#checkstomarkdown) ,
+ [`list_pkgchecks`](#listpkgchecks) ,
  [`render_markdown`](#rendermarkdown)
 
 

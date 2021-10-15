@@ -31,6 +31,7 @@ Markdown-formatted version of check report
 ## Seealso
 
 Other extra:
+ [`list_pkgchecks`](#listpkgchecks) ,
  [`logfile_names`](#logfilenames) ,
  [`render_markdown`](#rendermarkdown)
 

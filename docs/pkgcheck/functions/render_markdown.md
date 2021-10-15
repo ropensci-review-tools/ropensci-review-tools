@@ -32,6 +32,7 @@ Argument      |Description
 
 Other extra:
  [`checks_to_markdown`](#checkstomarkdown) ,
+ [`list_pkgchecks`](#listpkgchecks) ,
  [`logfile_names`](#logfilenames)
 
 

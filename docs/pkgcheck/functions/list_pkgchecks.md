@@ -27,3 +27,11 @@ Argument      |Description
 Character vector of names of all checks (invisibly)
 
 
+## Seealso
+
+Other extra:
+ [`checks_to_markdown`](#checkstomarkdown) ,
+ [`logfile_names`](#logfilenames) ,
+ [`render_markdown`](#rendermarkdown)
+
+
