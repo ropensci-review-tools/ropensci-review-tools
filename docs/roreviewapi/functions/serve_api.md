@@ -32,3 +32,10 @@ Argument      |Description
 Nothing; calling this starts a blocking process.
 
 
+## Seealso
+
+Other main:
+ [`collate_editor_check`](#collateeditorcheck) ,
+ [`editor_check`](#editorcheck)
+
+

@@ -29,3 +29,10 @@ A single character containing the label used directly for the issue
  badge
 
 
+## Seealso
+
+Other ropensci:
+ [`check_issue_template`](#checkissuetemplate) ,
+ [`push_to_gh_pages`](#pushtoghpages)
+
+

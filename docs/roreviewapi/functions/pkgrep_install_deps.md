@@ -30,3 +30,12 @@ Hopefully a character vector of length zero, otherwise a list of any
  R packages unable to be installed.
 
 
+## Seealso
+
+Other utils:
+ [`check_cache`](#checkcache) ,
+ [`stdout_stderr_cache`](#stdoutstderrcache) ,
+ [`symbol_crs`](#symbolcrs) ,
+ [`symbol_tck`](#symboltck)
+
+

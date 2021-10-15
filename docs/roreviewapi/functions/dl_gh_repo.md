@@ -27,3 +27,10 @@ Argument      |Description
 Path to locally cached '.zip' version of repository
 
 
+## Seealso
+
+Other github:
+ [`file_pkgcheck_issue`](#filepkgcheckissue) ,
+ [`post_to_issue`](#posttoissue)
+
+

@@ -29,3 +29,10 @@ Argument      |Description
 Vector of two paths containing URLs of the `srr` and `network` files.
 
 
+## Seealso
+
+Other ropensci:
+ [`check_issue_template`](#checkissuetemplate) ,
+ [`stats_badge`](#statsbadge)
+
+

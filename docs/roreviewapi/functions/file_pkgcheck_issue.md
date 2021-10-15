@@ -28,6 +28,13 @@ Argument      |Description
 `issue_id`     |     The id (number) of the issue from which the command was invoked.
 
 
+## Seealso
+
+Other github:
+ [`dl_gh_repo`](#dlghrepo) ,
+ [`post_to_issue`](#posttoissue)
+
+
 ## Note
 
 Exported only for access by plumber; not intended for general external

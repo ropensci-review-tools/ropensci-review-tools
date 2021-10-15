@@ -29,6 +29,15 @@ Vector of two strings holding respective local paths to `stdout` and
  function.
 
 
+## Seealso
+
+Other utils:
+ [`check_cache`](#checkcache) ,
+ [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
+ [`symbol_crs`](#symbolcrs) ,
+ [`symbol_tck`](#symboltck)
+
+
 ## Note
 
 These files are needed for the callr  `r_bg` process which

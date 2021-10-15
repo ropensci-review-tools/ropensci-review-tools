@@ -31,6 +31,15 @@ FALSE If a package has previously been cached, and the github repo
  has not changed; otherwise TRUE.
 
 
+## Seealso
+
+Other utils:
+ [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
+ [`stdout_stderr_cache`](#stdoutstderrcache) ,
+ [`symbol_crs`](#symbolcrs) ,
+ [`symbol_tck`](#symboltck)
+
+
 ## Note
 
 This function is not intended to be called directly, and is only

@@ -32,3 +32,10 @@ If `!post_to_issue` , a markdown-formatted response body from static
  been posted.
 
 
+## Seealso
+
+Other main:
+ [`collate_editor_check`](#collateeditorcheck) ,
+ [`serve_api`](#serveapi)
+
+

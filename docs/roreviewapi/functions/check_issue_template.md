@@ -28,3 +28,10 @@ Argument      |Description
 Comment as character string
 
 
+## Seealso
+
+Other ropensci:
+ [`push_to_gh_pages`](#pushtoghpages) ,
+ [`stats_badge`](#statsbadge)
+
+

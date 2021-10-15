@@ -27,6 +27,13 @@ Argument      |Description
 Single character
 
 
+## Seealso
+
+Other main:
+ [`editor_check`](#editorcheck) ,
+ [`serve_api`](#serveapi)
+
+
 ## Note
 
 Exported only for access by plumber; not intended for general external

@@ -15,3 +15,12 @@ symbol_tck()
 ```
 
 
+## Seealso
+
+Other utils:
+ [`check_cache`](#checkcache) ,
+ [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
+ [`stdout_stderr_cache`](#stdoutstderrcache) ,
+ [`symbol_crs`](#symbolcrs)
+
+
