@@ -28,3 +28,12 @@ Summarised version of `s` , as a single row of a standardised
  `data.frame` object
 
 
+## Seealso
+
+Other stats:
+ [`desc_stats`](#descstats) ,
+ [`loc_stats`](#locstats) ,
+ [`pkgstats`](#pkgstats) ,
+ [`rd_stats`](#rdstats)
+
+

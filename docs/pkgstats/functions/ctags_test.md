@@ -17,3 +17,10 @@ ctags_test()
 ```
 
 
+## Seealso
+
+Other tags:
+ [`ctags_install`](#ctagsinstall) ,
+ [`tags_data`](#tagsdata)
+
+

@@ -27,6 +27,15 @@ Argument      |Description
 List of statistics
 
 
+## Seealso
+
+Other stats:
+ [`desc_stats`](#descstats) ,
+ [`loc_stats`](#locstats) ,
+ [`pkgstats_summary`](#pkgstatssummary) ,
+ [`rd_stats`](#rdstats)
+
+
 ## Examples
 
 ```r

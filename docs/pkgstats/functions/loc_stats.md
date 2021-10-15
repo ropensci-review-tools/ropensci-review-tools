@@ -30,6 +30,15 @@ A list of statistics for each of three directories, 'R', 'src', and
  characters, and indentation used in files in that directory.
 
 
+## Seealso
+
+Other stats:
+ [`desc_stats`](#descstats) ,
+ [`pkgstats_summary`](#pkgstatssummary) ,
+ [`pkgstats`](#pkgstats) ,
+ [`rd_stats`](#rdstats)
+
+
 ## Note
 
 NA values are returned for directories which do not exist.

@@ -21,20 +21,22 @@ extract_tarball(tarball)
 
 Argument      |Description
 ------------- |----------------
-`tarball`     |     Full path to local tarball of an R package
+`tarball`     |     Full path to local tarball of an R package.
 
 
 ## Value
 
-Path to extracted version of package
+Path to extracted version of package (in `tempdir()` ).
 
 
 ## Examples
 
 ```r
 tarball <- "magrittr_2.0.1.tar.gz"
-u <- paste0 ("https://cran.r-project.org/src/contrib/",
-tarball)
+u <- paste0 (
+"https://cran.r-project.org/src/contrib/",
+tarball
+)
 f <- file.path (tempdir (), tarball)
 download.file (u, f)
 path <- extract_tarball (f)
