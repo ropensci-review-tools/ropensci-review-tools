@@ -11,7 +11,7 @@ use ctags and gtags to parse call data
 ## Usage
 
 ```r
-tags_data(path, has_tabs = NULL, pkg_name)
+tags_data(path, has_tabs = NULL, pkg_name = NULL)
 ```
 
 
@@ -29,5 +29,15 @@ Argument      |Description
 Other tags:
  [`ctags_install`](#ctagsinstall) ,
  [`ctags_test`](#ctagstest)
+
+
+## Examples
+
+```r
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+# have to extract tarball to call function on source code:
+path <- extract_tarball (f)
+tags <- tags_data (path)
+```
 
 

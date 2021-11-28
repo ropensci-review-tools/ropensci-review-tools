@@ -44,3 +44,12 @@ Other stats:
 NA values are returned for directories which do not exist.
 
 
+## Examples
+
+```r
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- extract_tarball (f)
+loc_stats (path)
+```
+
+

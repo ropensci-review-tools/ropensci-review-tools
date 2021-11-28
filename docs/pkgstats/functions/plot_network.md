@@ -31,3 +31,19 @@ Argument      |Description
 (Invisibly) A visNetwork representation of the package network.
 
 
+## Note
+
+Edge thicknesses are scaled to centrality within the package function
+ call network. Node sizes are scaled to numbers of times each function is
+ called from all other functions within a package.
+
+
+## Examples
+
+```r
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+p <- pkgstats (f)
+plot_network (p)
+```
+
+

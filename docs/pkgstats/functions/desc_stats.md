@@ -31,3 +31,12 @@ Other stats:
  [`rd_stats`](#rdstats)
 
 
+## Examples
+
+```r
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- extract_tarball (f)
+desc_stats (path)
+```
+
+
