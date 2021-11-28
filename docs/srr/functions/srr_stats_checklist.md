@@ -40,3 +40,13 @@ Other helper:
  [`srr_stats_pre_submit`](#srrstatspresubmit)
 
 
+## Examples
+
+```r
+x <- srr_stats_checklist (category = "regression")
+# or write to specified file:
+f <- tempfile (fileext = ".md")
+x <- srr_stats_checklist (category = "regression", filename = f)
+```
+
+

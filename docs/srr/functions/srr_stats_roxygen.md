@@ -41,3 +41,18 @@ Other roxygen:
  [`srr_stats_roclet`](#srrstatsroclet)
 
 
+## Examples
+
+```r
+path <- srr_stats_pkg_skeleton ()
+# contains a few standards; insert all with:
+f <- file.path (path, "R", "srr-stats-standards.R")
+file.exists (f)
+length (readLines (f)) # only 14 lines
+srr_stats_roxygen (category = "regression",
+file = f,
+overwrite = TRUE)
+length (readLines (f)) # now much longer
+```
+
+

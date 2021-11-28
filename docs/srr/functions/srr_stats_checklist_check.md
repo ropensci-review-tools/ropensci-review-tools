@@ -31,3 +31,12 @@ Other helper:
  [`srr_stats_pre_submit`](#srrstatspresubmit)
 
 
+## Examples
+
+```r
+f <- tempfile (fileext = ".md")
+srr_stats_checklist (category = "regression", filename = f)
+chk <- srr_stats_checklist_check (f)
+```
+
+

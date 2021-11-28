@@ -32,3 +32,10 @@ Other helper:
  [`srr_stats_pre_submit`](#srrstatspresubmit)
 
 
+## Examples
+
+```r
+srr_stats_categories ()
+```
+
+

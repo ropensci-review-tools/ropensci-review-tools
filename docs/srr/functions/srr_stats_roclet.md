@@ -22,9 +22,21 @@ Note that this function should never need to be called directly. It only
  documentation.
 
 
+## Value
+
+A roxygen2 roclet
+
+
 ## Seealso
 
 Other roxygen:
  [`srr_stats_roxygen`](#srrstatsroxygen)
+
+
+## Examples
+
+```r
+srr_stats_roclet ()
+```
 
 
