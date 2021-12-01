@@ -47,3 +47,5 @@ is a `GET` endpoint with the single parameter of `repourl` specifying the URL
 of the package being checked. Logs are cached only for the most recent calls
 for any one package.
 
+These logs can be very detailed, and should provide sufficient information to
+diagnose most internal issues with package checking.
