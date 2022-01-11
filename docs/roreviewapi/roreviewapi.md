@@ -61,12 +61,14 @@ project, you agree to abide by its terms.
 .. toctree::
    :maxdepth: 1
 
+   functions/bot_check.md
    functions/check_cache.md
    functions/check_issue_template.md
    functions/collate_editor_check.md
    functions/dl_gh_repo.md
    functions/editor_check.md
    functions/file_pkgcheck_issue.md
+   functions/is_user_authorized.md
    functions/pkgrep_install_deps.md
    functions/post_to_issue.md
    functions/push_to_gh_pages.md
