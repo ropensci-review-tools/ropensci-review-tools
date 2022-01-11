@@ -10,7 +10,7 @@ Statistics on all CRAN packages from 'pkgstats'
 
 ## Format
 
-An object of class `data.frame` with 14834 rows and 81 columns.
+An object of class `grouped_df` (inherits from `tbl_df` , `tbl` , `data.frame` ) with 21091 rows and 91 columns.
 
 
 ## Usage
