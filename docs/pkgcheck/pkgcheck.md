@@ -363,6 +363,7 @@ project, you agree to abide by its terms.
    functions/pkgcheck-package.md
    functions/pkgcheck.md
    functions/pkgstats_data.md
+   functions/read_pkg_guide.md
    functions/render_markdown.md
 ```
 

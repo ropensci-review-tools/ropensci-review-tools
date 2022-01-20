@@ -224,9 +224,11 @@ following three items:
 2.  `summary` containing text used to generate the `summary` output; and
 3.  `print` containing information used to generate the `print` output,
     itself a `list` of the following items:
-    -   A `message` to display at the start of the `print` result; and
+    -   A `msg_pre` to display at the start of the `print` result;
     -   An `object` to be printed, such as a vector of values, or a
         `data.frame`.
+    -   A `msg_post` to display at the end of the `print` result
+        following the `object`.
 
 `summary` and `print` methods may be suppressed by assigning values of
 `""`. The above example of `pkgcheck_has_citation` has `print = ""`, and
@@ -244,7 +246,7 @@ function](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/check-sc
 output_pkgchk_has_scrap <- function (checks) {
 
     out <- list (
-        check_pass = length (checks$checks$scrap) == 0L,
+        check_pass = length (checks$checks$has_scrap) == 0L,
         summary = "",
         print = ""
     )
@@ -252,11 +254,12 @@ output_pkgchk_has_scrap <- function (checks) {
     if (!out$check_pass) {
         out$summary <- "Package contains unexpected files."
         out$print <- list (
-            message = paste0 (
+            msg_pre = paste0 (
                 "Package contains the ",
                 "following unexpected files:"
             ),
-            obj = checks$checks$scrap
+            obj = checks$checks$has_scrap,
+            msg_post = character (0)
         )
     }
 
@@ -266,7 +269,7 @@ output_pkgchk_has_scrap <- function (checks) {
 
 In this case, both `summary` and `print` methods are only triggered
 `if (!out$check_pass)` – so only if the check fails. The `print` method
-generates the heading specified in `out$print$message`, with any
+generates the heading specified in `out$print$msg_pre`, with any
 vector-valued objects stored in the corresponding `obj` list item
 displayed as formatted lists. A package with “scrap” files, `"a"` and
 `"b"`, would thus have `out$print$obj <- c ("a", "b")`, and when printed
