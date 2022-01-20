@@ -293,27 +293,25 @@ project, you agree to abide by its terms.
 
 ## Functions
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   functions/srr_report.md
-   functions/srr_stats_categories.md
-   functions/srr_stats_checklist_check.md
-   functions/srr_stats_checklist.md
-   functions/srr_stats_pkg_skeleton.md
-   functions/srr_stats_pre_submit.md
-   functions/srr_stats_roclet.md
-   functions/srr_stats_roxygen.md
-   functions/srr-package.md
+functions/srr_report.md
+functions/srr_stats_categories.md
+functions/srr_stats_checklist_check.md
+functions/srr_stats_checklist.md
+functions/srr_stats_pkg_skeleton.md
+functions/srr_stats_pre_submit.md
+functions/srr_stats_roclet.md
+functions/srr_stats_roxygen.md
+functions/srr-package.md
 ```
 
 ## Vignettes
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   vignettes/review-tools.md
-   vignettes/srr-stats.md
+vignettes/review-tools.md
+vignettes/srr-stats.md
 ```

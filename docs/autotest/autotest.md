@@ -268,30 +268,28 @@ project, you agree to abide by its terms.
 
 ## Functions
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   functions/at_yaml_template.md
-   functions/autotest_obj.md
-   functions/autotest_package.md
-   functions/autotest_types.md
-   functions/autotest_yaml.md
-   functions/autotest-package.md
-   functions/examples_to_yaml.md
-   functions/expect_autotest_no_err.md
-   functions/expect_autotest_no_testdata.md
-   functions/expect_autotest_no_warn.md
-   functions/expect_autotest_notes.md
-   functions/expect_autotest_testdata.md
+functions/at_yaml_template.md
+functions/autotest_obj.md
+functions/autotest_package.md
+functions/autotest_types.md
+functions/autotest_yaml.md
+functions/autotest-package.md
+functions/examples_to_yaml.md
+functions/expect_autotest_no_err.md
+functions/expect_autotest_no_testdata.md
+functions/expect_autotest_no_warn.md
+functions/expect_autotest_notes.md
+functions/expect_autotest_testdata.md
 ```
 
 ## Vignettes
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   vignettes/autotest-control.md
-   vignettes/autotest.md
+vignettes/autotest-control.md
+vignettes/autotest.md
 ```

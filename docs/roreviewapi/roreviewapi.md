@@ -57,35 +57,33 @@ project, you agree to abide by its terms.
 
 ## Functions
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   functions/bot_check.md
-   functions/check_cache.md
-   functions/check_issue_template.md
-   functions/collate_editor_check.md
-   functions/dl_gh_repo.md
-   functions/editor_check.md
-   functions/file_pkgcheck_issue.md
-   functions/is_user_authorized.md
-   functions/pkgrep_install_deps.md
-   functions/post_to_issue.md
-   functions/push_to_gh_pages.md
-   functions/roreviewapi-package.md
-   functions/serve_api.md
-   functions/stats_badge.md
-   functions/stdout_stderr_cache.md
-   functions/symbol_crs.md
-   functions/symbol_tck.md
+functions/bot_check.md
+functions/check_cache.md
+functions/check_issue_template.md
+functions/collate_editor_check.md
+functions/dl_gh_repo.md
+functions/editor_check.md
+functions/file_pkgcheck_issue.md
+functions/is_user_authorized.md
+functions/pkgrep_install_deps.md
+functions/post_to_issue.md
+functions/push_to_gh_pages.md
+functions/roreviewapi-package.md
+functions/serve_api.md
+functions/stats_badge.md
+functions/stdout_stderr_cache.md
+functions/symbol_crs.md
+functions/symbol_tck.md
 ```
 
 ## Vignettes
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   vignettes/debugging.md
-   vignettes/endpoints.md
+vignettes/debugging.md
+vignettes/endpoints.md
 ```

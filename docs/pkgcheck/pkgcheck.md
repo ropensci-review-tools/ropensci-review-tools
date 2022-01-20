@@ -349,29 +349,27 @@ project, you agree to abide by its terms.
 
 ## Functions
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   functions/checks_to_markdown.md
-   functions/get_default_branch.md
-   functions/get_gh_token.md
-   functions/get_latest_commit.md
-   functions/list_pkgchecks.md
-   functions/logfile_names.md
-   functions/pkgcheck_bg.md
-   functions/pkgcheck-package.md
-   functions/pkgcheck.md
-   functions/pkgstats_data.md
-   functions/read_pkg_guide.md
-   functions/render_markdown.md
+functions/checks_to_markdown.md
+functions/get_default_branch.md
+functions/get_gh_token.md
+functions/get_latest_commit.md
+functions/list_pkgchecks.md
+functions/logfile_names.md
+functions/pkgcheck_bg.md
+functions/pkgcheck-package.md
+functions/pkgcheck.md
+functions/pkgstats_data.md
+functions/read_pkg_guide.md
+functions/render_markdown.md
 ```
 
 ## Vignettes
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   vignettes/extending-checks.md
+vignettes/extending-checks.md
 ```

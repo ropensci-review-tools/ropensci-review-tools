@@ -661,20 +661,19 @@ project, you agree to abide by its terms.
 
 ## Functions
 
-```eval_rst
-.. toctree::
-   :maxdepth: 1
+```{toctree}
+:maxdepth: 1
 
-   functions/ctags_install.md
-   functions/ctags_test.md
-   functions/desc_stats.md
-   functions/extract_tarball.md
-   functions/loc_stats.md
-   functions/pkgstats_from_archive.md
-   functions/pkgstats_summary.md
-   functions/pkgstats-package.md
-   functions/pkgstats.md
-   functions/plot_network.md
-   functions/rd_stats.md
-   functions/tags_data.md
+functions/ctags_install.md
+functions/ctags_test.md
+functions/desc_stats.md
+functions/extract_tarball.md
+functions/loc_stats.md
+functions/pkgstats_from_archive.md
+functions/pkgstats_summary.md
+functions/pkgstats-package.md
+functions/pkgstats.md
+functions/plot_network.md
+functions/rd_stats.md
+functions/tags_data.md
 ```
