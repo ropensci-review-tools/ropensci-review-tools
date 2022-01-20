@@ -101,16 +101,15 @@ one_readme <- function (p, path) {
             "",
             "## Functions",
             "",
-            "```eval_rst",
-            ".. toctree::",
-            "   :maxdepth: 1",
+            "```{toctree}",
+            ":maxdepth: 1",
             "")
 
     fns_path <- file.path (docs_path, p, "functions")
     for (f in list.files (fns_path)) {
 
         x <- c (x,
-                paste0 ("   functions/", f))
+                paste0 ("functions/", f))
     }
     x <- c (x, "```")
 
@@ -121,15 +120,14 @@ one_readme <- function (p, path) {
                 "",
                 "## Vignettes",
                 "",
-                "```eval_rst",
-                ".. toctree::",
-                "   :maxdepth: 1",
+                "```{toctree}",
+                ":maxdepth: 1",
                 "")
 
         v_files <- list.files (v_dir, pattern = "\\.md$")
         for (f in v_files)
             x <- c (x,
-                    paste0 ("   vignettes/", f))
+                    paste0 ("vignettes/", f))
         x <- c (x, "```")
     }
 

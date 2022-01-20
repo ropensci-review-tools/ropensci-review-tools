@@ -23,7 +23,7 @@ folder of this repository, and can be recreated anew with the following steps:
 
 1. Install the following python packages (`pip install` or equivalent):
 
-    - `sphinx`, `myst-parser`, `sphinx-rtd-theme`, `recommonmark`
+    - `sphinx`, `myst-parser`, `sphinx-rtd-theme`
 
 1. Clone the following repositories from this GitHub organization in a single directory:
 
