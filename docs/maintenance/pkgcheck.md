@@ -22,7 +22,7 @@ describes how the `roreviewapi` may be modified to deliver a reduced set of
 checks than the full set returned by `pkgcheck`.
 
 The plumber endpoint for editor checks is entirely controlled by the
-[`editor_check()`
+[`roreviewapi::editor_check()`
 function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R).
 The main call is via `tryCatch` to ensure any errors captured:
 
@@ -37,7 +37,8 @@ definition](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/pkgche
 The easiest way to remove checks from the
 [`roreviewpi`](https://github.com/ropensci-review-tools/roreviewapi) without
 modifying the underlying structure of `pkgcheck` itself is to simply remove the
-corresponding list items after the above line in the [`editor_check()`
+corresponding list items after the above line in the
+[`roreviewapi::editor_check()`
 function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R).
 For example, the following modification would suffice to remove the `scrap`
 check (whether a repository contains "scrap" files which should not be
