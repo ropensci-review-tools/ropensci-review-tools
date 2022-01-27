@@ -9,12 +9,12 @@ The procedure for adding new checks is documented in the ["*Extending or
 modifying checks*"
 vignette](https://ropensci-review-tools.readthedocs.io/en/latest/pkgcheck/vignettes/extending-checks.html)
 within the `pkgcheck` package. The
-[`roreviewpi`](https://github.com/ropensci-review-tools/roreviewapi) package
+[`roreviewapi`](https://github.com/ropensci-review-tools/roreviewapi) package
 which delivers the checks to rOpenSci's GitHub issues directly dumps all checks
 currently delivered by `pkgcheck`. See the following section for options for
 restricting which checks are delivered.
 
-## Controlling checks in [`roreviewpi`](https://github.com/ropensci-review-tools/roreviewapi)
+## Controlling checks in [`roreviewapi`](https://github.com/ropensci-review-tools/roreviewapi)
 
 The addition of new checks is fairly straightforward, and described in the
 above section, along with corresponding links. The remainder of this section
