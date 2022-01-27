@@ -1,8 +1,13 @@
 
 # roreviewapi
 
-The `roreviewapi` package encodes the [Plumber](https://rplumber.io) API that
-delivers the bot responses. The endpoint functions are all defined in
+This package contains the external service which the `ropensci-review-bot`
+calls to run package checks. The service itself is a
+[Plumber](https://rplumber.io) API hosted on an external Digital Ocean server
+which primarily calls [the `pkgcheck()` function of the `pkgcheck`
+package](/pkgcheck/pkgcheck). The `roreviewapi` package implements
+post-processing routines to format the checks and deliver them into GitHub
+issues. The endpoint functions are all defined in
 [`R/plumber.R`](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R),
 which is mirrored in `inst/plumber.R`.
 
