@@ -24,7 +24,7 @@ checks than the full set returned by `pkgcheck`.
 The plumber endpoint for editor checks is entirely controlled by the
 [`roreviewapi::editor_check()`
 function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R).
-The main call is via `tryCatch` to ensure any errors captured:
+The main call is via `tryCatch` to ensure any errors are captured:
 
 ``` r
 checks <- tryCatch (pkgcheck::pkgcheck (path),
@@ -36,13 +36,11 @@ The return object, `checks`, is a list of checks ultimately composed in the
 definition](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/pkgcheck-fn.R).
 The easiest way to remove checks from the
 [`roreviewpi`](https://github.com/ropensci-review-tools/roreviewapi) without
-modifying the underlying structure of `pkgcheck` itself is to simply remove the
-corresponding list items after the above line in the
-[`roreviewapi::editor_check()`
-function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R).
-For example, the following modification would suffice to remove the `scrap`
-check (whether a repository contains "scrap" files which should not be
-included) from the API endpoint:
+modifying the underlying structure of `pkgcheck` itself to run the checks as
+above, and then remove the corresponding list items. For example, the following
+modification would suffice to remove the `scrap` check (which checks whether a
+repository contains "scrap" files which should not be included) from the API
+endpoint:
 
 ``` r
 checks <- tryCatch (pkgcheck::pkgcheck (path),
@@ -50,6 +48,13 @@ checks <- tryCatch (pkgcheck::pkgcheck (path),
 checks$scrap <- NULL
 ```
 
-The output will then be removed from the report delivered by
+When those checks are printed (via `print`) or summarised (via `summarise`),
+the scrap checks will not be reported on. This procedure can be used to remove
+checks from the `roreviewapi` results, by finding the line in [the
+`roreviewapi::editor_check()`
+function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R)
+where the main `pkgcheck::pkgcheck()` function is called, and then removing any
+checks immediately afterward by setting them to `NULL`. Those checks will then
+be removed from the report delivered by
 [`roreviewpi`](https://github.com/ropensci-review-tools/roreviewapi), and
 therefore by the `ropensci-review-bot`.
