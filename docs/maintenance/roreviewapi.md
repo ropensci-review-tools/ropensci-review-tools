@@ -30,7 +30,7 @@ the machine information "Faraday". The equivalent logs for the bot can be seen
 by logging in to [heroku](https://heroku.com), clicking on "radiant-garden",
 then under "More" on the upper right, clicking "Logs".
 
-### The `\stdlogs` endpoint
+### The `/stdlogs` endpoint
 
 The `check package` command issued either manually or automatically on all new
 submissions returns immediately with a message, while starting a background
