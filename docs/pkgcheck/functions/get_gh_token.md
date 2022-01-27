@@ -32,6 +32,7 @@ The value of the GitHub access token extracted from environment
 
 Other github:
  [`get_default_branch`](#getdefaultbranch) ,
- [`get_latest_commit`](#getlatestcommit)
+ [`get_latest_commit`](#getlatestcommit) ,
+ [`use_github_action_pkgcheck`](#usegithubactionpkgcheck)
 
 

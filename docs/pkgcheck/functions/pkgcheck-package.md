@@ -27,6 +27,8 @@ Maintainer : Mark Padgham mark.padgham@email.com ( [ORCID](https://orcid.org/000
  Authors:
    
 
-*  Maëlle Salmon
+*  Maëlle Salmon  
+
+*  Jacob Wujciak-Jens jacob@wujciak.de ( [ORCID](https://orcid.org/0000-0002-7281-3989) )
 
 

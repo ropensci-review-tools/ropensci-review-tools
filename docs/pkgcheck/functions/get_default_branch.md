@@ -32,7 +32,8 @@ Name of default branch on GitHub
 
 Other github:
  [`get_gh_token`](#getghtoken) ,
- [`get_latest_commit`](#getlatestcommit)
+ [`get_latest_commit`](#getlatestcommit) ,
+ [`use_github_action_pkgcheck`](#usegithubactionpkgcheck)
 
 
 ## Note
