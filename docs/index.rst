@@ -29,6 +29,7 @@ appropriate link.
    autotest/autotest.md
    pkgstats/pkgstats.md
    pkgcheck/pkgcheck.md
+   pkgcheck-action/pkgcheck-action.md
    roreviewapi/roreviewapi.md
    srr/srr.md
 
