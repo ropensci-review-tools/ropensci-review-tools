@@ -1,5 +1,6 @@
 pkgs <- c ("autotest",
            "pkgcheck",
+           "pkgcheck-action",
            "pkgstats",
            "roreviewapi",
            "srr")
