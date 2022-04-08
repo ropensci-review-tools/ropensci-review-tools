@@ -183,3 +183,9 @@ for (p in pkgs) {
     one_readme (p, path)
     move_hex (p, path)
 }
+
+do_not_include <- normalizePath (c (
+    "docs/srr/vignettes/review-tools.md"
+))
+do_not_include <- do_not_include [which (file.exists (do_not_include))]
+file.remove (do_not_include)
