@@ -667,6 +667,7 @@ project, you agree to abide by its terms.
 functions/ctags_install.md
 functions/ctags_test.md
 functions/desc_stats.md
+functions/dl_pkgstats_data.md
 functions/extract_tarball.md
 functions/loc_stats.md
 functions/pkgstats_from_archive.md

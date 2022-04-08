@@ -32,7 +32,6 @@ URL of the comment within the nominated issue
 ## Seealso
 
 Other github:
- [`dl_gh_repo`](#dlghrepo) ,
- [`file_pkgcheck_issue`](#filepkgcheckissue)
+ [`dl_gh_repo`](#dlghrepo)
 
 

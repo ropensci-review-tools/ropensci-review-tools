@@ -31,7 +31,7 @@ Details of latest commit including OID hash
 ## Seealso
 
 Other github:
- [`get_default_branch`](#getdefaultbranch) ,
+ [`get_default_github_branch`](#getdefaultgithubbranch) ,
  [`get_gh_token`](#getghtoken) ,
  [`use_github_action_pkgcheck`](#usegithubactionpkgcheck)
 

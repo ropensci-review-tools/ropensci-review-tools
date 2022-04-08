@@ -46,6 +46,12 @@ A `data.frame` object with one row for each package containing
  summary statistics generated from the [pkgstats_summary](#pkgstatssummary) function.
 
 
+## Seealso
+
+Other archive:
+ [`dl_pkgstats_data`](#dlpkgstatsdata)
+
+
 ## Note
 
 Each analysis in an archive trawl spawns several unsupervised 
