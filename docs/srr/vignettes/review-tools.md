@@ -6,16 +6,16 @@ are hosted at
 The primary tools (in alphabetical order) are:
 
 1.  The [`autotest`
-    pacakge](https://github.com/ropensci-review-tools/autotest) for
+    package](https://github.com/ropensci-review-tools/autotest) for
     “*Automatic testing of R packages*”
 2.  The [`pkgcheck`
-    pacakge](https://github.com/ropensci-review-tools/pkgcheck) to
+    package](https://github.com/ropensci-review-tools/pkgcheck) to
     “*Check whether a package is ready for submission to rOpenSci’s
     peer-review system*”
 3.  The [`pkgstats`
-    pacakge](https://github.com/ropensci-review-tools/pkgstats) which
+    package](https://github.com/ropensci-review-tools/pkgstats) which
     extracts “*Historical statistics of every R package ever*”
-4.  The [`srr` pacakge](https://github.com/ropensci-review-tools/srr)
+4.  The [`srr` package](https://github.com/ropensci-review-tools/srr)
     for “*Software Review Roclets*”
 
 These four tools are intended to be used by all those engaged or even
