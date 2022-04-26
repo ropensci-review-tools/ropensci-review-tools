@@ -1,11 +1,11 @@
 # `pkgstats`
 
-Collates statistics from one local tarball
+Analyse statistics of one R package
 
 
 ## Description
 
-Collates statistics from one local tarball
+Analyse statistics of one R package
 
 
 ## Usage
@@ -19,7 +19,7 @@ pkgstats(path = ".")
 
 Argument      |Description
 ------------- |----------------
-`path`     |     Either a path to a local source repository, or a local '.tar.gz' file containing code for an R package.
+`path`     |     Either a path to a local source repository, or a local '.tar.gz' file, containing code for an R package.
 
 
 ## Value
