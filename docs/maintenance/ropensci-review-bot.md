@@ -61,3 +61,21 @@ within the `roreviewapi` repository. The entire service can be rebuilt and
 restarted by calling this script, which is also added to the `crontab` of the
 Digital Ocean instance, currently to update once a week.
 
+### Regular Maintenance
+
+The Digital Ocean droplet should be manually updated at regular intervals (at
+least every few months). This requires the following two commands:
+
+```
+sudo apt-get update
+sudo reboot
+```
+
+Issuing the latter with automatically close the connection to the droplet.
+Reconnection will only be possible after the system has successfully restarted,
+generally after a few minutes. Once the system has restarted, the
+docker-compose server will need to be restarted with the following command:
+
+```
+sudo bash /home/shared/roreviewapi/restart.sh
+```
