@@ -82,11 +82,17 @@ badge grades.
 ## 5. log
 
 The `log` endpoint accepts a single parameter, `n`, specifying the
-number of latest log entries to retrieve. Each entry contains the
-following information:
+number of latest log entries to retrieve. An example of the log entry
+for [this
+submission](https://github.com/ropensci/software-review/issues/470)
+follows:
+
+    #> [1] "INFO [2021-10-07 16:48:14] 3.236.83.25 \"Faraday v1.7.1\" <ip>:8000 GET /editorcheck ?bot_name=ropensci-review-bot&issue_author=ewallace&issue_id=470&repo=ropensci%2Fsoftware-review&repourl=https%3A%2F%2Fgithub.com%2Fewallace%2Ftidyqpcr&sender=ewallace 200 1.964"
+
+Each entry contains the following information:
 
 1.  Date and time at which call was made;
-2.  IP address from which call was sent;
+2.  IP address and machine from which call was sent;
 3.  Method used to send call;
 4.  IP address to which call was delivered (always the address hosting
     the `roreviewapi` instance);
