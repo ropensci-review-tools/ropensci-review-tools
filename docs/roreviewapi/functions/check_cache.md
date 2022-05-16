@@ -35,6 +35,7 @@ FALSE If a package has previously been cached, and the github repo
 
 Other utils:
  [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
+ [`rorevapi_updated_pkgs`](#rorevapiupdatedpkgs) ,
  [`stdout_stderr_cache`](#stdoutstderrcache) ,
  [`symbol_crs`](#symbolcrs) ,
  [`symbol_tck`](#symboltck)

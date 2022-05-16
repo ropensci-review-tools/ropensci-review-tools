@@ -20,6 +20,7 @@ symbol_tck()
 Other utils:
  [`check_cache`](#checkcache) ,
  [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
+ [`rorevapi_updated_pkgs`](#rorevapiupdatedpkgs) ,
  [`stdout_stderr_cache`](#stdoutstderrcache) ,
  [`symbol_crs`](#symbolcrs)
 
