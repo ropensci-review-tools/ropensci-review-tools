@@ -632,6 +632,8 @@ functions/desc_stats.md
 functions/dl_pkgstats_data.md
 functions/extract_tarball.md
 functions/loc_stats.md
+functions/pkgstats_fn_names.md
+functions/pkgstats_fns_from_archive.md
 functions/pkgstats_from_archive.md
 functions/pkgstats_summary.md
 functions/pkgstats-package.md

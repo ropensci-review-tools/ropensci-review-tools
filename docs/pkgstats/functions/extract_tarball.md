@@ -29,6 +29,12 @@ Argument      |Description
 Path to extracted version of package (in `tempdir()` ).
 
 
+## Seealso
+
+Other misc:
+ [`pkgstats_fn_names`](#pkgstatsfnnames)
+
+
 ## Examples
 
 ```r

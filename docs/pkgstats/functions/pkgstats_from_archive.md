@@ -49,7 +49,8 @@ A `data.frame` object with one row for each package containing
 ## Seealso
 
 Other archive:
- [`dl_pkgstats_data`](#dlpkgstatsdata)
+ [`dl_pkgstats_data`](#dlpkgstatsdata) ,
+ [`pkgstats_fns_from_archive`](#pkgstatsfnsfromarchive)
 
 
 ## Note
