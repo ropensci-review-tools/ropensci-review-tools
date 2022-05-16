@@ -137,7 +137,7 @@ in
 #' @noRd
 pkgchk_has_citation <- function (checks) {
 
-    "CITATION" %in% list.files (file.path (checks$pkg$path, "inst"))
+    "CITATION" %in% list.files (fs::path (checks$pkg$path, "inst"))
 }
 ```
 
@@ -206,10 +206,12 @@ output_pkgchk_has_citation <- function (checks) {
         print = ""
     )
 
-    out$summary <- paste0 (
-        ifelse (out$check_pass, "has", "does not have"),
-        " a 'CITATION' file."
-    )
+    # disabled:
+    # https://github.com/ropensci-review-tools/pkgcheck/issues/115
+    #out$summary <- paste0 (
+    #    ifelse (out$check_pass, "has", "does not have"),
+    #    " a 'CITATION' file."
+    #)
 
     return (out)
 }
@@ -233,10 +235,12 @@ following three items:
 `summary` and `print` methods may be suppressed by assigning values of
 `""`. The above example of `pkgcheck_has_citation` has `print = ""`, and
 so no information from this check will appear as output of the `print`
-method. The `summary` field has a value that is specified for both
-`TRUE` and `FALSE` values of `check_pass`. The value is determined by
-the result of the main `pkgchk_has_citation()` call, and is converted
-into a green tick if `TRUE`, or a red cross if `FALSE`.
+method. The `summary` field is commented-out in the current version, but
+left to illustrate here that it has a value that is specified for both
+`TRUE` and `FALSE` values of `check_pass`, via an `ifelse` statement.
+The value is determined by the result of the main
+`pkgchk_has_citation()` call, and is converted into a green tick if
+`TRUE`, or a red cross if `FALSE`.
 
 Checks for which `print` information is desired require a non-empty
 `print` item, as in the [`output_pkgchk_has_scrap()`
@@ -295,4 +299,173 @@ locally-defined checks, as explored in the following section.
 
 ## 3. Creating new checks
 
-(Coming soon …)
+### 3.1 New Local Checks (*for package users*)
+
+The [main `pkgcheck()`
+function](https://docs.ropensci.org/pkgcheck/reference/pkgcheck.html)
+has an additional parameter, `extra_env` which specifies,
+
+> Additional environments from which to collate checks. Other package
+> names may be appended using c, as in c(.GlobalEnv, “mypkg”).
+
+This allows specific checks to be defined locally, and run by passing
+the name of the environment in which those checks are defined in this
+parameter. This section illustrates the process using the bundled
+“tarball” (that is, `.tar.gz` file) of one version of [the `pkgstats`
+package](https://github.com/ropensc-review-tools/pkgstats) included with
+that package.
+
+``` r
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- pkgstats::extract_tarball (f)
+checks <- pkgcheck (path)
+summary (checks)
+```
+
+    #> 
+    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    #> 
+    #> ✔ Package name is available
+    #> ✖ does not have a 'codemeta.json' file.
+    #> ✖ does not have a 'contributing' file.
+    #> ✔ uses 'roxygen2'.
+    #> ✔ 'DESCRIPTION' has a URL field.
+    #> ✔ 'DESCRIPTION' has a BugReports field.
+    #> ✖ Package has no HTML vignettes
+    #> ✖ These functions do not have examples: [pkgstats_from_archive].
+    #> ✔ Package has continuous integration checks.
+    #> ✖ Package coverage failed
+    #> ✖ R CMD check found 1 error.
+    #> ✔ R CMD check found no warnings.
+    #> 
+    #> ℹ Current status:
+    #> ✖ This package is not ready to be submitted.
+
+Let’s now presume I have a reputation in the R community for all of my
+packages starting with “aa”, to ensure they are always listed first.
+This section demonstrates how to implement a check that only passes if
+the first two letters of the package name are “aa”. The first step
+described above is to define the check itself via a function prefixed
+with `pkgchk_`. The easiest approach would be for the `pkgcheck_`
+function to directly check the name, and return a logical flag
+indicating whether or not the same starts with “aa”. The resultant
+`summary` and `print` methods can, however, only use the information
+provided by the initial `pkgchk_` function. That means if we want to
+print the actual name in the result of either of those functions, to
+show that it indeed does not form the desired patter, we need to return
+that information. The check function is then simply:
+
+``` r
+pkgchk_starts_with_aa <- function (checks) {
+    checks$pkg$name
+}
+```
+
+We then need to define the output functions:
+
+``` r
+output_pkgchk_starts_with_aa <- function (checks) {
+
+    out <- list (
+                 check_pass = grepl ("^aa",
+                                     checks$checks$starts_with_aa,
+                                     ignore.case = TRUE),
+                 summary = "",
+                 print = ""
+    )
+
+    out$summary <- paste0 ("Package name [",
+                           checks$checks$starts_with_aa,
+                           "] does ",
+                           ifelse (out$check_pass,
+                                   "",
+                                   "NOT"),
+                           " start with 'aa'")
+
+    return (out)
+}
+```
+
+If we simply define those function in the global workspace of our
+current R session, calling `pkgcheck()` again will automatically detect
+those checks and include them in our output:
+
+    #> 
+    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    #> 
+    #> ✔ Package name is available
+    #> ✖ does not have a 'codemeta.json' file.
+    #> ✖ does not have a 'contributing' file.
+    #> ✔ uses 'roxygen2'.
+    #> ✔ 'DESCRIPTION' has a URL field.
+    #> ✔ 'DESCRIPTION' has a BugReports field.
+    #> ✖ Package has no HTML vignettes
+    #> ✖ These functions do not have examples: [pkgstats_from_archive].
+    #> ✔ Package has continuous integration checks.
+    #> ✖ Package coverage failed
+    #> ✖ Package name [pkgstats] does NOT start with 'aa'
+    #> ✖ R CMD check found 1 error.
+    #> ✔ R CMD check found no warnings.
+    #> 
+    #> ℹ Current status:
+    #> ✖ This package is not ready to be submitted.
+
+Customised personal checks can be incorporated by defining them in a
+local package, loading that into the workspace, and passing the name of
+the package to the `extra_env` parameter.
+
+### 3.2 New `pkgcheck` Checks (*for `pkgcheck` developers*)
+
+New checks can be added to this package by creating new files in the
+`/R` directory prefixed with `pkgchk_`, and including the two functions
+described above (a check and an output function). The check name will
+then need to be included in [the `order_checks()` function in the
+`R/summarise-checks.R`
+file](https://github.com/ropensci-review-tools/pkgcheck/blob/6c99a804cea99af4fca8e27e41784ecd6b7f1501/R/summarise-checks.R#L92-L114),
+which determines the order of checks in the `summary` output. Checks
+which are not defined in this ordering, including any defined via
+`extra_env` parameters, appear *after* all of the standard checks, and
+prior to the `R CMD check` results which always appear last. This order
+may only be modified by editing the list in that function. The order of
+check results in the `print` method is also hard-coded, defined in the
+[main `print.pkgcheck`
+method](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/pkgcheck-methods.R).
+As explicitly stated in that function, any new checks should also be
+included in the `print` method just after [the first reference to
+`"misc_checks"`](https://github.com/ropensci-review-tools/pkgcheck/blob/2e025c276c84b45bc46f72ec5d8b029de83ac211/R/pkgcheck-methods.R#L65-L71),
+via an additional line:
+
+``` r
+print_check_screen (x, "<name-of-new-check>", pkg_env)
+```
+
+The `print_check_screen()` function will then automatically activate the
+`print` method of any new checks. This line should be added even if a
+new check has no `print` method (as in the `starts_with_aa` example
+above), to provide an explicit record of all internally-defined
+miscellaneous checks.
+
+Finally, any new checks also need to be included in tests. The test
+suites run on generic, mostly empty packages constructed with [the
+`srr::srr_stats_pkg_skeleton()`
+function](https://docs.ropensci.org/srr/reference/srr_stats_pkg_skeleton.html),
+as in the [main `test-pkgcheck.R` test
+functions](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-pkgcheck.R).
+Additional tests are also performed on the `pkgstats` tarball
+illustrated above. The default results of any new checks will be
+automatically tested by the existing test suite, but it is important to
+test all potential results. The [`test-extra-checks.R`
+file](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-extra-checks.R)
+is the main location for testing additional tests, with lines in that
+file demonstrating how the main results can be readily modified to
+reflect alternative outputs of check functions (such as
+`pkgchk_has_scrap` and `pkgchk_obsolete_pkg_deps`). The output functions
+defined as part of checks, including any new checks, do not need to be
+explicitly tested, as the entire output is tested via [`testthat`
+snapshots](https://testthat.r-lib.org/articles/snapshotting.html).
+Snapshot results need to be updated to reflect any additional tests.
+Finally, the [`test-list-checks.R`
+file](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-list-checks.R)
+tests the total number of internally-defined checks as
+`expect_length (ncks, ..)`. The number tested there also needs to be
+incremented by one for each new check.
