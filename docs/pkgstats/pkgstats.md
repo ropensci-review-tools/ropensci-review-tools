@@ -13,7 +13,8 @@ Extract summary statistics of R package structure and functionality. Not
 all statistics of course, but a good go at balancing insightful
 statistics while ensuring computational feasibility. `pkgstats` is a
 *static* code analysis tool, so is generally very fast (a few seconds at
-most for very large packages).
+most for very large packages). Installation is described in [a separate
+vignette](https://docs.ropensci.org/pkgstats/articles/installation.html).
 
 ## What statistics?
 
@@ -45,82 +46,6 @@ which returns a `data.frame` with a single row of summary statistics.
 This function is demonstrated below, including full details of all
 statistics extracted.
 
-## Installation
-
-The easiest way to install this package is [via the associated
-`r-universe`](https://ropensci-review-tools.r-universe.dev/ui#builds).
-As shown there, simply enable the universe with
-
-``` r
-options (repos = c (
-    ropenscireviewtools = "https://ropensci-review-tools.r-universe.dev",
-    CRAN = "https://cloud.r-project.org"
-))
-```
-
-And then install the usual way with,
-
-``` r
-install.packages ("pkgstats")
-```
-
-Alternatively, the package can be installed by running one of the
-following lines:
-
-``` r
-remotes::install_github ("ropensci-review-tools/pkgstats")
-pak::pkg_install ("ropensci-review-tools/pkgstats")
-```
-
-The package can then loaded for use with:
-
-``` r
-library (pkgstats)
-```
-
-### Installation on Linux systems
-
-This package requires the [system libraries
-`ctags-universal`](https://ctags.io) and [GNU
-`global`](https://www.gnu.org/software/global/), both of which are
-automatically installed along with the package on both Windows and MacOS
-systems. Most Linux distributions do not include a sufficiently
-up-to-date version of [`ctags-universal`](https://ctags.io), and so it
-must be compiled from source. This can be done by running a single
-function, `ctags_install()`, which will install both
-[`ctags-universal`](https://ctags.io) and [GNU
-`global`](https://www.gnu.org/software/global/).
-
-The `pkgstats` package includes a function to ensure your local
-installations of `universal-ctags` and `global` work correctly. Please
-ensure you see the following prior to proceeding:
-
-``` r
-ctags_test ()
-```
-
-    ## [1] TRUE
-
-Note that GNU `global` can be linked at installation to the Universal
-Ctags plug-in parser to expand the [default 5 languages to
-30](https://www.gnu.org/software/global/). This makes no difference to
-`pkgstats` results, as `gtags` output is only used to trace function
-call networks, which is only possible for compiled languages able to
-dynamically share pointers to the same objects. This is possible with
-the default parser regardless. The wealth of extra information obtained
-from linking `global` to the Universal Ctags parser is ultimately
-discarded anyway, yet parsing may take considerably longer. If this is
-the case, “default” behaviour may be recovered by first running the
-following command:
-
-``` r
-Sys.unsetenv (c ("GTAGSCONF", "GTAGSLABEL"))
-```
-
-See [information on how to install the
-plugin](https://cvs.savannah.gnu.org/viewvc/global/global/plugin-factory/PLUGIN_HOWTO.pygments?revision=1.6&view=markup)
-for more details.
-
 ## Demonstration
 
 The following code demonstrates the output of the main function,
@@ -129,6 +54,7 @@ package. The `system.time` call demonstrates that the static code
 analyses of `pkgstats` are generally very fast.
 
 ``` r
+library (pkgstats)
 tarball <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
 system.time (
     p <- pkgstats (tarball)
@@ -136,7 +62,7 @@ system.time (
 ```
 
     ##    user  system elapsed 
-    ##   1.130   0.108   1.220
+    ##   1.562   0.117   1.664
 
 ``` r
 names (p)
@@ -187,25 +113,9 @@ p [!names (p) %in% c ("objects", "network", "external_calls")]
     ## $translations
     ## [1] NA
 
-These results demonstrate that many fields use `NA` to denote values of
-zero. The first item, `loc`, contains the following Lines-Of-Code and
-related statistics, separated into distinct combinations of computer
-language and directory:
-
-1.  `nfiles` = Numbers of files in each directory and language.
-2.  `nlines` = Total numbers of lines in all files.
-3.  `ncode` = Total numbers of lines of code.
-4.  `ndoc` = Total numbers of documentation or comment lines.
-5.  `nempty` = Total numbers of empty of blank lines.
-6.  `nspaces` = Total numbers of white spaces in all code lines,
-    excluding leading indentation spaces.
-7.  `nchars` = Total numbers of non-white-space characters in all code
-    lines.
-8.  `nexpr` = Median numbers of nested expressions in all lines which
-    have any expressions (see below).
-9.  `ntabs` = Number of lines of code with initial tab indentation.
-10. `indentation` = Number of spaces by which code is indented (with
-    `-1` denoting tab-indentation).
+The various components of these results are described in further detail
+in the [main package
+vignette](https://docs.ropensci.org/pkgstats/articles/pkgstats.html).
 
 ### Overview of statistics and the `pkgstats_summary()` function
 
@@ -424,196 +334,15 @@ defined elsewhere in the package. These can be used to derive a measure
 of “internal package instability” as the ratio of efferent to total
 coupling (`ce / (ce + ca)`).
 
+There are many other “raw” statistics returned by the main `pkgstats()`
+function which are not represented in `pkgstats_summary()`. The [main
+package
+vignette](https://docs.ropensci.org/pkgstats/articles/pkgstats.html)
+provides further detail on the full results.
+
 The following sub-sections provide further detail on the `objects`,
 `network`, and `external_call` items, which could be used to extract
 additional statistics beyond those described here.
-
-### Objects
-
-The `objects` item contains all code objects identified by the
-code-tagging library [`ctags`](https://ctags.io). For R, those are
-primarily functions, but for other languages may be a variety of
-entities such as class or structure definitions, or sub-members thereof.
-Object tables look like this:
-
-``` r
-head (p$objects)
-```
-
-    ##           file_name               fn_name     kind language loc npars has_dots
-    ## 1 R/archive-trawl.R pkgstats_from_archive function        R  95     7    FALSE
-    ## 2 R/archive-trawl.R         rm_prev_files function        R  24     2    FALSE
-    ## 3         R/cpp11.R               cpp_loc function        R   3     4    FALSE
-    ## 4 R/ctags-install.R           clone_ctags function        R  17     1    FALSE
-    ## 5 R/ctags-install.R               has_git function        R   3     0    FALSE
-    ## 6 R/ctags-install.R            ctags_make function        R  27     3    FALSE
-    ##   exported param_nchars_md param_nchars_mn num_doclines
-    ## 1     TRUE             163        174.8571           49
-    ## 2    FALSE              NA              NA           NA
-    ## 3    FALSE              NA              NA           NA
-    ## 4    FALSE              NA              NA           NA
-    ## 5    FALSE              NA              NA           NA
-    ## 6    FALSE              NA              NA           NA
-
-The `magrittr` package has a total of 870 objects, which the following
-lines provide some insight into.
-
-``` r
-table (p$objects$language)
-```
-
-    ## 
-    ## C++   R 
-    ##  13 857
-
-``` r
-table (p$objects$kind)
-```
-
-    ## 
-    ##   dataframe    function functionVar   globalVar        list    nameattr 
-    ##          21         186         418          42           9         167 
-    ##    variable      vector 
-    ##           1          26
-
-``` r
-table (p$objects$kind [p$objects$language == "R"])
-```
-
-    ## 
-    ##   dataframe    function functionVar   globalVar        list    nameattr 
-    ##          21         174         418          42           9         167 
-    ##      vector 
-    ##          26
-
-``` r
-table (p$objects$kind [p$objects$language == "C++"])
-```
-
-    ## 
-    ## function variable 
-    ##       12        1
-
-### Network
-
-The `network` item details all relationships between objects, which
-generally reflects one object calling or otherwise depending on another
-object. Each row thus represents one edge of a “function call” network,
-with each entry in the `from` and `to` columns representing the network
-vertices or nodes.
-
-``` r
-head (p$network)
-```
-
-    ##                   file line1                  from                        to
-    ## 1   R/external-calls.R    11 external_call_network      extract_call_content
-    ## 2   R/external-calls.R    26 external_call_network add_base_recommended_pkgs
-    ## 3   R/external-calls.R    38 external_call_network   add_other_pkgs_to_calls
-    ## 4 R/pkgstats-summary.R    45      pkgstats_summary                null_stats
-    ## 5 R/pkgstats-summary.R    55      pkgstats_summary               loc_summary
-    ## 6 R/pkgstats-summary.R    64      pkgstats_summary              desc_summary
-    ##   language cluster_dir centrality_dir cluster_undir centrality_undir
-    ## 1        R           1              9             1              198
-    ## 2        R           1              9             1              198
-    ## 3        R           1              9             1              198
-    ## 4        R           1             10             1              619
-    ## 5        R           1             10             1              619
-    ## 6        R           1             10             1              619
-
-``` r
-nrow (p$network)
-```
-
-    ## [1] 104
-
-The network table includes additional statistics on the centrality of
-each edge, measured as betweenness centrality assuming edges to be both
-directed (`centrality_dir`) and undirected (`centrality_undir`). More
-central edges reflect connections between objects that are more central
-to package functionality, and vice versa. The distinct components of the
-network are also represented by discrete cluster numbers, calculated
-both for directed and undirected versions of the network. Each distinct
-cluster number represents a distinct group of objects, internally
-related to other members of the same cluster, yet independent of all
-objects with different cluster numbers.
-
-The network can be viewed as an interactive
-[`vis.js`](https://visjs.org/) network through passing the result of
-`pkgstats` – the variable `p` in the code above – to the
-[`plot_network()`
-function](https://docs.ropensci.org/pkgstats/reference/plot_network.html).
-
-### External Calls
-
-The `external_calls` item is structured similar to the `network` object,
-but identifies all calls to functions from external packages. However,
-unlike the `network` and `object` data, which provide information on
-objects and relationships in all computer languages used within a
-package, the `external_calls` object maps calls within R code only, in
-order to provide insight into the use within a package of of functions
-from other packages, including R’s base and recommended packages. The
-object looks like this:
-
-``` r
-head (p$external_calls)
-```
-
-    ##   tags_line                      call                       tag
-    ## 1         1                 left_join                      name
-    ## 2         1                        by                      name
-    ## 3         1                         c                      name
-    ## 4         3 add_base_recommended_pkgs add_base_recommended_pkgs
-    ## 5         4            add_if_missing            add_if_missing
-    ## 6         5          add_igraph_stats          add_igraph_stats
-    ##                   file     kind start end  package
-    ## 1             R/plot.R nameattr    92  92    dplyr
-    ## 2             R/plot.R nameattr    92  92     base
-    ## 3             R/plot.R nameattr    92  92     base
-    ## 4   R/external-calls.R function   204 265 pkgstats
-    ## 5 R/pkgstats-summary.R function   172 182 pkgstats
-    ## 6         R/tag-data.R function   491 509 pkgstats
-
-These data are converted to a summary form by the [`pkgstats_summary()`
-function](https://docs.ropensci.org/pkgstats/reference/pkgstats_summary.html),
-which tabulates numbers of external calls and unique functions from each
-package. These data are presented as a single character string which can
-be easily converted to the corresponding numeric values using code like
-the following:
-
-``` r
-x <- strsplit (s$external_calls, ",") [[1]]
-x <- do.call (rbind, strsplit (x, ":"))
-x <- data.frame (
-    pkg = x [, 1],
-    n_total = as.integer (x [, 2]),
-    n_unique = as.integer (x [, 3])
-)
-x$n_total_rel <- round (x$n_total / sum (x$n_total), 3)
-x$n_unique_rel <- round (x$n_unique / sum (x$n_unique), 3)
-print (x)
-```
-
-    ##           pkg n_total n_unique n_total_rel n_unique_rel
-    ## 1        base     447       78       0.703        0.453
-    ## 2        brio       7        1       0.011        0.006
-    ## 3       dplyr       7        4       0.011        0.023
-    ## 4          fs       4        2       0.006        0.012
-    ## 5    graphics      10        2       0.016        0.012
-    ## 6         hms       1        1       0.002        0.006
-    ## 7      igraph       3        3       0.005        0.017
-    ## 8     pbapply       1        1       0.002        0.006
-    ## 9    pkgstats      99       60       0.156        0.349
-    ## 10      readr       8        5       0.013        0.029
-    ## 11      stats      16        2       0.025        0.012
-    ## 12        sys      13        1       0.020        0.006
-    ## 13      tools       2        2       0.003        0.012
-    ## 14      utils      10        7       0.016        0.041
-    ## 15 visNetwork       3        2       0.005        0.012
-    ## 16      withr       5        1       0.008        0.006
-
-Those data reveal, for example, that the `magrittr` package makes 447
-individual calls to 78 unique functions from the “base” package.
 
 ## Code of Conduct
 
@@ -648,5 +377,6 @@ functions/tags_data.md
 ```{toctree}
 :maxdepth: 1
 
+vignettes/installation.md
 vignettes/pkgstats.md
 ```

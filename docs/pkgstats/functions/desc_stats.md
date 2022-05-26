@@ -19,7 +19,7 @@ desc_stats(path)
 
 Argument      |Description
 ------------- |----------------
-`path`     |     Directory to package being analysed
+`path`     |     Directory to source code of package being analysed
 
 
 ## Seealso
@@ -35,6 +35,7 @@ Other stats:
 
 ```r
 f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+# have to extract tarball to call function on source code:
 path <- extract_tarball (f)
 desc_stats (path)
 ```

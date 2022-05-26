@@ -19,7 +19,7 @@ rd_stats(path)
 
 Argument      |Description
 ------------- |----------------
-`path`     |     Directory to package being analysed
+`path`     |     Directory to source code of package being analysed
 
 
 ## Seealso
