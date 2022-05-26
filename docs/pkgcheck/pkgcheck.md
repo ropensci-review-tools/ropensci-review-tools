@@ -480,7 +480,6 @@ Contributions of any kind are welcome!
 :maxdepth: 1
 
 functions/checks_to_markdown.md
-functions/get_default_branch.md
 functions/get_default_github_branch.md
 functions/get_gh_token.md
 functions/get_latest_commit.md
