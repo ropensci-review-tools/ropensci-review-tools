@@ -22,6 +22,13 @@ Argument      |Description
 `path`     |     Directory to source code of package being analysed
 
 
+## Value
+
+A `data.frame` of function names and numbers of parameters and lines
+ of documentation for each, along with mean and median numbers of characters
+ used to document each parameter.
+
+
 ## Seealso
 
 Other stats:

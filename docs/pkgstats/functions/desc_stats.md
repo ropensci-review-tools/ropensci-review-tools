@@ -22,6 +22,13 @@ Argument      |Description
 `path`     |     Directory to source code of package being analysed
 
 
+## Value
+
+A `data.frame` with one row and 16 columns extracting various
+ information from the 'DESCRIPTION' file, include websites, tallies of
+ different kinds of authors and contributors, and package dependencies.
+
+
 ## Seealso
 
 Other stats:
