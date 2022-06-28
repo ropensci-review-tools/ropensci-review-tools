@@ -71,11 +71,16 @@ sudo apt-get update
 sudo reboot
 ```
 
-Issuing the latter with automatically close the connection to the droplet.
+Issuing the latter will automatically close the connection to the droplet.
 Reconnection will only be possible after the system has successfully restarted,
 generally after a few minutes. Once the system has restarted, the
 docker-compose server will need to be restarted with the following command:
 
 ```
-sudo bash /home/shared/roreviewapi/restart.sh
+bash /home/shared/roreviewapi/restart.sh
 ```
+
+Note that most operations within the `/home/shared` folder require `sudo`,
+including editing files and all `git` commands. The docker service itself *does
+not* require `sudo`, so the above command just calls `bash`, not `sudo bash`.
+Similarly, containers can be run with `docker`, and do not need `sudo docker`.
