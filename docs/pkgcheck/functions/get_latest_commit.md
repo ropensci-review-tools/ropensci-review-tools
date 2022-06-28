@@ -11,7 +11,7 @@ get_latest_commit
 ## Usage
 
 ```r
-get_latest_commit(org, repo)
+get_latest_commit(org, repo, branch = NULL)
 ```
 
 
@@ -21,6 +21,7 @@ Argument      |Description
 ------------- |----------------
 `org`     |     Github organization
 `repo`     |     Github repository
+`branch`     |     Branch from which to get latest commit
 
 
 ## Value
