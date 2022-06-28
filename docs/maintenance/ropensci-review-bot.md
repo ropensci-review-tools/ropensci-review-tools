@@ -84,3 +84,9 @@ Note that most operations within the `/home/shared` folder require `sudo`,
 including editing files and all `git` commands. The docker service itself *does
 not* require `sudo`, so the above command just calls `bash`, not `sudo bash`.
 Similarly, containers can be run with `docker`, and do not need `sudo docker`.
+
+## Debugging
+
+Error messages in response to package checks can be diagnosed by following the
+procedures described in [the "roreviewapi" maintenance
+page](/maintenance/roreviewapi).
