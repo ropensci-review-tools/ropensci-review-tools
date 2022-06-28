@@ -11,7 +11,7 @@ Download a GitHub repo to local cache
 ## Usage
 
 ```r
-dl_gh_repo(u)
+dl_gh_repo(u, branch = NULL)
 ```
 
 
@@ -20,6 +20,7 @@ dl_gh_repo(u)
 Argument      |Description
 ------------- |----------------
 `u`     |     URL of GitHub repository
+`branch`     |     Checkout specified (non-default) branch of repo.
 
 
 ## Value
