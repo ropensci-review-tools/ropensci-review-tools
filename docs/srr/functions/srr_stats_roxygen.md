@@ -49,9 +49,11 @@ path <- srr_stats_pkg_skeleton ()
 f <- file.path (path, "R", "srr-stats-standards.R")
 file.exists (f)
 length (readLines (f)) # only 14 lines
-srr_stats_roxygen (category = "regression",
+srr_stats_roxygen (
+category = "regression",
 file = f,
-overwrite = TRUE)
+overwrite = TRUE
+)
 length (readLines (f)) # now much longer
 ```
 

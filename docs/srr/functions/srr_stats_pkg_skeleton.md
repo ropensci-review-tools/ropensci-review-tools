@@ -46,7 +46,7 @@ Other helper:
 ```r
 d <- srr_stats_pkg_skeleton (pkg_name = "mystatspkg")
 # (capture.output of initial compliation messages)
-x <- capture.output (roxygen2::roxygenise (d), type = "output")
+x <- utils::capture.output (roxygen2::roxygenise (d), type = "output")
 ```
 
 
