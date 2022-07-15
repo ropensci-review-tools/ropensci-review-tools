@@ -58,3 +58,15 @@ grab                 Grab all files from the R packages by calling 'pkgdocs-scri
 help                 Show this help
 open                 Open the main 'html' page
 ```
+
+## Updating
+
+This site can be updated in response to any changes in any of the respective
+packages by simply running `make`. All changes should then be listed in `git
+status`, with the exception of any new files which have been added, and are not
+yet tracked by git. It is thus good practice to either:
+
+1. Run `make clean` first prior to `make`, and then `git add` everything in all
+   sub-directories of `docs`; or
+2. Using `git clean -n` to list files not tracked by git, and add any `*.md`
+   files listed in any sub-folders of `docs.
