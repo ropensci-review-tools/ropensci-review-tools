@@ -73,6 +73,7 @@ functions/push_to_gh_pages.md
 functions/rorevapi_updated_pkgs.md
 functions/roreviewapi-package.md
 functions/serve_api.md
+functions/srr_counts_summary.md
 functions/srr_counts.md
 functions/stats_badge.md
 functions/stdout_stderr_cache.md
