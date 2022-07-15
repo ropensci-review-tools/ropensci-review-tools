@@ -11,7 +11,7 @@ Install all system and package dependencies of an R package
 ## Usage
 
 ```r
-pkgrep_install_deps(path, os, os_release)
+pkgrep_install_deps(path, repo, issue_id)
 ```
 
 
@@ -19,15 +19,15 @@ pkgrep_install_deps(path, os, os_release)
 
 Argument      |Description
 ------------- |----------------
-`path`     |     Path to local package
-`os`     |     Name of operating system, passed to remotes package to install system dependencies.
-`os_release`     |     Name of operating system release, passed to remotes  package to install system dependencies.
+`path`     |     Path to local file or directory
+`repo`     |     The 'context.repo' parameter defining the repository from which the command was invoked, passed in 'org/repo' format.
+`issue_id`     |     The id (number) of the issue from which the command was invoked.
 
 
 ## Value
 
-Hopefully a character vector of length zero, otherwise a list of any
- R packages unable to be installed.
+Hopefully a character vector of length zero, otherwise a message
+ detailing any R packages unable to be installed.
 
 
 ## Seealso

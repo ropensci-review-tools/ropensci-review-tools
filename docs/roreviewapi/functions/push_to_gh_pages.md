@@ -33,6 +33,7 @@ Vector of two paths containing URLs of the `srr` and `network` files.
 
 Other ropensci:
  [`check_issue_template`](#checkissuetemplate) ,
+ [`srr_counts`](#srrcounts) ,
  [`stats_badge`](#statsbadge)
 
 

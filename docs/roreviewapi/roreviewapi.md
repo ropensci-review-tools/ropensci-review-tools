@@ -65,6 +65,7 @@ functions/check_issue_template.md
 functions/collate_editor_check.md
 functions/dl_gh_repo.md
 functions/editor_check.md
+functions/get_branch_from_url.md
 functions/is_user_authorized.md
 functions/pkgrep_install_deps.md
 functions/post_to_issue.md
@@ -72,6 +73,7 @@ functions/push_to_gh_pages.md
 functions/rorevapi_updated_pkgs.md
 functions/roreviewapi-package.md
 functions/serve_api.md
+functions/srr_counts.md
 functions/stats_badge.md
 functions/stdout_stderr_cache.md
 functions/symbol_crs.md

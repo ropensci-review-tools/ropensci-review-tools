@@ -32,6 +32,7 @@ Comment as character string
 
 Other ropensci:
  [`push_to_gh_pages`](#pushtoghpages) ,
+ [`srr_counts`](#srrcounts) ,
  [`stats_badge`](#statsbadge)
 
 
