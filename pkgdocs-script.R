@@ -78,10 +78,13 @@ one_vignettes <- function (p, path) {
 
     docs_path <- file.path (path, "ropensci-review-tools", "docs")
     v_path <- file.path (docs_path, p, "vignettes")
-    if (!dir.exists (v_path))
+    if (!dir.exists (v_path)) {
         dir.create (v_path, recursive = TRUE)
+    }
 
-    file.copy (flist_md, v_path, overwrite = TRUE)
+    for (f in flist_md) {
+        file.copy (f, v_path, overwrite = TRUE)
+    }
 }
 
 one_readme <- function (p, path) {
