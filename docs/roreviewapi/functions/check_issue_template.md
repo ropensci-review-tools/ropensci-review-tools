@@ -31,7 +31,9 @@ Comment as character string
 ## Seealso
 
 Other ropensci:
+ [`is_user_authorized`](#isuserauthorized) ,
  [`push_to_gh_pages`](#pushtoghpages) ,
+ [`srr_counts_summary`](#srrcountssummary) ,
  [`srr_counts`](#srrcounts) ,
  [`stats_badge`](#statsbadge)
 

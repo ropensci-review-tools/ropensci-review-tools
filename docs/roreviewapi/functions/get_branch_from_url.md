@@ -27,3 +27,10 @@ Argument      |Description
 Branch as single string.
 
 
+## Seealso
+
+Other github:
+ [`dl_gh_repo`](#dlghrepo) ,
+ [`post_to_issue`](#posttoissue)
+
+

@@ -70,7 +70,6 @@ functions/is_user_authorized.md
 functions/pkgrep_install_deps.md
 functions/post_to_issue.md
 functions/push_to_gh_pages.md
-functions/rorevapi_updated_pkgs.md
 functions/roreviewapi-package.md
 functions/serve_api.md
 functions/srr_counts_summary.md

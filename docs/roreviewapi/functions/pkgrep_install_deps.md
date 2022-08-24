@@ -34,7 +34,6 @@ Hopefully a character vector of length zero, otherwise a message
 
 Other utils:
  [`check_cache`](#checkcache) ,
- [`rorevapi_updated_pkgs`](#rorevapiupdatedpkgs) ,
  [`stdout_stderr_cache`](#stdoutstderrcache) ,
  [`symbol_crs`](#symbolcrs) ,
  [`symbol_tck`](#symboltck)

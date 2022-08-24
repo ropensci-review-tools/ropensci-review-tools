@@ -32,6 +32,7 @@ URL of the comment within the nominated issue
 ## Seealso
 
 Other github:
- [`dl_gh_repo`](#dlghrepo)
+ [`dl_gh_repo`](#dlghrepo) ,
+ [`get_branch_from_url`](#getbranchfromurl)
 
 

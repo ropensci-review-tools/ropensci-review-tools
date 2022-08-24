@@ -31,6 +31,7 @@ Path to locally cached '.zip' version of repository
 ## Seealso
 
 Other github:
+ [`get_branch_from_url`](#getbranchfromurl) ,
  [`post_to_issue`](#posttoissue)
 
 

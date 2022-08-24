@@ -34,7 +34,6 @@ Vector of two strings holding respective local paths to `stdout` and
 Other utils:
  [`check_cache`](#checkcache) ,
  [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
- [`rorevapi_updated_pkgs`](#rorevapiupdatedpkgs) ,
  [`symbol_crs`](#symbolcrs) ,
  [`symbol_tck`](#symboltck)
 

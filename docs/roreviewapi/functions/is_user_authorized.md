@@ -29,3 +29,13 @@ Argument      |Description
 Logical value indicating whether or not a user is authorized.
 
 
+## Seealso
+
+Other ropensci:
+ [`check_issue_template`](#checkissuetemplate) ,
+ [`push_to_gh_pages`](#pushtoghpages) ,
+ [`srr_counts_summary`](#srrcountssummary) ,
+ [`srr_counts`](#srrcounts) ,
+ [`stats_badge`](#statsbadge)
+
+

@@ -33,7 +33,9 @@ A single character containing the label used directly for the issue
 
 Other ropensci:
  [`check_issue_template`](#checkissuetemplate) ,
+ [`is_user_authorized`](#isuserauthorized) ,
  [`push_to_gh_pages`](#pushtoghpages) ,
+ [`srr_counts_summary`](#srrcountssummary) ,
  [`srr_counts`](#srrcounts)
 
 
