@@ -21,8 +21,8 @@ and name our package `"demo"`.
 ``` r
 path <- file.path (tempdir (), "demo")
 usethis::create_package (path, check_name = FALSE, open = FALSE)
-#> ✔ Creating '/tmp/Rtmpqv289y/demo/'
-#> ✔ Setting active project to '/tmp/Rtmpqv289y/demo'
+#> ✔ Creating '/tmp/RtmprqCF2O/demo/'
+#> ✔ Setting active project to '/tmp/RtmprqCF2O/demo'
 #> ✔ Creating 'R/'
 #> ✔ Writing 'DESCRIPTION'
 #> Package: demo
@@ -34,9 +34,8 @@ usethis::create_package (path, check_name = FALSE, open = FALSE)
 #> License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
 #>     license
 #> Encoding: UTF-8
-#> LazyData: true
 #> Roxygen: list(markdown = TRUE)
-#> RoxygenNote: 7.1.1
+#> RoxygenNote: 7.2.1
 #> ✔ Writing 'NAMESPACE'
 #> ✔ Setting active project to '<no active project>'
 ```
@@ -45,7 +44,7 @@ The structure looks like this:
 
 ``` r
 fs::dir_tree (path)
-#> /tmp/Rtmpqv289y/demo
+#> /tmp/RtmprqCF2O/demo
 #> ├── DESCRIPTION
 #> ├── NAMESPACE
 #> └── R
@@ -62,11 +61,16 @@ the [`roxygenise()`
 function](https://roxygen2.r-lib.org/reference/roxygenize.html) to
 create the corresponding `man` files.
 
+`autotest` works by parsing and running “example” code from function
+documentation, so our code needs to include at least one example line.
+
 ``` r
 code <- c ("#' my_function",
            "#'",
            "#' @param x An input",
            "#' @return Something else",
+           "#' @examples",
+           "#' y <- my_function (x = 1)",
            "#' @export",
            "my_function <- function (x) {",
            "  return (x + 1)",
@@ -74,15 +78,15 @@ code <- c ("#' my_function",
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing my_function.Rd
+#> Writing 'NAMESPACE'
+#> Writing 'my_function.Rd'
 ```
 
 Our package now looks like this:
 
 ``` r
 fs::dir_tree (path)
-#> /tmp/Rtmpqv289y/demo
+#> /tmp/RtmprqCF2O/demo
 #> ├── DESCRIPTION
 #> ├── NAMESPACE
 #> ├── R
@@ -101,44 +105,23 @@ x0 <- autotest_package (path)
 
     #> ℹ Loading autotest
     #> 
+    #> 
     #> ── autotesting demo ──
     #> 
+    #> 
+    #> 
+    #> ✔ [1 / 1]: my_function
 
 We use the [`DT` package](https://rstudio.github.io/DT) to display the
 results here.
 
 ``` r
 DT::datatable (x0, options = list (dom = "t")) # display table only
+#> PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 ```
 
-<img src="README-unnamed-chunk-1-1.png" width="672" />
-
-## Adding examples to our code
-
-That tells us straight away that we need to add an example to our
-function documentation. So let’s do that by inserting extra lines into
-the `code` defined above, and see what happens.
-
-``` r
-code <- c (code [1:4],
-           "#' @examples",
-           "#' y <- my_function (x = 1)",
-           code [5:length (code)])
-writeLines (code, file.path (path, "R", "myfn.R"))
-roxygen2::roxygenise (path)
-#> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function.Rd
-x1 <- autotest_package (path)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
-DT::datatable (x1, options = list (dom = "t"))
-```
-
-<img src="README-autotest-FALSE-1.png" width="672" />
+<div id="htmlwidget-6fb57659b236d5fd2d8f" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6fb57659b236d5fd2d8f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9"],["dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy"],["int_range","int_as_numeric","single_par_as_length_2","return_successful","return_val_described","return_desc_includes_class","return_class_matches_desc","par_is_documented","par_matches_docs"],["my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function"],["x","x","x","(return object)","(return object)","(return object)","(return object)","x","x"],["single integer","single integer","single integer","(return object)","(return object)","(return object)","(return object)",null,null],["Ascertain permissible range","Integer value converted to numeric","Length 2 vector for length 1 parameter","Check that function successfully returns an object","Check that description has return value","Check whether description of return value specifies class","Compare class of return value with description","Check that parameter is documented","Check that documentation matches class of input parameter"],["Should either be unrestricted or correspond with documentation","(Should yield same result)","Should trigger message, warning, or error",null,null,null,null,null,null],[true,true,true,true,true,true,true,true,true],["4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 The first thing to notice is the first column, which has
 `test_type = "dummy"` for all rows. The [`autotest_package()`
@@ -150,14 +133,15 @@ with actually doing so. Applying the tests by setting `test = TRUE`
 gives the following result.
 
 ``` r
-x2 <- autotest_package (path, test = TRUE)
+x1 <- autotest_package (path, test = TRUE)
 #> ── autotesting demo ──
 #> 
 #> ✔ [1 / 1]: my_function
-DT::datatable (x2, options = list (dom = "t"))
+DT::datatable (x1, options = list (dom = "t"))
 ```
 
-<img src="README-autotest-TRUE-1.png" width="672" />
+<div id="htmlwidget-2e2765ac504915c60c77" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2e2765ac504915c60c77">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["diagnostic","diagnostic"],["int_range","single_par_as_length_2"],["my_function","my_function"],["x","x"],["single integer","single integer"],["Ascertain permissible range","Length 2 vector for length 1 parameter"],["Parameter [x] permits unrestricted integer inputs,  yet does not document this; please add 'unrestricted' to parameter description.","Parameter [x] of function [my_function] is only used a single integer value, but responds to vectors of length &gt; 1"],[true,true],["4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 Of the 9 tests which were performed, only 2 yielded unexpected
 behaviour. The first indicates that the parameter `x` has only been used
@@ -187,9 +171,7 @@ code <- c ("#' my_function",
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function.Rd
+#> Writing 'my_function.Rd'
 ```
 
 This is then sufficient to pass all `autotest` tests and so return
@@ -222,18 +204,17 @@ code [6] <- gsub ("1\\.", "1L", code [6])
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function.Rd
-x3 <- autotest_package (path, test = TRUE)
+#> Writing 'my_function.Rd'
+x2 <- autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
 #> 
 #> ✔ [1 / 1]: my_function
-DT::datatable (x3, options = list (dom = "t"))
+DT::datatable (x2, options = list (dom = "t"))
 ```
 
-<img src="README-int-input-1.png" width="672" />
+<div id="htmlwidget-28fa246601bc621478d3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-28fa246601bc621478d3">{"x":{"filter":"none","vertical":false,"data":[["1"],["diagnostic"],["int_range"],["my_function"],["x"],["single integer"],["Ascertain permissible range"],["Parameter [x] permits unrestricted integer inputs,  yet does not document this; please add 'unrestricted' to parameter description."],[true],["4fd07cc9dc235e2cc8a711957cf2d784"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 That then generates two additional messages, the second of which
 reflects an expectation that parameters assumed to be integer-valued
@@ -262,9 +243,7 @@ code [3] <- gsub ("An input", "An unrestricted input", code [3])
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function.Rd
+#> Writing 'my_function.Rd'
 autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
@@ -300,9 +279,7 @@ code <- c ("#' my_function",
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function.Rd
+#> Writing 'my_function.Rd'
 autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
@@ -310,6 +287,14 @@ autotest_package (path, test = TRUE)
 #> ✔ [1 / 1]: my_function
 #> NULL
 ```
+
+Respective limits of ranges may be specified with any of the following
+words:
+
+-   Lower limits: “more”, “greater”, “larger than”, “lower limit of”,
+    “above”
+-   Upper limits: “less”, “lower”, “smaller than”, “upper limit of”,
+    “below”
 
 ## Vector input
 
@@ -336,9 +321,7 @@ code <- c ("#' my_function",
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function.Rd
+#> Writing 'my_function.Rd'
 ```
 
 Note that the first example no longer has `x = 1L`. This is because
@@ -347,15 +330,16 @@ values, and presuming `integer` representations for any parameters for
 which all values are whole numbers, regardless of `storage.mode`.
 
 ``` r
-x4 <- autotest_package (path, test = TRUE)
+x3 <- autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
 #> 
 #> ✔ [1 / 1]: my_function
-DT::datatable (x4, options = list (dom = "t"))
+DT::datatable (x3, options = list (dom = "t"))
 ```
 
-<img src="README-autotest-TRUE3-1.png" width="672" />
+<div id="htmlwidget-38aac5ff254d0f60deee" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-38aac5ff254d0f60deee">{"x":{"filter":"none","vertical":false,"data":[["1"],["diagnostic"],["vector_to_list_col"],["my_function"],["x"],["vector"],["Convert vector input to list-columns"],["Function [my_function] errors on list-columns when submitted as x Error message: non-numeric argument to binary operator"],[true],["06ae506249fb26783a8394dd5b2f20c6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 ### List-column conversion
 
@@ -445,8 +429,6 @@ code <- c ("#' my_function",
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
 ```
 
 That change once again leads to clean `autotest` results:
@@ -490,19 +472,19 @@ code <- c ("#' my_function3",
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function3.Rd
-x5 <- autotest_package (path, test = TRUE)
+#> Writing 'NAMESPACE'
+#> Writing 'my_function3.Rd'
+x4 <- autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
 #> 
 #> ✔ [1 / 2]: my_function
 #> ✔ [2 / 2]: my_function3
-DT::datatable (x5, options = list (dom = "t"))
+DT::datatable (x4, options = list (dom = "t"))
 ```
 
-<img src="README-return-val-1.png" width="672" />
+<div id="htmlwidget-2a1fd0189cc42e9365d1" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2a1fd0189cc42e9365d1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["diagnostic","diagnostic","diagnostic"],["return_val_described","return_desc_includes_class","return_class_matches_desc"],["my_function3","my_function3","my_function3"],["(return object)","(return object)","(return object)"],["(return object)","(return object)","(return object)"],["Check that description has return value","Check whether description of return value specifies class","Compare class of return value with description"],["Function [my_function3] does not specify a return value.","Function [my_function3] does not describe return value","Function [my_function3] does not describe return value"],[true,true,true],["a14af8f9a3b44568ca5df2ca8130cd6c","a14af8f9a3b44568ca5df2ca8130cd6c","a14af8f9a3b44568ca5df2ca8130cd6c"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 Several new diagnostic messages are then issued regarding the
 description of the returned value. Let’s insert a description to see the
@@ -515,19 +497,18 @@ code <- c (code [1:3],
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function3.Rd
-x6 <- autotest_package (path, test = TRUE)
+#> Writing 'my_function3.Rd'
+x5 <- autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
 #> 
 #> ✔ [1 / 2]: my_function
 #> ✔ [2 / 2]: my_function3
-DT::datatable (x6, options = list (dom = "t"))
+DT::datatable (x5, options = list (dom = "t"))
 ```
 
-<img src="README-return-val-2-1.png" width="672" />
+<div id="htmlwidget-1a278f890ac42c559749" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1a278f890ac42c559749">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["diagnostic","diagnostic"],["return_desc_includes_class","return_class_matches_desc"],["my_function3","my_function3"],["(return object)","(return object)"],["(return object)","(return object)"],["Check whether description of return value specifies class","Compare class of return value with description"],["Function [my_function3] returns a value of class [data.frame], which differs from the value provided in the description","Function returns an object of class [data.frame] yet documentation describes class of value as [dataframe]"],[true,true],["a14af8f9a3b44568ca5df2ca8130cd6c","a14af8f9a3b44568ca5df2ca8130cd6c"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 That result still contains a couple of diagnostic messages, but it is
 now pretty clear what we need to do, which is to be precise with our
@@ -539,9 +520,7 @@ code [4] <- "#' @return The iris data set as data.frame"
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function3.Rd
+#> Writing 'my_function3.Rd'
 autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
@@ -571,19 +550,18 @@ code <- c ("#' my_function3",
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
-#> Writing NAMESPACE
-#> Writing NAMESPACE
-#> Writing my_function3.Rd
-x7 <- autotest_package (path, test = TRUE)
+#> Writing 'my_function3.Rd'
+x6 <- autotest_package (path, test = TRUE)
 #> 
 #> ── autotesting demo ──
 #> 
 #> ✔ [1 / 2]: my_function
 #> ✔ [2 / 2]: my_function3
-DT::datatable (x7, options = list (dom = "t"))
+DT::datatable (x6, options = list (dom = "t"))
 ```
 
-<img src="README-input-checks-1.png" width="672" />
+<div id="htmlwidget-f20eba4220c4d23573a0" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f20eba4220c4d23573a0">{"x":null,"evals":[],"jsHooks":[]}</script>
 
 This warning again indicates precisely how it can be rectified, for
 example by replacing the third line with

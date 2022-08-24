@@ -1,5 +1,3 @@
-# Control of tests
-
 The [first
 vignette](https://docs.ropensci.org/autotest/articles/autotest.html)
 demonstrates the process of applying `autotest` at all stages of package
@@ -215,20 +213,21 @@ for `var` and `cor`, and twice for `cov`. The result looks like this:
 print (xf)
 ```
 
-    #> # A tibble: 185 × 9
-    #>    type    test_name  fn_name parameter parameter_type operation  content  test 
-    #>    <chr>   <chr>      <chr>   <chr>     <chr>          <chr>      <chr>    <lgl>
-    #>  1 warning par_is_de… var     use       <NA>           Check tha… Example… TRUE 
-    #>  2 warning par_is_de… cov     y         <NA>           Check tha… Example… TRUE 
-    #>  3 dummy   trivial_n… var     x         numeric        Add trivi… (Should… TRUE 
-    #>  4 dummy   vector_cu… var     x         vector         Custom cl… (Should… TRUE 
-    #>  5 dummy   vector_to… var     x         vector         Convert v… (Should… TRUE 
-    #>  6 dummy   negate_lo… var     na.rm     single logical Negate de… (Functi… TRUE 
-    #>  7 dummy   subst_int… var     na.rm     single logical Substitut… (Functi… TRUE 
-    #>  8 dummy   subst_cha… var     na.rm     single logical Substitut… should … TRUE 
-    #>  9 dummy   single_pa… var     na.rm     single logical Length 2 … Should … TRUE 
-    #> 10 dummy   return_su… var     (return … (return objec… Check tha… <NA>     TRUE 
-    #> # … with 175 more rows, and 1 more variable: yaml_hash <chr>
+    #> # A tibble: 170 × 9
+    #>    type    test_name       fn_name param…¹ param…² opera…³ content test  yaml_…⁴
+    #>    <chr>   <chr>           <chr>   <chr>   <chr>   <chr>   <chr>   <lgl> <chr>  
+    #>  1 warning par_is_demonst… var     use     <NA>    Check … Exampl… TRUE  <NA>   
+    #>  2 warning par_is_demonst… cov     y       <NA>    Check … Exampl… TRUE  <NA>   
+    #>  3 dummy   trivial_noise   var     x       numeric Add tr… (Shoul… TRUE  5ee5bd…
+    #>  4 dummy   vector_custom_… var     x       vector  Custom… (Shoul… TRUE  5ee5bd…
+    #>  5 dummy   vector_to_list… var     x       vector  Conver… (Shoul… TRUE  5ee5bd…
+    #>  6 dummy   negate_logical  var     na.rm   single… Negate… (Funct… TRUE  5ee5bd…
+    #>  7 dummy   subst_int_for_… var     na.rm   single… Substi… (Funct… TRUE  5ee5bd…
+    #>  8 dummy   subst_char_for… var     na.rm   single… Substi… should… TRUE  5ee5bd…
+    #>  9 dummy   single_par_as_… var     na.rm   single… Length… Should… TRUE  5ee5bd…
+    #> 10 dummy   return_success… var     (retur… (retur… Check … <NA>    TRUE  5ee5bd…
+    #> # … with 160 more rows, and abbreviated variable names ¹​parameter,
+    #> #   ²​parameter_type, ³​operation, ⁴​yaml_hash
 
 The object returned from `autotest_package()` is a simple
 [`tibble`](https://tibble.tidyverse.org), with each row detailing one
@@ -240,10 +239,10 @@ have a `type` of `"dummy"`. In this case, however, we see the following:
 table (xf$type)
 #> 
 #>   dummy warning 
-#>     183       2
+#>     168       2
 ```
 
-In addition to the 183 dummy tests, the function also returns 2
+In addition to the 168 dummy tests, the function also returns 2
 warnings, the corresponding rows of which are:
 
 ``` r
@@ -267,7 +266,7 @@ warning that these parameter are unable to be tested.
 
 ### 3.2 Conducting tests
 
-The 183 tests listed above with `type == "dummy"` can then be applied to
+The 168 tests listed above with `type == "dummy"` can then be applied to
 all nominated functions and parameters by calling the same function with
 `test = TRUE`. Doing so yields the following results (as an object names
 `xt` for “true”):
@@ -291,22 +290,23 @@ xt <- autotest_package (package = "stats",
 print (xt)
 ```
 
-    #> # A tibble: 23 × 9
-    #>    type       test_name fn_name parameter parameter_type operation content test 
-    #>    <chr>      <chr>     <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-    #>  1 warning    par_is_d… var     use       <NA>           Check th… "Examp… TRUE 
-    #>  2 warning    par_is_d… cov     y         <NA>           Check th… "Examp… TRUE 
-    #>  3 diagnostic vector_t… var     x         vector         Convert … "Funct… TRUE 
-    #>  4 diagnostic vector_t… var     x         vector         Convert … "Funct… TRUE 
-    #>  5 diagnostic vector_t… var     y         vector         Convert … "Funct… TRUE 
-    #>  6 diagnostic single_c… cor     use       single charac… upper-ca… "is ca… TRUE 
-    #>  7 diagnostic single_c… cor     method    single charac… upper-ca… "is ca… TRUE 
-    #>  8 diagnostic vector_c… cor     x         vector         Custom c… "Funct… TRUE 
-    #>  9 diagnostic single_c… cor     method    single charac… upper-ca… "is ca… TRUE 
-    #> 10 diagnostic single_c… cor     use       single charac… upper-ca… "is ca… TRUE 
-    #> # … with 13 more rows, and 1 more variable: yaml_hash <chr>
+    #> # A tibble: 25 × 9
+    #>    type       test_name    fn_name param…¹ param…² opera…³ content test  yaml_…⁴
+    #>    <chr>      <chr>        <chr>   <chr>   <chr>   <chr>   <chr>   <lgl> <chr>  
+    #>  1 warning    par_is_demo… var     use     <NA>    Check … "Examp… TRUE  <NA>   
+    #>  2 warning    par_is_demo… cov     y       <NA>    Check … "Examp… TRUE  <NA>   
+    #>  3 diagnostic vector_to_l… var     x       vector  Conver… "Funct… TRUE  5ee5bd…
+    #>  4 diagnostic subst_int_f… var     na.rm   single… Substi… "(Func… TRUE  5ee5bd…
+    #>  5 diagnostic vector_to_l… var     x       vector  Conver… "Funct… TRUE  5ee5bd…
+    #>  6 diagnostic vector_to_l… var     y       vector  Conver… "Funct… TRUE  5ee5bd…
+    #>  7 diagnostic single_char… cor     use     single… upper-… "is ca… TRUE  5ee5bd…
+    #>  8 diagnostic single_char… cor     method  single… upper-… "is ca… TRUE  5ee5bd…
+    #>  9 diagnostic vector_cust… cor     x       vector  Custom… "Funct… TRUE  5ee5bd…
+    #> 10 diagnostic vector_cust… cor     x       vector  Custom… "Funct… TRUE  f82bc6…
+    #> # … with 15 more rows, and abbreviated variable names ¹​parameter,
+    #> #   ²​parameter_type, ³​operation, ⁴​yaml_hash
 
-And the 183 tests yielded 23 unexpected responses. The best way to
+And the 168 tests yielded 25 unexpected responses. The best way to
 understand these results is to examine the object in detail, typically
 through `edit(xt)`, or equivalently in RStudio, clicking on the listed
 object. The different types of tests which produced unexpected responses
@@ -315,14 +315,16 @@ were:
 ``` r
 table (xt$operation)
 #> 
-#> Check that parameter usage is demonstrated 
-#>                                          2 
-#>       Convert vector input to list-columns 
-#>                                          3 
-#>  Custom class definitions for vector input 
-#>                                          4 
-#>             upper-case character parameter 
-#>                                         14
+#>      Check that parameter usage is demonstrated 
+#>                                               2 
+#>            Convert vector input to list-columns 
+#>                                               3 
+#>       Custom class definitions for vector input 
+#>                                               5 
+#> Substitute integer values for logical parameter 
+#>                                               1 
+#>                  upper-case character parameter 
+#>                                              14
 ```
 
 Two of those reflect the previous results regarding parameters unable to
@@ -345,9 +347,11 @@ Finer-level control over tests can be achieved by specifying the
 `autotest_package`, as returned by either the
 [`autotest_types()`](https://docs.ropensci.org/autotest/reference/autotest_types.html)\]
 or
-\[`autotest_package()](https://docs.ropensci.org/autotest/reference/autotest_package.html) functions. The former of these is the function which specifies all unique tests, and so returns a relatively small`tibble\`
-of 27 rows. The following lines demonstrate how to switch off the
-list-column test for all functions and parameters:
+[`autotest_package()`](https://docs.ropensci.org/autotest/reference/autotest_package.html)
+functions. The former of these is the function which specifies all
+unique tests, and so returns a relatively small `tibble` of 27 rows. The
+following lines demonstrate how to switch off the list-column test for
+all functions and parameters:
 
 ``` r
 types <- autotest_types()
@@ -371,20 +375,21 @@ xt2 <- autotest_package (package = "stats",
 print (xt2)
 ```
 
-    #> # A tibble: 28 × 9
-    #>    type       test_name fn_name parameter parameter_type operation content test 
-    #>    <chr>      <chr>     <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-    #>  1 warning    par_is_d… var     use       <NA>           Check th… Exampl… TRUE 
-    #>  2 warning    par_is_d… cov     y         <NA>           Check th… Exampl… TRUE 
-    #>  3 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE 
-    #>  4 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE 
-    #>  5 diagnostic vector_c… cor     x         vector         Custom c… Functi… TRUE 
-    #>  6 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE 
-    #>  7 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE 
-    #>  8 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE 
-    #>  9 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE 
-    #> 10 diagnostic vector_c… cov     x         vector         Custom c… Functi… TRUE 
-    #> # … with 18 more rows, and 1 more variable: yaml_hash <chr>
+    #> # A tibble: 22 × 9
+    #>    type       test_name    fn_name param…¹ param…² opera…³ content test  yaml_…⁴
+    #>    <chr>      <chr>        <chr>   <chr>   <chr>   <chr>   <chr>   <lgl> <chr>  
+    #>  1 warning    par_is_demo… var     use     <NA>    Check … Exampl… TRUE  <NA>   
+    #>  2 warning    par_is_demo… cov     y       <NA>    Check … Exampl… TRUE  <NA>   
+    #>  3 diagnostic subst_int_f… var     na.rm   single… Substi… (Funct… TRUE  5ee5bd…
+    #>  4 diagnostic single_char… cor     use     single… upper-… is cas… TRUE  5ee5bd…
+    #>  5 diagnostic single_char… cor     method  single… upper-… is cas… TRUE  5ee5bd…
+    #>  6 diagnostic vector_cust… cor     x       vector  Custom… Functi… TRUE  5ee5bd…
+    #>  7 diagnostic vector_cust… cor     x       vector  Custom… Functi… TRUE  f82bc6…
+    #>  8 diagnostic single_char… cor     method  single… upper-… is cas… TRUE  f82bc6…
+    #>  9 diagnostic single_char… cor     use     single… upper-… is cas… TRUE  f82bc6…
+    #> 10 diagnostic single_char… cor     use     single… upper-… is cas… TRUE  2b34ec…
+    #> # … with 12 more rows, and abbreviated variable names ¹​parameter,
+    #> #   ²​parameter_type, ³​operation, ⁴​yaml_hash
 
 The result now has four rows with `test == FALSE`, and
 `type == "no_test"`, indicating that these tests were not actually
@@ -442,19 +447,20 @@ print (xt3)
 ```
 
     #> # A tibble: 22 × 9
-    #>    type       test_name fn_name parameter parameter_type operation content test 
-    #>    <chr>      <chr>     <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-    #>  1 warning    par_is_d… var     use       <NA>           Check th… Exampl… TRUE 
-    #>  2 warning    par_is_d… cov     y         <NA>           Check th… Exampl… TRUE 
-    #>  3 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE 
-    #>  4 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE 
-    #>  5 diagnostic vector_c… cor     x         vector         Custom c… Functi… TRUE 
-    #>  6 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE 
-    #>  7 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE 
-    #>  8 diagnostic single_c… cor     use       single charac… upper-ca… is cas… TRUE 
-    #>  9 diagnostic single_c… cor     method    single charac… upper-ca… is cas… TRUE 
-    #> 10 diagnostic vector_c… cov     x         vector         Custom c… Functi… TRUE 
-    #> # … with 12 more rows, and 1 more variable: yaml_hash <chr>
+    #>    type       test_name    fn_name param…¹ param…² opera…³ content test  yaml_…⁴
+    #>    <chr>      <chr>        <chr>   <chr>   <chr>   <chr>   <chr>   <lgl> <chr>  
+    #>  1 warning    par_is_demo… var     use     <NA>    Check … Exampl… TRUE  <NA>   
+    #>  2 warning    par_is_demo… cov     y       <NA>    Check … Exampl… TRUE  <NA>   
+    #>  3 diagnostic subst_int_f… var     na.rm   single… Substi… (Funct… TRUE  5ee5bd…
+    #>  4 diagnostic single_char… cor     use     single… upper-… is cas… TRUE  5ee5bd…
+    #>  5 diagnostic single_char… cor     method  single… upper-… is cas… TRUE  5ee5bd…
+    #>  6 diagnostic vector_cust… cor     x       vector  Custom… Functi… TRUE  5ee5bd…
+    #>  7 diagnostic vector_cust… cor     x       vector  Custom… Functi… TRUE  f82bc6…
+    #>  8 diagnostic single_char… cor     method  single… upper-… is cas… TRUE  f82bc6…
+    #>  9 diagnostic single_char… cor     use     single… upper-… is cas… TRUE  f82bc6…
+    #> 10 diagnostic single_char… cor     use     single… upper-… is cas… TRUE  2b34ec…
+    #> # … with 12 more rows, and abbreviated variable names ¹​parameter,
+    #> #   ²​parameter_type, ³​operation, ⁴​yaml_hash
 
 These procedures illustrate the three successively finer levels of
 control over tests, by switching them off for:
@@ -585,8 +591,6 @@ demonstrates:
 ``` r
 expect_autotest_notes (x)
 ```
-
-    #> Error: Any autotest tests which are switched off should have explanatory notes in a 'note' column
 
 As demonstrated above, these `expect_autotest_...` calls should always
 be wrapped in a direct [`testhat`](https://testthat.r-lib.org)
