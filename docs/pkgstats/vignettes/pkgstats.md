@@ -49,15 +49,13 @@ for `objects` and `network` represent summary data:
 ``` r
 s [!names (s) %in% c ("objects", "network", "external_calls")]
 #> $loc
-#> # A tibble: 4 × 12
-#> # Groups:   language, dir [4]
-#>   language dir       nfiles nlines ncode  ndoc nempty nspaces nchars nexpr ntabs
-#>   <chr>    <chr>      <int>  <int> <int> <int>  <int>   <int>  <int> <dbl> <int>
-#> 1 C++      src            3    364   276    21     67     932   6983     1     0
-#> 2 R        R             24   4727  3405   640    682   30303 114334     1     0
-#> 3 R        tests          7    300   234     5     61     511   5543     1     0
-#> 4 Rmd      vignettes      2    347   278     8     61    1483  11290     1     0
-#> # … with 1 more variable: indentation <int>
+#> # A tibble: 4 × 11
+#>   language dir       nfiles nlines ncode nempty nspaces nchars nexpr ntabs indentation
+#>   <chr>    <chr>      <int>  <int> <int>  <int>   <int>  <int> <int> <int>       <int>
+#> 1 C++      src            3    364   276     67     932   6983     1     0           4
+#> 2 R        R             24   4727   345    682     333 114334     1     0           4
+#> 3 R        tests          7    300   234     61     511   5543     1     0           4
+#> 4 Rmd      vignettes      2    347   278     61    1483  11290     1     0           4
 #> 
 #> $vignettes
 #> vignettes     demos 
@@ -68,18 +66,16 @@ s [!names (s) %in% c ("objects", "network", "external_calls")]
 #>           0           0           0 
 #> 
 #> $desc
-#>    package   version                date license
-#> 1 pkgstats 0.1.0.001 2022-06-17 18:31:49   GPL-3
-#>                                                                                      urls
-#> 1 https://docs.ropensci.org/pkgstats/,\nhttps://github.com/ropensci-review-tools/pkgstats
-#>                                                       bugs aut ctb fnd rev ths
-#> 1 https://github.com/ropensci-review-tools/pkgstats/issues   1   0   0   0   0
-#>   trl depends                                                        imports
-#> 1   0      NA brio, checkmate, dplyr, fs, igraph, methods, readr, sys, withr
-#>                                                                                          suggests
-#> 1 curl, hms, jsonlite, knitr, parallel, pkgbuild, Rcpp, rmarkdown, roxygen2, testthat, visNetwork
-#>   enhances linking_to
-#> 1       NA      cpp11
+#>    package verion                     date license
+#> 1 pkgstats  0.1.1 Wed Aug 24 14:48:14 2022   GPL-3
+#>                                                                                       urls
+#> 1 https://docs.ropensci.org/pkgstats/,\nnhttps://github.com/ropensci-review-tools/pkgstats
+#>                                                       bugs aut ctb fnd rev ths trl depends
+#> 1 https://github.com/ropensci-review-tools/pkgstats/issues   1   0   0   0   0   0      NA
+#>                                                          imports
+#> 1 brio, checkmate, dplyr, fs, igraph, methods, readr, sys, withr
+#>                                                                                          suggests enchances linking_to
+#> 1 curl, hms, jsonlite, knitr, parallel, pkgbuild, Rcpp, rmarkdown, roxygen2, testthat, visNetwork      <NA>      cpp11
 #> 
 #> $translations
 #> [1] NA
@@ -100,15 +96,13 @@ text lines in `.Rmd` files.
 
 ``` r
 s$loc
-#> # A tibble: 4 × 12
-#> # Groups:   language, dir [4]
-#>   language dir       nfiles nlines ncode  ndoc nempty nspaces nchars nexpr ntabs
-#>   <chr>    <chr>      <int>  <int> <int> <int>  <int>   <int>  <int> <dbl> <int>
-#> 1 C++      src            3    364   276    21     67     932   6983     1     0
-#> 2 R        R             24   4727  3405   640    682   30303 114334     1     0
-#> 3 R        tests          7    300   234     5     61     511   5543     1     0
-#> 4 Rmd      vignettes      2    347   278     8     61    1483  11290     1     0
-#> # … with 1 more variable: indentation <int>
+#> # A tibble: 4 × 11
+#>   language dir       nfiles nlines ncode nempty nspaces nchars nexpr ntabs indentation
+#>   <chr>    <chr>      <int>  <int> <int>  <int>   <int>  <int> <int> <int>       <int>
+#> 1 C++      src            3    364   276     67     932   6983     1     0           4
+#> 2 R        R             24   4727   345    682     333 114334     1     0           4
+#> 3 R        tests          7    300   234     61     511   5543     1     0           4
+#> 4 Rmd      vignettes      2    347   278     61    1483  11290     1     0           4
 ```
 
 That output includes the following components, grouped by both computer
@@ -153,7 +147,7 @@ including white spaces.
 ``` r
 index <- which (s$loc$dir %in% c ("R", "src")) # consider source code only
 sum (s$loc$nspaces [index]) / sum (s$loc$nchars [index])
-#> [1] 0.257466
+#> [1] 0.01042723
 ```
 
 Finally, the `ntabs` statistic can be used to identify whether code uses
@@ -170,18 +164,16 @@ The `desc` item looks like this:
 
 ``` r
 s$desc
-#>    package   version                date license
-#> 1 pkgstats 0.1.0.001 2022-06-17 18:31:49   GPL-3
-#>                                                                                      urls
-#> 1 https://docs.ropensci.org/pkgstats/,\nhttps://github.com/ropensci-review-tools/pkgstats
-#>                                                       bugs aut ctb fnd rev ths
-#> 1 https://github.com/ropensci-review-tools/pkgstats/issues   1   0   0   0   0
-#>   trl depends                                                        imports
-#> 1   0      NA brio, checkmate, dplyr, fs, igraph, methods, readr, sys, withr
-#>                                                                                          suggests
-#> 1 curl, hms, jsonlite, knitr, parallel, pkgbuild, Rcpp, rmarkdown, roxygen2, testthat, visNetwork
-#>   enhances linking_to
-#> 1       NA      cpp11
+#>    package verion                     date license
+#> 1 pkgstats  0.1.1 Wed Aug 24 14:48:14 2022   GPL-3
+#>                                                                                       urls
+#> 1 https://docs.ropensci.org/pkgstats/,\nnhttps://github.com/ropensci-review-tools/pkgstats
+#>                                                       bugs aut ctb fnd rev ths trl depends
+#> 1 https://github.com/ropensci-review-tools/pkgstats/issues   1   0   0   0   0   0      NA
+#>                                                          imports
+#> 1 brio, checkmate, dplyr, fs, igraph, methods, readr, sys, withr
+#>                                                                                          suggests enchances linking_to
+#> 1 curl, hms, jsonlite, knitr, parallel, pkgbuild, Rcpp, rmarkdown, roxygen2, testthat, visNetwork      <NA>      cpp11
 ```
 
 This item includes the following components:
@@ -196,6 +188,13 @@ This item includes the following components:
 -   Comma-separated character entries for all `depends`, `imports`,
     `suggests`, and `linking_to` packages.
 
+The “Date” field is taken from the “Date/Publication” field
+automatically inserted by CRAN on package publication, or for non-CRAN
+packages to the “mtime” value (modification time) value of the
+DESCRIPTION file. Note that “date” values extracted by `pkgstats` do not
+use “Date” values from DESCRIPTION files (as these are manually-entered,
+and potentially unreliable).
+
 ### 1.3 `"objects"`: Objects in all languages
 
 The `objects` item contains all code objects identified by the
@@ -206,20 +205,20 @@ Object tables look like this:
 
 ``` r
 head (s$objects)
-#>           file_name                   fn_name     kind language loc npars
-#> 1 R/archive-trawl.R     pkgstats_from_archive function        R  89     9
-#> 2 R/archive-trawl.R        list_archive_files function        R  17     2
-#> 3 R/archive-trawl.R             rm_prev_files function        R  24     2
-#> 4 R/archive-trawl.R pkgstats_fns_from_archive function        R  82     7
-#> 5         R/cpp11.R                   cpp_loc function        R   3     4
-#> 6 R/ctags-install.R               clone_ctags function        R  17     1
-#>   has_dots exported param_nchars_md param_nchars_mn num_doclines
-#> 1    FALSE     TRUE             133        159.7778           77
-#> 2    FALSE    FALSE              NA              NA           NA
-#> 3    FALSE    FALSE              NA              NA           NA
-#> 4    FALSE     TRUE             163        174.5714           50
-#> 5    FALSE    FALSE              NA              NA           NA
-#> 6    FALSE    FALSE              NA              NA           NA
+#>           file_name                   fn_name     kind language loc npars has_dots exported param_nchards_md param_nchards_mn
+#> 1 R/archive-trawl.R     pkgstats_from_archive function        R  89     9    FALSE     TRUE              133         159.7778
+#> 2 R/archive-trawl.R        list_archive_files function        R  17     2    FALSE    FALSE               NA               NA
+#> 3 R/archive-trawl.R             rm_prev_files function        R  24     2    FALSE    FALSE               NA               NA
+#> 4 R/archive-trawl.R pkgstats_fns_from_archive function        R  82     7    FALSE     TRUE              163         174.5714
+#> 5         R/cpp11.R                   cpp_loc function        R   3     4    FALSE    FALSE               NA               NA
+#> 6 R/ctags-install.R                clone_ctag function        R  17     1    FALSE    FALSE               NA               NA
+#>   num_doclines
+#> 1           77
+#> 2           NA
+#> 3           NA
+#> 4           50
+#> 5           NA
+#> 6           NA
 ```
 
 Objects are primarily sorted by language, with R-language objects given
@@ -244,20 +243,20 @@ vertices or nodes.
 
 ``` r
 head (s$network)
-#>                   file line1                    from                        to
-#> 1   R/external-calls.R    11   external_call_network      extract_call_content
-#> 2   R/external-calls.R    26   external_call_network add_base_recommended_pkgs
-#> 3   R/external-calls.R    38   external_call_network   add_other_pkgs_to_calls
-#> 4   R/external-calls.R   326 add_other_pkgs_to_calls             control_parse
-#> 5 R/pkgstats-summary.R    39        pkgstats_summary                null_stats
-#> 6 R/pkgstats-summary.R    50        pkgstats_summary               loc_summary
-#>   language cluster_dir centrality_dir cluster_undir centrality_undir
-#> 1        R           1              9             1         230.8333
-#> 2        R           1              9             1         230.8333
-#> 3        R           1              9             1         230.8333
-#> 4        R           1              1             1           6.0000
-#> 5        R           1             11             1         874.0000
-#> 6        R           1             11             1         874.0000
+#>                   file line1                    from                        to language cluster_dir centrality_dir cluster_undir
+#> 1   R/external_calls.R    11   external_call_network      extract_call_content        R           1              9             1
+#> 2   R/external_calls.R    26   external_call_network add_base_recommended_pkgs        R           1              9             1
+#> 3   R/external_calls.R    38   external_call_network   add_other_pkgs_to_calls        R           1              9             1
+#> 4   R/external_calls.R   326 add_other_pkgs_to_calls             control_parse        R           1              1             1
+#> 5 R/pkgstats-summary.R    39        pkgstats_summary                null_stats        R           1             11             1
+#> 6 R/pkgstats-summary.R    50        pkgstats_summary               loc_summary        R           1             11             1
+#>   centrality_undir
+#> 1         230.8333
+#> 2         230.8333
+#> 3         230.8333
+#> 4           6.0000
+#> 5         874.0000
+#> 6         874.0000
 nrow (s$network)
 #> [1] 142
 ```
@@ -304,14 +303,18 @@ head (s$external_calls)
 These data are converted to a summary form by the [`pkgstats_summary()`
 function](https://docs.ropensci.org/pkgstats/reference/pkgstats_summary.html),
 which tabulates numbers of external calls and unique functions from each
-package. These data are presented as a single character string which can
-be easily converted to the corresponding numeric values using code like
-the following:
+package. These data are presented as a single character string which
+looks like this:
 
 ``` r
 s_summ <- pkgstats_summary (s)
 print (s_summ$external_calls)
-#> [1] "base:581:84,brio:11:2,curl:4:3,dplyr:7:4,fs:4:2,graphics:10:2,hms:2:1,igraph:3:3,parallel:2:1,pkgstats:126:73,readr:8:5,stats:19:3,sys:14:1,tools:3:2,utils:22:7,visNetwork:3:2,withr:6:2"
+```
+
+These data can be easily converted to the corresponding numeric values
+using code like the following:
+
+``` r
 x <- strsplit (s_summ$external_calls, ",") [[1]]
 x <- do.call (rbind, strsplit (x, ":"))
 x <- data.frame (
