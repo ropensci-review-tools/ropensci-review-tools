@@ -5,7 +5,7 @@ pkgcheck: rOpenSci Package Checks
 
 ## Description
 
-Check whether a package is ready for submission to rOpenSci’s peer review system.
+Check whether a package is ready for submission to rOpenSci's peer review system.
 
 
 ## Seealso

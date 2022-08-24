@@ -41,6 +41,7 @@ A `pkgcheck` object detailing all package assessments automatically
 ## Seealso
 
 Other pkgcheck_fns:
- [`pkgcheck_bg`](#pkgcheckbg)
+ [`pkgcheck_bg`](#pkgcheckbg) ,
+ [`print.pkgcheck`](#print.pkgcheck)
 
 

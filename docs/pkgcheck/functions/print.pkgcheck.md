@@ -24,3 +24,10 @@ Argument      |Description
 `...`     |     Further arguments pass to or from other methods (not used here).
 
 
+## Seealso
+
+Other pkgcheck_fns:
+ [`pkgcheck_bg`](#pkgcheckbg) ,
+ [`pkgcheck`](#pkgcheck)
+
+

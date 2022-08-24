@@ -33,7 +33,8 @@ A processx object connecting to the background process
 ## Seealso
 
 Other pkgcheck_fns:
- [`pkgcheck`](#pkgcheck)
+ [`pkgcheck`](#pkgcheck) ,
+ [`print.pkgcheck`](#print.pkgcheck)
 
 
 ## Note

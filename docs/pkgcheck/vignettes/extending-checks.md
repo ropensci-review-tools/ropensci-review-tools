@@ -128,9 +128,12 @@ in
 `R/check_has_citation.R`](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/check-has-citation.R):
 
 ``` r
-#' Check whether a package has a `inst/CITATION` file
+#' Check whether a package has a `inst/CITATION` file.
 #'
-#' This does not check the contents of that file in any way.
+#' "CITATION" files are required for all rOpenSci packages, as documented [in
+#' our "*Packaging
+#' Guide*](https://devguide.ropensci.org/building.html#citation-file). This does
+#' not check the contents of that file in any way.
 #'
 #' @param checks A 'pkgcheck' object with full \pkg{pkgstats} summary and
 #' \pkg{goodpractice} results.
@@ -208,10 +211,10 @@ output_pkgchk_has_citation <- function (checks) {
 
     # disabled:
     # https://github.com/ropensci-review-tools/pkgcheck/issues/115
-    #out$summary <- paste0 (
+    # out$summary <- paste0 (
     #    ifelse (out$check_pass, "has", "does not have"),
     #    " a 'CITATION' file."
-    #)
+    # )
 
     return (out)
 }
@@ -323,7 +326,7 @@ summary (checks)
 ```
 
     #> 
-    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     #> 
     #> ✔ Package name is available
     #> ✖ does not have a 'codemeta.json' file.
@@ -391,7 +394,7 @@ current R session, calling `pkgcheck()` again will automatically detect
 those checks and include them in our output:
 
     #> 
-    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     #> 
     #> ✔ Package name is available
     #> ✖ does not have a 'codemeta.json' file.

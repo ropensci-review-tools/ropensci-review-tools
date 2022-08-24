@@ -35,3 +35,10 @@ Other extra:
  [`render_markdown`](#rendermarkdown)
 
 
+## Examples
+
+```r
+list_pkgchecks ()
+```
+
+
