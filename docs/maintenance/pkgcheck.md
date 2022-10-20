@@ -36,7 +36,7 @@ The return object, `checks`, is a list of checks ultimately composed in the
 definition](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/pkgcheck-fn.R).
 The easiest way to remove checks from the
 [`roreviewpi`](https://github.com/ropensci-review-tools/roreviewapi) without
-modifying the underlying structure of `pkgcheck` itself to run the checks as
+modifying the underlying structure of `pkgcheck` itself is to run the checks as
 above, and then remove the corresponding list items. For example, the following
 modification would suffice to remove the `scrap` check (which checks whether a
 repository contains "scrap" files which should not be included) from the API
