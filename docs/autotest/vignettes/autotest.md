@@ -21,8 +21,8 @@ and name our package `"demo"`.
 ``` r
 path <- file.path (tempdir (), "demo")
 usethis::create_package (path, check_name = FALSE, open = FALSE)
-#> ✔ Creating '/tmp/RtmprqCF2O/demo/'
-#> ✔ Setting active project to '/tmp/RtmprqCF2O/demo'
+#> ✔ Creating '/tmp/RtmpiX0CsF/demo/'
+#> ✔ Setting active project to '/tmp/RtmpiX0CsF/demo'
 #> ✔ Creating 'R/'
 #> ✔ Writing 'DESCRIPTION'
 #> Package: demo
@@ -44,7 +44,7 @@ The structure looks like this:
 
 ``` r
 fs::dir_tree (path)
-#> /tmp/RtmprqCF2O/demo
+#> /tmp/RtmpiX0CsF/demo
 #> ├── DESCRIPTION
 #> ├── NAMESPACE
 #> └── R
@@ -86,7 +86,7 @@ Our package now looks like this:
 
 ``` r
 fs::dir_tree (path)
-#> /tmp/RtmprqCF2O/demo
+#> /tmp/RtmpiX0CsF/demo
 #> ├── DESCRIPTION
 #> ├── NAMESPACE
 #> ├── R
@@ -104,13 +104,7 @@ x0 <- autotest_package (path)
 ```
 
     #> ℹ Loading autotest
-    #> 
-    #> 
-    #> ── autotesting demo ──
-    #> 
-    #> 
-    #> 
-    #> ✔ [1 / 1]: my_function
+    #> ✔ [1 / 1]
 
 We use the [`DT` package](https://rstudio.github.io/DT) to display the
 results here.
@@ -120,8 +114,8 @@ DT::datatable (x0, options = list (dom = "t")) # display table only
 #> PhantomJS not found. You can install it with webshot::install_phantomjs(). If it is installed, please make sure the phantomjs executable can be found via the PATH variable.
 ```
 
-<div id="htmlwidget-6fb57659b236d5fd2d8f" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6fb57659b236d5fd2d8f">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9"],["dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy"],["int_range","int_as_numeric","single_par_as_length_2","return_successful","return_val_described","return_desc_includes_class","return_class_matches_desc","par_is_documented","par_matches_docs"],["my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function"],["x","x","x","(return object)","(return object)","(return object)","(return object)","x","x"],["single integer","single integer","single integer","(return object)","(return object)","(return object)","(return object)",null,null],["Ascertain permissible range","Integer value converted to numeric","Length 2 vector for length 1 parameter","Check that function successfully returns an object","Check that description has return value","Check whether description of return value specifies class","Compare class of return value with description","Check that parameter is documented","Check that documentation matches class of input parameter"],["Should either be unrestricted or correspond with documentation","(Should yield same result)","Should trigger message, warning, or error",null,null,null,null,null,null],[true,true,true,true,true,true,true,true,true],["4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c342cb387edc66ffcb39" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c342cb387edc66ffcb39">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9"],["dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy"],["double_is_int","trivial_noise","single_par_as_length_2","return_successful","return_val_described","return_desc_includes_class","return_class_matches_desc","par_is_documented","par_matches_docs"],["my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function"],["x","x","x","(return object)","(return object)","(return object)","(return object)","x","x"],["numeric","numeric","single numeric","(return object)","(return object)","(return object)","(return object)",null,null],["Check whether double is only used as int","Add trivial noise to numeric parameter","Length 2 vector for length 1 parameter","Check that function successfully returns an object","Check that description has return value","Check whether description of return value specifies class","Compare class of return value with description","Check that parameter is documented","Check that documentation matches class of input parameter"],["int parameters should have terminal 'L'","(Should yield same result)","Should trigger message, warning, or error",null,null,null,null,null,null],[true,true,true,true,true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 The first thing to notice is the first column, which has
 `test_type = "dummy"` for all rows. The [`autotest_package()`
@@ -134,16 +128,15 @@ gives the following result.
 
 ``` r
 x1 <- autotest_package (path, test = TRUE)
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
+#> ℹ Loading demo
+#> ✔ [1 / 1]
 DT::datatable (x1, options = list (dom = "t"))
 ```
 
-<div id="htmlwidget-2e2765ac504915c60c77" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2e2765ac504915c60c77">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["diagnostic","diagnostic"],["int_range","single_par_as_length_2"],["my_function","my_function"],["x","x"],["single integer","single integer"],["Ascertain permissible range","Length 2 vector for length 1 parameter"],["Parameter [x] permits unrestricted integer inputs,  yet does not document this; please add 'unrestricted' to parameter description.","Parameter [x] of function [my_function] is only used a single integer value, but responds to vectors of length &gt; 1"],[true,true],["4b673474db8f32dc60cc02d2d38a3993","4b673474db8f32dc60cc02d2d38a3993"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0a9c7c11e8a858927b64" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0a9c7c11e8a858927b64">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["error","error","diagnostic"],[null,"return_successful","return_desc_includes_class"],["my_function","my_function","my_function"],[null,"(return object)","(return object)"],[null,"(return object)","(return object)"],["normal function call","error from normal operation","Check whether description of return value specifies class"],[":quote(1)): could not find function \"my_function\"","could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
-Of the 9 tests which were performed, only 2 yielded unexpected
+Of the 9 tests which were performed, only 3 yielded unexpected
 behaviour. The first indicates that the parameter `x` has only been used
 as an integer, yet was not specified as such. The second states that the
 parameter `x` is “assumed to be a single numeric”. `autotest` does its
@@ -179,11 +172,14 @@ This is then sufficient to pass all `autotest` tests and so return
 
 ``` r
 autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
-#> NULL
+#> ✔ [1 / 1]
+#> # A tibble: 3 × 8
+#>   type       test_name             fn_name param…¹ param…² opera…³ content test 
+#>   <chr>      <chr>                 <chr>   <chr>   <chr>   <chr>   <chr>   <lgl>
+#> 1 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 2 error      return_successful     my_fun… (retur… (retur… error … "could… TRUE 
+#> 3 diagnostic return_desc_includes… my_fun… (retur… (retur… Check … "Funct… TRUE 
+#> # … with abbreviated variable names ¹​parameter, ²​parameter_type, ³​operation
 ```
 
 ## Integer input
@@ -206,15 +202,12 @@ roxygen2::roxygenise (path)
 #> ℹ Loading demo
 #> Writing 'my_function.Rd'
 x2 <- autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
+#> ✔ [1 / 1]
 DT::datatable (x2, options = list (dom = "t"))
 ```
 
-<div id="htmlwidget-28fa246601bc621478d3" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-28fa246601bc621478d3">{"x":{"filter":"none","vertical":false,"data":[["1"],["diagnostic"],["int_range"],["my_function"],["x"],["single integer"],["Ascertain permissible range"],["Parameter [x] permits unrestricted integer inputs,  yet does not document this; please add 'unrestricted' to parameter description."],[true],["4fd07cc9dc235e2cc8a711957cf2d784"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-fcdb63591cf190e69ac5" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-fcdb63591cf190e69ac5">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","diagnostic","diagnostic"],[null,null,"return_successful","int_range","return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,null,"(return object)","x","(return object)"],[null,null,"(return object)","single integer","(return object)"],["normal function call",null,"error from normal operation","Ascertain permissible range","Check whether description of return value specifies class"],[":quote(structure(1L, is_int = TRUE))): could not find function \"my_function\"",":quote(structure(1L, is_int = TRUE))): could not find function \"my_function\"","could not find function \"my_function\"","Function [my_function] does not respond appropriately for specified/default input [x = 1]","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 That then generates two additional messages, the second of which
 reflects an expectation that parameters assumed to be integer-valued
@@ -245,11 +238,16 @@ roxygen2::roxygenise (path)
 #> ℹ Loading demo
 #> Writing 'my_function.Rd'
 autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
-#> NULL
+#> ✔ [1 / 1]
+#> # A tibble: 5 × 8
+#>   type       test_name             fn_name param…¹ param…² opera…³ content test 
+#>   <chr>      <chr>                 <chr>   <chr>   <chr>   <chr>   <chr>   <lgl>
+#> 1 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 2 error      <NA>                  my_fun… <NA>    <NA>    <NA>    ":quot… TRUE 
+#> 3 error      return_successful     my_fun… (retur… (retur… error … "could… TRUE 
+#> 4 diagnostic int_range             my_fun… x       single… Ascert… "Funct… TRUE 
+#> 5 diagnostic return_desc_includes… my_fun… (retur… (retur… Check … "Funct… TRUE 
+#> # … with abbreviated variable names ¹​parameter, ²​parameter_type, ³​operation
 ```
 
 An alternative, and frequently better way, is to ensure and document
@@ -281,20 +279,25 @@ roxygen2::roxygenise (path)
 #> ℹ Loading demo
 #> Writing 'my_function.Rd'
 autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
-#> NULL
+#> ✔ [1 / 1]
+#> # A tibble: 5 × 8
+#>   type       test_name             fn_name param…¹ param…² opera…³ content test 
+#>   <chr>      <chr>                 <chr>   <chr>   <chr>   <chr>   <chr>   <lgl>
+#> 1 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 2 error      <NA>                  my_fun… <NA>    <NA>    <NA>    ":quot… TRUE 
+#> 3 error      return_successful     my_fun… (retur… (retur… error … "could… TRUE 
+#> 4 diagnostic int_range             my_fun… x       single… Ascert… "Funct… TRUE 
+#> 5 diagnostic return_desc_includes… my_fun… (retur… (retur… Check … "Funct… TRUE 
+#> # … with abbreviated variable names ¹​parameter, ²​parameter_type, ³​operation
 ```
 
 Respective limits of ranges may be specified with any of the following
 words:
 
--   Lower limits: “more”, “greater”, “larger than”, “lower limit of”,
-    “above”
--   Upper limits: “less”, “lower”, “smaller than”, “upper limit of”,
-    “below”
+- Lower limits: “more”, “greater”, “larger than”, “lower limit of”,
+  “above”
+- Upper limits: “less”, “lower”, “smaller than”, “upper limit of”,
+  “below”
 
 ## Vector input
 
@@ -331,15 +334,13 @@ which all values are whole numbers, regardless of `storage.mode`.
 
 ``` r
 x3 <- autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
+#> ✔ [1 / 2]
+#> ✔ [2 / 2]
 DT::datatable (x3, options = list (dom = "t"))
 ```
 
-<div id="htmlwidget-38aac5ff254d0f60deee" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-38aac5ff254d0f60deee">{"x":{"filter":"none","vertical":false,"data":[["1"],["diagnostic"],["vector_to_list_col"],["my_function"],["x"],["vector"],["Convert vector input to list-columns"],["Function [my_function] errors on list-columns when submitted as x Error message: non-numeric argument to binary operator"],[true],["06ae506249fb26783a8394dd5b2f20c6"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-6481749d02f598c5570b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6481749d02f598c5570b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,null,"return_successful",null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,null,"(return object)",null,"(return object)"],[null,null,"(return object)",null,"(return object)"],[null,"normal function call","error from normal operation","normal function call","Check whether description of return value specifies class"],[":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 ### List-column conversion
 
@@ -435,11 +436,17 @@ That change once again leads to clean `autotest` results:
 
 ``` r
 autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 1]: my_function
-#> NULL
+#> ✔ [1 / 2]
+#> ✔ [2 / 2]
+#> # A tibble: 5 × 8
+#>   type       test_name             fn_name param…¹ param…² opera…³ content test 
+#>   <chr>      <chr>                 <chr>   <chr>   <chr>   <chr>   <chr>   <lgl>
+#> 1 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 2 error      return_successful     my_fun… (retur… (retur… error … "could… TRUE 
+#> 3 error      <NA>                  my_fun… <NA>    <NA>    <NA>    ":quot… TRUE 
+#> 4 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 5 diagnostic return_desc_includes… my_fun… (retur… (retur… Check … "Funct… TRUE 
+#> # … with abbreviated variable names ¹​parameter, ²​parameter_type, ³​operation
 ```
 
 Of course simply attempting to `unlist` a complex list-column may be
@@ -475,16 +482,13 @@ roxygen2::roxygenise (path) # need to update docs with seed param
 #> Writing 'NAMESPACE'
 #> Writing 'my_function3.Rd'
 x4 <- autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 2]: my_function
-#> ✔ [2 / 2]: my_function3
+#> ✔ [1 / 2]
+#> ✔ [2 / 2]
 DT::datatable (x4, options = list (dom = "t"))
 ```
 
-<div id="htmlwidget-2a1fd0189cc42e9365d1" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-2a1fd0189cc42e9365d1">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["diagnostic","diagnostic","diagnostic"],["return_val_described","return_desc_includes_class","return_class_matches_desc"],["my_function3","my_function3","my_function3"],["(return object)","(return object)","(return object)"],["(return object)","(return object)","(return object)"],["Check that description has return value","Check whether description of return value specifies class","Compare class of return value with description"],["Function [my_function3] does not specify a return value.","Function [my_function3] does not describe return value","Function [my_function3] does not describe return value"],[true,true,true],["a14af8f9a3b44568ca5df2ca8130cd6c","a14af8f9a3b44568ca5df2ca8130cd6c","a14af8f9a3b44568ca5df2ca8130cd6c"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-c26a23c5f9e45018de3c" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c26a23c5f9e45018de3c">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,"return_successful",null,null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,"(return object)",null,null,"(return object)"],[null,"(return object)",null,null,"(return object)"],["normal function call","error from normal operation",null,"normal function call","Check whether description of return value specifies class"],[":quote(1)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 Several new diagnostic messages are then issued regarding the
 description of the returned value. Let’s insert a description to see the
@@ -499,16 +503,13 @@ roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'my_function3.Rd'
 x5 <- autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 2]: my_function
-#> ✔ [2 / 2]: my_function3
+#> ✔ [1 / 2]
+#> ✔ [2 / 2]
 DT::datatable (x5, options = list (dom = "t"))
 ```
 
-<div id="htmlwidget-1a278f890ac42c559749" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1a278f890ac42c559749">{"x":{"filter":"none","vertical":false,"data":[["1","2"],["diagnostic","diagnostic"],["return_desc_includes_class","return_class_matches_desc"],["my_function3","my_function3"],["(return object)","(return object)"],["(return object)","(return object)"],["Check whether description of return value specifies class","Compare class of return value with description"],["Function [my_function3] returns a value of class [data.frame], which differs from the value provided in the description","Function returns an object of class [data.frame] yet documentation describes class of value as [dataframe]"],[true,true],["a14af8f9a3b44568ca5df2ca8130cd6c","a14af8f9a3b44568ca5df2ca8130cd6c"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n      <th>yaml_hash<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4830368c131758ec5e1b" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4830368c131758ec5e1b">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,null,"return_successful",null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,null,"(return object)",null,"(return object)"],[null,null,"(return object)",null,"(return object)"],[null,"normal function call","error from normal operation","normal function call","Check whether description of return value specifies class"],[":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 That result still contains a couple of diagnostic messages, but it is
 now pretty clear what we need to do, which is to be precise with our
@@ -522,12 +523,17 @@ roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'my_function3.Rd'
 autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 2]: my_function
-#> ✔ [2 / 2]: my_function3
-#> NULL
+#> ✔ [1 / 2]
+#> ✔ [2 / 2]
+#> # A tibble: 5 × 8
+#>   type       test_name             fn_name param…¹ param…² opera…³ content test 
+#>   <chr>      <chr>                 <chr>   <chr>   <chr>   <chr>   <chr>   <lgl>
+#> 1 error      <NA>                  my_fun… <NA>    <NA>    <NA>    ":quot… TRUE 
+#> 2 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 3 error      return_successful     my_fun… (retur… (retur… error … "could… TRUE 
+#> 4 error      <NA>                  my_fun… <NA>    <NA>    normal… ":quot… TRUE 
+#> 5 diagnostic return_desc_includes… my_fun… (retur… (retur… Check … "Funct… TRUE 
+#> # … with abbreviated variable names ¹​parameter, ²​parameter_type, ³​operation
 ```
 
 ### Documentation of input parameters
@@ -552,16 +558,13 @@ roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'my_function3.Rd'
 x6 <- autotest_package (path, test = TRUE)
-#> 
-#> ── autotesting demo ──
-#> 
-#> ✔ [1 / 2]: my_function
-#> ✔ [2 / 2]: my_function3
+#> ✔ [1 / 2]
+#> ✔ [2 / 2]
 DT::datatable (x6, options = list (dom = "t"))
 ```
 
-<div id="htmlwidget-f20eba4220c4d23573a0" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f20eba4220c4d23573a0">{"x":null,"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b140c03eda1239b8c199" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b140c03eda1239b8c199">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,null,"return_successful",null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,null,"(return object)",null,"(return object)"],[null,null,"(return object)",null,"(return object)"],[null,"normal function call","error from normal operation","normal function call","Check whether description of return value specifies class"],[":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 
 This warning again indicates precisely how it can be rectified, for
 example by replacing the third line with
@@ -576,9 +579,9 @@ The demonstrations above hopefully suffice to indicate the general
 procedure which `autotest` attempts to make as simple as possible. This
 procedure consists of the following single point:
 
--   From the moment you develop your first function, and every single
-    time you modify your code, do whatever steps are necessary to ensure
-    `autotest_package()` returns `NULL`.
+- From the moment you develop your first function, and every single time
+  you modify your code, do whatever steps are necessary to ensure
+  `autotest_package()` returns `NULL`.
 
 This vignette has only demonstrated a few of the tests included in the
 package, but as long as you use `autotest` throughout the entire process

@@ -43,7 +43,6 @@ Argument      |Description
 ## Seealso
 
 Other yaml:
- [`at_yaml_template`](#atyamltemplate) ,
- [`autotest_yaml`](#autotestyaml)
+ [`at_yaml_template`](#atyamltemplate)
 
 

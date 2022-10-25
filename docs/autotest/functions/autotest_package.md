@@ -6,7 +6,7 @@ autotest_package
 ## Description
 
 Automatically test an entire package by converting examples to `yaml` format
- and submitting each to the [autotest_yaml](#autotestyaml) function.
+ and submitting each to the [autotest_single_trace](#autotestsingletrace) function.
 
 
 ## Usage

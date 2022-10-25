@@ -22,6 +22,11 @@ Useful links:
 
 ## Author
 
-Maintainer : Mark Padgham mark.padgham@email.com
+Maintainer : Mark Padgham mark.padgham@email.com ( [ORCID](https://orcid.org/0000-0003-2172-5265) )
+ 
+ Other contributors:
+   
+
+*  Jouni Helske ( [ORCID](https://orcid.org/0000-0001-7130-793X) ) [contributor]
 
 
