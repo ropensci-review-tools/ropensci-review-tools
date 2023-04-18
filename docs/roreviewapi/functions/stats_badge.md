@@ -35,6 +35,7 @@ Other ropensci:
  [`check_issue_template`](#checkissuetemplate) ,
  [`is_user_authorized`](#isuserauthorized) ,
  [`push_to_gh_pages`](#pushtoghpages) ,
+ [`readme_has_peer_review_badge`](#readmehaspeerreviewbadge) ,
  [`srr_counts_summary`](#srrcountssummary) ,
  [`srr_counts`](#srrcounts)
 

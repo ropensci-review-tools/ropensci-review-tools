@@ -12,7 +12,7 @@ Check whether a package has been cached, and if so, whether commits have been
 ## Usage
 
 ```r
-check_cache(org, repo, cache_dir = tempdir())
+check_cache(org, repo, cache_dir = fs::path_temp())
 ```
 
 
