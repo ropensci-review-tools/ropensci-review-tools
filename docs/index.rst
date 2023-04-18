@@ -43,3 +43,4 @@ the ``ropensci-review-tool`` software ecosystem.
    maintenance/pkgcheck
    maintenance/roreviewapi
    maintenance/ropensci-review-bot
+   maintenance/tokens
