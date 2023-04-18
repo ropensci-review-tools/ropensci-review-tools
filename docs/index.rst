@@ -13,8 +13,7 @@ statistical software.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Main Contents
-   :numbered:
+   :caption: Overview
 
    overview
 
