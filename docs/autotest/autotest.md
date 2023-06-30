@@ -275,7 +275,6 @@ functions/at_yaml_template.md
 functions/autotest_obj.md
 functions/autotest_package.md
 functions/autotest_types.md
-functions/autotest_yaml.md
 functions/autotest-package.md
 functions/examples_to_yaml.md
 functions/expect_autotest_no_err.md

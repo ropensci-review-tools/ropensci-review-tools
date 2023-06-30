@@ -1,4 +1,4 @@
-# `render_markdown`
+# `render_md2html`
 
 render markdown-formatted input into 'html'
 
@@ -11,7 +11,7 @@ render markdown-formatted input into 'html'
 ## Usage
 
 ```r
-render_markdown(md, open = TRUE)
+render_md2html(md, open = TRUE)
 ```
 
 
@@ -34,5 +34,20 @@ Other extra:
  [`checks_to_markdown`](#checkstomarkdown) ,
  [`list_pkgchecks`](#listpkgchecks) ,
  [`logfile_names`](#logfilenames)
+
+
+## Examples
+
+```r
+checks <- pkgcheck ("/path/to/my/package")
+# Generate standard markdown-formatted character vector:
+md <- checks_to_markdown (checks)
+
+# Directly generate HTML output:
+h <- checks_to_markdown (checks, render = TRUE) # HTML version
+
+# Or convert markdown-formatted version to HTML:
+h <- render_md2html (md)
+```
 
 

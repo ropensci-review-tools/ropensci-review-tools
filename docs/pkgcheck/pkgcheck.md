@@ -453,7 +453,6 @@ functions/pkgcheck.md
 functions/pkgstats_data.md
 functions/print.pkgcheck.md
 functions/read_pkg_guide.md
-functions/render_markdown.md
 functions/render_md2html.md
 functions/use_github_action_pkgcheck.md
 ```
