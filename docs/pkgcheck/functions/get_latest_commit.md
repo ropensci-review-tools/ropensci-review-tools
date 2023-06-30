@@ -45,3 +45,12 @@ This returns the latest commit from the default branch as specified on
  same default branch.
 
 
+## Examples
+
+```r
+org <- "ropensci-review-tools"
+repo <- "pkgcheck"
+commit <- get_latest_commit (org, repo)
+```
+
+

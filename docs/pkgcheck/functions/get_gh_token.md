@@ -36,3 +36,10 @@ Other github:
  [`use_github_action_pkgcheck`](#usegithubactionpkgcheck)
 
 
+## Examples
+
+```r
+token <- get_gh_token ()
+```
+
+

@@ -34,7 +34,7 @@ Vector of two strings holding respective local paths to `stdout` and
 Other extra:
  [`checks_to_markdown`](#checkstomarkdown) ,
  [`list_pkgchecks`](#listpkgchecks) ,
- [`render_markdown`](#rendermarkdown)
+ [`render_md2html`](#rendermd2html)
 
 
 ## Note
@@ -43,5 +43,13 @@ These files are needed for the callr  `r_bg` process which
  controls the main [pkgcheck](#pkgcheck) . The `stdout` and `stderr` pipes from the
  process are stored in the cache directory so they can be inspected via their
  own distinct endpoint calls.
+
+
+## Examples
+
+```r
+logfiles <- logfiles_namnes ("/path/to/my/package")
+print (logfiles)
+```
 
 

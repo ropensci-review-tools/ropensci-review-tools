@@ -33,6 +33,15 @@ Markdown-formatted version of check report
 Other extra:
  [`list_pkgchecks`](#listpkgchecks) ,
  [`logfile_names`](#logfilenames) ,
- [`render_markdown`](#rendermarkdown)
+ [`render_md2html`](#rendermd2html)
+
+
+## Examples
+
+```r
+checks <- pkgcheck ("/path/to/my/package")
+md <- checks_to_markdown (checks) # markdown-formatted character vector
+md <- checks_to_markdown (checks, render = TRUE) # HTML version
+```
 
 

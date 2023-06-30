@@ -24,10 +24,24 @@ Argument      |Description
 `...`     |     Further arguments pass to or from other methods (not used here).
 
 
+## Value
+
+Nothing. Method called purely for side-effect of printing to screen.
+
+
 ## Seealso
 
 Other pkgcheck_fns:
  [`pkgcheck_bg`](#pkgcheckbg) ,
  [`pkgcheck`](#pkgcheck)
+
+
+## Examples
+
+```r
+checks <- pkgcheck ("/path/to/my/package")
+print (checks) # print full checks, starting with summary
+summary (checks) # print summary only
+```
 
 

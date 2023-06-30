@@ -45,3 +45,15 @@ Other pkgcheck_fns:
  [`print.pkgcheck`](#print.pkgcheck)
 
 
+## Examples
+
+```r
+checks <- pkgcheck ("/path/to/my/package") # default full check
+summary (checks)
+# Or to run only checks implemented in 'pkgcheck' and not the
+# additional \pkg{goodpractice} checks:
+checks <- pkgcheck ("/path/to/my/package", goodpractice = FALSE)
+summary (checks)
+```
+
+

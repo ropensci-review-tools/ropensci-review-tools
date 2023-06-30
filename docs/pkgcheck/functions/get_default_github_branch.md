@@ -42,3 +42,12 @@ This function is not intended to be called directly, and is only
  exported to enable it to be used within the plumber API.
 
 
+## Examples
+
+```r
+org <- "ropensci-review-tools"
+repo <- "pkgcheck"
+branch <- get_default_github_branch (org, repo)
+```
+
+
