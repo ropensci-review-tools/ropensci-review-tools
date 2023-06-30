@@ -40,8 +40,10 @@ And then install the usual way with,
 install.packages ("pkgcheck")
 ```
 
-Alternatively, the package can be installed by running one of the
-following lines:
+Alternatively, the package can be installed by first installing either
+the [remotes](https://remotes.r-lib.org) or
+[pak](https://pak.r-lib.org/) packages and running one of the following
+lines:
 
 ``` r
 remotes::install_github ("ropensci-review-tools/pkgcheck")
@@ -271,7 +273,6 @@ project, you agree to abide by its terms.
 ## Contributors
 
 
-
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -343,7 +344,7 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 </td>
 <td align="center">
 <a href="https://github.com/phuongquan">
-<img src="https://avatars.githubusercontent.com/u/38658964?v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/38658964?u=5761c2835f0a4853c9d7fb844061056a23d29564&v=4" width="100px;" alt=""/>
 </a><br>
 <a href="https://github.com/ropensci-review-tools/pkgcheck/issues?q=is%3Aissue+author%3Aphuongquan">phuongquan</a>
 </td>
@@ -374,6 +375,12 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <img src="https://avatars.githubusercontent.com/u/77991319?u=4242d4c5942fced6368dd5c68221e6618092cbf8&v=4" width="100px;" alt=""/>
 </a><br>
 <a href="https://github.com/ropensci-review-tools/pkgcheck/issues?q=is%3Aissue+author%3Aschneiderpy">schneiderpy</a>
+</td>
+<td align="center">
+<a href="https://github.com/eliocamp">
+<img src="https://avatars.githubusercontent.com/u/8617595?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/ropensci-review-tools/pkgcheck/issues?q=is%3Aissue+author%3Aeliocamp">eliocamp</a>
 </td>
 </tr>
 
@@ -415,6 +422,12 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 </a><br>
 <a href="https://github.com/ropensci-review-tools/pkgcheck/issues?q=is%3Aissue+commenter%3Asantikka">santikka</a>
 </td>
+<td align="center">
+<a href="https://github.com/bnicenboim">
+<img src="https://avatars.githubusercontent.com/u/5982330?u=ec5543c6d11255fd330fc03f5880a1d7bdefadd7&v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/ropensci-review-tools/pkgcheck/issues?q=is%3Aissue+commenter%3Abnicenboim">bnicenboim</a>
+</td>
 </tr>
 
 </table>
@@ -441,6 +454,7 @@ functions/pkgstats_data.md
 functions/print.pkgcheck.md
 functions/read_pkg_guide.md
 functions/render_markdown.md
+functions/render_md2html.md
 functions/use_github_action_pkgcheck.md
 ```
 

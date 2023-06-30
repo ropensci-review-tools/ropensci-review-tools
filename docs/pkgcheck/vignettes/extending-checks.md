@@ -168,8 +168,8 @@ illustrates the first general principle of these check functions; that,
 
 <div class="alert alert-info">
 
--   *Any information needed when summarising or printing the check
-    result should be returned from the main check function.*
+- *Any information needed when summarising or printing the check result
+  should be returned from the main check function.*
 
 </div>
 
@@ -177,8 +177,8 @@ A second important principle is that,
 
 <div class="alert alert-info">
 
--   *Check functions should never return `NULL`, rather should always
-    return an empty vector (such as `integer(0)`)*.
+- *Check functions should never return `NULL`, rather should always
+  return an empty vector (such as `integer(0)`)*.
 
 </div>
 
@@ -229,11 +229,11 @@ following three items:
 2.  `summary` containing text used to generate the `summary` output; and
 3.  `print` containing information used to generate the `print` output,
     itself a `list` of the following items:
-    -   A `msg_pre` to display at the start of the `print` result;
-    -   An `object` to be printed, such as a vector of values, or a
-        `data.frame`.
-    -   A `msg_post` to display at the end of the `print` result
-        following the `object`.
+    - A `msg_pre` to display at the start of the `print` result;
+    - An `object` to be printed, such as a vector of values, or a
+      `data.frame`.
+    - A `msg_post` to display at the end of the `print` result following
+      the `object`.
 
 `summary` and `print` methods may be suppressed by assigning values of
 `""`. The above example of `pkgcheck_has_citation` has `print = ""`, and
@@ -326,7 +326,7 @@ summary (checks)
 ```
 
     #> 
-    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     #> 
     #> ✔ Package name is available
     #> ✖ does not have a 'codemeta.json' file.
@@ -394,7 +394,7 @@ current R session, calling `pkgcheck()` again will automatically detect
 those checks and include them in our output:
 
     #> 
-    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     #> 
     #> ✔ Package name is available
     #> ✖ does not have a 'codemeta.json' file.
