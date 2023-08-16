@@ -46,3 +46,12 @@ the `"ropensci-review-tools" software ecosystem
    maintenance/roreviewapi
    maintenance/ropensci-review-bot
    maintenance/tokens
+
+Finally, the following section describes components of our system used to
+construct and maintain badges on GitHub README pages and package documentation.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Badges
+
+   badges/badges
