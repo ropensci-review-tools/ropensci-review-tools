@@ -6,9 +6,10 @@
 ropensci-review-tools
 ================================
 
-This organisation contains several packages developed for `rOpenSci
-<https://ropensci.org>`_’s review process, including packages specifically for the review of
-statistical software.
+This organisation contains `several packages
+<https://github.com/ropensci-review-tools>`_ developed for `rOpenSci
+<https://ropensci.org>`_’s review process, including packages specifically for
+the review of `statistical software <https://stats-devguide.ropensci.org>`_.
 
 
 .. toctree::
@@ -33,7 +34,8 @@ appropriate link.
    srr/srr.md
 
 The following are links to notes on maintaining the individual components of
-the ``ropensci-review-tool`` software ecosystem.
+the `"ropensci-review-tools" software ecosystem
+<https://github.com/ropensci-review-tools>`_.
 
 .. toctree::
    :maxdepth: 1
