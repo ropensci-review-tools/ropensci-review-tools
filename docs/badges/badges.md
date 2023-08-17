@@ -4,12 +4,15 @@
 This section describes procedures to create, maintain, and update badges which
 ultimately appear on each repositories README page.
 
+---
+
 ## Source for badges
 
 The source "svg" files for all badges are held in [the "svgs" directory of 
 github.com/ropensci-org/badges](https://github.com/ropensci-org/badges/tree/main/svgs).
 New badges needs to be created there, generally by copying an existing badge
-and then editing the "svg" file.
+and then editing the "svg" file. These files should be edited in a code (text)
+editor, and *not* in an image editor.
 
 ### Statistical Software Review Badges
 
@@ -28,3 +31,27 @@ repository](https://github.com/ropensci-org/badges/tree/main/svgs), one for
 each colour. This can be done by simply copying one of the previous versions,
 and replacing the version numbers on the last two lines of each file with
 updated ones.
+
+---
+
+## The 'badges' repository
+
+The repository holding the source badges
+([github.com/ropensci-org/badges](https://github.com/ropensci-org/badges))
+serves the single function of assigning an appropriate badge to each rOpenSci
+repository. These badges are served by our "badge server" which is deployed in
+the last step of [the GitHub Action in that
+repository](https://github.com/ropensci-org/badges/blob/main/.github/workflows/badges.yml).
+The badge for each repository is uniquely identified by the issue number of
+[the software-review
+repository](https://github.com/ropensci/software-review/issues), for example
+'badges.ropensci.org/222_stats.svg' for [the {epubr}
+package](https://github.com/ropensci/epubr) reviewed in [issue number
+222](https://github.com/ropensci/software-review/issues/222), which looks like
+this:
+
+![](https://badges.ropensci.org/222_status.svg)
+
+The rOpenSci package reviewed in issue number XYZ can then display the
+appropriate badge by simply linking to
+'https://badges.ropensci.org/XYZ_status.svg'.
