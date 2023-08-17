@@ -34,11 +34,11 @@ updated ones.
 
 ---
 
-## The 'badges' repository
+## The 'badges' server and repository
 
 The repository holding the source badges
 ([github.com/ropensci-org/badges](https://github.com/ropensci-org/badges))
-serves the single function of assigning an appropriate badge to each rOpenSci
+serves the primary function of assigning an appropriate badge to each rOpenSci
 repository. These badges are served by our "badge server" which is deployed in
 the last step of [the GitHub Action in that
 repository](https://github.com/ropensci-org/badges/blob/main/.github/workflows/badges.yml).
@@ -55,3 +55,16 @@ this:
 The rOpenSci package reviewed in issue number XYZ can then display the
 appropriate badge by simply linking to
 'https://badges.ropensci.org/XYZ_status.svg'.
+
+### The badge script
+
+The server providing the badges reads them directly from the "pkgsvgs"
+directory of the "gh-pages" branch of that repository. This directory is
+populated by the [main script,
+`update_badges.rb`](https://github.com/ropensci-org/badges/blob/main/update_badges.rb).
+This script is called from [the GitHub
+Action](https://github.com/ropensci-org/badges/blob/main/.github/workflows/badges.yml#L25-L26),
+and copies the appropriate badges from the source directory ("svgs") in the
+main branch to the "pkgsvgs" directory in the gh-pages branch, renaming each
+according to the review issue number of each package.
+
