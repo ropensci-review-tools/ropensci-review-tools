@@ -68,3 +68,33 @@ and copies the appropriate badges from the source directory ("svgs") in the
 main branch to the "pkgsvgs" directory in the gh-pages branch, renaming each
 according to the review issue number of each package.
 
+
+---
+
+## Constructing and implementing new badges
+
+The following steps describe the procedure which must be followed to construct and implement new badges.
+
+1. Design a new badge and save it in [the "svgs" folder of the badges
+   repository](https://github.com/ropensci-org/badges/tree/main/svgs).
+2. Design a corresponding GitHub "approved" issue label in [the main
+   software-review
+   repository](https://github.com/ropensci/software-review/labels). This label
+   must begin with "6/approved-", followed by the desired new text. Note the
+   slash after "6" is forward, not backward!
+3. The bot then needs to be modified to recognise any new badges, like [this
+   code which processes statistics
+   badges](https://github.com/ropensci-org/buffy/blob/044d630b554a7963aa2a1d8febe9422edd5643bd/app/responders/ropensci/approve_responder.rb#L34-L46).
+   That will then ensure that the `approve` command will also add the
+   corresponding label to the issue thread.
+4. Modify [the `update_badges.rb` script in the badges
+   repository](https://github.com/ropensci-org/badges/blob/main/update_badges.rb)
+   to recognise the new labels. The value of these new values will then
+   generally be in the first field of [the `iss_peer_rev_files` object,
+   currently called
+   "color"](https://github.com/ropensci-org/badges/blob/358a433204b89f4fa2f8b09661d2d6dec9ea4cab/update_badges.rb#L44-L49).
+   The remainder of that script will then also need modifying to process
+   entires with `color` values but no `version` values...
+
+After updating the script, the new badges should be automatically deployed and
+assigned to the appropriate review issues.
