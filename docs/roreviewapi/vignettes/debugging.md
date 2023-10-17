@@ -120,3 +120,25 @@ function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/edito
     Alternative values for `orgrepo` and `issue_num` can be used to
     first confirm that the checks look okay before posting them to
     `ropensci/software-review`.
+
+These steps can be run in two code chunks, the first directly in the
+shell environment of the Digital Ocean droplet:
+
+``` bash
+docker run -it --rm roreviewapi /bin/bash
+R
+```
+
+And the second within the R environment:
+
+``` r
+repourl <- "https://github.com/org/repo" # replace with actual org/repo values
+path <- roreviewapi::dl_gh_repo (repourl)
+os <- "ubuntu"
+os_release <- "20.04"
+p <- roreviewapi::pkgrep_install_deps (path, os, os_release)
+checks <- pkgcheck::pkgcheck(path)
+out <- roreviewapi::collate_editor_check (checks)
+orgrepo <- "ropensci/software-review" # or somewhere else for testing purposes
+out <- roreviewapi::post_to_issue (out, orgrepo, issue_num)
+```
