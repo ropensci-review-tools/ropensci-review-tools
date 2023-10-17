@@ -98,7 +98,7 @@ procedure describe how, generally following the main [`editor_check()`
 function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R).
 
 1.  Enter the `roreviewapi` Docker image via
-    `docker -it --rm --entrypoint /bin/bash roreviewapi` and start R.
+    `docker run -it --rm roreviewapi /bin/bash` and start R.
 2.  Set `repourl <- <url>` and run
     `path <- roreviewapi::dl_gh_repo (repourl)` to download a clone of
     the repository.
