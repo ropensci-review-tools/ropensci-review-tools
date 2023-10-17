@@ -48,7 +48,7 @@ d <- srr_stats_pkg_skeleton (pkg_name = "package")
 fs::dir_tree (d)
 ```
 
-    ## /tmp/Rtmp0qdxnP/package
+    ## /tmp/RtmpuwzVqt/package
     ## ├── DESCRIPTION
     ## ├── NAMESPACE
     ## ├── R
@@ -98,28 +98,39 @@ which will produce output like the following:
 roxygen2::roxygenise (d)
 ```
 
-    ## Updating roxygen version in /tmp/Rtmp0qdxnP/package/DESCRIPTION
+    ## Setting `RoxygenNote` to "7.2.3"
     ## ℹ Loading package
-    ## Writing NAMESPACE
-    ## ─────────────────────────────────────── rOpenSci Statistical Software Standards ──────────────────────────────────────
+    ## Writing 'NAMESPACE'
+    ## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────── rOpenSci Statistical Software Standards ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## 
-    ## ── @srrstats standards:
+    ## 
+    ## 
+    ## ── @srrstats standards (8 / 12): 
+    ## 
     ##   * [G1.1, G1.2, G1.3, G2.0, G2.1] in function 'test_fn()' on line#11 of file [R/test.R]
     ##   * [RE2.2] on line#2 of file [tests/testthat/test-a.R]
     ##   * [G2.3] in function 'test()' on line#6 of file [src/cpptest.cpp]
     ##   * [G1.4] on line#17 of file [./README.Rmd]
     ## 
-    ## ── @srrstatsNA standards:
+    ## 
+    ## 
+    ## ── @srrstatsNA standards (1 / 12): 
+    ## 
     ##   * [RE3.3] on line#5 of file [R/srr-stats-standards.R]
     ## 
-    ## ── @srrstatsTODO standards:
+    ## 
+    ## 
+    ## ── @srrstatsTODO standards (3 / 12): 
+    ## 
     ##   * [RE4.4] on line#14 of file [R/srr-stats-standards.R]
     ##   * [RE1.1] on line#11 of file [R/test.R]
     ##   * [G1.5] on line#17 of file [./README.Rmd]
-    ## ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    ## Writing package-package.Rd
-    ## Writing test_fn.Rd
-    ## Writing NAMESPACE
+    ## 
+    ## ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+    ## 
+    ## Writing 'package-package.Rd'
+    ## Writing 'test_fn.Rd'
+    ## Writing 'NAMESPACE'
 
 The “roclets” contained within this package parse any instances of the
 package-specified tags described below, and summarise the output by
@@ -418,14 +429,19 @@ the following general steps:
     (in the main package directory). This will by default generate a
     file in the `R/` directory called `srr-stats-standards.R`, although
     any alternative name can also be passed to the function (or the file
-    can be renamed after it has initially been created).
+    can be renamed after it has initially been created). Each group of
+    standards in this file must always be terminated by `NULL` in order
+    to be appropriately parsed by the `roxygen2` package.
 2.  Change your package’s `DESCRIPTION` file to use the `srr` roclets by
     adding `roclets = "srr::srr_stats_roclet"`) to the `Roxygen` line,
     as demonstrated at the outset, as well as in the package skeleton.
 3.  Run
     [`roxygenise`](https://roxygen2.r-lib.org/reference/roxygenize.html)
     to confirm that the roclets work on your package. You should
-    initially see only a single list of `@srrstatsTODO` standards.
+    initially see only a single list of `@srrstatsTODO` standards. All
+    documented standards should appear somewhere in the output. Any
+    missing standards indicate documentation problems, such as missing
+    terminal `NULL` values from standards blocks.
 4.  We recommend as a first step cutting-and-pasting standards to
     approximate locations within your package’s code where you
     anticipate these standards being addressed. Multiple copies of any
@@ -435,18 +451,18 @@ the following general steps:
     of standards down to several distinct groups of hopefully more
     manageable size.
 5.  Begin addressing the standards by:
-    -   Ensuring your code conforms;
-    -   Moving each standard to the one or more location(s) where you
-        think your code most directly addresses them;
-    -   Modifying the `@srrstatsTODO` tag to `@srrstats`
-    -   Changing the initial text describing the standard itself to a
-        brief description of how your code addresses that standard.
+    - Ensuring your code conforms;
+    - Moving each standard to the one or more location(s) where you
+      think your code most directly addresses them;
+    - Modifying the `@srrstatsTODO` tag to `@srrstats`
+    - Changing the initial text describing the standard itself to a
+      brief description of how your code addresses that standard.
 6.  Standards which you deem not to be applicable to your package should
     be grouped together in a single
     [`roxygen2`](https://roxygen2.r-lib.org) block with the title
     `NA_standards` (as described above, and as generated by the
     [`srr_stats_roxygen()`](https://docs.ropensci.org/srr/reference/srr_stats_roxygen.html)
-    function).
+    function). This block must finish with a `NULL` statement.
 7.  Update your documentation as frequently as you like or need, and use
     the output of the roclets to inform and guide the process of
     converting all `@srrstatsTODO` tags into either `@srrstats` or
@@ -472,7 +488,6 @@ roxygen2::roxygenise (d)
 ```
 
     ## ℹ Loading package
-    ## Writing NAMESPACE
     ## Error: Standards [G1.1, G1.2, G1.3, G2.0, G2.1, RE2.2, G2.3, G1.4] are listed with both @srrstats and @srrstatsTODO tags.
     ## Please rectify to ensure these standards are only associated with one tag.
 
