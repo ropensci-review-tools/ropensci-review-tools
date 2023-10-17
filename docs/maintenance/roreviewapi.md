@@ -74,6 +74,20 @@ debugging. The best approach is then to manually run the `roreviewapi` Docker
 container on the Digital Ocean server, and step through the code to locate the
 source of the problem.
 
+The Digital Ocean droplet can be accessed via the Digital Ocean web interface,
+or via SSH. The latter requires a public SSH key to be registered in the
+droplet. Once in the droplet, the following lines will enter an R session
+within the Docker container:
+
+``` bash
+docker run -it --rm roreviewapi /bin/bash
+R
+```
+
+The procedure here is documented in a slightly different form in [the
+"Debugging" vignette of the `roreviewapi`
+package](https://ropensci-review-tools.readthedocs.io/en/latest/roreviewapi/vignettes/debugging.html#manually-running-checks).
+
 The plumber endpoints themselves should generally be bug-free, with the [main
 "editor check"
 endpoint](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R)
