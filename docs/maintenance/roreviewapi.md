@@ -77,8 +77,9 @@ source of the problem.
 The plumber endpoints themselves should generally be bug-free, with the [main
 "editor check"
 endpoint](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R)
-calling [the `roreviewapi::editor_check()` function]. It may nevertheless be
-worthwhile calling the two functions prior to that call
+calling [the `roreviewapi::editor_check()`
+function](https://docs.ropensci.org/roreviewapi/reference/editor_check.html).
+It may nevertheless be worthwhile calling the two functions prior to that call
 (`check_issue_template()` and `stdout_stderr_cache()`). The [`editor_check()`
 function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R)
 should be run after first setting the two operating-system variables defined in
