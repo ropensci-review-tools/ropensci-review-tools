@@ -6,9 +6,8 @@ Maintenance of `pkgcheck` package.
 ## Adding new checks
 
 The procedure for adding new checks is documented in the ["*Extending or
-modifying checks*"
-vignette](https://ropensci-review-tools.readthedocs.io/en/latest/pkgcheck/vignettes/extending-checks.html)
-within the `pkgcheck` package. The
+modifying checks*" vignette](/pkgcheck/vignettes/extending-checks) within the
+`pkgcheck` package. The
 [`roreviewapi`](https://github.com/ropensci-review-tools/roreviewapi) package
 which delivers the checks to rOpenSci's GitHub issues directly dumps all checks
 currently delivered by `pkgcheck`. See the following section for options for
