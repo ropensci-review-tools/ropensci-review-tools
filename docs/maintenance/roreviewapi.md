@@ -72,7 +72,9 @@ Some errors may arise in which a `log` entry appears to have been correctly
 sent, and yet no `stdlogs` are generated. These typically require manual
 debugging. The best approach is then to manually run the `roreviewapi` Docker
 container on the Digital Ocean server, and step through the code to locate the
-source of the problem.
+source of the problem. The general procedure for this is described in [the
+"Debugging" vignette of the `roreviewapi`
+package](https://ropensci-review-tools.readthedocs.io/en/latest/roreviewapi/vignettes/debugging.html#manually-running-checks).
 
 The Digital Ocean droplet can be accessed via the Digital Ocean web interface,
 or via SSH. The latter requires a public SSH key to be registered in the
@@ -84,52 +86,35 @@ docker run -it --rm roreviewapi /bin/bash
 R
 ```
 
-The procedure here is documented in a slightly different form in [the
-"Debugging" vignette of the `roreviewapi`
-package](https://ropensci-review-tools.readthedocs.io/en/latest/roreviewapi/vignettes/debugging.html#manually-running-checks).
-
-The plumber endpoints themselves should generally be bug-free, with the [main
-"editor check"
-endpoint](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R)
-calling [the `roreviewapi::editor_check()`
-function](https://docs.ropensci.org/roreviewapi/reference/editor_check.html).
-It may nevertheless be worthwhile calling the two functions prior to that call
-(`check_issue_template()` and `stdout_stderr_cache()`). The [`editor_check()`
-function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/editor-check.R)
-should be run after first setting the two operating-system variables defined in
-[the main
-Dockerfile](https://github.com/ropensci-review-tools/roreviewapi/blob/578f7ce7d6efb3d4b3893b73407835d2af8a2c38/Dockerfile#L25)
-of,
+The ["Debugging"
+vignette"](https://ropensci-review-tools.readthedocs.io/en/latest/roreviewapi/vignettes/debugging.html#manually-running-checks)
+then includes the following code chunk which can be stepped through to identify
+sources of any bugs:
 
 ``` r
+repourl <- "https://github.com/org/repo" # replace with actual org/repo values
+path <- roreviewapi::dl_gh_repo (repourl)
 os <- "ubuntu"
 os_release <- "20.04"
-```
-
-The `editor_check()` function then proceeds through the following main sequence
-of calls, starting with checks whether the main `repourl` also specifies a
-non-default branch (in the form "github.com/\<org\>/\<repo\>/tree/\<branch\>"):
-
-``` r
-branch <- get_branch_from_url (repourl)
-if (!is.null (branch)) {
-    repourl <- gsub (paste0 ("\\/tree\\/", branch, ".*$"), "", repourl)
-}
-path <- roreviewapi::dl_gh_repo (u = repourl, branch = branch)
 p <- roreviewapi::pkgrep_install_deps (path, os, os_release)
-# -> check whether `p` is an error
-
-updates <- roreviewapi::rorevapi_updated_pkgs (path)
-if (length (updates) > 0L) {
-  utils::update.packages (oldPkgs = updates, ask = FALSE)
-}
-
-checks <- pkgcheck::pkgcheck (path)
-# -> check whether `checks` is an error; if so, try to reproduce as separate
-#    pkgcheck call and file issue there if error is reproducible.
-
+checks <- pkgcheck::pkgcheck(path)
 out <- roreviewapi::collate_editor_check (checks)
+orgrepo <- "ropensci/software-review" # or somewhere else for testing purposes
+out <- roreviewapi::post_to_issue (out, orgrepo, issue_num)
 ```
 
-It should be possible to locate the source of most errors somewhere within one
-of those calls.
+
+These lines represent the main function calls within the ["editor check"
+endpoint](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R)
+in the plumber function, which in turns calls [the
+`roreviewapi::editor_check()`
+function](https://docs.ropensci.org/roreviewapi/reference/editor_check.html).
+The plumber endpoints themselves should generally be bug-free, although it may
+be worthwhile calling the two functions prior to that call
+(`check_issue_template()` and `stdout_stderr_cache()`).
+
+See the actual code of [the `roreviewapi::editor_check()`
+function](https://docs.ropensci.org/roreviewapi/reference/editor_check.html)
+for further details, including code to handle non-default git branches. It
+should be possible to locate the source of most errors somewhere within one of
+those calls.
