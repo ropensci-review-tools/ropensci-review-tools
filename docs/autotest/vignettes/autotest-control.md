@@ -196,24 +196,23 @@ print (xf)
 ```
 
     #> # A tibble: 15 × 8
-    #>    type  test_name                 fn_name param…¹ param…² opera…³ content test 
-    #>    <chr> <chr>                     <chr>   <chr>   <chr>   <chr>   <chr>   <lgl>
-    #>  1 dummy single_char_case          cor     use     single… lower-… (Shoul… TRUE 
-    #>  2 dummy single_char_case          cor     use     single… upper-… (Shoul… TRUE 
-    #>  3 dummy single_par_as_length_2    cor     use     single… Length… Should… TRUE 
-    #>  4 dummy return_successful         cor     (retur… (retur… Check … <NA>    TRUE 
-    #>  5 dummy return_val_described      cor     (retur… (retur… Check … <NA>    TRUE 
-    #>  6 dummy return_desc_include_class cor     (retur… (retur… Check … <NA>    TRUE 
-    #>  7 dummy return_class_matches_desc cor     (retur… (retur… Compar… <NA>    TRUE 
-    #>  8 dummy par_is_documented         cor     x       <NA>    Check … <NA>    TRUE 
-    #>  9 dummy par_matches_doc           cor     x       <NA>    Check … <NA>    TRUE 
-    #> 10 dummy par_is_documented         cor     use     <NA>    Check … <NA>    TRUE 
-    #> 11 dummy par_matches_doc           cor     use     <NA>    Check … <NA>    TRUE 
-    #> 12 dummy par_is_documented         cor     method  <NA>    Check … <NA>    TRUE 
-    #> 13 dummy par_matches_doc           cor     method  <NA>    Check … <NA>    TRUE 
-    #> 14 dummy par_is_documented         cor     y       <NA>    Check … <NA>    TRUE 
-    #> 15 dummy par_matches_doc           cor     y       <NA>    Check … <NA>    TRUE 
-    #> # … with abbreviated variable names ¹​parameter, ²​parameter_type, ³​operation
+    #>    type  test_name      fn_name parameter parameter_type operation content test 
+    #>    <chr> <chr>          <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
+    #>  1 dummy single_char_c… cor     use       single_charac… lower-ca… (Shoul… TRUE 
+    #>  2 dummy single_char_c… cor     use       single_charac… upper-ca… (Shoul… TRUE 
+    #>  3 dummy single_par_as… cor     use       single_charac… Length 2… Should… TRUE 
+    #>  4 dummy return_succes… cor     (return … (return objec… Check th… <NA>    TRUE 
+    #>  5 dummy return_val_de… cor     (return … (return objec… Check th… <NA>    TRUE 
+    #>  6 dummy return_desc_i… cor     (return … (return objec… Check wh… <NA>    TRUE 
+    #>  7 dummy return_class_… cor     (return … (return objec… Compare … <NA>    TRUE 
+    #>  8 dummy par_is_docume… cor     x         <NA>           Check th… <NA>    TRUE 
+    #>  9 dummy par_matches_d… cor     x         <NA>           Check th… <NA>    TRUE 
+    #> 10 dummy par_is_docume… cor     use       <NA>           Check th… <NA>    TRUE 
+    #> 11 dummy par_matches_d… cor     use       <NA>           Check th… <NA>    TRUE 
+    #> 12 dummy par_is_docume… cor     method    <NA>           Check th… <NA>    TRUE 
+    #> 13 dummy par_matches_d… cor     method    <NA>           Check th… <NA>    TRUE 
+    #> 14 dummy par_is_docume… cor     y         <NA>           Check th… <NA>    TRUE 
+    #> 15 dummy par_matches_d… cor     y         <NA>           Check th… <NA>    TRUE
 
 The object returned from `autotest_package()` is a simple
 [`tibble`](https://tibble.tidyverse.org), with each row detailing one
@@ -234,8 +233,7 @@ the corresponding rows of which are:
 ``` r
 xf [xf$type != "dummy", c ("fn_name", "parameter", "operation", "content")]
 #> # A tibble: 0 × 4
-#> # … with 4 variables: fn_name <chr>, parameter <chr>, operation <chr>,
-#> #   content <chr>
+#> # ℹ 4 variables: fn_name <chr>, parameter <chr>, operation <chr>, content <chr>
 ```
 
 Although the `auotest` package is primarily intended to apply mutation
@@ -314,14 +312,13 @@ print (xt2)
 ```
 
     #> # A tibble: 5 × 8
-    #>   type       test_name        fn_name parameter paramete…¹ opera…² content test 
-    #>   <chr>      <chr>            <chr>   <chr>     <chr>      <chr>   <chr>   <lgl>
-    #> 1 warning    par_matches_docs cor     x         <NA>       Check … Parame… TRUE 
-    #> 2 warning    par_matches_docs cor     y         <NA>       Check … Parame… TRUE 
-    #> 3 warning    par_matches_docs cor     x         <NA>       Check … Parame… TRUE 
-    #> 4 warning    par_matches_docs cor     y         <NA>       Check … Parame… TRUE 
-    #> 5 diagnostic single_char_case cor     use       single ch… upper-… is cas… TRUE 
-    #> # … with abbreviated variable names ¹​parameter_type, ²​operation
+    #>   type       test_name  fn_name parameter parameter_type operation content test 
+    #>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
+    #> 1 warning    par_match… cor     x         <NA>           Check th… Parame… TRUE 
+    #> 2 warning    par_match… cor     y         <NA>           Check th… Parame… TRUE 
+    #> 3 warning    par_match… cor     x         <NA>           Check th… Parame… TRUE 
+    #> 4 warning    par_match… cor     y         <NA>           Check th… Parame… TRUE 
+    #> 5 diagnostic single_ch… cor     use       single charac… upper-ca… is cas… TRUE
 
 The result now has four rows with `test == FALSE`, and
 `type == "no_test"`, indicating that these tests were not actually
@@ -359,14 +356,13 @@ print (xt3)
 ```
 
     #> # A tibble: 5 × 8
-    #>   type       test_name        fn_name parameter paramete…¹ opera…² content test 
-    #>   <chr>      <chr>            <chr>   <chr>     <chr>      <chr>   <chr>   <lgl>
-    #> 1 warning    par_matches_docs cor     x         <NA>       Check … Parame… TRUE 
-    #> 2 warning    par_matches_docs cor     y         <NA>       Check … Parame… TRUE 
-    #> 3 warning    par_matches_docs cor     x         <NA>       Check … Parame… TRUE 
-    #> 4 warning    par_matches_docs cor     y         <NA>       Check … Parame… TRUE 
-    #> 5 diagnostic single_char_case cor     use       single ch… upper-… is cas… TRUE 
-    #> # … with abbreviated variable names ¹​parameter_type, ²​operation
+    #>   type       test_name  fn_name parameter parameter_type operation content test 
+    #>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
+    #> 1 warning    par_match… cor     x         <NA>           Check th… Parame… TRUE 
+    #> 2 warning    par_match… cor     y         <NA>           Check th… Parame… TRUE 
+    #> 3 warning    par_match… cor     x         <NA>           Check th… Parame… TRUE 
+    #> 4 warning    par_match… cor     y         <NA>           Check th… Parame… TRUE 
+    #> 5 diagnostic single_ch… cor     use       single charac… upper-ca… is cas… TRUE
 
 These procedures illustrate the three successively finer levels of
 control over tests, by switching them off for:
