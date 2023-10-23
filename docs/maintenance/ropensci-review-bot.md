@@ -5,14 +5,15 @@ Maintenance of `ropensci-review-bot`, built on top of the following Docker conta
 
 ## Docker Containers
 
-### mpadge/pkgcheck
+### ghcr.io/ropensci-review-tools/pkgcheck:latest
 
 This Docker image contains most of the system libraries required to build the
 `roreviewapi` container. These include all libraries contained in the [GitHub
 Ubuntu 20.04
 runner](https://github.com/actions/virtual-environments/blob/main/images/linux/Ubuntu2004-README.md),
-and a selection of R packages. The image is [stored on
-Dockerhub](https://hub.docker.com/r/mpadge/pkgcheck), and rebuilt as a [GitHub
+and a selection of R packages. The image is [stored on the GitHub Container
+Registry](https://ghcr.io/ropensci-review-tools/pkgcheck), and rebuilt as a
+[GitHub
 action](https://github.com/ropensci-review-tools/pkgcheck/blob/main/.github/workflows/docker.yaml)
 as a weekly cron job (as well as on every push).
 
