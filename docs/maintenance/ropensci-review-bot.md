@@ -85,6 +85,34 @@ including editing files and all `git` commands. The docker service itself *does
 not* require `sudo`, so the above command just calls `bash`, not `sudo bash`.
 Similarly, containers can be run with `docker`, and do not need `sudo docker`.
 
+### Managing and Reducing Disk Usage
+
+On Digital Ocean, docker images are by default stored in
+`/var/lib/docker/overlay2`. This directory creates copies of every image
+created, and so [grows continuously in
+size](https://forums.docker.com/t/some-way-to-clean-up-identify-contents-of-var-lib-docker-overlay/30604/35).
+The size of the current container can be seen with `df -h`, where the container
+should be `/dev/vda1`.
+
+These images in `/var/lib/docker/overlay2` can not be removed with any `prune`
+command, and can only be manually cleaned. This should be done at least once
+every few months by manually removing all docker files and rebuilding
+everything from scratch. This can be done with the following commands, which
+remove the entire current docker installation and rebuild everything anew:
+
+```
+COMPOSE_FILE=/<path>/<to>/roreviewapi/docker-compose.yml
+docker-compose -f $COMPOSE_FILE down
+sudo systemctl stop docker.service
+sudo su # Enter super-user mode - be very careful!!!
+cd /var/lib/docker
+rm -rf *
+exit # Exit super-user mode
+sudo systemctl start docker.service
+bash /home/shared/roreviewapi/restart.sh
+```
+
+
 ## Debugging
 
 Error messages in response to package checks can be diagnosed by following the
