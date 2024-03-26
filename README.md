@@ -70,3 +70,24 @@ yet tracked by git. It is thus good practice to either:
    sub-directories of `docs`; or
 2. Using `git clean -n` to list files not tracked by git, and add any `*.md`
    files listed in any sub-folders of `docs.
+
+## Adding new packages
+
+New packages in the [`ropensci-review-tools` GitHub
+organization](https://github.com/ropensci-review-tools) can be added to
+readthedocs site with the following modifications:
+
+1. Add the package name at the top of the [`pkgdocs-script.R`
+   script](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/pkgdocs-script.R?)
+   (and ensure that the repository to be added is locally cloned to the same
+   root directory as this, and all other, repositories).
+2. Modify
+   [`docs/index.rst`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/docs/index.rst),
+   and add the main `.md` file of the new package to the second
+   Table-of-Contents entry (generally as <package/package.md>).
+3. Run `make` to automatically compile the package documentation into the
+   `/docs` folder of this repository.
+4. Add the newly compiled sub-folder of `/docs` to the git tree, commit the
+   files, push to GitHub, and documentation for the the new package will be
+   added to this readthedocs site.
+
