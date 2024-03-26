@@ -25,6 +25,7 @@ Argument      |Description
 ## Seealso
 
 Other yaml:
+ [`autotest_yaml`](#autotestyaml) ,
  [`examples_to_yaml`](#examplestoyaml)
 
 
