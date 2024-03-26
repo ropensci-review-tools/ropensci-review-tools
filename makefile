@@ -16,8 +16,13 @@ open: $(INDEX).html ## Open the main 'html' page
 	xdg-open $(INDEX).html &
 
 clean: ## Run readthedocs 'make clean' + clean all 'grab' targets (R pkg files)
-	rm -rf docs/autotest* docs/pkgcheck* docs/pkgstats* \
-	rm -rf docs/roreviewapi* docs/srr* docs/pkgcheck-action; \
+	rm -rf docs/autotest* \
+		docs/dashboard* \
+		docs/pkgcheck* \
+		docs/pkgstats* \
+		docs/roreviewapi* \
+		docs/srr* \
+		docs/pkgcheck-action; \
 	cd docs;	\
 	make clean;	\
 	cd ..

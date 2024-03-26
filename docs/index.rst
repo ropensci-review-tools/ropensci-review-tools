@@ -32,6 +32,7 @@ appropriate link.
    pkgcheck-action/pkgcheck-action.md
    roreviewapi/roreviewapi.md
    srr/srr.md
+   dashboard/dashboard.md
 
 The following are links to notes on maintaining the individual components of
 the `"ropensci-review-tools" software ecosystem

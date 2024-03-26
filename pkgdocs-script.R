@@ -1,4 +1,5 @@
 pkgs <- c ("autotest",
+           "dashboard",
            "pkgcheck",
            "pkgcheck-action",
            "pkgstats",
