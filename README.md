@@ -85,9 +85,12 @@ readthedocs site with the following modifications:
    [`docs/index.rst`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/docs/index.rst),
    and add the main `.md` file of the new package to the second
    Table-of-Contents entry (generally as <package/package.md>).
-3. Run `make` to automatically compile the package documentation into the
+3. Modify the
+   [`makefile`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/makefile)
+   to add the new package name to the `make clean` step.
+4. Run `make` to automatically compile the package documentation into the
    `/docs` folder of this repository.
-4. Add the newly compiled sub-folder of `/docs` to the git tree, commit the
+5. Add the newly compiled sub-folder of `/docs` to the git tree, commit the
    files, push to GitHub, and documentation for the the new package will be
    added to this readthedocs site.
 
