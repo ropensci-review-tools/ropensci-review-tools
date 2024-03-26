@@ -33,8 +33,8 @@ Argument      |Description
 
 Other helper:
  [`srr_stats_categories`](#srrstatscategories) ,
- [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
  [`srr_stats_checklist`](#srrstatschecklist) ,
+ [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
  [`srr_stats_pkg_skeleton`](#srrstatspkgskeleton)
 
 

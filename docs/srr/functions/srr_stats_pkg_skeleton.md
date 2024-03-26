@@ -36,8 +36,8 @@ The path to the directory holding the newly created package
 
 Other helper:
  [`srr_stats_categories`](#srrstatscategories) ,
- [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
  [`srr_stats_checklist`](#srrstatschecklist) ,
+ [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
  [`srr_stats_pre_submit`](#srrstatspresubmit)
 
 

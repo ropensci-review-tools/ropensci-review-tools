@@ -26,8 +26,8 @@ A `data.frame` with 3 columns of "category" (the categories to be
 ## Seealso
 
 Other helper:
- [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
  [`srr_stats_checklist`](#srrstatschecklist) ,
+ [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
  [`srr_stats_pkg_skeleton`](#srrstatspkgskeleton) ,
  [`srr_stats_pre_submit`](#srrstatspresubmit)
 
