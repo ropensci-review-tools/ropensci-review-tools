@@ -16,12 +16,14 @@ one_docs2md <- function (p, path) {
 
     path_loc <- file.path (path, "ropensci-review-tools", "docs", p)
     path_loc <- normalizePath (path_loc, mustWork = FALSE)
-    if (!dir.exists (path_loc))
+    if (!dir.exists (path_loc)) {
         dir.create (path_loc, recursive = TRUE)
+    }
 
     path_loc_fns <- file.path (path_loc, "functions")
-    if (!dir.exists (path_loc_fns))
+    if (!dir.exists (path_loc_fns)) {
         dir.create (path_loc_fns, recursive = TRUE)
+    }
 
     for (f in flist) {
 
@@ -91,13 +93,15 @@ one_vignettes <- function (p, path) {
 one_readme <- function (p, path) {
 
     orig <- file.path (path, p, "README.md")
-    if (!file.exists (orig))
+    if (!file.exists (orig)) {
         stop ("file [", orig, "] not found")
+    }
 
     docs_path <- file.path (path, "ropensci-review-tools", "docs")
     pkg_path <- file.path (path, p)
-    if (!dir.exists (pkg_path))
+    if (!dir.exists (pkg_path)) {
         stop ("directory [", pkg_path, "] not found")
+    }
 
     dest <- file.path (docs_path, p, paste0 (p, ".md"))
     chk <- file.copy (orig, dest, overwrite = TRUE)
@@ -130,9 +134,9 @@ one_readme <- function (p, path) {
                 "")
 
         v_files <- list.files (v_dir, pattern = "\\.md$")
-        for (f in v_files)
-            x <- c (x,
-                    paste0 ("vignettes/", f))
+        for (f in v_files) {
+            x <- c (x, paste0 ("vignettes/", f))
+        }
         x <- c (x, "```")
     }
 
