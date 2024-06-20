@@ -68,7 +68,7 @@ s [!names (s) %in% c ("objects", "network", "external_calls")]
 #> 
 #> $desc
 #>    package verion                     date license
-#> 1 pkgstats  0.1.1 Tue Oct 17 14:04:27 2023   GPL-3
+#> 1 pkgstats  0.1.1 Wed May  8 17:45:21 2024   GPL-3
 #>                                                                                       urls
 #> 1 https://docs.ropensci.org/pkgstats/,\nnhttps://github.com/ropensci-review-tools/pkgstats
 #>                                                       bugs aut ctb fnd rev ths
@@ -169,7 +169,7 @@ The `desc` item looks like this:
 ``` r
 s$desc
 #>    package verion                     date license
-#> 1 pkgstats  0.1.1 Tue Oct 17 14:04:27 2023   GPL-3
+#> 1 pkgstats  0.1.1 Wed May  8 17:45:21 2024   GPL-3
 #>                                                                                       urls
 #> 1 https://docs.ropensci.org/pkgstats/,\nnhttps://github.com/ropensci-review-tools/pkgstats
 #>                                                       bugs aut ctb fnd rev ths
