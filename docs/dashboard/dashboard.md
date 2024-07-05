@@ -2,12 +2,12 @@
 # rOpenSci Software Review Dashboard
 
 This repository contains the source code for [rOpenSci's *Software Review
-Dashboard*](https://ropensci-review-tools.github.io/dashboard). This includes
+Dashboard*](https://dashboard.ropensci.org). This includes
 both a local R package named "dashboard", and a [quarto
 directory](https://github.com/ropensci-review-tools/dashboard/tree/main/quarto)
 which includes the source files for the website. This README is intended only
 for developers. Anybody solely interested in the dashboard should [head
-straight to the website](https://ropensci-review-tools.github.io/dashboard).
+straight to the website](https://dashboard.ropensci.org).
 
 ## renv and local usage
 
