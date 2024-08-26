@@ -44,9 +44,17 @@ the `"ropensci-review-tools" software ecosystem
 
    maintenance/pkgstats
    maintenance/pkgcheck
-   maintenance/roreviewapi
    maintenance/ropensci-review-bot
    maintenance/tokens
+
+The following describe the main debugging processes.
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Debugging
+
+   debugging/debugging
+
 
 Finally, the following section describes components of our system used to
 construct and maintain badges on GitHub README pages and package documentation.

@@ -32,11 +32,15 @@ release = '0.0.1'
 # ones.
 extensions = [
     'myst_parser',
-    'sphinx.ext.duration',
-    'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
     'sphinx.ext.autosummary',
+    'sphinx.ext.duration',
+    'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
+]
+
+myst_enable_extensions = [
+    'colon_fence',
 ]
 
 intersphinx_mapping = {

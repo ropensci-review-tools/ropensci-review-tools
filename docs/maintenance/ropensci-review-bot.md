@@ -93,7 +93,9 @@ On Digital Ocean, docker images are by default stored in
 created, and so [grows continuously in
 size](https://forums.docker.com/t/some-way-to-clean-up-identify-contents-of-var-lib-docker-overlay/30604/35).
 The size of the current container can be seen with `df -h`, where the container
-should be `/dev/vda1`.
+should be `/dev/vda1`. The output has a column (generally second from the
+right) of "Use%". As long as this is below 50%, this section may be ignored.
+Otherwise, follow the steps described here to manually reduce used disk size.
 
 These images in `/var/lib/docker/overlay2` can not be removed with any `prune`
 command, and can only be manually cleaned. This should be done at least once
@@ -102,7 +104,7 @@ everything from scratch. This can be done with the following commands, which
 remove the entire current docker installation and rebuild everything anew:
 
 ```
-COMPOSE_FILE=/<path>/<to>/roreviewapi/docker-compose.yml
+COMPOSE_FILE=/home/shared/roreviewapi/docker-compose.yml
 docker-compose -f $COMPOSE_FILE down
 sudo systemctl stop docker.service
 sudo su # Enter super-user mode - be very careful!!!
@@ -117,5 +119,5 @@ bash /home/shared/roreviewapi/restart.sh
 ## Debugging
 
 Error messages in response to package checks can be diagnosed by following the
-procedures described in [the "roreviewapi" maintenance
-page](/maintenance/roreviewapi).
+procedures described in [the "Debugging" 
+page](/debugging/debugging).
