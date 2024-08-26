@@ -81,7 +81,7 @@ INFO [2021-12-01 09:26:26]
   1.235
 ```
 
-These logs can be used to examine commands issued by the bot and passed on by the Heroku serive, which always have the machine information "Faraday".
+These logs can be used to examine commands issued by the bot and passed on by the Heroku service, which always have the machine information "Faraday".
 
 :::{admonition} Debug Step 3
 :class: tip
