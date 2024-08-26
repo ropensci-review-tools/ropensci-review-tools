@@ -8,7 +8,11 @@ This section describes how to diagnose and resolve that problem, with solutions 
 
 The bot itself is hosted on Heroku, which is the first point of diagnosis.
 The logs for the bot will reveal whether commands were successfully received.
-These logs can be viewed by logging in to [heroku](https://heroku.com), clicking on "radiant-garden", then under "More" on the upper right, clicking "Logs".
+These logs can be viewed by 
+
+- logging in to [heroku](https://heroku.com), clicking on "radiant-garden", then under "More" on the upper right, clicking ["Logs"](https://devcenter.heroku.com/articles/logging#view-logs-with-the-heroku-dashboard). This will allow you to see the current log, from the moment you open it. You can open the log this way, launch a command from a GitHub software-review issue and see it appear in the log.
+
+- using the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) on your machine: [logging in](https://devcenter.heroku.com/articles/heroku-cli#get-started-with-the-heroku-cli) and then running [`heroku logs`](https://devcenter.heroku.com/articles/logging#view-logs-with-the-heroku-cli).
 
 :::{admonition} Debug Step 1
 :class: tip
