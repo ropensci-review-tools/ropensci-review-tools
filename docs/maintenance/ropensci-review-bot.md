@@ -117,5 +117,5 @@ bash /home/shared/roreviewapi/restart.sh
 ## Debugging
 
 Error messages in response to package checks can be diagnosed by following the
-procedures described in [the "roreviewapi" maintenance
-page](/maintenance/roreviewapi).
+procedures described in [the "Debugging" 
+page](/debugging/debugging).

@@ -1,24 +1,22 @@
 
-# roreviewapi
+# Debugging
 
-This package contains the external service which the `ropensci-review-bot`
-calls to run package checks. The service itself is a
-[Plumber](https://rplumber.io) API hosted on an external Digital Ocean server
-which primarily calls [the `pkgcheck()` function of the `pkgcheck`
-package](/pkgcheck/pkgcheck). The `roreviewapi` package implements
-post-processing routines to format the checks and deliver the results into
-GitHub issues. The endpoint functions are all defined in
+The [`roreviewapi` package](/roreviewapi/roreviewapi) includes code for the
+external service which the `ropensci-review-bot` calls to run package checks.
+The service itself is a [Plumber](https://rplumber.io) API hosted on an
+external Digital Ocean server which primarily calls [the `pkgcheck()` function
+of the `pkgcheck` package](/pkgcheck/pkgcheck). The `roreviewapi` package
+implements post-processing routines to format the checks and deliver the
+results into GitHub issues. The endpoint functions are all defined in
 [`R/plumber.R`](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R),
 which is mirrored in `inst/plumber.R`.
-
-## Debugging
 
 The endpoint includes two main debugging endpoints:
 
 - `/log` to extract the log of submitted queries; and
 - `/stdlogs` to extract `stdout` and `stderr` logs from a particular query.
 
-### The `/log` endpoint
+## The `/log` endpoint
 
 The `/log` endpoint can be used to examine or debug calls directly issued by
 `ropensci-review-bot`. This endpoint is a `GET` method with a single parameter,
@@ -46,7 +44,7 @@ the machine information "Faraday". The equivalent logs for the bot can be seen
 by logging in to [heroku](https://heroku.com), clicking on "radiant-garden",
 then under "More" on the upper right, clicking "Logs".
 
-### The `/stdlogs` endpoint
+## The `/stdlogs` endpoint
 
 The `check package` command issued either manually or automatically on all new
 submissions returns immediately with a message, while starting a background
