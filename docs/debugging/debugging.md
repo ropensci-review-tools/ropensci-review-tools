@@ -1,28 +1,86 @@
-
 # Debugging
 
-The [`roreviewapi` package](/roreviewapi/roreviewapi) includes code for the
-external service which the `ropensci-review-bot` calls to run package checks.
-The service itself is a [Plumber](https://rplumber.io) API hosted on an
-external Digital Ocean server which primarily calls [the `pkgcheck()` function
-of the `pkgcheck` package](/pkgcheck/pkgcheck). The `roreviewapi` package
-implements post-processing routines to format the checks and deliver the
-results into GitHub issues. The endpoint functions are all defined in
-[`R/plumber.R`](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R),
-which is mirrored in `inst/plumber.R`.
+This section describes procedures which may be used to debug
+`ropensci-review-bot` problems. The most common problem is a failure of the bot
+to respond. This section describes how to diagnose and resolve that problem,
+with solutions to other problems also generally found by following similar
+procedures. 
 
-The endpoint includes two main debugging endpoints:
+## The Heroku service
+
+The bot itself is hosted on Heroku, which is the first point of diagnosis. The
+logs for the bot will reveal whether commands were successfully received. These
+logs can be viewed by logging in to [heroku](https://heroku.com), clicking on
+"radiant-garden", then under "More" on the upper right, clicking "Logs".
+
+:::{admonition} Debug Step 1
+:class: tip
+Ensure that the bot request was received by Heroku.
+:::
+
+
+If a failed command was logged by Heroku and passed on to our service, then the
+problem will have arisen within the `roreviewapi` instance hosted on Digital
+Ocean.
+
+## The Digital Ocean Service
+
+The Digital Ocean droplet can be accessed via the Digital Ocean web interface,
+or via SSH. The latter requires a public SSH key to be registered in the
+droplet. The [`roreviewapi` package](/roreviewapi/roreviewapi) defines the
+functions called by the `ropensci-review-bot`, run within the Digital Ocean droplet as 
+a [Plumber](https://rplumber.io) API.
+
+Once in the SSH shell, you'll need to also enter in to the docker container
+hosting the currently running `roreviewapi` process. This command lists all
+current docker processes:
+
+``` bash
+docker ps -a
+```
+
+There should be only a single processes with a "STATUS" field of "Up". To enter
+that container, copy the "CONTAINER ID" and type,
+
+``` bash
+docker exec -it <container-id> /bin/bash
+```
+
+All files are held in the `/home/` directory (and not in `~`), with all cached
+files from the bot services within the `.cache` sub-directory. The container
+includes tab autocompletion, so debugging generally begins by auto-filling this
+command:
+
+``` bash
+cd /home/.cache/R/pkgcheck/
+```
+
+That directory should contain a clone of the repository being reviewed in the
+issue of interest, so the next debug step is:
+
+:::{admonition} Debug Step 2
+:class: tip
+Ensure that repository has been cloned and directory exists in
+`/home/.cache/R/pkgcheck/` directory.
+:::
+
+If the repository has been successfully cloned, then you'll need to dig deeper
+within the code to debug further. The plumber endpoint functions called by the
+bot are defined in
+[`R/plumber.R`](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/plumber.R),
+which is mirrored in `inst/plumber.R`. The endpoint includes two main debugging
+endpoints:
 
 - `/log` to extract the log of submitted queries; and
 - `/stdlogs` to extract `stdout` and `stderr` logs from a particular query.
 
 ## The `/log` endpoint
 
-The `/log` endpoint can be used to examine or debug calls directly issued by
-`ropensci-review-bot`. This endpoint is a `GET` method with a single parameter,
-`n`, specifying the number of most recent entries to return, with a default of
+The `/log` endpoint records all calls received by the `roreviewapi` service.
+This endpoint is a `GET` method with a single parameter, `n`, specifying the
+number of most recent entries to return, with a default of
 10. Example output from a request issued by the `ropensci-review-bot` looks
-like this, reformatted here for clarity:
+    like this, reformatted here for clarity:
 
 ```
 INFO [2021-12-01 09:26:26] 
@@ -39,30 +97,59 @@ INFO [2021-12-01 09:26:26]
   1.235
 ```
 
-These logs can be used to examine commands issued by the bot, which always have
-the machine information "Faraday". The equivalent logs for the bot can be seen
-by logging in to [heroku](https://heroku.com), clicking on "radiant-garden",
-then under "More" on the upper right, clicking "Logs".
+These logs can be used to examine commands issued by the bot and passed on by
+the Heroku serive, which always have the machine information "Faraday".
+
+:::{admonition} Debug Step 3
+:class: tip
+Ensure that the command was received and logged by the `roreviewapi` service.
+:::
+
 
 ## The `/stdlogs` endpoint
 
-The `check package` command issued either manually or automatically on all new
-submissions returns immediately with a message, while starting a background
-process for the actual package checks. The `\stdlogs` endpoint is intended to
-help diagnose issues with this background checking process. The functions are
-all controlled by [the `roreviewapi`
-package](https://github.com/ropensci-review-tools/roreviewapi), which is in
-turn a plumber API providing access to [the functionality of the `pkgcheck`
-package](https://github.com/ropensci-review-tools/pkgcheck).
+Most commands, including `check package` and `check srr`, issued either
+manually or automatically on all new submissions return immediately with a
+message, while starting a background process for the actual package checks. The
+`\stdlogs` endpoint is intended to help diagnose issues with this background
+checking process.
 
-This background process dumps all `stdout` and `stderr` messages to a cached
-log, the contents of which can be accessed with the `\stdlogs` endpoint. This
-is a `GET` endpoint with the single parameter of `repourl` specifying the URL
-of the package being checked. Logs are cached only for the most recent calls
-for any one package.
+This background process dumps all `stdout` and `stderr` messages to cached log
+files. The contents of these can be accessed either as HTTP requests to the
+running process. This is a `GET` endpoint with the single parameter of
+`repourl` specifying the URL of the package being checked. Logs are cached only
+for the most recent calls for any one package, and are over-written by any
+subsequent calls.
 
-These logs can be very detailed, and should provide sufficient information to
-diagnose most internal issues with package checking.
+It is nevertheless often easier to directly log in to the running processes via
+SSH as described above, in which case the logs are dumped within a `templogs`
+sub-directory of `/home/.cache/R/pkgcheck/`. These log files are all prefixed
+with the name of the package being checked.
+
+:::{admonition} Debug Step 4
+:class: tip
+Ensure that log files were generated for the package.
+
+- If using the HTTP endpoints, calls should always succeed as long as log files
+exist.
+- If using SSH, there should be two files prefixed with the package name.
+:::
+
+If the bot has entirely failed to respond, it is likely because of an internal
+error, in which case the `stderr` log should hopefully contain sufficient
+information to help debug the problem. The `stdout` log may provide additional
+detail in some cases.
+
+If these logs confirm an internal error, the next step is generally to try to
+reproduce that error locally, through cloning the package and calling, or
+stepping through, the relevant [endpoint
+function](/roreviewapi/vignettes/endpoints).
+
+:::{admonition} Debug Step 5
+:class: tip
+Try to locally reproduce any errors in the `stderr` log files, and solve
+problem from there.
+:::
 
 ## Manual Debugging
 
