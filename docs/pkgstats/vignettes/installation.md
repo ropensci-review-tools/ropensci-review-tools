@@ -9,8 +9,8 @@ install.packages ("pkgstats")
 ```
 
 The latest development version can be installed [via the associated
-`r-universe`](https://ropensci-review-tools.r-universe.dev/ui#builds).
-As shown there, simply enable the universe with
+`r-universe`](https://ropensci-review-tools.r-universe.dev/pkgstats). As
+shown there, simply enable the universe with
 
 ``` r
 options (repos = c (
