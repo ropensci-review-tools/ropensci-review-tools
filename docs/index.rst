@@ -47,7 +47,7 @@ the `"ropensci-review-tools" software ecosystem
    maintenance/ropensci-review-bot
    maintenance/tokens
 
-The following describe the main debugging processes yep yeah yeah.
+The following describe the main debugging processes.
 
 .. toctree::
    :maxdepth: 1
