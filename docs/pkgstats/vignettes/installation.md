@@ -1,5 +1,3 @@
-# Installation
-
 The `pkgstats` package [is on
 CRAN](https://cran.r-project.org/package=pkgstats), so can be installed
 directly with,
@@ -72,6 +70,29 @@ following command:
 Sys.unsetenv (c ("GTAGSCONF", "GTAGSLABEL"))
 ```
 
-See [information on how to install the
-plugin](https://cvs.savannah.gnu.org/viewvc/global/global/plugin-factory/PLUGIN_HOWTO.pygments?revision=1.6&view=markup)
-for more details.
+# Installation on macOS systems
+
+On macOS, [GNU `global` and
+`universal-ctags`](https://formulae.brew.sh/formula/global) can be
+easily installed with Homebrew. First follow the instructions at
+<https://brew.sh/> to install Homebrew if you don’t have it already.
+Then run the following command in your terminal:
+
+``` bash
+brew install global
+```
+
+This will install both `global` and a compatible version of
+`universal-ctags`.
+
+<div class="callout-note">
+
+Do not install `ctags` via Homebrew with `brew install ctags` as the
+installed version will conflict with `global`’s required
+`universal-ctags` dependency. If you have `ctags` already installed for
+another purpose, see Homebrew’s messages in the console on how to
+proceed after attempting to intall `global`, it will usually involve
+unlinking the existing `ctags` with `brew unlink ctags` or removing it
+completely with `brew rm ctags`.
+
+</div>

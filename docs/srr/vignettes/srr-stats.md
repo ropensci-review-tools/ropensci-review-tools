@@ -48,7 +48,7 @@ d <- srr_stats_pkg_skeleton (pkg_name = "package")
 fs::dir_tree (d)
 ```
 
-    ## /tmp/RtmpuwzVqt/package
+    ## /tmp/Rtmp91TKo6/package
     ## ├── DESCRIPTION
     ## ├── NAMESPACE
     ## ├── R
@@ -98,33 +98,30 @@ which will produce output like the following:
 roxygen2::roxygenise (d)
 ```
 
-    ## Setting `RoxygenNote` to "7.2.3"
-    ## ℹ Loading package
+    ## ℹ Setting RoxygenNote to "7.3.3"
     ## Writing 'NAMESPACE'
+    ## ℹ Loading package
     ## ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────── rOpenSci Statistical Software Standards ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## 
     ## 
     ## 
-    ## ── @srrstats standards (8 / 12): 
+    ## ── @srrstats standards (6 / 9): 
     ## 
     ##   * [G1.1, G1.2, G1.3, G2.0, G2.1] in function 'test_fn()' on line#11 of file [R/test.R]
-    ##   * [RE2.2] on line#2 of file [tests/testthat/test-a.R]
     ##   * [G2.3] in function 'test()' on line#6 of file [src/cpptest.cpp]
-    ##   * [G1.4] on line#17 of file [./README.Rmd]
     ## 
     ## 
     ## 
-    ## ── @srrstatsNA standards (1 / 12): 
+    ## ── @srrstatsNA standards (1 / 9): 
     ## 
     ##   * [RE3.3] on line#5 of file [R/srr-stats-standards.R]
     ## 
     ## 
     ## 
-    ## ── @srrstatsTODO standards (3 / 12): 
+    ## ── @srrstatsTODO standards (2 / 9): 
     ## 
     ##   * [RE4.4] on line#14 of file [R/srr-stats-standards.R]
-    ##   * [RE1.1] on line#11 of file [R/test.R]
-    ##   * [G1.5] on line#17 of file [./README.Rmd]
+    ##   * [RE1.1] in function 'test_fn()' on line#11 of file [R/test.R]
     ## 
     ## ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     ## 
@@ -488,7 +485,8 @@ roxygen2::roxygenise (d)
 ```
 
     ## ℹ Loading package
-    ## Error: Standards [G1.1, G1.2, G1.3, G2.0, G2.1, RE2.2, G2.3, G1.4] are listed with both @srrstats and @srrstatsTODO tags.
+    ## Error:
+    ## ! Standards [G1.1, G1.2, G1.3, G2.0, G2.1, G2.3] are listed with both @srrstats and @srrstatsTODO tags.
     ## Please rectify to ensure these standards are only associated with one tag.
 
 To ensure all standards are first inserted with `@srrstatsTODO` tags,

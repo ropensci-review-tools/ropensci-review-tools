@@ -1,17 +1,24 @@
-# Extending or modifying checks
+# Adding or modifying checks
 
-This vignette describes how to modify or extend the existing suite of
-checks implemented by `pkgcheck`. Each of the internal checks is defined
-in a separate file in the `R` directory of this package with the prefix
-of `check_` (or `checks_` for files which define multiple, related
-checks). Checks only require two main functions, the first defining the
-check itself, and the second defining `summary` and `print` methods
-based on the result of the first function. The check functions must have
-a prefix `pkgchk_`, and the second functions defining output methods
-specifying must have a prefix `output_pkgchk_`. These two kind of
-function are now described in the following two sections.
+This vignette describes how to modify or add new checks to the existing
+suite of checks implemented by `pkgcheck`. Each of the internal checks
+is defined in a separate file in the `R` directory of this package with
+the prefix of `check_` (or `checks_` for files which define multiple,
+related checks). Each check requires two main functions:
 
-Both of these functions must also accept a single input parameter of a
+<div class="alert alert-info">
+
+- One defining the check itself, which must have a prefix `pkgchk_`,
+  followed by the name of the check; and
+- One defining `summary` and `print` methods based on the result of the
+  first function, which must have a prefix `output_pkgchk_`.
+
+</div>
+
+The structure of these two function are described in the following two
+sections.
+
+Both of these functions must accept a single input parameter of a
 `pkgcheck` object, by convention named `checks`. This object is a list
 of four main items:
 
@@ -45,9 +52,12 @@ check functions, and may not be used in any way within `pkgchk_...()`
 functions.
 
 <details>
+
 <summary>
+
 Click here to see structure of full `pkgcheck` object
 </summary>
+
 <p>
 
 This is the output of applying `pkgcheck` to a package generated with
@@ -119,6 +129,7 @@ with `goodpractice = FALSE` to suppress that part of the results.
     #> NULL
 
 </p>
+
 </details>
 
 ## 1. The check function
@@ -132,8 +143,8 @@ in
 #'
 #' "CITATION" files are required for all rOpenSci packages, as documented [in
 #' our "*Packaging
-#' Guide*](https://devguide.ropensci.org/building.html#citation-file). This does
-#' not check the contents of that file in any way.
+#' Guide*](https://devguide.ropensci.org/pkg_building.html#citation-file). This
+#' does not check the contents of that file in any way.
 #'
 #' @param checks A 'pkgcheck' object with full \pkg{pkgstats} summary and
 #' \pkg{goodpractice} results.
@@ -182,8 +193,8 @@ A second important principle is that,
 
 </div>
 
-The following section considers how these return values from check
-functions are converted to `summary` and `print` output.
+The following section describes the `output_pkgchk_...` functions which
+convert these return values to `summary` and `print` output.
 
 ## 2. The output function
 
@@ -198,7 +209,16 @@ function](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/check-sc
 will create `checks$checks$has_scrap` which will contain names of any
 scrap files present, and a length-zero vector otherwise.
 
-The `output_pkgchk_has_citation()` function then looks like this:
+<div class="alert alert-info">
+
+- The `pkgchk_` functions *must not* use any data in `checks$checks`, as
+  they create this data.
+- The `output_pkgchk_` functions must use the data from `checks$checks`
+  to construct `summary` or `print` output.
+
+</div>
+
+The `output_pkgchk_has_citation()` function looks like this:
 
 ``` r
 output_pkgchk_has_citation <- function (checks) {
@@ -329,7 +349,6 @@ summary (checks)
     #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     #> 
     #> ✔ Package name is available
-    #> ✖ does not have a 'codemeta.json' file.
     #> ✖ does not have a 'contributing' file.
     #> ✔ uses 'roxygen2'.
     #> ✔ 'DESCRIPTION' has a URL field.
@@ -397,7 +416,6 @@ those checks and include them in our output:
     #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
     #> 
     #> ✔ Package name is available
-    #> ✖ does not have a 'codemeta.json' file.
     #> ✖ does not have a 'contributing' file.
     #> ✔ uses 'roxygen2'.
     #> ✔ 'DESCRIPTION' has a URL field.
@@ -448,27 +466,90 @@ new check has no `print` method (as in the `starts_with_aa` example
 above), to provide an explicit record of all internally-defined
 miscellaneous checks.
 
-Finally, any new checks also need to be included in tests. The test
-suites run on generic, mostly empty packages constructed with [the
-`srr::srr_stats_pkg_skeleton()`
-function](https://docs.ropensci.org/srr/reference/srr_stats_pkg_skeleton.html),
-as in the [main `test-pkgcheck.R` test
-functions](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-pkgcheck.R).
-Additional tests are also performed on the `pkgstats` tarball
-illustrated above. The default results of any new checks will be
-automatically tested by the existing test suite, but it is important to
-test all potential results. The [`test-extra-checks.R`
-file](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-extra-checks.R)
-is the main location for testing additional tests, with lines in that
-file demonstrating how the main results can be readily modified to
-reflect alternative outputs of check functions (such as
-`pkgchk_has_scrap` and `pkgchk_obsolete_pkg_deps`). The output functions
-defined as part of checks, including any new checks, do not need to be
-explicitly tested, as the entire output is tested via [`testthat`
-snapshots](https://testthat.r-lib.org/articles/snapshotting.html).
-Snapshot results need to be updated to reflect any additional tests.
-Finally, the [`test-list-checks.R`
-file](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-list-checks.R)
-tests the total number of internally-defined checks as
+#### 3.2a Check types
+
+Some checks are defined so that failure results in a 👀 symbol, rather
+than a default ❌ symbol. This 👀 symbol indicates that the failures may
+be worth examining further, and yet do not cause the overall check
+report to fail. This sub-section describes how to define such checks.
+
+All checks include a binary flag, `check_pass`, defined in their
+`output_pkgchk_...` function, like in the example above, which also
+define their output conditions. If `out$summary` is defined for
+`check_pass`, then that output will by default be prefixed with ✅,
+while if `out$summary` is defined for `!check_pass`, then that output
+will by default be prefixed with ❌. Any instances of ❌ will cause the
+whole check suite to fail, including on
+[`pkgcheck-action`](https://github.com/ropensci-review-tools/pkgcheck-action).
+
+The `out` value returned from all `output_pkgchk_...` functions is a
+list that must include `check_pass`, `summary`, and `print` items, like
+in the example above. Non-default check types can be defined by an
+optional extra list-item named `check_type`, specified as a string with
+conditions for `"<pass>"_"<fail>"`, where a value of `"watch"` will
+replace the default ✅ or ❌ symbols with 👀. For example, a check which
+should issue ✅ on pass yet 👀 on fail would be specified as,
+
+``` r
+out$check_type <- "pass_watch"
+```
+
+A check which should only issue 👀 on fail and nothing on success would
+be specified as,
+
+``` r
+out$check_type <- "none_watch"
+```
+
+A check which should issue 👀 on success and nothing on failure would be
+specified as,
+
+``` r
+out$check_type <- "watch_none"
+```
+
+#### 3.2b Testing new checks
+
+Finally, any new checks also need to be included in tests, with most
+checks having a corresponding file in the [`tests/testthat`
+directory](https://github.com/ropensci-review-tools/pkgcheck/tree/main/tests/testthat).
+The test suite includes helper functions used to create generic
+`pkgcheck` objects which are then modified for testing within individual
+tests. Most checks start with the following lines:
+
+``` r
+checks <- make_check_data ()
+ci_out <- output_pkgchk_<fn-name> (checks)
+```
+
+Data from any newly-added checks will automatically appear in the result
+of `make_check_data()`, and may be tested directly. Most tests
+nevertheless only need to test the output of the `output_pkgchk_`
+functions. This is generally done by modifying the `checks` data
+obtained in the initial call to `make_check_data()`, and then passing
+those modified data to the matching `output_pkgchk_` function. For
+example, in
+[`test-check-scrap.R`](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-check-scrap.R),
+the default value returned from the output function is first tested, and
+then the `checks` value is modified by,
+
+For checks which require either `goodpractice` or [`srr` (software
+review roclets)](https://docs.ropensci.org/srr) for statistical
+software, initial check values should be constructed with an alternative
+helper function, `make_check_data_srr()`, which accepts an additional
+parameter, `goodpractice`, which can be specified as `FALSE` (default)
+or `TRUE` to return full `goodpractice` data. See examples in
+[`test-check-covr.R`](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-check-covr.R).
+
+``` r
+checks$checks$has_scrap <- "scrap"
+```
+
+In this way, all possible forms and modes of each `output_pkgchk_`
+function should be extensively tested. Finally, snapshot results need to
+be updated to reflect any additional tests, as does the
+[`test-list-checks.R`
+file](https://github.com/ropensci-review-tools/pkgcheck/blob/main/tests/testthat/test-list-checks.R),
+which tests the total number of internally-defined checks as
 `expect_length (ncks, ..)`. The number tested there also needs to be
 incremented by one for each new check.

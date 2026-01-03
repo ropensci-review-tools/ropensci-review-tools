@@ -58,11 +58,12 @@ project, you agree to abide by its terms.
 ## Contributors
 
 
+
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 
-All contributions to this project are gratefully acknowledged using the [`allcontributors` package](https://github.com/ropenscilabs/allcontributors) following the [all-contributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
+All contributions to this project are gratefully acknowledged using the [`allcontributors` package](https://github.com/ropensci/allcontributors) following the [allcontributors](https://allcontributors.org) specification. Contributions of any kind are welcome!
 
 ### Code
 
@@ -86,6 +87,12 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <img src="https://avatars.githubusercontent.com/u/577668?v=4" width="100px;" alt=""/>
 </a><br>
 <a href="https://github.com/ropensci-review-tools/roreviewapi/commits?author=sckott">sckott</a>
+</td>
+<td align="center">
+<a href="https://github.com/noamross">
+<img src="https://avatars.githubusercontent.com/u/571752?v=4" width="100px;" alt=""/>
+</a><br>
+<a href="https://github.com/ropensci-review-tools/roreviewapi/commits?author=noamross">noamross</a>
 </td>
 </tr>
 
@@ -120,12 +127,6 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 <a href="https://github.com/ropensci-review-tools/roreviewapi/issues?q=is%3Aissue+commenter%3Agaborcsardi">gaborcsardi</a>
 </td>
 <td align="center">
-<a href="https://github.com/ropensci-review-bot">
-<img src="https://avatars.githubusercontent.com/u/77673839?u=f26c3eb2a3b6c74a7f100d4a707116d24d723d81&v=4" width="100px;" alt=""/>
-</a><br>
-<a href="https://github.com/ropensci-review-tools/roreviewapi/issues?q=is%3Aissue+commenter%3Aropensci-review-bot">ropensci-review-bot</a>
-</td>
-<td align="center">
 <a href="https://github.com/wlandau">
 <img src="https://avatars.githubusercontent.com/u/1580860?u=6ed1edc717e0853259312206ae59a3aa81fe3bbc&v=4" width="100px;" alt=""/>
 </a><br>
@@ -139,7 +140,7 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 </td>
 <td align="center">
 <a href="https://github.com/adamhsparks">
-<img src="https://avatars.githubusercontent.com/u/3195906?u=bcbaa54476d9576fe2fdc9c7deff9204413f567b&v=4" width="100px;" alt=""/>
+<img src="https://avatars.githubusercontent.com/u/3195906?u=ff1ca92ae028fe7eb18d006f92cb8a725625e69c&v=4" width="100px;" alt=""/>
 </a><br>
 <a href="https://github.com/ropensci-review-tools/roreviewapi/issues?q=is%3Aissue+commenter%3Aadamhsparks">adamhsparks</a>
 </td>

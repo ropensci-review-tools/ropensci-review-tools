@@ -5,11 +5,19 @@ package. Several of these are by default only shown when they fail;
 absence from a resultant checklist may be interpreted to indicate
 successful checks.
 
-## *1. pkgchk_fns_have_exs*
+## *1. pkgchk_branch_is_master*
+
+Ensure that default GitHub branch is not “master”
+
+The `$info$git$branch` value is taken by default from GitHub as long as
+“DESCRIPTION” has a remote URL. It is only taken from local git if not
+remote GitHub URL can be identified.\`
+
+## *2. pkgchk_fns_have_exs*
 
 Check whether all functions have examples.
 
-## *2. pkgchk_fns_have_return_vals*
+## *3. pkgchk_fns_have_return_vals*
 
 Check that all functions document their return values.
 
@@ -17,22 +25,14 @@ The reflects a CRAN checks for all new submissions, to ensure that
 return values are documented for all functions. This check applies even
 to functions which are called for their side effects and return `NULL`.
 
-## *3. pkgchk_has_citation*
+## *4. pkgchk_has_citation*
 
 Check whether a package has a `inst/CITATION` file.
 
 “CITATION” files are required for all rOpenSci packages, as documented
 [in our “*Packaging
-Guide*](https://devguide.ropensci.org/building.html#citation-file). This
-does not check the contents of that file in any way.
-
-## *4. pkgchk_has_codemeta*
-
-Check whether a package has a `codemeta.json` file.
-
-“codemeta.json” files are recommended for all rOpenSci packages, as
-documented [in our “*Packaging
-Guide*](https://devguide.ropensci.org/building.html#creating-metadata-for-your-package).
+Guide*](https://devguide.ropensci.org/pkg_building.html#citation-file).
+This does not check the contents of that file in any way.
 
 ## *5. pkgchk_has_contrib_md*
 
@@ -41,27 +41,39 @@ file.
 
 A “contributing” file is required for all rOpenSci packages, as
 documented [in our “*Contributing
-Guide*](https://devguide.ropensci.org/collaboration.html?q=contributing#contributing-guide).
+Guide*](https://devguide.ropensci.org/maintenance_collaboration.html#contributing-guide).
 
 ## *6. pkgchk_license*
 
 Check whether the package license is acceptable.
 
 Details of acceptable licenses are provided in the links in [our
-*Packaging Guide*](https://devguide.ropensci.org/building.html#licence).
+*Packaging
+Guide*](https://devguide.ropensci.org/pkg_building.html#licence).
 
-## *7. pkgchk_obsolete_pkg_deps*
+## *7. pkgchk_lintr*
+
+Check for failed lintr checks in the package.
+
+This function runs all available `lintr_*` checks from the package on
+the target package and returns the names of any failed checks.
+
+## *8. pkgchk_num_imports*
+
+Check numbers of package dependencies (‘Imports’)
+
+## *9. pkgchk_obsolete_pkg_deps*
 
 Check whether the package depends on any obsolete packages for which
 better alternative should be used.
 
 The list of obsolete packages is given in [our *Packaging
-Guide*](https://devguide.ropensci.org/building.html#recommended-scaffolding).
+Guide*](https://devguide.ropensci.org/pkg_building.html#recommended-scaffolding).
 Some of these are truly obsolete, the use of which raises a red cross in
 the summary of checks; while others are only potentially obsolete, thus
 use of which merely raises a note in the detailed check output.
 
-## *8. pkgchk_on_cran*
+## *10. pkgchk_on_cran*
 
 Check whether a package is on CRAN or not.
 
@@ -69,11 +81,11 @@ This does not currently appear in any ‘pkgcheck’ output (that is,
 neither in summary or print methods), and is only used as part of
 `pkcchk_pkgname_available`.
 
-## *9. pkgchk_pkgname_available*
+## *11. pkgchk_pkgname_available*
 
 Check that package name is available and/or already on CRAN.
 
-## *10. pkgchk_renv_activated*
+## *12. pkgchk_renv_activated*
 
 For packages which use ‘renv’, check that it is de-activated.
 
@@ -81,7 +93,7 @@ Although we do not generally recommend ‘renv’ for package developement,
 packages may use it. They must, however, ensure that [`renv` is
 deactivated](https://rstudio.github.io/renv/reference/deactivate.html).
 
-## *11. pkgchk_has_scrap*
+## *13. pkgchk_has_scrap*
 
 Check whether the package contains any useless files like `.DS_Store`.
 
@@ -92,7 +104,7 @@ Files currently considered “scrap” are:
 3.  “.vscode”
 4.  “.o” files
 
-## *12. pkgchk_unique_fn_names*
+## *14. pkgchk_unique_fn_names*
 
 Check whether all function names are unique.
 
@@ -100,28 +112,39 @@ Uses the database of function names from all CRAN packages associated
 with [releases of the `pkgstats`
 package](https://github.com/ropensci-review-tools/pkgstats/releases).
 
-## *13. pkgchk_has_url*
+## *15. pkgchk_has_url*
 
 Check that a package ‘DESCRIPTION’ file lists a valid URL.
 
-## *14. pkgchk_has_bugs*
+## *16. pkgchk_has_bugs*
 
 Check that a package ‘DESCRIPTION’ file lists a valid URL in the
 “BugReports” field.
 
-## *15. pkgchk_uses_roxygen2*
+## *17. pkgchk_uses_dontrun*
+
+Check if examples use `\dontrun{}`
+
+This check identifies functions in the package documentation that have
+examples using `\dontrun{}`. The use of `\dontrun{}` is discouraged by
+CRAN and should only be used the example really cannot be executed
+(e.g. because of missing additional software, missing API keys, …) by
+the user. Instead use methods to run the examples conditionally, such as
+with the `@examplesIf()` roxygen tag.
+
+## *18. pkgchk_uses_roxygen2*
 
 Check whether all documntation has been generated by ‘roxygen2’
 
 Use of ‘roxygen2’ to generate package documnetation is mandatory for
 rOpenSci packages, and is described in detail in [our *Packaging
-Guide*](https://devguide.ropensci.org/building.html#roxygen2-use).
+Guide*](https://devguide.ropensci.org/pkg_building.html#roxygen-2-use).
 
-## *16. pkgchk_has_vignette*
+## *19. pkgchk_has_vignette*
 
 Check whether the package contains at least one vignette.
 
-## *17. pkgchk_left_assign*
+## *20. pkgchk_left_assign*
 
 Check that left-assignment operators are used consistently throughout a
 package.
@@ -138,7 +161,7 @@ This actually checks the following two conditions:
 
 The `:=` operator is ignored in these checks.
 
-## *18. pkgchk_srr*
+## *21. pkgchk_srr_okay*
 
 Check that ‘srr’ documentation for statistics pacakges is complete.
 
@@ -153,7 +176,7 @@ function](https://docs.ropensci.org/srr/reference/srr_stats_pre_submit.html)
 to confirm that compliance with all relevant standards has been
 documented.
 
-## *19. pkgchk_ci_badges*
+## *22. pkgchk_ci_badges*
 
 Get all CI badges from a repository, and check that jobs currently pass.
 

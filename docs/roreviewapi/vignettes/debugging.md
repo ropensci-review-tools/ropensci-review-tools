@@ -34,8 +34,9 @@ The following code will confirm that the API is online, by returning a
 single numeric value:
 
 ``` r
-httr::GET ("http://<ip-address>:8000/mean") |>
-    httr::content ()
+httr2::request ("http://<ip-address>:8000/mean") |>
+    httr2::req_perform () |>
+    httr2::resp_body_json ()
 ```
 
 ## Check log of recent requests
@@ -51,8 +52,10 @@ function](https://github.com/ropensci-review-tools/roreviewapi/blob/82c9724a7120
 Potential issues can be debugged by calling that function locally:
 
 ``` r
-roreviewapi::check_issue_template (orgrepo = "ropensci/software-review",
-                                   issue_num = <issue_num>)
+roreviewapi::check_issue_template (
+    orgrepo = "ropensci/software-review",
+    issue_num = "<issue_num>"
+)
 ```
 
 That should return an empty string with an additional attribute,
@@ -137,7 +140,7 @@ path <- roreviewapi::dl_gh_repo (repourl)
 os <- "ubuntu"
 os_release <- "20.04"
 p <- roreviewapi::pkgrep_install_deps (path, os, os_release)
-checks <- pkgcheck::pkgcheck(path)
+checks <- pkgcheck::pkgcheck (path)
 out <- roreviewapi::collate_editor_check (checks)
 orgrepo <- "ropensci/software-review" # or somewhere else for testing purposes
 out <- roreviewapi::post_to_issue (out, orgrepo, issue_num)
