@@ -3,6 +3,7 @@ pkgs <- c ("autotest",
            "pkgcheck",
            "pkgcheck-action",
            "pkgstats",
+           "repometrics",
            "roreviewapi",
            "srr")
 
@@ -59,9 +60,13 @@ one_vignettes <- function (p, path) {
         
         if (!file.exists (flist_md [i])) {
 
-            rmarkdown::render (flist [i],
-                               output_format = rmarkdown::md_document (variant = "gfm"))
-                               #output_file = flist_md [i])
+            # https://github.com/wch/webshot/issues/115
+            withr::with_envvar (
+                c ("OPENSSL_CONF" = "/dev/null"), {
+                    rmarkdown::render (flist [i],
+                        output_format = rmarkdown::md_document (variant = "gfm"))
+                    #output_file = flist_md [i])
+            })
             message ("[", flist [i], "] has been rendered to [",
                      flist_md [i], "]")
         }
