@@ -30,7 +30,8 @@ one_docs2md <- function (p, path) {
 
         fshort <- utils::tail (strsplit (f, .Platform$file.sep) [[1]], 1L)
         fout <- file.path (path_loc_fns, gsub ("\\.Rd$", ".md", fshort))
-        Rd2md::as_markdown (f, outfile = fout)
+        md <- Rd2md::read_rdfile (f) |> Rd2md::as_markdown ()
+        writeLines (md, con = fout)
     }
 }
 
