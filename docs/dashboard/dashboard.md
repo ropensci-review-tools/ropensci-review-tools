@@ -69,8 +69,10 @@ use a personal token from somebody with "owner" rights both here and in the
 
 functions/add_editor_airtable_data.md
 functions/dashboard-package.md
+functions/ed_rev_durations.md
 functions/editor_status.md
 functions/editor_vacation_status.md
+functions/rev_hours_airtable.md
 functions/review_history.md
 functions/review_status.md
 ```
