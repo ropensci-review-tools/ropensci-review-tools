@@ -1,13 +1,9 @@
-# `autotest_obj`
-
-autotest_obj class definition
-
+# autotest_obj class definition
 
 ## Description
 
 This function exists only to provide the class definitions for test objects,
- and is not intended to be called directly.
-
+and is not intended to be called directly.
 
 ## Usage
 
@@ -27,21 +23,26 @@ autotest_obj(
 )
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`package`     |     Name of package for which object is to be constructed.
-`package_loc`     |     Location of package on local system (for source packages only)
-`test_name`     |     Name of test (use [autotest_types](#autotesttypes) to get all test names).
-`fn_name`     |     Name of function to be tested.
-`parameters`     |     Names of all parameters for that function.
-`parameter_types`     |     Types of input parameters.
-`class`     |     Class of an individual parameter.
-`classes`     |     Classes of all parameters.
-`env`     |     Environment in which tests are to be run.
-`test`     |     If `FALSE` , return only descriptions of tests which would be run with `test = TRUE` , without actually running them.
-`quiet`     |     If `FALSE` , issue progress and other messages during testing of object.
+* `package`: Name of package for which object is to be constructed.
+* `package_loc`: Location of package on local system (for source packages
+only)
+* `test_name`: Name of test (use [autotest_types](autotest_types) to get all test
+names).
+* `fn_name`: Name of function to be tested.
+* `parameters`: Names of all parameters for that function.
+* `parameter_types`: Types of input parameters.
+* `class`: Class of an individual parameter.
+* `classes`: Classes of all parameters.
+* `env`: Environment in which tests are to be run.
+* `test`: If `FALSE`, return only descriptions of tests which would be run
+with `test = TRUE`, without actually running them.
+* `quiet`: If `FALSE`, issue progress and other messages during testing of
+object.
+
+## Concept
+
+class
 
 

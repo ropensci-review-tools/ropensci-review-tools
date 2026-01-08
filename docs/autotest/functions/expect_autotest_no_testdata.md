@@ -1,12 +1,8 @@
-# `expect_autotest_no_testdata`
-
-expect_autotest_no_testdata
-
+# expect_autotest_no_testdata
 
 ## Description
 
 Expect `autotest_package()` to be clear of errors with no tests switched off
-
 
 ## Usage
 
@@ -14,25 +10,24 @@ Expect `autotest_package()` to be clear of errors with no tests switched off
 expect_autotest_no_testdata(object = NULL)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`object`     |     Not used here, but required for `testthat` expectations
+* `object`: Not used here, but required for `testthat` expectations
 
+## Seealso
+
+Other expectations: 
+`[expect_autotest_no_err](expect_autotest_no_err)()`,
+`[expect_autotest_no_warn](expect_autotest_no_warn)()`,
+`[expect_autotest_notes](expect_autotest_notes)()`,
+`[expect_autotest_testdata](expect_autotest_testdata)()`
+
+## Concept
+
+expectations
 
 ## Value
 
 (invisibly) The autotest object
-
-
-## Seealso
-
-Other expectations:
- [`expect_autotest_no_err`](#expectautotestnoerr) ,
- [`expect_autotest_no_warn`](#expectautotestnowarn) ,
- [`expect_autotest_notes`](#expectautotestnotes) ,
- [`expect_autotest_testdata`](#expectautotesttestdata)
 
 
