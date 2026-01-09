@@ -565,10 +565,13 @@ functions/desc_stats.md
 functions/dl_pkgstats_data.md
 functions/extract_tarball.md
 functions/loc_stats.md
+functions/pkgstats_cran_current_from_full.md
 functions/pkgstats_fn_names.md
 functions/pkgstats_fns_from_archive.md
+functions/pkgstats_fns_update.md
 functions/pkgstats_from_archive.md
 functions/pkgstats_summary.md
+functions/pkgstats_update.md
 functions/pkgstats-package.md
 functions/pkgstats.md
 functions/plot_network.md
