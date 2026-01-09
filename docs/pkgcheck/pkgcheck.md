@@ -591,6 +591,7 @@ All contributions to this project are gratefully acknowledged using the [`allcon
 :maxdepth: 1
 
 functions/checks_to_markdown.md
+functions/fn_names_on_cran.md
 functions/get_default_github_branch.md
 functions/get_gh_token.md
 functions/get_latest_commit.md
