@@ -1,12 +1,8 @@
-# `pkgstats_fn_names`
-
-Extract names of all functions for one R package
-
+# Extract names of all functions for one R package
 
 ## Description
 
 Extract names of all functions for one R package
-
 
 ## Usage
 
@@ -14,31 +10,27 @@ Extract names of all functions for one R package
 pkgstats_fn_names(path)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`path`     |     Either a path to a local source repository, or a local '.tar.gz' file, containing code for an R package.
+* `path`: Either a path to a local source repository, or a local '.tar.gz'
+file, containing code for an R package.
 
+## Seealso
+
+Other misc: 
+`[extract_tarball](extract_tarball)()`
+
+## Concept
+
+misc
 
 ## Value
 
 A `data.frame` with three columns:
-  
 
-*  package: Name of package 
-
-*  version: Package version 
-
-*  fn_name: Name of function
-
-
-## Seealso
-
-Other misc:
- [`extract_tarball`](#extracttarball)
-
+* package: Name of package
+* version: Package version
+* fn_name: Name of function
 
 ## Examples
 

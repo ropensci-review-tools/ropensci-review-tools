@@ -1,12 +1,8 @@
-# `desc_stats`
-
-Statistics from DESCRIPTION files
-
+# Statistics from DESCRIPTION files
 
 ## Description
 
 Statistics from DESCRIPTION files
-
 
 ## Usage
 
@@ -14,29 +10,27 @@ Statistics from DESCRIPTION files
 desc_stats(path)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`path`     |     Directory to source code of package being analysed
+* `path`: Directory to source code of package being analysed
 
+## Seealso
+
+Other stats: 
+`[loc_stats](loc_stats)()`,
+`[pkgstats](pkgstats)()`,
+`[pkgstats_summary](pkgstats_summary)()`,
+`[rd_stats](rd_stats)()`
+
+## Concept
+
+stats
 
 ## Value
 
 A `data.frame` with one row and 16 columns extracting various
- information from the 'DESCRIPTION' file, include websites, tallies of
- different kinds of authors and contributors, and package dependencies.
-
-
-## Seealso
-
-Other stats:
- [`loc_stats`](#locstats) ,
- [`pkgstats_summary`](#pkgstatssummary) ,
- [`pkgstats`](#pkgstats) ,
- [`rd_stats`](#rdstats)
-
+information from the 'DESCRIPTION' file, include websites, tallies of
+different kinds of authors and contributors, and package dependencies.
 
 ## Examples
 

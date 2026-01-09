@@ -1,30 +1,24 @@
-# Trawl a local CRAN archive to extract function names only from all packages
+# Update function names data from previous data and newly updated CRAN
 
 ## Description
 
-Trawl a local CRAN archive to extract function names only from all packages
+Update function names data from previous data and newly updated CRAN
+packages only.
 
 ## Usage
 
 ```r
-pkgstats_fns_from_archive(
-  path,
-  archive = FALSE,
+pkgstats_fns_update(
   prev_results = NULL,
   results_file = NULL,
   chunk_size = 1000L,
   num_cores = 1L,
-  results_path = fs::path_temp()
+  results_path = tempdir()
 )
 ```
 
 ## Arguments
 
-* `path`: Path to local archive of R packages, either as source
-directories, or '.tar.gz' files such as in a CRAN mirror.
-* `archive`: If `TRUE`, extract statistics for all packages in the
-`/Archive` sub-directory, otherwise only statistics for main directory (that
-is, current packages only).
 * `prev_results`: Result of previous call to this function, if available.
 Submitting previous results will ensure that only newer packages not present
 in previous result will be analysed, with new results simply appended to
@@ -50,7 +44,7 @@ single-core processing.
 Other archive: 
 `[dl_pkgstats_data](dl_pkgstats_data)()`,
 `[pkgstats_cran_current_from_full](pkgstats_cran_current_from_full)()`,
-`[pkgstats_fns_update](pkgstats_fns_update)()`,
+`[pkgstats_fns_from_archive](pkgstats_fns_from_archive)()`,
 `[pkgstats_from_archive](pkgstats_from_archive)()`,
 `[pkgstats_update](pkgstats_update)()`
 

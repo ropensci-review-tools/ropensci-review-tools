@@ -1,12 +1,8 @@
-# `loc_stats`
-
-Internal calculation of Lines-of-Code Statistics
-
+# Internal calculation of Lines-of-Code Statistics
 
 ## Description
 
 Internal calculation of Lines-of-Code Statistics
-
 
 ## Usage
 
@@ -14,35 +10,32 @@ Internal calculation of Lines-of-Code Statistics
 loc_stats(path)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`path`     |     Directory to source code of package being analysed
-
-
-## Value
-
-A list of statistics for each of three directories, 'R', 'src', and
- 'inst/include', each one having 5 statistics of total numbers of lines,
- numbers of empty lines, total numbers of white spaces, total numbers of
- characters, and indentation used in files in that directory.
-
-
-## Seealso
-
-Other stats:
- [`desc_stats`](#descstats) ,
- [`pkgstats_summary`](#pkgstatssummary) ,
- [`pkgstats`](#pkgstats) ,
- [`rd_stats`](#rdstats)
-
+* `path`: Directory to source code of package being analysed
 
 ## Note
 
 NA values are returned for directories which do not exist.
 
+## Seealso
+
+Other stats: 
+`[desc_stats](desc_stats)()`,
+`[pkgstats](pkgstats)()`,
+`[pkgstats_summary](pkgstats_summary)()`,
+`[rd_stats](rd_stats)()`
+
+## Concept
+
+stats
+
+## Value
+
+A list of statistics for each of three directories, 'R', 'src', and
+'inst/include', each one having 5 statistics of total numbers of lines,
+numbers of empty lines, total numbers of white spaces, total numbers of
+characters, and indentation used in files in that directory.
 
 ## Examples
 

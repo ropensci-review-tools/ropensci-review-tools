@@ -1,39 +1,33 @@
-# `extract_tarball`
-
-Extract tarball of a package into temp directory and return path to extracted
- package
-
+# Extract tarball of a package into temp directory and return path to extracted
 
 ## Description
 
 Extract tarball of a package into temp directory and return path to extracted
- package
-
+package
 
 ## Usage
 
 ```r
-extract_tarball(tarball)
+extract_tarball(tarball, exdir = fs::path_temp())
 ```
-
 
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`tarball`     |     Full path to local tarball of an R package.
-
-
-## Value
-
-Path to extracted version of package (in `tempdir()` ).
-
+* `tarball`: Full path to local tarball of an R package.
+* `exdir`: Directory into which tarballs are to be extracted.
 
 ## Seealso
 
-Other misc:
- [`pkgstats_fn_names`](#pkgstatsfnnames)
+Other misc: 
+`[pkgstats_fn_names](pkgstats_fn_names)()`
 
+## Concept
+
+misc
+
+## Value
+
+Path to extracted version of package (in `tempdir()`).
 
 ## Examples
 
