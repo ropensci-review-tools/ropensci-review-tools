@@ -1,12 +1,8 @@
-# `get_gh_token`
-
-Get GitHub token
-
+# Get GitHub token
 
 ## Description
 
 Get GitHub token
-
 
 ## Usage
 
@@ -14,27 +10,25 @@ Get GitHub token
 get_gh_token(token_name = "")
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`token_name`     |     Optional name of token to use
+* `token_name`: Optional name of token to use
 
+## Seealso
+
+Other github: 
+`[get_default_github_branch](get_default_github_branch)()`,
+`[get_latest_commit](get_latest_commit)()`,
+`[use_github_action_pkgcheck](use_github_action_pkgcheck)()`
+
+## Concept
+
+github
 
 ## Value
 
 The value of the GitHub access token extracted from environment
- variables.
-
-
-## Seealso
-
-Other github:
- [`get_default_github_branch`](#getdefaultgithubbranch) ,
- [`get_latest_commit`](#getlatestcommit) ,
- [`use_github_action_pkgcheck`](#usegithubactionpkgcheck)
-
+variables.
 
 ## Examples
 

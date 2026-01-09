@@ -1,12 +1,8 @@
-# `render_md2html`
-
-render markdown-formatted input into 'html'
-
+# render markdown-formatted input into 'html'
 
 ## Description
 
 render markdown-formatted input into 'html'
-
 
 ## Usage
 
@@ -14,27 +10,26 @@ render markdown-formatted input into 'html'
 render_md2html(md, open = TRUE)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`md`     |     Result of [checks_to_markdown](#checkstomarkdown) function.
-`open`     |     If `TRUE` , open `hmtl` -rendered version in web browser.
-
-
-## Value
-
-(invisible) Location of `.html` -formatted version of input.
-
+* `md`: Result of [checks_to_markdown](checks_to_markdown) function.
+* `open`: If `TRUE`, open `hmtl`-rendered version in web browser.
 
 ## Seealso
 
-Other extra:
- [`checks_to_markdown`](#checkstomarkdown) ,
- [`list_pkgchecks`](#listpkgchecks) ,
- [`logfile_names`](#logfilenames)
+Other extra: 
+`[checks_to_markdown](checks_to_markdown)()`,
+`[fn_names_on_cran](fn_names_on_cran)()`,
+`[list_pkgchecks](list_pkgchecks)()`,
+`[logfile_names](logfile_names)()`
 
+## Concept
+
+extra
+
+## Value
+
+(invisible) Location of `.html`-formatted version of input.
 
 ## Examples
 

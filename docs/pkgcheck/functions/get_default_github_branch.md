@@ -1,12 +1,8 @@
-# `get_default_github_branch`
-
-get_default_github_branch
-
+# get_default_github_branch
 
 ## Description
 
 get_default_github_branch
-
 
 ## Usage
 
@@ -14,33 +10,30 @@ get_default_github_branch
 get_default_github_branch(org, repo)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`org`     |     Github organization
-`repo`     |     Github repository
-
-
-## Value
-
-Name of default branch on GitHub
-
-
-## Seealso
-
-Other github:
- [`get_gh_token`](#getghtoken) ,
- [`get_latest_commit`](#getlatestcommit) ,
- [`use_github_action_pkgcheck`](#usegithubactionpkgcheck)
-
+* `org`: Github organization
+* `repo`: Github repository
 
 ## Note
 
 This function is not intended to be called directly, and is only
- exported to enable it to be used within the plumber API.
+exported to enable it to be used within the `plumber` API.
 
+## Seealso
+
+Other github: 
+`[get_gh_token](get_gh_token)()`,
+`[get_latest_commit](get_latest_commit)()`,
+`[use_github_action_pkgcheck](use_github_action_pkgcheck)()`
+
+## Concept
+
+github
+
+## Value
+
+Name of default branch on GitHub
 
 ## Examples
 

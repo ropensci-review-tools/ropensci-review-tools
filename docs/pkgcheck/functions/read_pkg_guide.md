@@ -1,13 +1,9 @@
-# `read_pkg_guide`
-
-Browse packaging guidelines
-
+# Browse packaging guidelines
 
 ## Description
 
 A convenience function to automatically open the web page of rOpenSci's
- "Package Development Guide" in the default browser.
-
+"Package Development Guide" in the default browser.
 
 ## Usage
 
@@ -15,19 +11,14 @@ A convenience function to automatically open the web page of rOpenSci's
 read_pkg_guide(which = c("release", "dev"))
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`which`     |     Whether to read the released or "dev" development version.
-
+* `which`: Whether to read the released or "dev" development version.
 
 ## Value
 
 Nothing. Function called purely for side-effect of opening web page
- with package guidelines.
-
+with package guidelines.
 
 ## Examples
 

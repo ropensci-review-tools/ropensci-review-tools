@@ -1,12 +1,8 @@
-# `checks_to_markdown`
-
-Convert checks to markdown-formatted report
-
+# Convert checks to markdown-formatted report
 
 ## Description
 
 Convert checks to markdown-formatted report
-
 
 ## Usage
 
@@ -14,27 +10,27 @@ Convert checks to markdown-formatted report
 checks_to_markdown(checks, render = FALSE)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`checks`     |     Result of main [pkgcheck](#pkgcheck) function
-`render`     |     If `TRUE` , render output as `html` document and open in browser.
+* `checks`: Result of main [pkgcheck](pkgcheck) function
+* `render`: If `TRUE`, render output as `html` document and open in
+browser.
 
+## Seealso
+
+Other extra: 
+`[fn_names_on_cran](fn_names_on_cran)()`,
+`[list_pkgchecks](list_pkgchecks)()`,
+`[logfile_names](logfile_names)()`,
+`[render_md2html](render_md2html)()`
+
+## Concept
+
+extra
 
 ## Value
 
 Markdown-formatted version of check report
-
-
-## Seealso
-
-Other extra:
- [`list_pkgchecks`](#listpkgchecks) ,
- [`logfile_names`](#logfilenames) ,
- [`render_md2html`](#rendermd2html)
-
 
 ## Examples
 
