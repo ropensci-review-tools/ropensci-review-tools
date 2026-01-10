@@ -1,12 +1,8 @@
-# `symbol_crs`
-
-Cross symbol, exported for direct use in plumber API
-
+# Cross symbol, exported for direct use in plumber API
 
 ## Description
 
 Cross symbol, exported for direct use in plumber API
-
 
 ## Usage
 
@@ -14,13 +10,16 @@ Cross symbol, exported for direct use in plumber API
 symbol_crs()
 ```
 
-
 ## Seealso
 
-Other utils:
- [`check_cache`](#checkcache) ,
- [`pkgrep_install_deps`](#pkgrepinstalldeps) ,
- [`stdout_stderr_cache`](#stdoutstderrcache) ,
- [`symbol_tck`](#symboltck)
+Other utils: 
+`[check_cache](check_cache)()`,
+`[pkgrep_install_deps](pkgrep_install_deps)()`,
+`[stdout_stderr_cache](stdout_stderr_cache)()`,
+`[symbol_tck](symbol_tck)()`
+
+## Concept
+
+utils
 
 

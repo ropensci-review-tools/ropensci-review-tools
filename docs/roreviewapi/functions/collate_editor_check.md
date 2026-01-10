@@ -1,12 +1,8 @@
-# `collate_editor_check`
-
-Collate list of checks to single concatenated character string
-
+# Collate list of checks to single concatenated character string
 
 ## Description
 
 Collate list of checks to single concatenated character string
-
 
 ## Usage
 
@@ -14,29 +10,27 @@ Collate list of checks to single concatenated character string
 collate_editor_check(checks)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`checks`     |     Result of `pkgcheck::pgkcheck` function
-
-
-## Value
-
-Single character
-
-
-## Seealso
-
-Other main:
- [`editor_check`](#editorcheck) ,
- [`serve_api`](#serveapi)
-
+* `checks`: Result of `pkgcheck::pgkcheck` function
 
 ## Note
 
 Exported only for access by plumber; not intended for general external
- usage.
+usage.
+
+## Seealso
+
+Other main: 
+`[editor_check](editor_check)()`,
+`[serve_api](serve_api)()`
+
+## Concept
+
+main
+
+## Value
+
+Single character
 
 

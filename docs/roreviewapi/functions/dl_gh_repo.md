@@ -1,12 +1,8 @@
-# `dl_gh_repo`
-
-Download a GitHub repo to local cache
-
+# Download a GitHub repo to local cache
 
 ## Description
 
 Download a GitHub repo to local cache
-
 
 ## Usage
 
@@ -14,24 +10,25 @@ Download a GitHub repo to local cache
 dl_gh_repo(u, branch = NULL)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`u`     |     URL of GitHub repository
-`branch`     |     Checkout specified (non-default) branch of repo.
+* `u`: URL of GitHub repository
+* `branch`: Checkout specified (non-default) branch of repo.
 
+## Seealso
+
+Other github: 
+`[get_branch_from_url](get_branch_from_url)()`,
+`[get_subdir_from_url](get_subdir_from_url)()`,
+`[post_to_issue](post_to_issue)()`,
+`[url_is_r_pkg](url_is_r_pkg)()`
+
+## Concept
+
+github
 
 ## Value
 
 Path to locally cached '.zip' version of repository
-
-
-## Seealso
-
-Other github:
- [`get_branch_from_url`](#getbranchfromurl) ,
- [`post_to_issue`](#posttoissue)
 
 

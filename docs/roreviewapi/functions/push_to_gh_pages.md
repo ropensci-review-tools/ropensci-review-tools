@@ -1,14 +1,9 @@
-# `push_to_gh_pages`
-
-Push static `html` files to `gh-pages` branch of this repo to serve via
- GitHub pages.
-
+# Push static
 
 ## Description
 
 Push static `html` files to `gh-pages` branch of this repo to serve via
- GitHub pages.
-
+GitHub pages.
 
 ## Usage
 
@@ -16,27 +11,27 @@ Push static `html` files to `gh-pages` branch of this repo to serve via
 push_to_gh_pages(check)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`check`     |     Return result of [editor_check](#editorcheck) function.
+* `check`: Return result of [editor_check](editor_check) function.
 
+## Seealso
+
+Other ropensci: 
+`[check_issue_template](check_issue_template)()`,
+`[is_user_authorized](is_user_authorized)()`,
+`[readme_has_peer_review_badge](readme_has_peer_review_badge)()`,
+`[srr_counts](srr_counts)()`,
+`[srr_counts_from_report](srr_counts_from_report)()`,
+`[srr_counts_summary](srr_counts_summary)()`,
+`[stats_badge](stats_badge)()`
+
+## Concept
+
+ropensci
 
 ## Value
 
 Vector of two paths containing URLs of the `srr` and `network` files.
-
-
-## Seealso
-
-Other ropensci:
- [`check_issue_template`](#checkissuetemplate) ,
- [`is_user_authorized`](#isuserauthorized) ,
- [`readme_has_peer_review_badge`](#readmehaspeerreviewbadge) ,
- [`srr_counts_summary`](#srrcountssummary) ,
- [`srr_counts`](#srrcounts) ,
- [`stats_badge`](#statsbadge)
 
 
