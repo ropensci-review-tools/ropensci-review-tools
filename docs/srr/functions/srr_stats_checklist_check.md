@@ -1,12 +1,8 @@
-# `srr_stats_checklist_check`
-
-Check a completed standards checklist
-
+# Check a completed standards checklist
 
 ## Description
 
 Correct any potential formatting issues in a completed standards checklist
-
 
 ## Usage
 
@@ -14,22 +10,22 @@ Correct any potential formatting issues in a completed standards checklist
 srr_stats_checklist_check(file)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`file`     |     Name of local file containing a completed checklist. Must be a markdown document in `.md` format, not `.Rmd` or anything else.
-
+* `file`: Name of local file containing a completed checklist. Must be a
+markdown document in `.md` format, not `.Rmd` or anything else.
 
 ## Seealso
 
-Other helper:
- [`srr_stats_categories`](#srrstatscategories) ,
- [`srr_stats_checklist`](#srrstatschecklist) ,
- [`srr_stats_pkg_skeleton`](#srrstatspkgskeleton) ,
- [`srr_stats_pre_submit`](#srrstatspresubmit)
+Other helper: 
+`[srr_stats_categories](srr_stats_categories)()`,
+`[srr_stats_checklist](srr_stats_checklist)()`,
+`[srr_stats_pkg_skeleton](srr_stats_pkg_skeleton)()`,
+`[srr_stats_pre_submit](srr_stats_pre_submit)()`
 
+## Concept
+
+helper
 
 ## Examples
 

@@ -1,13 +1,9 @@
-# `srr_stats_pre_submit`
-
-Perform pre-submission checks
-
+# Perform pre-submission checks
 
 ## Description
 
 Check that all standards are present in code, and listed either as
- '@srrstats' or '@srrstatsNA'
-
+'@srrstats' or '@srrstatsNA'
 
 ## Usage
 
@@ -15,28 +11,26 @@ Check that all standards are present in code, and listed either as
 srr_stats_pre_submit(path = ".", quiet = FALSE)
 ```
 
-
 ## Arguments
 
-Argument      |Description
-------------- |----------------
-`path`     |     Path to local repository to check
-`quiet`     |     If 'FALSE', display information on status of package on screen.
+* `path`: Path to local repository to check
+* `quiet`: If 'FALSE', display information on status of package on screen.
 
+## Seealso
+
+Other helper: 
+`[srr_stats_categories](srr_stats_categories)()`,
+`[srr_stats_checklist](srr_stats_checklist)()`,
+`[srr_stats_checklist_check](srr_stats_checklist_check)()`,
+`[srr_stats_pkg_skeleton](srr_stats_pkg_skeleton)()`
+
+## Concept
+
+helper
 
 ## Value
 
 (Invisibly) List of any standards missing from code
-
-
-## Seealso
-
-Other helper:
- [`srr_stats_categories`](#srrstatscategories) ,
- [`srr_stats_checklist`](#srrstatschecklist) ,
- [`srr_stats_checklist_check`](#srrstatschecklistcheck) ,
- [`srr_stats_pkg_skeleton`](#srrstatspkgskeleton)
-
 
 ## Examples
 
