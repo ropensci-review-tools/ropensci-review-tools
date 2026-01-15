@@ -27,13 +27,13 @@ appropriate link.
    :caption: Packages
 
    autotest/autotest.md
-   pkgstats/pkgstats.md
+   dashboard/dashboard.md
    pkgcheck/pkgcheck.md
    pkgcheck-action/pkgcheck-action.md
+   pkgstats/pkgstats.md
+   repometrics/repometrics.md
    roreviewapi/roreviewapi.md
    srr/srr.md
-   dashboard/dashboard.md
-   repometrics/repometrics.md
 
 The following are links to notes on maintaining the individual components of
 the `"ropensci-review-tools" software ecosystem

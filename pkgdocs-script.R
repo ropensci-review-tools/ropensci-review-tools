@@ -1,11 +1,29 @@
-pkgs <- c ("autotest",
-           "dashboard",
-           "pkgcheck",
-           "pkgcheck-action",
-           "pkgstats",
-           "repometrics",
-           "roreviewapi",
-           "srr")
+pkgs <- readLines ("packages.md")
+
+update_index_rst <- function (pkgs) {
+
+    f <- fs::dir_ls ("docs/", type = "file", regexp = "index\\.rst$") |>
+        fs::path_abs ()
+    index <- readLines (f)
+    toc <- grep ("toctree\\:\\:", index)
+    # package index is second toctree:
+    blank <- which (!nzchar (index))
+    blank <- blank [which (blank > toc [2] & blank < toc [3])]
+    pkgs_start <- blank [1] + 1L
+    pkgs_end <- blank [2] - 1L
+    pkgs_index <- seq (pkgs_start, pkgs_end)
+
+    wsp <- paste (rep (" ", 3L), collapse = "")
+    pkg_mds <- paste0 (wsp, pkgs, "/", pkgs, ".md")
+
+    index <- c (
+        index [seq_len (pkgs_start - 1L)],
+        pkg_mds,
+        index [seq (pkgs_end + 1, length (index))]
+    )
+    writeLines (index, f)
+}
+update_index_rst (pkgs)
 
 path <- normalizePath ("..")
 
