@@ -25,14 +25,8 @@ folder of this repository, and can be recreated anew with the following steps:
 
     - `sphinx`, `myst-parser`, `sphinx-rtd-theme`
 
-1. Clone the following repositories from this GitHub organization in a single directory:
-
-    - [`autotest`](https://github.com/ropensci-review-tools/autotest)
-    - [`pkgcheck`](https://github.com/ropensci-review-tools/pkgcheck)
-    - [`pkgstats`](https://github.com/ropensci-review-tools/pkgstats)
-    - [`roreviewapi`](https://github.com/ropensci-review-tools/roreviewapi)
-    - [`ropensci-review-tools`](https://github.com/ropensci-review-tools/ropensci-review-tools)
-    - [`srr`](https://github.com/ropensci-review-tools/srr)
+1. Clone the repositories list in "packages.md" from this GitHub organization
+   in a single directory
 
 2. Within the directory of this repository (`cd ropensci-review-tools`), run
    `make clean` to remove all of the actual documentation files, leaving only
@@ -77,20 +71,13 @@ New packages in the [`ropensci-review-tools` GitHub
 organization](https://github.com/ropensci-review-tools) can be added to
 readthedocs site with the following modifications:
 
-1. Add the package name at the top of the [`pkgdocs-script.R`
-   script](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/pkgdocs-script.R?)
+1. Add the package name to [the `packages.md`
+   file](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/packages.md)
    (and ensure that the repository to be added is locally cloned to the same
    root directory as this, and all other, repositories).
-2. Modify
-   [`docs/index.rst`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/docs/index.rst),
-   and add the main `.md` file of the new package to the second
-   Table-of-Contents entry (generally as <package/package.md>).
-3. Modify the
-   [`makefile`](https://github.com/ropensci-review-tools/ropensci-review-tools/blob/main/makefile)
-   to add the new package name to the `make clean` step.
-4. Run `make` to automatically compile the package documentation into the
+2. Run `make` to automatically compile the package documentation into the
    `/docs` folder of this repository.
-5. Add the newly compiled sub-folder of `/docs` to the git tree, commit the
-   files, push to GitHub, and documentation for the the new package will be
+3. Add the newly compiled sub-folder of `/docs` to the git tree, commit the
+   files, push to GitHub, and documentation for the new package will be
    added to this readthedocs site.
 

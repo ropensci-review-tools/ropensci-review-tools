@@ -16,16 +16,9 @@ open: $(INDEX).html ## Open the main 'html' page
 	xdg-open $(INDEX).html &
 
 clean: ## Run readthedocs 'make clean' + clean all 'grab' targets (R pkg files)
-	rm -rf docs/autotest* \
-		docs/dashboard* \
-		docs/pkgcheck* \
-		docs/pkgstats* \
-		docs/roreviewapi* \
-		docs/srr* \
-		docs/pkgcheck-action; \
-	cd docs;	\
-	make clean;	\
-	cd ..
+	@for pkg in $$(cat packages.md | grep -v '^$$'); do \
+		rm -rf "docs/$$pkg"*; \
+	done; \
 
 count: ## count some stuff
 	@cd docs;                                          \
