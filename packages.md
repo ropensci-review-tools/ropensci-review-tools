@@ -3,6 +3,7 @@ dashboard
 pkgcheck
 pkgcheck-action
 pkgstats
+orgmetrics
 repometrics
 roreviewapi
 srr

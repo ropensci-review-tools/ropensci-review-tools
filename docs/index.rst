@@ -31,6 +31,7 @@ appropriate link.
    pkgcheck/pkgcheck.md
    pkgcheck-action/pkgcheck-action.md
    pkgstats/pkgstats.md
+   orgmetrics/orgmetrics.md
    repometrics/repometrics.md
    roreviewapi/roreviewapi.md
    srr/srr.md
