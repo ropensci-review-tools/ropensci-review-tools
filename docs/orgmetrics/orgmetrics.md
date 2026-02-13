@@ -10,10 +10,10 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 # orgmetrics
 
 Metrics for your GitHub organization, collated from applying accompanying
-[`repometrics` package](https://github.com/ropensci-review-tools/repometrics)
+[`repometrics` package](https://docs.ropensci.org/repometrics/)
 across all organization repositories, enhanced with additional
-organization-level data. Live demonstration currently at
-[ropensci-review-tools.github.io/repometrics-demo/repo.html](https://ropensci-review-tools.github.io/repometrics-demo/repo.html).
+organization-level data. Live demonstration for the entire rOpenSci organization currently at
+[ropensci-review-tools.github.io/orgmetrics-ropensci/](https://ropensci-review-tools.github.io/orgmetrics-ropensci/).
 
 ## How?
 
