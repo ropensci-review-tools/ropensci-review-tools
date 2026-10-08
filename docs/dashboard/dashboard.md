@@ -1,6 +1,11 @@
 
 # rOpenSci Software Review Dashboard
 
+[![R-CMD-check](https://github.com/ropensci-review-tools/dashboard/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci-review-tools/dashboard/actions/workflows/R-CMD-check.yaml)
+[![codecov](https://codecov.io/gh/ropensci-review-tools/dashboard/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci-review-tools/dashboard)
+[![Project Status:
+Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
 This repository contains the source code for [rOpenSci's *Software Review
 Dashboard*](https://dashboard.ropensci.org). This includes
 both a local R package named "dashboard", and a [quarto
@@ -32,15 +37,18 @@ available options:
 
 ```bash
 Usage: make [target]
-build               'quarto build' command
-check               Run `R CMD check` on package
-dev                 alias for 'serve'
-doc                 Update package documentation with `roxygen2`
-help                Show this help
-recache             Start local quarto server with '--cache-refresh' to force cache refresh
-renv-snapshot       Update the 'renv.lock' file, generally run after `renv-update`
-renv-update         Update 'renv' dependencies to latest versions
-serve               Start local quarto server
+build                'quarto build' command
+check                Run `R CMD check` on package
+clean                Clean all previously rendered and cached stuff from quarto/ dir
+dev                  alias for 'serve'
+doc                  Update package documentation with `roxygen2`
+help                 Show this help
+recache              Start local quarto server with '--cache-refresh' to force cache refresh
+render               'quarto render' command
+renv-snapshot        Update the 'renv.lock' file, generally run after `renv-update`
+renv-update          Update 'renv' dependencies to latest versions
+serve                Start local quarto server
+test                 Run package tests
 ```
 
 The last of these commands runs the `quarto dev` command in the `quarto`
@@ -68,6 +76,7 @@ use a personal token from somebody with "owner" rights both here and in the
 :maxdepth: 1
 
 functions/add_editor_airtable_data.md
+functions/community_data.md
 functions/dashboard-package.md
 functions/ed_rev_durations.md
 functions/editor_status.md
