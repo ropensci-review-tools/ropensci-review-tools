@@ -80,12 +80,27 @@ one_vignettes <- function (p, path) {
         if (!file.exists (flist_md [i])) {
 
             # https://github.com/wch/webshot/issues/115
+            # Render a temporary copy with `always_allow_html: true` added to
+            # the YAML header, so original vignettes remain unchanged.
+            rmd <- brio::read_lines (flist [i])
+            yaml_end <- which (rmd == "---") [2]
+            if (!is.na (yaml_end) &&
+                !any (grepl ("^always_allow_html", rmd [seq_len (yaml_end)]))) {
+                rmd <- append (rmd, "always_allow_html: true", after = yaml_end - 1L)
+            }
+            tmp_rmd <- file.path (dirname (flist [i]),
+                                  paste0 ("tmp-", basename (flist [i])))
+            brio::write_lines (rmd, tmp_rmd)
+
             withr::with_envvar (
                 c ("OPENSSL_CONF" = "/dev/null"), {
-                    rmarkdown::render (flist [i],
-                        output_format = rmarkdown::md_document (variant = "gfm"))
-                    #output_file = flist_md [i])
+                    rmarkdown::render (tmp_rmd,
+                        output_format = rmarkdown::md_document (variant = "gfm"),
+                        output_file = basename (flist_md [i]),
+                        envir = new.env (parent = globalenv ()),
+                        quiet = TRUE)
             })
+            unlink (tmp_rmd)
             message ("[", flist [i], "] has been rendered to [",
                      flist_md [i], "]")
         }
