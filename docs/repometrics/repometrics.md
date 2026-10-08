@@ -1,8 +1,7 @@
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/ropensci-review-tools/repometrics/workflows/R-CMD-check/badge.svg)](https://github.com/ropensci-review-tools/repometrics/actions?query=workflow%3AR-CMD-check)
-[![codecov](https://codecov.io/gh/ropensci-review-tools/repometrics/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci-review-tools/repometrics)
+[![R-CMD-check](https://github.com/ropensci-review-tools/repometrics/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci-review-tools/repometrics/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/ropensci-review-tools/repometrics/graph/badge.svg)](https://app.codecov.io/gh/ropensci-review-tools/repometrics)
 [![Project Status:
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
@@ -33,6 +32,14 @@ or directly from GitHub with one of these two lines:
 remotes::install_github ("ropensci-review-tools/repometrics")
 pak::pkg_install ("ropensci-review-tools/repometrics")
 ```
+
+The package may also be installed from locations other than GitHub, with any of
+the following options:
+``` r
+remotes::install_git ("https://codeberg.org/ropensci-review-tools/repometrics")
+remotes::install_git ("https://codefloe.com/ropensci-review-tools/repometrics")
+```
+
 
 ### Use
 

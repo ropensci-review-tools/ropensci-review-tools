@@ -11,7 +11,7 @@ Start quarto dashboard with results of
 orgmetrics_dashboard(
   data_org,
   fn_calls,
-  embeddings,
+  similarities,
   title = NULL,
   action = "preview"
 )
@@ -23,9 +23,8 @@ orgmetrics_dashboard(
 `orgmetrics_collate_org_data` function.
 * `fn_calls`: Data on function calls between packages of the specified
 organization, as returned from the `rm_org_data_fn_call_network()` function.
-* `embeddings`: List of language model embeddings returned from
-`rm_org_emb_distances()`. These are calculated with the 'pkgmatch' package
-which in turn relies on [https://ollama.com](https://ollama.com).
+* `similarities`: List of 'BM25' similarities between packages generated
+by the 'pkgmatch' package
 * `title`: If not `NULL` (default), a string specifying the organizational
 title for the dashboard.
 * `action`: One of "preview", to start and open a live preview of the

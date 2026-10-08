@@ -11,7 +11,7 @@ orgmetrics_deploy_r_univ(
   url = NULL,
   dest_dir = fs::path_temp(),
   title = NULL,
-  aggregation_period = 90,
+  aggregation_period = 365L,
   action = NULL
 )
 ```
@@ -31,7 +31,7 @@ re-generating the same data each time.
 * `title`: Title for 'orgmetrics' dashboard. Default is `NULL`, in
 which case the title is taken to be the terminal element of `url`.
 * `aggregation_period`: Period in days over which prior activity is to be
-aggregated.
+aggregated. Should be an integer greater than or equal to `90L`, with a default of one year (`365L`)
 * `action`: One of "preview", to start and open a live preview of the
 dashboard website, "render" to render a static version without previewing
 or opening, or `NULL` to set up the quarto structure in the current

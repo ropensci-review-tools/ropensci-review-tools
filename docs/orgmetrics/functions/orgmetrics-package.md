@@ -15,6 +15,9 @@ Useful links:
 ## Author
 
 ***Maintainer***: Mark Padgham [mark.padgham@email.com](mailto:mark.padgham@email.com) ([ORCID](https://orcid.org/0000-0003-2172-5265))
+Authors:
+
+* Mark Padgham [mark.padgham@email.com](mailto:mark.padgham@email.com) ([ORCID](https://orcid.org/0000-0003-2172-5265))
 
 ## Keyword
 
