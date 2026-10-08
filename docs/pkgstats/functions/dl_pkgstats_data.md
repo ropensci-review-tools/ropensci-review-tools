@@ -19,12 +19,12 @@ otherwise (default) download data only for current CRAN packages.
 
 ## Seealso
 
-Other archive: 
-`[pkgstats_cran_current_from_full](pkgstats_cran_current_from_full)()`,
-`[pkgstats_fns_from_archive](pkgstats_fns_from_archive)()`,
-`[pkgstats_fns_update](pkgstats_fns_update)()`,
-`[pkgstats_from_archive](pkgstats_from_archive)()`,
-`[pkgstats_update](pkgstats_update)()`
+Other archive:
+`[pkgstats_cran_current_from_full()](pkgstats_cran_current_from_full)`,
+`[pkgstats_fns_from_archive()](pkgstats_fns_from_archive)`,
+`[pkgstats_fns_update()](pkgstats_fns_update)`,
+`[pkgstats_from_archive()](pkgstats_from_archive)`,
+`[pkgstats_update()](pkgstats_update)`
 
 ## Concept
 

@@ -23,9 +23,9 @@ location where a binary is able to be installed without `sudo` privileges.
 
 ## Seealso
 
-Other tags: 
-`[ctags_test](ctags_test)()`,
-`[tags_data](tags_data)()`
+Other tags:
+`[ctags_test()](ctags_test)`,
+`[tags_data()](tags_data)`
 
 ## Concept
 

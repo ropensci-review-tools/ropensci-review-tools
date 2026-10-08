@@ -39,11 +39,11 @@ edges with zero centrality.
 
 ## Seealso
 
-Other stats: 
-`[desc_stats](desc_stats)()`,
-`[loc_stats](loc_stats)()`,
-`[pkgstats](pkgstats)()`,
-`[rd_stats](rd_stats)()`
+Other stats:
+`[desc_stats()](desc_stats)`,
+`[loc_stats()](loc_stats)`,
+`[pkgstats()](pkgstats)`,
+`[rd_stats()](rd_stats)`
 
 ## Concept
 

@@ -16,11 +16,11 @@ rd_stats(path)
 
 ## Seealso
 
-Other stats: 
-`[desc_stats](desc_stats)()`,
-`[loc_stats](loc_stats)()`,
-`[pkgstats](pkgstats)()`,
-`[pkgstats_summary](pkgstats_summary)()`
+Other stats:
+`[desc_stats()](desc_stats)`,
+`[loc_stats()](loc_stats)`,
+`[pkgstats()](pkgstats)`,
+`[pkgstats_summary()](pkgstats_summary)`
 
 ## Concept
 

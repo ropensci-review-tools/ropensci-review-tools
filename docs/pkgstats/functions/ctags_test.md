@@ -22,9 +22,9 @@ non-installed system libraries.
 
 ## Seealso
 
-Other tags: 
-`[ctags_install](ctags_install)()`,
-`[tags_data](tags_data)()`
+Other tags:
+`[ctags_install()](ctags_install)`,
+`[tags_data()](tags_data)`
 
 ## Concept
 

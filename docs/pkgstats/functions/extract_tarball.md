@@ -18,8 +18,8 @@ extract_tarball(tarball, exdir = fs::path_temp())
 
 ## Seealso
 
-Other misc: 
-`[pkgstats_fn_names](pkgstats_fn_names)()`
+Other misc:
+`[pkgstats_fn_names()](pkgstats_fn_names)`
 
 ## Concept
 

@@ -22,9 +22,9 @@ package-internal calls.
 
 ## Seealso
 
-Other tags: 
-`[ctags_install](ctags_install)()`,
-`[ctags_test](ctags_test)()`
+Other tags:
+`[ctags_install()](ctags_install)`,
+`[ctags_test()](ctags_test)`
 
 ## Concept
 

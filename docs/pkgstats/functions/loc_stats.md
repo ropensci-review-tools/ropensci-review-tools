@@ -20,11 +20,11 @@ NA values are returned for directories which do not exist.
 
 ## Seealso
 
-Other stats: 
-`[desc_stats](desc_stats)()`,
-`[pkgstats](pkgstats)()`,
-`[pkgstats_summary](pkgstats_summary)()`,
-`[rd_stats](rd_stats)()`
+Other stats:
+`[desc_stats()](desc_stats)`,
+`[pkgstats()](pkgstats)`,
+`[pkgstats_summary()](pkgstats_summary)`,
+`[rd_stats()](rd_stats)`
 
 ## Concept
 

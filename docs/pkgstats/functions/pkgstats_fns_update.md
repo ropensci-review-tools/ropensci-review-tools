@@ -41,12 +41,12 @@ single-core processing.
 
 ## Seealso
 
-Other archive: 
-`[dl_pkgstats_data](dl_pkgstats_data)()`,
-`[pkgstats_cran_current_from_full](pkgstats_cran_current_from_full)()`,
-`[pkgstats_fns_from_archive](pkgstats_fns_from_archive)()`,
-`[pkgstats_from_archive](pkgstats_from_archive)()`,
-`[pkgstats_update](pkgstats_update)()`
+Other archive:
+`[dl_pkgstats_data()](dl_pkgstats_data)`,
+`[pkgstats_cran_current_from_full()](pkgstats_cran_current_from_full)`,
+`[pkgstats_fns_from_archive()](pkgstats_fns_from_archive)`,
+`[pkgstats_from_archive()](pkgstats_from_archive)`,
+`[pkgstats_update()](pkgstats_update)`
 
 ## Concept
 

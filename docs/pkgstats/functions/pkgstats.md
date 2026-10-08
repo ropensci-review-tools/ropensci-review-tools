@@ -17,11 +17,11 @@ file, containing code for an R package.
 
 ## Seealso
 
-Other stats: 
-`[desc_stats](desc_stats)()`,
-`[loc_stats](loc_stats)()`,
-`[pkgstats_summary](pkgstats_summary)()`,
-`[rd_stats](rd_stats)()`
+Other stats:
+`[desc_stats()](desc_stats)`,
+`[loc_stats()](loc_stats)`,
+`[pkgstats_summary()](pkgstats_summary)`,
+`[rd_stats()](rd_stats)`
 
 ## Concept
 

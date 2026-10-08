@@ -17,8 +17,8 @@ file, containing code for an R package.
 
 ## Seealso
 
-Other misc: 
-`[extract_tarball](extract_tarball)()`
+Other misc:
+`[extract_tarball()](extract_tarball)`
 
 ## Concept
 
