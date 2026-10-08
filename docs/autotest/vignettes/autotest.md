@@ -10,7 +10,9 @@ the local
 [`tempdir()`](https://stat.ethz.ch/R-manual/R-devel/library/base/html/tempfile.html).
 
 <details closed>
+
 <summary>
+
 <span title="Click to Expand"> Package Construction </span>
 </summary>
 
@@ -21,30 +23,30 @@ and name our package `"demo"`.
 ``` r
 path <- file.path (tempdir (), "demo")
 usethis::create_package (path, check_name = FALSE, open = FALSE)
-#> ✔ Creating '/tmp/RtmpddpQhn/demo/'
-#> ✔ Setting active project to '/tmp/RtmpddpQhn/demo'
-#> ✔ Creating 'R/'
-#> ✔ Writing 'DESCRIPTION'
+#> ✔ Creating '/tmp/Rtmp73DmYz/demo/'.
+#> ✔ Setting active project to "/tmp/Rtmp73DmYz/demo".
+#> ✔ Creating 'R/'.
+#> ✔ Writing 'DESCRIPTION'.
 #> Package: demo
 #> Title: What the Package Does (One Line, Title Case)
 #> Version: 0.0.0.9000
 #> Authors@R (parsed):
-#>     * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)
+#>     * First Last <first.last@example.com> [aut, cre]
 #> Description: What the package does (one paragraph).
 #> License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
 #>     license
+#> Config/roxygen2/version: 8.1.0
 #> Encoding: UTF-8
 #> Roxygen: list(markdown = TRUE)
-#> RoxygenNote: 7.2.3
-#> ✔ Writing 'NAMESPACE'
-#> ✔ Setting active project to '<no active project>'
+#> ✔ Writing 'NAMESPACE'.
+#> ✔ Setting active project to "<no active project>".
 ```
 
 The structure looks like this:
 
 ``` r
 fs::dir_tree (path)
-#> /tmp/RtmpddpQhn/demo
+#> /tmp/Rtmp73DmYz/demo
 #> ├── DESCRIPTION
 #> ├── NAMESPACE
 #> └── R
@@ -65,16 +67,18 @@ create the corresponding `man` files.
 documentation, so our code needs to include at least one example line.
 
 ``` r
-code <- c ("#' my_function",
-           "#'",
-           "#' @param x An input",
-           "#' @return Something else",
-           "#' @examples",
-           "#' y <- my_function (x = 1)",
-           "#' @export",
-           "my_function <- function (x) {",
-           "  return (x + 1)",
-           "}")
+code <- c (
+    "#' my_function",
+    "#'",
+    "#' @param x An input",
+    "#' @return Something else",
+    "#' @examples",
+    "#' y <- my_function (x = 1)",
+    "#' @export",
+    "my_function <- function (x) {",
+    "  return (x + 1)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
@@ -86,7 +90,7 @@ Our package now looks like this:
 
 ``` r
 fs::dir_tree (path)
-#> /tmp/RtmpddpQhn/demo
+#> /tmp/Rtmp73DmYz/demo
 #> ├── DESCRIPTION
 #> ├── NAMESPACE
 #> ├── R
@@ -104,17 +108,17 @@ x0 <- autotest_package (path)
 ```
 
     #> ℹ Loading autotest
-    #> ✔ [1 / 1]
+    #> ℹ Loading demo
 
-We use the [`DT` package](https://rstudio.github.io/DT) to display the
+We use the [`DT` package](https://rstudio.github.io/DT/) to display the
 results here.
 
 ``` r
 DT::datatable (x0, options = list (dom = "t")) # display table only
+#> `google-chrome`, `chromium-browser` and `chrome` were not found. Try setting the `CHROMOTE_CHROME` environment variable to the executable of a Chromium-based browser, such as Google Chrome, Chromium or Brave or adding one of these executables to your PATH.
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4ed791eb9a29c400f727" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4ed791eb9a29c400f727">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7","8","9"],["dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy","dummy"],["double_is_int","trivial_noise","single_par_as_length_2","return_successful","return_val_described","return_desc_includes_class","return_class_matches_desc","par_is_documented","par_matches_docs"],["my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function","my_function"],["x","x","x","(return object)","(return object)","(return object)","(return object)","x","x"],["numeric","numeric","single numeric","(return object)","(return object)","(return object)","(return object)",null,null],["Check whether double is only used as int","Add trivial noise to numeric parameter","Length 2 vector for length 1 parameter","Check that function successfully returns an object","Check that description has return value","Check whether description of return value specifies class","Compare class of return value with description","Check that parameter is documented","Check that documentation matches class of input parameter"],["int parameters should have terminal 'L'","(Should yield same result)","Should trigger message, warning, or error",null,null,null,null,null,null],[true,true,true,true,true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/unnamed-chunk-1-1.png" alt="" width="672" />
 
 The first thing to notice is the first column, which has
 `test_type = "dummy"` for all rows. The [`autotest_package()`
@@ -128,14 +132,12 @@ gives the following result.
 ``` r
 x1 <- autotest_package (path, test = TRUE)
 #> ℹ Loading demo
-#> ✔ [1 / 1]
 DT::datatable (x1, options = list (dom = "t"))
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-8baa7e91f6211a1067fe" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-8baa7e91f6211a1067fe">{"x":{"filter":"none","vertical":false,"data":[["1","2","3"],["error","error","diagnostic"],[null,"return_successful","return_desc_includes_class"],["my_function","my_function","my_function"],[null,"(return object)","(return object)"],[null,"(return object)","(return object)"],["normal function call","error from normal operation","Check whether description of return value specifies class"],[":quote(1)): could not find function \"my_function\"","could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/autotest-TRUE-1.png" alt="" width="672" />
 
-Of the 9 tests which were performed, only 3 yielded unexpected
+Of the 9 tests which were performed, only 1 yielded unexpected
 behaviour. The first indicates that the parameter `x` has only been used
 as an integer, yet was not specified as such. The second states that the
 parameter `x` is “assumed to be a single numeric”. `autotest` does its
@@ -146,20 +148,22 @@ by replacing `x = 1` with `x = 1.` to clearly indicate that it is not an
 integer, and the second by asserting that `length(x) == 1`, as follows:
 
 ``` r
-code <- c ("#' my_function",
-           "#'",
-           "#' @param x An input",
-           "#' @return Something else",
-           "#' @examples",
-           "#' y <- my_function (x = 1.)",
-           "#' @export",
-           "my_function <- function (x) {",
-           "  if (length(x) > 1) {",
-           "    warning(\"only the first value of x will be used\")",
-           "    x <- x [1]",
-           "  }",
-           "  return (x + 1)",
-           "}")
+code <- c (
+    "#' my_function",
+    "#'",
+    "#' @param x An input",
+    "#' @return Something else",
+    "#' @examples",
+    "#' y <- my_function (x = 1.)",
+    "#' @export",
+    "my_function <- function (x) {",
+    "  if (length(x) > 1) {",
+    "    warning(\"only the first value of x will be used\")",
+    "    x <- x [1]",
+    "  }",
+    "  return (x + 1)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
@@ -171,13 +175,8 @@ This is then sufficient to pass all `autotest` tests and so return
 
 ``` r
 autotest_package (path, test = TRUE)
-#> ✔ [1 / 1]
-#> # A tibble: 3 × 8
-#>   type       test_name  fn_name parameter parameter_type operation content test 
-#>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-#> 1 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 2 error      return_su… my_fun… (return … (return objec… error fr… "could… TRUE 
-#> 3 diagnostic return_de… my_fun… (return … (return objec… Check wh… "Funct… TRUE
+#> ℹ Loading demo
+#> NULL
 ```
 
 ## Integer input
@@ -194,18 +193,17 @@ allowed the preceding tests to pass. Note what happens if we instead
 specify that parameter as an integer (`x = 1L`).
 
 ``` r
-code [6] <- gsub ("1\\.", "1L", code [6])
+code [6] <- gsub ("1.", "1L", code [6], fixed = TRUE)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
 #> Writing 'my_function.Rd'
 x2 <- autotest_package (path, test = TRUE)
-#> ✔ [1 / 1]
+#> ℹ Loading demo
 DT::datatable (x2, options = list (dom = "t"))
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-5de00d9c1435038aac3a" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-5de00d9c1435038aac3a">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","diagnostic","diagnostic"],[null,null,"return_successful","int_range","return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,null,"(return object)","x","(return object)"],[null,null,"(return object)","single integer","(return object)"],["normal function call",null,"error from normal operation","Ascertain permissible range","Check whether description of return value specifies class"],[":quote(structure(1L, is_int = TRUE))): could not find function \"my_function\"",":quote(structure(1L, is_int = TRUE))): could not find function \"my_function\"","could not find function \"my_function\"","Function [my_function] does not respond appropriately for specified/default input [x = 1]","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/int-input-1.png" alt="" width="672" />
 
 That then generates two additional messages, the second of which
 reflects an expectation that parameters assumed to be integer-valued
@@ -213,10 +211,12 @@ should assert that, for example by converting with `as.integer()`. The
 following suffices to remove that message.
 
 ``` r
-code <- c (code [1:12],
-           "  if (is.numeric (x))",
-           "    x <- as.integer (x)",
-           code [13:length (code)])
+code <- c (
+    code [1:12],
+    "  if (is.numeric (x))",
+    "    x <- as.integer (x)",
+    code [13:length (code)]
+)
 ```
 
 The remaining message concerns integer ranges. For any parameters which
@@ -230,21 +230,14 @@ indicates one way to resolve this issue, which is simply by describing
 the input as `"unrestricted"`.
 
 ``` r
-code [3] <- gsub ("An input", "An unrestricted input", code [3])
+code [3] <- gsub ("An input", "An unrestricted input", code [3], fixed = TRUE)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
 #> Writing 'my_function.Rd'
 autotest_package (path, test = TRUE)
-#> ✔ [1 / 1]
-#> # A tibble: 5 × 8
-#>   type       test_name  fn_name parameter parameter_type operation content test 
-#>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-#> 1 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 2 error      <NA>       my_fun… <NA>      <NA>           <NA>      ":quot… TRUE 
-#> 3 error      return_su… my_fun… (return … (return objec… error fr… "could… TRUE 
-#> 4 diagnostic int_range  my_fun… x         single integer Ascertai… "Funct… TRUE 
-#> 5 diagnostic return_de… my_fun… (return … (return objec… Check wh… "Funct… TRUE
+#> ℹ Loading demo
+#> NULL
 ```
 
 An alternative, and frequently better way, is to ensure and document
@@ -252,39 +245,34 @@ specific control over permissible ranges, as in the following revision
 of our function.
 
 ``` r
-code <- c ("#' my_function",
-           "#'",
-           "#' @param x An input between 0 and 10",
-           "#' @return Something else",
-           "#' @examples",
-           "#' y <- my_function (x = 1L)",
-           "#' @export",
-           "my_function <- function (x) {",
-           "  if (length(x) > 1) {",
-           "    warning(\"only the first value of x will be used\")",
-           "    x <- x [1]",
-           "  }",
-           "  if (is.numeric (x))",
-           "    x <- as.integer (x)",
-           "  if (x < 0 | x > 10) {",
-           "    stop (\"x must be between 0 and 10\")",
-           "  }",
-           "  return (x + 1L)",
-           "}")
+code <- c (
+    "#' my_function",
+    "#'",
+    "#' @param x An input between 0 and 10",
+    "#' @return Something else",
+    "#' @examples",
+    "#' y <- my_function (x = 1L)",
+    "#' @export",
+    "my_function <- function (x) {",
+    "  if (length(x) > 1) {",
+    "    warning(\"only the first value of x will be used\")",
+    "    x <- x [1]",
+    "  }",
+    "  if (is.numeric (x))",
+    "    x <- as.integer (x)",
+    "  if (x < 0 | x > 10) {",
+    "    stop (\"x must be between 0 and 10\")",
+    "  }",
+    "  return (x + 1L)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
 #> Writing 'my_function.Rd'
 autotest_package (path, test = TRUE)
-#> ✔ [1 / 1]
-#> # A tibble: 5 × 8
-#>   type       test_name  fn_name parameter parameter_type operation content test 
-#>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-#> 1 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 2 error      <NA>       my_fun… <NA>      <NA>           <NA>      ":quot… TRUE 
-#> 3 error      return_su… my_fun… (return … (return objec… error fr… "could… TRUE 
-#> 4 diagnostic int_range  my_fun… x         single integer Ascertai… "Funct… TRUE 
-#> 5 diagnostic return_de… my_fun… (return … (return objec… Check wh… "Funct… TRUE
+#> ℹ Loading demo
+#> NULL
 ```
 
 Respective limits of ranges may be specified with any of the following
@@ -303,20 +291,22 @@ which accepted vectors of length \> 1, and include an example
 demonstrating such input.
 
 ``` r
-code <- c ("#' my_function",
-           "#'",
-           "#' @param x An input",
-           "#' @return Something else",
-           "#' @examples",
-           "#' y <- my_function (x = 1)",
-           "#' y <- my_function (x = 1:2)",
-           "#' @export",
-           "my_function <- function (x) {",
-           "  if (is.numeric (x)) {",
-           "    x <- as.integer (x)",
-           "  }",
-           "  return (x + 1L)",
-           "}")
+code <- c (
+    "#' my_function",
+    "#'",
+    "#' @param x An input",
+    "#' @return Something else",
+    "#' @examples",
+    "#' y <- my_function (x = 1)",
+    "#' y <- my_function (x = 1:2)",
+    "#' @export",
+    "my_function <- function (x) {",
+    "  if (is.numeric (x)) {",
+    "    x <- as.integer (x)",
+    "  }",
+    "  return (x + 1L)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
@@ -330,13 +320,11 @@ which all values are whole numbers, regardless of `storage.mode`.
 
 ``` r
 x3 <- autotest_package (path, test = TRUE)
-#> ✔ [1 / 2]
-#> ✔ [2 / 2]
+#> ℹ Loading demo
 DT::datatable (x3, options = list (dom = "t"))
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-f8d9835e7d95c55f5a9e" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f8d9835e7d95c55f5a9e">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,"return_successful",null,null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,"(return object)",null,null,"(return object)"],[null,"(return object)",null,null,"(return object)"],["normal function call","error from normal operation",null,"normal function call","Check whether description of return value specifies class"],[":quote(1)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/autotest-TRUE3-1.png" alt="" width="672" />
 
 ### List-column conversion
 
@@ -383,7 +371,8 @@ head (m, n = 2L) # looks exaxtly the same
 #> Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
 #> Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
 cor (m)
-#> Error in cor(m): 'x' must be numeric
+#> Error in `cor()`:
+#> ! 'x' must be numeric
 ```
 
 In contrast, many functions either assume inputs to be lists, and
@@ -406,23 +395,25 @@ function which identifies and responds to list-column inputs might look
 like this:
 
 ``` r
-code <- c ("#' my_function",
-           "#'",
-           "#' @param x An input",
-           "#' @return Something else",
-           "#' @examples",
-           "#' y <- my_function (x = 1)",
-           "#' y <- my_function (x = 1:2)",
-           "#' @export",
-           "my_function <- function (x) {",
-           "  if (methods::is (unclass (x), \"list\")) {",
-           "    x <- unlist (x)",
-           "  }",
-           "  if (is.numeric (x)) {",
-           "    x <- as.integer (x)",
-           "  }",
-           "  return (x + 1L)",
-           "}")
+code <- c (
+    "#' my_function",
+    "#'",
+    "#' @param x An input",
+    "#' @return Something else",
+    "#' @examples",
+    "#' y <- my_function (x = 1)",
+    "#' y <- my_function (x = 1:2)",
+    "#' @export",
+    "my_function <- function (x) {",
+    "  if (methods::is (unclass (x), \"list\")) {",
+    "    x <- unlist (x)",
+    "  }",
+    "  if (is.numeric (x)) {",
+    "    x <- as.integer (x)",
+    "  }",
+    "  return (x + 1L)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn.R"))
 roxygen2::roxygenise (path)
 #> ℹ Loading demo
@@ -432,16 +423,8 @@ That change once again leads to clean `autotest` results:
 
 ``` r
 autotest_package (path, test = TRUE)
-#> ✔ [1 / 2]
-#> ✔ [2 / 2]
-#> # A tibble: 5 × 8
-#>   type       test_name  fn_name parameter parameter_type operation content test 
-#>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-#> 1 error      <NA>       my_fun… <NA>      <NA>           <NA>      ":quot… TRUE 
-#> 2 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 3 error      return_su… my_fun… (return … (return objec… error fr… "could… TRUE 
-#> 4 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 5 diagnostic return_de… my_fun… (return … (return objec… Check wh… "Funct… TRUE
+#> ℹ Loading demo
+#> NULL
 ```
 
 Of course simply attempting to `unlist` a complex list-column may be
@@ -462,49 +445,49 @@ ways `autotest` inspects return objects, demonstrating a vector input
 checks an integer ranges.
 
 ``` r
-code <- c ("#' my_function3",
-           "#'",
-           "#' @param x An input",
-           "#' @examples",
-           "#' y <- my_function3 (x = 1:2)",
-           "#' @export",
-           "my_function3 <- function (x) {",
-           "  return (datasets::iris)",
-           "}")
+code <- c (
+    "#' my_function3",
+    "#'",
+    "#' @param x An input",
+    "#' @examples",
+    "#' y <- my_function3 (x = 1:2)",
+    "#' @export",
+    "my_function3 <- function (x) {",
+    "  return (datasets::iris)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'NAMESPACE'
 #> Writing 'my_function3.Rd'
 x4 <- autotest_package (path, test = TRUE)
-#> ✔ [1 / 2]
-#> ✔ [2 / 2]
+#> ℹ Loading demo
 DT::datatable (x4, options = list (dom = "t"))
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-796f5742552a9e86d0d3" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-796f5742552a9e86d0d3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,"return_successful",null,null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,"(return object)",null,null,"(return object)"],[null,"(return object)",null,null,"(return object)"],["normal function call","error from normal operation",null,"normal function call","Check whether description of return value specifies class"],[":quote(1)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/return-val-1.png" alt="" width="672" />
 
 Several new diagnostic messages are then issued regarding the
 description of the returned value. Let’s insert a description to see the
 effect.
 
 ``` r
-code <- c (code [1:3],
-           "#' @return The iris data set as dataframe",
-           code [4:length (code)])
+code <- c (
+    code [1:3],
+    "#' @return The iris data set as dataframe",
+    code [4:length (code)]
+)
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'my_function3.Rd'
 x5 <- autotest_package (path, test = TRUE)
-#> ✔ [1 / 2]
-#> ✔ [2 / 2]
+#> ℹ Loading demo
 DT::datatable (x5, options = list (dom = "t"))
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-d82e29eaf5cb2b064d90" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d82e29eaf5cb2b064d90">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,"return_successful",null,null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,"(return object)",null,null,"(return object)"],[null,"(return object)",null,null,"(return object)"],["normal function call","error from normal operation",null,"normal function call","Check whether description of return value specifies class"],[":quote(1)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/return-val-2-1.png" alt="" width="672" />
 
 That result still contains a couple of diagnostic messages, but it is
 now pretty clear what we need to do, which is to be precise with our
@@ -518,16 +501,8 @@ roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'my_function3.Rd'
 autotest_package (path, test = TRUE)
-#> ✔ [1 / 2]
-#> ✔ [2 / 2]
-#> # A tibble: 5 × 8
-#>   type       test_name  fn_name parameter parameter_type operation content test 
-#>   <chr>      <chr>      <chr>   <chr>     <chr>          <chr>     <chr>   <lgl>
-#> 1 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 2 error      return_su… my_fun… (return … (return objec… error fr… "could… TRUE 
-#> 3 error      <NA>       my_fun… <NA>      <NA>           <NA>      ":quot… TRUE 
-#> 4 error      <NA>       my_fun… <NA>      <NA>           normal f… ":quot… TRUE 
-#> 5 diagnostic return_de… my_fun… (return … (return objec… Check wh… "Funct… TRUE
+#> ℹ Loading demo
+#> NULL
 ```
 
 ### Documentation of input parameters
@@ -537,28 +512,28 @@ as demonstrated by the following modified version of the preceding
 function.
 
 ``` r
-code <- c ("#' my_function3",
-           "#'",
-           "#' @param x An input",
-           "#' @return The iris data set as data.frame",
-           "#' @examples",
-           "#' y <- my_function3 (x = datasets::iris)",
-           "#' @export",
-           "my_function3 <- function (x) {",
-           "  return (x)",
-           "}")
+code <- c (
+    "#' my_function3",
+    "#'",
+    "#' @param x An input",
+    "#' @return The iris data set as data.frame",
+    "#' @examples",
+    "#' y <- my_function3 (x = datasets::iris)",
+    "#' @export",
+    "my_function3 <- function (x) {",
+    "  return (x)",
+    "}"
+)
 writeLines (code, file.path (path, "R", "myfn3.R"))
 roxygen2::roxygenise (path) # need to update docs with seed param
 #> ℹ Loading demo
 #> Writing 'my_function3.Rd'
 x6 <- autotest_package (path, test = TRUE)
-#> ✔ [1 / 2]
-#> ✔ [2 / 2]
+#> ℹ Loading demo
 DT::datatable (x6, options = list (dom = "t"))
 ```
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-4a92585410c831daceb2" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-4a92585410c831daceb2">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5"],["error","error","error","error","diagnostic"],[null,null,"return_successful",null,"return_desc_includes_class"],["my_function","my_function","my_function","my_function","my_function"],[null,null,"(return object)",null,"(return object)"],[null,null,"(return object)",null,"(return object)"],[null,"normal function call","error from normal operation","normal function call","Check whether description of return value specifies class"],[":quote(1:2)): could not find function \"my_function\"",":quote(1:2)): could not find function \"my_function\"","could not find function \"my_function\"",":quote(1)): could not find function \"my_function\"","Function [my_function] returns a value of class [simpleError, error, condition], which differs from the value provided in the description"],[true,true,true,true,true]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>type<\/th>\n      <th>test_name<\/th>\n      <th>fn_name<\/th>\n      <th>parameter<\/th>\n      <th>parameter_type<\/th>\n      <th>operation<\/th>\n      <th>content<\/th>\n      <th>test<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false},"selection":{"mode":"multiple","selected":null,"target":"row","selectable":null}},"evals":[],"jsHooks":[]}</script>
+<img src="autotest_files/figure-gfm/input-checks-1.png" alt="" width="672" />
 
 This warning again indicates precisely how it can be rectified, for
 example by replacing the third line with

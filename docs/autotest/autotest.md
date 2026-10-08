@@ -487,5 +487,6 @@ functions/expect_autotest_testdata.md
 :maxdepth: 1
 
 vignettes/autotest-control.md
+vignettes/autotest-pkgcheck-gp.md
 vignettes/autotest.md
 ```

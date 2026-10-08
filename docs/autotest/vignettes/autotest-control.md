@@ -48,14 +48,16 @@ nested list of components corresponding to the various `.Rd` tags such
 as `\arguments`, `\details`, and `\value`. An internal function from the
 [`tools`
 package](https://stat.ethz.ch/R-manual/R-devel/library/tools/html/00Index.html)
-can be used to extract individual components (using the `:::` notation
-to access internal functions). For example, a single `.Rd` file often
-describes the functionality of several functions, each of which is
-identified by specifying the function name as an `"alias"`. The aliases
-for the `"cor.Rd"` file are:
+can be used to extract individual components (retrieved here via
+`utils::getFromNamespace()` rather than the `:::` notation, since the
+latter is generally best avoided outside of interactive use). For
+example, a single `.Rd` file often describes the functionality of
+several functions, each of which is identified by specifying the
+function name as an `"alias"`. The aliases for the `"cor.Rd"` file are:
 
 ``` r
-tools:::.Rd_get_metadata (cor_rd, "alias")
+Rd_get_metadata <- utils::getFromNamespace (".Rd_get_metadata", "tools")
+Rd_get_metadata (cor_rd, "alias")
 #> [1] "var"     "cov"     "cor"     "cov2cor"
 ```
 
@@ -112,7 +114,7 @@ tools::Rd2ex (cor_rd)
     #> swM[1,2] <- swM[7,3] <- swM[25,5] <- NA # create 3 "missing"
     #> 
     #> ## Consider all 5 "use" cases :
-    #> (C. <- cov(swM)) # use="everything"  quite a few NA's in cov.matrix
+    #> (C. <- cov(swM)) # use="everything"  quite a few NAs in cov.matrix
     #> try(cov(swM, use = "all")) # Error: missing obs...
     #> C2 <- cov(swM, use = "complete")
     #> stopifnot(identical(C2, cov(swM, use = "na.or.complete")))
@@ -254,9 +256,11 @@ all nominated functions and parameters by calling the same function with
 `xt` for “true”):
 
 ``` r
-xt <- autotest_package (package = "stats",
-                        functions = "cor",
-                        test = TRUE)
+xt <- autotest_package (
+    package = "stats",
+    functions = "cor",
+    test = TRUE
+)
 print (xt)
 ```
 
@@ -302,12 +306,14 @@ following lines demonstrate how to switch off the list-column test for
 all functions and parameters:
 
 ``` r
-types <- autotest_types()
+types <- autotest_types ()
 types$test [grep ("list_col", types$test_name)] <- FALSE
-xt2 <- autotest_package (package = "stats",
-                         functions = "cor",
-                         test = TRUE,
-                         test_data = types)
+xt2 <- autotest_package (
+    package = "stats",
+    functions = "cor",
+    test = TRUE,
+    test_data = types
+)
 print (xt2)
 ```
 
@@ -345,13 +351,17 @@ switched off only for particular functions, starting again with the `xf`
 data of dummy tests generated above.
 
 ``` r
-xf <- autotest_package (package = "stats",
-                        functions = "cor")
+xf <- autotest_package (
+    package = "stats",
+    functions = "cor"
+)
 xf$test [grepl ("list_col", xf$test_name) & xf$fn_name == "var"] <- FALSE
-xt3 <- autotest_package (package = "stats",
-                         functions = "cor",
-                         test = TRUE,
-                         test_data = xf)
+xt3 <- autotest_package (
+    package = "stats",
+    functions = "cor",
+    test = TRUE,
+    test_data = xf
+)
 print (xt3)
 ```
 
@@ -466,11 +476,13 @@ throughout.
 library (testthat) # as called in your test suite
 # For example, to switch off vector-to-list-column tests:
 test_data <- autotest_types (notest = "vector_to_list_col")
-x <- autotest_package (package = "stats",
-                       functions = "cov",
-                       test = TRUE,
-                       test_data = test_data)
-       
+x <- autotest_package (
+    package = "stats",
+    functions = "cov",
+    test = TRUE,
+    test_data = test_data
+)
+
 expect_success (expect_autotest_no_err (x))
 expect_failure (expect_autotest_no_warn (x)) # should expect_success!!
 ```
@@ -495,8 +507,8 @@ switched off:
 
 ``` r
 x$note <- ""
-x [grep ("vector_to_list", x$test_name), "note"] <-
-  "these tests have been switched off because ..."
+x [grep ("vector_to_list", x$test_name, fixed = TRUE), "note"] <-
+    "these tests have been switched off because ..."
 
 expect_success (expect_autotest_notes (x))
 ```
