@@ -1,0 +1,60 @@
+# Data caching and updating
+
+The `pkgmatch` package package relies on pre-generated inverse document
+term frequencies (IDFs). Inputs of text, code, or entire packages are
+converted into document frequencies, and the results compared with the
+pre-generated value to discern the best-matching result. The
+pre-generated IDFs are calculated for the entire package suites of
+[rOpenSci](https://ropensci.org/packages),
+[CRAN](https://cran.r-project.org), and
+[Bioconductor](https://bioconductor.org/packages/release/BiocViews.html#___Software).
+
+## Local caching and updating for users
+
+The pre-generated IDFs are downloaded whenever needed in initial package
+calls. The download location is determined by [the `rappdirs`
+package](https://rappdirs.r-lib.org/) as
+`fs::path(rappdirs::user_cache_dir(), "R", "pkgmatch)"`. Users should
+generally not need to worry about managing these data files themselves,
+although the data can be safely deleted at any time, as can the entire
+directory in which are stored.
+
+To force data to be updated to the latest versions, run
+[`pkgmatch_update_cache()`](https://docs.ropensci.org/pkgmatch/reference/pkgmatch_update_cache.html).
+
+The remote data are regularly updated, and so locally-cached data also
+require regular updating. By default, if any one of the locally-cached
+IDF files needed for functionality is more than 30 days old, a newer
+version will be automatically downloaded. This update frequency can also
+be over-ridden by setting a value like 100 days with:
+
+``` r
+options ("pkgmatch.update_frequency" = 100L)
+```
+
+If you want to ensure your data are always up to date, set an update
+frequency of 1, and they’ll be updated every day. Alternatively, you can
+set an enduring environment variable, typically in your `~/.Renviron`
+file, to specify a fixed update frequency:
+
+``` bash
+PKGMATCH_UPDATE_FREQUENCY=100
+```
+
+If you wish to prevent any updating, set that environment variable to a
+really high value, such as `1e6`.
+
+## Data updating for developers
+
+These package suites are constantly changing, and therefore the IDFs
+also need to be regularly updated. The “pkgmatch” package includes
+several files in the `/R` directory prefixed with “data-update”
+containing functions which implement this updating. These functions are
+intended to be used only by the developers. They are ultimately used in
+[this GitHub workflow
+file](https://github.com/ropensci-review-tools/pkgmatch/blob/main/.github/workflows/update.yaml)
+which is automatically run every day to update all IDF data for both
+CRAN and rOpenSci. The IDF data thus always reflect the current daily
+state of both repositories. (Bioconductor uses a fixed-release system;
+those data are updated less frequently, and only when Bioconductor
+itself publishes a new release.)

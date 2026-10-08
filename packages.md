@@ -3,6 +3,7 @@ dashboard
 goodpractice
 pkgcheck
 pkgcheck-action
+pkgmatch
 pkgstats
 orgmetrics
 repometrics

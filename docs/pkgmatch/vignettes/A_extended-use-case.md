@@ -1,0 +1,159 @@
+# Example applications
+
+This vignette attempts to answer the question of why you should use the
+`pkgmatch` package, by describing a couple of example applications.
+
+## Text searches for R packages
+
+### Using search engines
+
+Anybody wanting an answer to the question, “*Is there an R package that
+does that?*” will most commonly use a search engine. Here we’ll consider
+the following example search:
+
+> R package to return web search engine results into R as strings or
+> URLs
+
+Note that there is currently no package which does that, nor is there
+likely to be, because search results are not generally retrievable via
+APIs, and in the rare cases in which they are, they are always
+restricted to authorized access only, and thus require API keys (and
+commonly also payment).
+
+Given that we expect no direct match, it is then not surprising that
+most search engines will then deliver a [pile of links to pages on web
+*scraping*](https://duckduckgo.com/?q=R%20package%20to%20return%20web%20search%20engine%20results%20into%20R%20as%20strings%20or%20URLs%20r%20programming),
+even though that word is not even part of the search. If you’re lucky,
+[the `searcher`
+package](https://r-pkg.thecoatlessprofessor.com/searcher/) may appear in
+the results, although that package does not actually return search
+results (for the reasons described above it merely open links in web
+browsers).
+
+There is also an R-specific search engine,
+[“rseek.org”](https://rseek.org), but even that largely fails to deliver
+[any useful
+results](https://rseek.org/?q=R%20package%20to%20return%20web%20search%20engine%20results%20in%20R%20as%20strings%20or%20URLs%20).
+The first actual package mentioned is [the `stringdist`
+package](https://cran.r-project.org/package=stringdist), which is in no
+way related to our query (and even then, the link is to the R-journal
+article describing the package, and not the package itself). Finally,
+GitHub has excellent search facilities, and yet searching for our string
+there simply returns [no results matching entire
+repositories](https://github.com/search?q=R%20package%20to%20return%20web%20search%20engine%20results%20into%20R%20as%20strings%20or%20URLs&type=repositories).
+Although there are huge numbers of matches in other aspects, such as
+code or issues, clicking on those produces very little or no useful
+information in attempting to identify repositories matching the search
+string.
+
+These search engine results illustrate the general difficulty of
+searching for particular *types* of result, in our case R packages.
+Search engines are inherently broad and generic, and use string
+comparisons to match outputs to inputs, largely regardless of the type
+of output. This means that search engines are generally poor tools for
+identifying specific kinds of objects or results, and generally yield
+mostly “noise” which must be extensively filtered before the desired
+kinds of objects can be identified and compared.
+
+In summary:
+
+- Search engine results are general, and require extensive filtering to
+  be useful.
+
+### Using language models
+
+Many people now use language model interfaces for web searching. These
+use complex language embeddings to match inputs to outputs, and so will
+generally be more likely to return actual R packages as outputs. Using a
+language model interface (such as ‘perplexity.ai’ or similar), or “AI”
+search results for,
+
+> R package to return web search engine results into R as strings or
+> URLs
+
+will generally return results which include general web-scraping
+packages such as [rvest](https://rvest.tidyverse.org), along with more
+specific packages such as
+[searcher](https://r-pkg.thecoatlessprofessor.com/searcher/) or
+[googleSearchR](https://github.com/irfanalidv/GoogleSearchR).
+
+A notable limitation of language model results is nevertheless that
+training data are collated regardless of age, and so results may
+frequently include old or obsolete packages (such as
+[RSelenium](https://github.com/ropensci/RSelenium) or
+[RCrawler](https://github.com/salimk/Rcrawler/)). Mis-matches may also
+occur, such as confusion between [google’s “serp-api” for their search
+engine](https://serpapi.com/), and the R package named
+[“serp”](https://cran.r-project.org/package=serp), which is completely
+unrelated. There are also potential ethical ramifications of many large
+language models, notably including that models capable of reproducing
+code should respect licensing conditions of that code. This may prevent
+models from identifying packages which were not used within their
+training data due to licensing restrictions.
+
+In summary:
+
+- Language model results may be out-of-date
+- Language model results may return false matches
+- Language model results may be restricted only to packages with
+  appropriate licenses
+
+### Using ‘pkgmatch’
+
+Compared to the true generality of web search engines or language model
+interfaces, `pkgmatch` is very restricted in scope, but it overcomes
+some of the limitations described above because:
+
+- Results are always and only the names of R packages matching input
+  queries
+- Results are always up-to-date
+- `pkgmatch` can return names of any package with a CRAN-compliant
+  license
+
+Now let’s look at how it responds to the same input query used above:
+
+``` r
+text <- "R package to return web search engine results into R as strings or URLs"
+pkgmatch::pkgmatch_similar_pkgs (text, corpus = "cran")
+```
+
+    #> [1] "rjsoncons"   "RWsearch"    "readMDTable" "urltools"    "rigigbio"
+
+Of those top five matches the [`RWsearch`
+package](https://cran.r-project.org/package=RWsearch) is directly
+related, while most of the others offer search-like functionality in
+specific domains, or other URL-related functionality. (And the
+[‘rjsoncons’ package](https://github.com/mtmorgan/rjsoncons) is not
+clearly related to our search term, but does provide a wealth of
+functions related to querying and extraction.)
+
+## Searches based on entire packages
+
+Entire packages can also be used as input to `pkgmatch` functions. The
+simplest way to do this is to submit the name of an installed package,
+like this:
+
+``` r
+pkgs <- pkgmatch_similar_pkgs ("crul", corpus = "cran")
+```
+
+`pkgmatch` extracts all text from the nominated packages and uses this
+to generate two sets of inverse document frequencies: both of all
+package text including long-form documentation, and of package
+descriptions only. Matches with other packages are based on combinations
+of matches with these two data sets. The above call yields this result:
+
+``` r
+pkgs
+```
+
+    #> [1] "crul"   "vcr"    "curl"   "gargle" "civis"
+
+Finally, the ability to pass entire packages to [the
+`pkgmatch_similar_pkgs()`
+function](https://docs.ropensci.org/pkgmatch/reference/pkgmatch_similar_pkgs.html)
+reflects the original motivation for this package, which is to provide a
+useful tool for [rOpenSci’s software peer review
+process](https://ropensci.org/software-review/), through enabling
+editors to easily assess similarity of new submissions with all previous
+rOpenSci packages.

@@ -31,6 +31,7 @@ appropriate link.
    goodpractice/goodpractice.md
    pkgcheck/pkgcheck.md
    pkgcheck-action/pkgcheck-action.md
+   pkgmatch/pkgmatch.md
    pkgstats/pkgstats.md
    orgmetrics/orgmetrics.md
    repometrics/repometrics.md
