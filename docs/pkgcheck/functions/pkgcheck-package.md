@@ -1,8 +1,8 @@
-# pkgcheck: rOpenSci Package Checks
+# pkgcheck: Package Checks for 'rOpenSci'
 
 ## Description
 
-Check whether a package is ready for submission to rOpenSci's peer review system.
+Check whether a package is ready for submission to the 'rOpenSci' peer review system ('rOpenSci' authors (2026)  "'rOpenSci' Packages: Development, Maintenance, and Peer Review"). Incorporates the 'goodpractice' package and many additional checks, including aspects related to maintenance of online public code repositories.
 
 ## Seealso
 
@@ -17,10 +17,12 @@ Useful links:
 ***Maintainer***: Mark Padgham [mark.padgham@email.com](mailto:mark.padgham@email.com) ([ORCID](https://orcid.org/0000-0003-2172-5265))
 Authors:
 
+* Mark Padgham [mark.padgham@email.com](mailto:mark.padgham@email.com) ([ORCID](https://orcid.org/0000-0003-2172-5265))
 * Maëlle Salmon
 * Jacob Wujciak-Jens [jacob@wujciak.de](mailto:jacob@wujciak.de) ([ORCID](https://orcid.org/0000-0002-7281-3989))
 * Eunseop Kim [markean@pm.me](mailto:markean@pm.me) ([ORCID](https://orcid.org/0009-0000-2138-788X))
 * Andy Teucher [andy.teucher@gmail.com](mailto:andy.teucher@gmail.com) ([ORCID](https://orcid.org/0000-0002-7840-692X))
+* Eric R. Scott ([ORCID](https://orcid.org/0000-0002-7430-7879))
 
 Other contributors:
 

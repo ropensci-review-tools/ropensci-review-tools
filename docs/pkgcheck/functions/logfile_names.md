@@ -23,11 +23,11 @@ own distinct endpoint calls.
 
 ## Seealso
 
-Other extra: 
-`[checks_to_markdown](checks_to_markdown)()`,
-`[fn_names_on_cran](fn_names_on_cran)()`,
-`[list_pkgchecks](list_pkgchecks)()`,
-`[render_md2html](render_md2html)()`
+Other extra:
+`[checks_to_markdown()](checks_to_markdown)`,
+`[fn_names_on_cran()](fn_names_on_cran)`,
+`[list_pkgchecks()](list_pkgchecks)`,
+`[render_md2html()](render_md2html)`
 
 ## Concept
 
@@ -41,7 +41,11 @@ Vector of two strings holding respective local paths to `stdout` and
 ## Examples
 
 ```r
-logfiles <- logfiles_namnes ("/path/to/my/package")
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- pkgstats::extract_tarball (f)
+on.exit (fs::dir_delete (path))
+
+logfiles <- logfile_names (path)
 print (logfiles)
 ```
 

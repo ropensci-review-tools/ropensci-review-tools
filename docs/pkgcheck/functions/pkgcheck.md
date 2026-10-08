@@ -30,9 +30,9 @@ package names may be appended using `c`, as in `c(.GlobalEnv, "mypkg")`.
 
 ## Seealso
 
-Other pkgcheck_fns: 
-`[pkgcheck_bg](pkgcheck_bg)()`,
-`[print.pkgcheck](print.pkgcheck)()`
+Other pkgcheck_fns:
+`[pkgcheck_bg()](pkgcheck_bg)`,
+`[print.pkgcheck()](print.pkgcheck)`
 
 ## Concept
 
@@ -46,12 +46,14 @@ applied to packages submitted for peer review.
 ## Examples
 
 ```r
-checks <- pkgcheck ("/path/to/my/package") # default full check
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- pkgstats::extract_tarball (f)
+
+
+checks <- pkgcheck (path)
 summary (checks)
-# Or to run only checks implemented in 'pkgcheck' and not the
-# additional \pkg{goodpractice} checks:
-checks <- pkgcheck ("/path/to/my/package", goodpractice = FALSE)
-summary (checks)
+
+fs::dir_delete (path)
 ```
 
 

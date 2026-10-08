@@ -17,11 +17,11 @@ returns list of checks regardless.
 
 ## Seealso
 
-Other extra: 
-`[checks_to_markdown](checks_to_markdown)()`,
-`[fn_names_on_cran](fn_names_on_cran)()`,
-`[logfile_names](logfile_names)()`,
-`[render_md2html](render_md2html)()`
+Other extra:
+`[checks_to_markdown()](checks_to_markdown)`,
+`[fn_names_on_cran()](fn_names_on_cran)`,
+`[logfile_names()](logfile_names)`,
+`[render_md2html()](render_md2html)`
 
 ## Concept
 

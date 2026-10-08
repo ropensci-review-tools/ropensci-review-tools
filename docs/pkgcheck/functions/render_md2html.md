@@ -17,11 +17,11 @@ render_md2html(md, open = TRUE)
 
 ## Seealso
 
-Other extra: 
-`[checks_to_markdown](checks_to_markdown)()`,
-`[fn_names_on_cran](fn_names_on_cran)()`,
-`[list_pkgchecks](list_pkgchecks)()`,
-`[logfile_names](logfile_names)()`
+Other extra:
+`[checks_to_markdown()](checks_to_markdown)`,
+`[fn_names_on_cran()](fn_names_on_cran)`,
+`[list_pkgchecks()](list_pkgchecks)`,
+`[logfile_names()](logfile_names)`
 
 ## Concept
 
@@ -34,7 +34,11 @@ extra
 ## Examples
 
 ```r
-checks <- pkgcheck ("/path/to/my/package")
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- pkgstats::extract_tarball (f)
+
+
+checks <- pkgcheck (path, goodpractice = FALSE)
 # Generate standard markdown-formatted character vector:
 md <- checks_to_markdown (checks)
 
@@ -43,6 +47,8 @@ h <- checks_to_markdown (checks, render = TRUE) # HTML version
 
 # Or convert markdown-formatted version to HTML:
 h <- render_md2html (md)
+
+fs::dir_delete (path)
 ```
 
 

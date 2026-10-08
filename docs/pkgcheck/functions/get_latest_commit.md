@@ -25,10 +25,9 @@ same default branch.
 
 ## Seealso
 
-Other github: 
-`[get_default_github_branch](get_default_github_branch)()`,
-`[get_gh_token](get_gh_token)()`,
-`[use_github_action_pkgcheck](use_github_action_pkgcheck)()`
+Other github:
+`[get_default_github_branch()](get_default_github_branch)`,
+`[use_github_action_pkgcheck()](use_github_action_pkgcheck)`
 
 ## Concept
 
@@ -43,6 +42,7 @@ Details of latest commit including OID hash
 ```r
 org <- "ropensci-review-tools"
 repo <- "pkgcheck"
+
 commit <- get_latest_commit (org, repo)
 ```
 

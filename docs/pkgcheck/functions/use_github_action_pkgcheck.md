@@ -68,10 +68,9 @@ inputs:
 
 ## Seealso
 
-Other github: 
-`[get_default_github_branch](get_default_github_branch)()`,
-`[get_gh_token](get_gh_token)()`,
-`[get_latest_commit](get_latest_commit)()`
+Other github:
+`[get_default_github_branch()](get_default_github_branch)`,
+`[get_latest_commit()](get_latest_commit)`
 
 ## Concept
 
@@ -84,8 +83,12 @@ The path to the new file, invisibly.
 ## Examples
 
 ```r
-use_github_action_pkgcheck (inputs = list (`post-to-issue` = "false"))
-use_github_action_pkgcheck (branch = "main")
+# These functions will by default create new files in the default `.dir`.
+
+f <- use_github_action_pkgcheck (inputs = list (`post-to-issue` = "false"))
+readLines (f)
+
+f <- use_github_action_pkgcheck (branch = "main")
 ```
 
 

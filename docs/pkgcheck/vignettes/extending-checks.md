@@ -43,100 +43,19 @@ of four main items:
 
 `pkgcheck` objects generally also include a fifth item, `goodpractice`,
 containing the results of [`goodpractice`
-checks](https://github.com/MangoTheCat/goodpractice). The `checks` item
-passed to each `pkgchk_...()` function contains all information on the
-`package`, `info`, `meta`, and (optionally) `goodpractice` items. Checks
-may use any of this information, or even add additional information as
-demonstrated below. The `checks$checks` list represents the output of
-check functions, and may not be used in any way within `pkgchk_...()`
-functions.
-
-<details>
-
-<summary>
-
-Click here to see structure of full `pkgcheck` object
-</summary>
-
-<p>
-
-This is the output of applying `pkgcheck` to a package generated with
-the [`srr` function
-`srr_stats_pkg_skeleton()`](https://docs.ropensci.org/srr/reference/srr_stats_pkg_skeleton.html),
-with `goodpractice = FALSE` to suppress that part of the results.
-
-    #> List of 4
-    #>  $ pkg   :List of 8
-    #>   ..$ name        : chr "dummypkg"
-    #>   ..$ path        : chr "/tmp/RtmpkguwJc/dummypkg"
-    #>   ..$ version     : chr "0.0.0.9000"
-    #>   ..$ url         : chr(0) 
-    #>   ..$ BugReports  : chr(0) 
-    #>   ..$ license     : chr "GPL-3"
-    #>   ..$ summary     :List of 12
-    #>   .. ..$ num_authors         : int 1
-    #>   .. ..$ num_vignettes       : int 0
-    #>   .. ..$ num_data            : int 0
-    #>   .. ..$ imported_pkgs       : int 1
-    #>   .. ..$ num_exported_fns    : int 1
-    #>   .. ..$ num_non_exported_fns: int 2
-    #>   .. ..$ num_src_fns         : int 2
-    #>   .. ..$ loc_exported_fns    : int 3
-    #>   .. ..$ loc_non_exported_fns: int 3
-    #>   .. ..$ loc_src_fns         : int 5
-    #>   .. ..$ num_params_per_fn   : int 0
-    #>   .. ..$ languages           : chr [1:2] "C++: 72%" "R: 28%"
-    #>   ..$ dependencies:'data.frame': 4 obs. of  2 variables:
-    #>   .. ..$ type   : chr [1:4] "depends" "imports" "suggests" "linking_to"
-    #>   .. ..$ package: chr [1:4] "NA" "Rcpp" "testthat" "Rcpp"
-    #>  $ info  :List of 5
-    #>   ..$ git         : list()
-    #>   ..$ srr         :List of 5
-    #>   .. ..$ message     : chr [1:108] "This package still has TODO standards and can not be submitted" "Package can not be submitted because the following standards [v0.1.0] are missing from your code:" "" "G1.0" ...
-    #>   .. ..$ categories  : chr "Regression and Supervised Learning"
-    #>   .. ..$ missing_stds: chr "G1.0, G1.4a, G1.6, G2.0a, G2.1a, G2.2, G2.3a, G2.3b, G2.4, G2.4a, G2.4b, G2.4c, G2.4d, G2.4e, G2.5, G2.6, G2.7,"| __truncated__
-    #>   .. ..$ report_file : chr "/home/smexus/.cache/pkgcheck/static/dummypkg_srr2021-10-15-16:46:34.html"
-    #>   .. ..$ okay        : logi FALSE
-    #>   ..$ pkgstats    :'data.frame': 25 obs. of  4 variables:
-    #>   .. ..$ measure   : chr [1:25] "files_R" "files_src" "files_vignettes" "files_tests" ...
-    #>   .. ..$ value     : num [1:25] 4 2 0 2 10 26 6 0 3 1 ...
-    #>   .. ..$ percentile: num [1:25] 23.284 77.356 0 64.15 0.445 ...
-    #>   .. ..$ noteworthy: chr [1:25] "" "" "TRUE" "" ...
-    #>   .. ..- attr(*, "language")= chr [1:2] "C++: 72%" "R: 28%"
-    #>   .. ..- attr(*, "files")= chr [1:2] "C++: 2" "R: 4"
-    #>   ..$ network_file: chr "/home/smexus/.cache/pkgcheck/static/dummypkg_pkgstats.html"
-    #>   ..$ badges      : list()
-    #>  $ checks:List of 12
-    #>   ..$ fns_have_exs     : Named logi FALSE
-    #>   .. ..- attr(*, "names")= chr "test_fn.Rd"
-    #>   ..$ has_bugs         : logi FALSE
-    #>   ..$ has_citation     : logi FALSE
-    #>   ..$ has_codemeta     : logi FALSE
-    #>   ..$ has_contrib_md   : logi FALSE
-    #>   ..$ has_scrap        : chr(0) 
-    #>   ..$ has_url          : logi FALSE
-    #>   ..$ has_vignette     : logi FALSE
-    #>   ..$ left_assign      :List of 2
-    #>   .. ..$ global: logi FALSE
-    #>   .. ..$ usage : Named num [1:2] 2 0
-    #>   .. .. ..- attr(*, "names")= chr [1:2] "<-" "="
-    #>   ..$ on_cran          : logi FALSE
-    #>   ..$ pkgname_available: logi TRUE
-    #>   ..$ uses_roxygen2    : logi TRUE
-    #>  $ meta  : Named chr [1:3] "0.0.2.25" "0.0.2.96" "0.0.1.120"
-    #>   ..- attr(*, "names")= chr [1:3] "pkgstats" "pkgcheck" "srr"
-    #>  - attr(*, "class")= chr [1:2] "pkgcheck" "list"
-    #> NULL
-
-</p>
-
-</details>
+checks](https://github.com/ropensci-review-tools/goodpractice). The
+`checks` item passed to each `pkgchk_...()` function contains all
+information on the `package`, `info`, `meta`, and (optionally)
+`goodpractice` items. Checks may use any of this information, or even
+add additional information as demonstrated below. The `checks$checks`
+list represents the output of check functions, and may not be used in
+any way within `pkgchk_...()` functions.
 
 ## 1. The check function
 
 An example is the check for whether a package has a citation, [defined
 in
-`R/check_has_citation.R`](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/check-has-citation.R):
+`R/check-has-citation.R`](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/check-has-citation.R):
 
 ``` r
 #' Check whether a package has a `inst/CITATION` file.
@@ -218,23 +137,28 @@ scrap files present, and a length-zero vector otherwise.
 
 </div>
 
-The `output_pkgchk_has_citation()` function looks like this:
+The `output_pkgchk_has_scrap()` function looks like this:
 
 ``` r
-output_pkgchk_has_citation <- function (checks) {
+output_pkgchk_has_scrap <- function (checks) {
 
     out <- list (
-        check_pass = checks$checks$has_citation,
+        check_pass = length (checks$checks$has_scrap) == 0L,
         summary = "",
         print = ""
     )
 
-    # disabled:
-    # https://github.com/ropensci-review-tools/pkgcheck/issues/115
-    # out$summary <- paste0 (
-    #    ifelse (out$check_pass, "has", "does not have"),
-    #    " a 'CITATION' file."
-    # )
+    if (!out$check_pass) {
+        out$summary <- "Package contains unexpected files."
+        out$print <- list (
+            msg_pre = paste0 (
+                "Package contains the ",
+                "following unexpected files:"
+            ),
+            obj = checks$checks$has_scrap,
+            msg_post = character (0)
+        )
+    }
 
     return (out)
 }
@@ -266,45 +190,17 @@ The value is determined by the result of the main
 `TRUE`, or a red cross if `FALSE`.
 
 Checks for which `print` information is desired require a non-empty
-`print` item, as in the [`output_pkgchk_has_scrap()`
-function](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/check-scrap.R):
+`print` item. In this case, both `summary` and `print` methods are only
+triggered `if (!out$check_pass)` – so only if the check fails. The
+`print` method generates the heading specified in `out$print$msg_pre`,
+with any vector-valued objects stored in the corresponding `obj` list
+item displayed as formatted lists. A package with “scrap” files, `"a"`
+and `"b"`, would thus have `out$print$obj <- c ("a", "b")`, and when
+printed would look like this:
 
-``` r
-output_pkgchk_has_scrap <- function (checks) {
-
-    out <- list (
-        check_pass = length (checks$checks$has_scrap) == 0L,
-        summary = "",
-        print = ""
-    )
-
-    if (!out$check_pass) {
-        out$summary <- "Package contains unexpected files."
-        out$print <- list (
-            msg_pre = paste0 (
-                "Package contains the ",
-                "following unexpected files:"
-            ),
-            obj = checks$checks$has_scrap,
-            msg_post = character (0)
-        )
-    }
-
-    return (out)
-}
-```
-
-In this case, both `summary` and `print` methods are only triggered
-`if (!out$check_pass)` – so only if the check fails. The `print` method
-generates the heading specified in `out$print$msg_pre`, with any
-vector-valued objects stored in the corresponding `obj` list item
-displayed as formatted lists. A package with “scrap” files, `"a"` and
-`"b"`, would thus have `out$print$obj <- c ("a", "b")`, and when printed
-would look like this:
-
-    #> ✖ Package contains the following unexpected files:
-    #> • a
-    #> • b
+    ## ✖ Package contains the following unexpected files:
+    ## • a
+    ## • b
 
 This formatting is also translated into corresponding markdown and HTML
 formatting in [the `checks_to_markdown()`
@@ -335,8 +231,8 @@ This allows specific checks to be defined locally, and run by passing
 the name of the environment in which those checks are defined in this
 parameter. This section illustrates the process using the bundled
 “tarball” (that is, `.tar.gz` file) of one version of [the `pkgstats`
-package](https://github.com/ropensc-review-tools/pkgstats) included with
-that package.
+package](https://github.com/ropensci-review-tools/pkgstats) included
+with that package.
 
 ``` r
 f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
@@ -345,23 +241,23 @@ checks <- pkgcheck (path)
 summary (checks)
 ```
 
-    #> 
-    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    #> 
-    #> ✔ Package name is available
-    #> ✖ does not have a 'contributing' file.
-    #> ✔ uses 'roxygen2'.
-    #> ✔ 'DESCRIPTION' has a URL field.
-    #> ✔ 'DESCRIPTION' has a BugReports field.
-    #> ✖ Package has no HTML vignettes
-    #> ✖ These functions do not have examples: [pkgstats_from_archive].
-    #> ✔ Package has continuous integration checks.
-    #> ✖ Package coverage failed
-    #> ✖ R CMD check found 1 error.
-    #> ✔ R CMD check found no warnings.
-    #> 
-    #> ℹ Current status:
-    #> ✖ This package is not ready to be submitted.
+    ## 
+    ## ── pkgstats 9.9 ────────────────────────────────────────────────────────────────
+    ## 
+    ## ✔ Package name is available
+    ## ✖ does not have a 'contributing' file.
+    ## ✔ uses 'roxygen2'.
+    ## ✔ 'DESCRIPTION' has a URL field.
+    ## ✔ 'DESCRIPTION' has a BugReports field.
+    ## ✖ Package has no HTML vignettes
+    ## ✖ These functions do not have examples: [pkgstats_from_archive].
+    ## ✔ Package has continuous integration checks.
+    ## ✖ Package coverage failed
+    ## ✖ R CMD check found 1 error.
+    ## ✔ R CMD check found no warnings.
+    ## 
+    ## ℹ Current status:
+    ## ✖ This package is not ready to be submitted.
 
 Let’s now presume I have a reputation in the R community for all of my
 packages starting with “aa”, to ensure they are always listed first.
@@ -389,20 +285,24 @@ We then need to define the output functions:
 output_pkgchk_starts_with_aa <- function (checks) {
 
     out <- list (
-                 check_pass = grepl ("^aa",
-                                     checks$checks$starts_with_aa,
-                                     ignore.case = TRUE),
-                 summary = "",
-                 print = ""
+        check_pass = grepl ("^aa",
+            checks$checks$starts_with_aa,
+            ignore.case = TRUE
+        ),
+        summary = "",
+        print = ""
     )
 
-    out$summary <- paste0 ("Package name [",
-                           checks$checks$starts_with_aa,
-                           "] does ",
-                           ifelse (out$check_pass,
-                                   "",
-                                   "NOT"),
-                           " start with 'aa'")
+    out$summary <- paste0 (
+        "Package name [",
+        checks$checks$starts_with_aa,
+        "] does ",
+        ifelse (out$check_pass,
+            "",
+            "NOT"
+        ),
+        " start with 'aa'"
+    )
 
     return (out)
 }
@@ -412,28 +312,30 @@ If we simply define those function in the global workspace of our
 current R session, calling `pkgcheck()` again will automatically detect
 those checks and include them in our output:
 
-    #> 
-    #> ── pkgstats 9.9 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-    #> 
-    #> ✔ Package name is available
-    #> ✖ does not have a 'contributing' file.
-    #> ✔ uses 'roxygen2'.
-    #> ✔ 'DESCRIPTION' has a URL field.
-    #> ✔ 'DESCRIPTION' has a BugReports field.
-    #> ✖ Package has no HTML vignettes
-    #> ✖ These functions do not have examples: [pkgstats_from_archive].
-    #> ✔ Package has continuous integration checks.
-    #> ✖ Package coverage failed
-    #> ✖ Package name [pkgstats] does NOT start with 'aa'
-    #> ✖ R CMD check found 1 error.
-    #> ✔ R CMD check found no warnings.
-    #> 
-    #> ℹ Current status:
-    #> ✖ This package is not ready to be submitted.
+    ## 
+    ## ── pkgstats 9.9 ────────────────────────────────────────────────────────────────
+    ## 
+    ## ✔ Package name is available
+    ## ✖ does not have a 'contributing' file.
+    ## ✔ uses 'roxygen2'.
+    ## ✔ 'DESCRIPTION' has a URL field.
+    ## ✔ 'DESCRIPTION' has a BugReports field.
+    ## ✖ Package has no HTML vignettes
+    ## ✖ These functions do not have examples: [pkgstats_from_archive].
+    ## ✔ Package has continuous integration checks.
+    ## ✖ Package coverage failed
+    ## ✖ Package name [pkgstats] does NOT start with 'aa'
+    ## ✖ R CMD check found 1 error.
+    ## ✔ R CMD check found no warnings.
+    ## 
+    ## ℹ Current status:
+    ## ✖ This package is not ready to be submitted.
 
 Customised personal checks can be incorporated by defining them in a
 local package, loading that into the workspace, and passing the name of
 the package to the `extra_env` parameter.
+
+------------------------------------------------------------------------
 
 ### 3.2 New `pkgcheck` Checks (*for `pkgcheck` developers*)
 
@@ -441,24 +343,13 @@ New checks can be added to this package by creating new files in the
 `/R` directory prefixed with `pkgchk_`, and including the two functions
 described above (a check and an output function). The check name will
 then need to be included in [the `order_checks()` function in the
-`R/summarise-checks.R`
-file](https://github.com/ropensci-review-tools/pkgcheck/blob/6c99a804cea99af4fca8e27e41784ecd6b7f1501/R/summarise-checks.R#L92-L114),
+`R/order-check-summaries.R`
+file](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/order-check-summaries.R),
 which determines the order of checks in the `summary` output. Checks
 which are not defined in this ordering, including any defined via
 `extra_env` parameters, appear *after* all of the standard checks, and
 prior to the `R CMD check` results which always appear last. This order
-may only be modified by editing the list in that function. The order of
-check results in the `print` method is also hard-coded, defined in the
-[main `print.pkgcheck`
-method](https://github.com/ropensci-review-tools/pkgcheck/blob/main/R/pkgcheck-methods.R).
-As explicitly stated in that function, any new checks should also be
-included in the `print` method just after [the first reference to
-`"misc_checks"`](https://github.com/ropensci-review-tools/pkgcheck/blob/2e025c276c84b45bc46f72ec5d8b029de83ac211/R/pkgcheck-methods.R#L65-L71),
-via an additional line:
-
-``` r
-print_check_screen (x, "<name-of-new-check>", pkg_env)
-```
+may only be modified by editing the list in that function.
 
 The `print_check_screen()` function will then automatically activate the
 `print` method of any new checks. This line should be added even if a
@@ -486,7 +377,7 @@ The `out` value returned from all `output_pkgchk_...` functions is a
 list that must include `check_pass`, `summary`, and `print` items, like
 in the example above. Non-default check types can be defined by an
 optional extra list-item named `check_type`, specified as a string with
-conditions for `"<pass>"_"<fail>"`, where a value of `"watch"` will
+conditions for `"(pass)"_"(fail)"`, where a value of `"watch"` will
 replace the default ✅ or ❌ symbols with 👀. For example, a check which
 should issue ✅ on pass yet 👀 on fail would be specified as,
 
@@ -519,7 +410,7 @@ tests. Most checks start with the following lines:
 
 ``` r
 checks <- make_check_data ()
-ci_out <- output_pkgchk_<fn-name> (checks)
+ci_out <- output_pkgchk_my_fn (checks)
 ```
 
 Data from any newly-added checks will automatically appear in the result
@@ -534,7 +425,7 @@ the default value returned from the output function is first tested, and
 then the `checks` value is modified by,
 
 For checks which require either `goodpractice` or [`srr` (software
-review roclets)](https://docs.ropensci.org/srr) for statistical
+review roclets)](https://docs.ropensci.org/srr/) for statistical
 software, initial check values should be constructed with an alternative
 helper function, `make_check_data_srr()`, which accepts an additional
 parameter, `goodpractice`, which can be specified as `FALSE` (default)

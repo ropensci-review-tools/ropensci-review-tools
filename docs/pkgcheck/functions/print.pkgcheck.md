@@ -20,9 +20,9 @@ usage.
 
 ## Seealso
 
-Other pkgcheck_fns: 
-`[pkgcheck](pkgcheck)()`,
-`[pkgcheck_bg](pkgcheck_bg)()`
+Other pkgcheck_fns:
+`[pkgcheck()](pkgcheck)`,
+`[pkgcheck_bg()](pkgcheck_bg)`
 
 ## Concept
 
@@ -35,9 +35,15 @@ Nothing. Method called purely for side-effect of printing to screen.
 ## Examples
 
 ```r
-checks <- pkgcheck ("/path/to/my/package")
-print (checks) # print full checks, starting with summary
+f <- system.file ("extdata", "pkgstats_9.9.tar.gz", package = "pkgstats")
+path <- pkgstats::extract_tarball (f)
+
+
+checks <- pkgcheck (path)
 summary (checks) # print summary only
+print (checks) # print full checks, starting with summary
+
+fs::dir_delete (path)
 ```
 
 

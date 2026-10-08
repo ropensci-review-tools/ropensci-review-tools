@@ -18,8 +18,8 @@ rOpenSci’s automated checks.
 
 Both
 [`pkgcheck-action`](https://github.com/ropensci-review-tools/pkgcheck-action)
-and rOpenSci’s own checking system use the [Docker](https://docker.com)
-container provided in [the `pkgcheck`
+and rOpenSci’s own checking system use the
+[Docker](https://www.docker.com/) container provided in [the `pkgcheck`
 Dockerfile](https://github.com/ropensci-review-tools/pkgcheck/blob/main/Dockerfile).
 This Docker environment builds on the [GitHub “runner”
 images](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md),

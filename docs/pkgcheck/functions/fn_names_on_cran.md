@@ -18,11 +18,11 @@ from all CRAN packages will be updated to latest version.
 
 ## Seealso
 
-Other extra: 
-`[checks_to_markdown](checks_to_markdown)()`,
-`[list_pkgchecks](list_pkgchecks)()`,
-`[logfile_names](logfile_names)()`,
-`[render_md2html](render_md2html)()`
+Other extra:
+`[checks_to_markdown()](checks_to_markdown)`,
+`[list_pkgchecks()](list_pkgchecks)`,
+`[logfile_names()](logfile_names)`,
+`[render_md2html()](render_md2html)`
 
 ## Concept
 
