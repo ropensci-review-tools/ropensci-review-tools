@@ -23,11 +23,11 @@ inspected via their own distinct endpoint calls.
 
 ## Seealso
 
-Other utils: 
-`[check_cache](check_cache)()`,
-`[pkgrep_install_deps](pkgrep_install_deps)()`,
-`[symbol_crs](symbol_crs)()`,
-`[symbol_tck](symbol_tck)()`
+Other utils:
+`[check_cache()](check_cache)`,
+`[pkgrep_install_deps()](pkgrep_install_deps)`,
+`[symbol_crs()](symbol_crs)`,
+`[symbol_tck()](symbol_tck)`
 
 ## Concept
 

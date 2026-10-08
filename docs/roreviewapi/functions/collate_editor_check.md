@@ -21,9 +21,9 @@ usage.
 
 ## Seealso
 
-Other main: 
-`[editor_check](editor_check)()`,
-`[serve_api](serve_api)()`
+Other main:
+`[editor_check()](editor_check)`,
+`[serve_api()](serve_api)`
 
 ## Concept
 

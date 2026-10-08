@@ -19,14 +19,15 @@ able to be submitted.
 
 ## Seealso
 
-Other ropensci: 
-`[check_issue_template](check_issue_template)()`,
-`[is_user_authorized](is_user_authorized)()`,
-`[push_to_gh_pages](push_to_gh_pages)()`,
-`[readme_has_peer_review_badge](readme_has_peer_review_badge)()`,
-`[srr_counts](srr_counts)()`,
-`[srr_counts_from_report](srr_counts_from_report)()`,
-`[stats_badge](stats_badge)()`
+Other ropensci:
+`[check_issue_template()](check_issue_template)`,
+`[is_user_authorized()](is_user_authorized)`,
+`[issue_is_stats()](issue_is_stats)`,
+`[push_to_gh_pages()](push_to_gh_pages)`,
+`[readme_has_peer_review_badge()](readme_has_peer_review_badge)`,
+`[srr_counts()](srr_counts)`,
+`[srr_counts_from_report()](srr_counts_from_report)`,
+`[stats_badge()](stats_badge)`
 
 ## Concept
 

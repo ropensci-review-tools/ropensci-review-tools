@@ -24,9 +24,9 @@ package to install system dependencies.
 
 ## Seealso
 
-Other main: 
-`[collate_editor_check](collate_editor_check)()`,
-`[editor_check](editor_check)()`
+Other main:
+`[collate_editor_check()](collate_editor_check)`,
+`[editor_check()](editor_check)`
 
 ## Concept
 

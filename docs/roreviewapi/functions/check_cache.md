@@ -24,11 +24,11 @@ exported to enable it to be used within the `plumber` API.
 
 ## Seealso
 
-Other utils: 
-`[pkgrep_install_deps](pkgrep_install_deps)()`,
-`[stdout_stderr_cache](stdout_stderr_cache)()`,
-`[symbol_crs](symbol_crs)()`,
-`[symbol_tck](symbol_tck)()`
+Other utils:
+`[pkgrep_install_deps()](pkgrep_install_deps)`,
+`[stdout_stderr_cache()](stdout_stderr_cache)`,
+`[symbol_crs()](symbol_crs)`,
+`[symbol_tck()](symbol_tck)`
 
 ## Concept
 

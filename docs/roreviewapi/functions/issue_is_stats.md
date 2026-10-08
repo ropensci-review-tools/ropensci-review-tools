@@ -1,25 +1,26 @@
-# Check whether a user, identified from GitHub API token, is authorized to call
+# Determine whether a GitHub issue is a Stats submission
 
 ## Description
 
-This function is used only in the `plumber` endpoints, to
-prevent them being called by unauthorized users.
+Determine whether a GitHub issue is a Stats submission
 
 ## Usage
 
 ```r
-is_user_authorized(secret = NULL)
+issue_is_stats(orgrepo, issue_num)
 ```
 
 ## Arguments
 
-* `secret`: Environment variable `PKGCHECK_TOKEN` sent from bot.
+* `orgrepo`: GitHub organization and repo as single string separated by
+forward slash (`org/repo`).
+* `issue_num`: Number of issue from which to extract submission type.
 
 ## Seealso
 
 Other ropensci:
 `[check_issue_template()](check_issue_template)`,
-`[issue_is_stats()](issue_is_stats)`,
+`[is_user_authorized()](is_user_authorized)`,
 `[push_to_gh_pages()](push_to_gh_pages)`,
 `[readme_has_peer_review_badge()](readme_has_peer_review_badge)`,
 `[srr_counts()](srr_counts)`,
@@ -33,6 +34,6 @@ ropensci
 
 ## Value
 
-Logical value indicating whether or not a user is authorized.
+`TRUE` if the submission type is "Stats", otherwise `FALSE`.
 
 

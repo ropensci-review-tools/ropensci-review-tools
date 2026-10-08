@@ -110,9 +110,9 @@ function](https://github.com/ropensci-review-tools/roreviewapi/blob/main/R/edito
     The value, `p`, will list any packages which were unable to be
     installed. These will then need to be manually installed, generally
     through finding the remote/dev URLs for the packages, and running
-    `remotes::install_github()` or similar. Note that successful
-    installation may only be possible in a particular order, and in the
-    worst cases may be a process of trial and error.
+    `pak::pkg_install()` or similar. Note that successful installation
+    may only be possible in a particular order, and in the worst cases
+    may be a process of trial and error.
 5.  Finally generate the main checks by running
     `checks <- pkgcheck::pkgcheck(path)`, during which diagnostic output
     will be dumped directly to the screen.

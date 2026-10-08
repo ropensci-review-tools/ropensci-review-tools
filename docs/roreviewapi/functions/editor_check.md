@@ -23,9 +23,9 @@ invoked.
 
 ## Seealso
 
-Other main: 
-`[collate_editor_check](collate_editor_check)()`,
-`[serve_api](serve_api)()`
+Other main:
+`[collate_editor_check()](collate_editor_check)`,
+`[serve_api()](serve_api)`
 
 ## Concept
 

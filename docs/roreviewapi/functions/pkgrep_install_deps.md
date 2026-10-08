@@ -20,11 +20,11 @@ invoked.
 
 ## Seealso
 
-Other utils: 
-`[check_cache](check_cache)()`,
-`[stdout_stderr_cache](stdout_stderr_cache)()`,
-`[symbol_crs](symbol_crs)()`,
-`[symbol_tck](symbol_tck)()`
+Other utils:
+`[check_cache()](check_cache)`,
+`[stdout_stderr_cache()](stdout_stderr_cache)`,
+`[symbol_crs()](symbol_crs)`,
+`[symbol_tck()](symbol_tck)`
 
 ## Concept
 

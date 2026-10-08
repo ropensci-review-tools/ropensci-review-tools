@@ -62,7 +62,16 @@ only.
 
 ------------------------------------------------------------------------
 
-## 3. mean
+## 3. pkgmatch
+
+Uses the [`pkgmatch` package](https://docs.ropensci.org/pkgmatch) to
+generate the top five best-matching packages from both the rOpenSci and
+CRAN corpora. Input parameters are identical to the main `editorcheck`
+endpoint, primarily the `repourl` of the repository to be matched.
+
+------------------------------------------------------------------------
+
+## 4. mean
 
 A simple `mean` endpoint can be used to confirm that the server is
 running. It accepts a single integer value of `n`, and returns the value
@@ -70,7 +79,7 @@ of `mean(rnorm(n))`.
 
 ------------------------------------------------------------------------
 
-## 4. stats_badge
+## 5. stats_badge
 
 This endpoint is used by the bot to extract the stats badge from those
 issues which have one, in the form `"6\approved-bronze-v0.0.1"`. This is
@@ -79,7 +88,7 @@ badge grades.
 
 ------------------------------------------------------------------------
 
-## 5. log
+## 6. log
 
 The `log` endpoint accepts a single parameter, `n`, specifying the
 number of latest log entries to retrieve. An example of the log entry
@@ -110,7 +119,7 @@ file](https://github.com/ropensci-review-tools/roreviewapi/blob/e912885f516198ef
 
 ------------------------------------------------------------------------
 
-## 6. clear_cache
+## 7. clear_cache
 
 This endpoint can be used to clear the server’s cache whenever desired
 or required. This cache is mainly used to store the results of calls to
@@ -120,7 +129,7 @@ regenerate any calls which were previously cached.
 
 ------------------------------------------------------------------------
 
-## 7. stdlogs
+## 8. stdlogs
 
 This is the most important endpoint for debugging problems within the
 [`pkgcheck`](https://github.com/ropensci-review-tools/pkgcheck) process
