@@ -22,11 +22,11 @@ will be in `file.path(base_dir, pkg_name)`.
 
 ## Seealso
 
-Other helper: 
-`[srr_stats_categories](srr_stats_categories)()`,
-`[srr_stats_checklist](srr_stats_checklist)()`,
-`[srr_stats_checklist_check](srr_stats_checklist_check)()`,
-`[srr_stats_pre_submit](srr_stats_pre_submit)()`
+Other helper:
+`[srr_stats_categories()](srr_stats_categories)`,
+`[srr_stats_checklist()](srr_stats_checklist)`,
+`[srr_stats_checklist_check()](srr_stats_checklist_check)`,
+`[srr_stats_pre_submit()](srr_stats_pre_submit)`
 
 ## Concept
 
@@ -41,7 +41,10 @@ The path to the directory holding the newly created package
 ```r
 d <- srr_stats_pkg_skeleton (pkg_name = "mystatspkg")
 # (capture.output of initial compliation messages)
+
 x <- utils::capture.output (roxygen2::roxygenise (d), type = "output")
+
+unlink (d, recursive = TRUE)
 ```
 
 

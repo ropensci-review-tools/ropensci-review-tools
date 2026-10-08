@@ -18,11 +18,11 @@ srr_stats_pre_submit(path = ".", quiet = FALSE)
 
 ## Seealso
 
-Other helper: 
-`[srr_stats_categories](srr_stats_categories)()`,
-`[srr_stats_checklist](srr_stats_checklist)()`,
-`[srr_stats_checklist_check](srr_stats_checklist_check)()`,
-`[srr_stats_pkg_skeleton](srr_stats_pkg_skeleton)()`
+Other helper:
+`[srr_stats_categories()](srr_stats_categories)`,
+`[srr_stats_checklist()](srr_stats_checklist)`,
+`[srr_stats_checklist_check()](srr_stats_checklist_check)`,
+`[srr_stats_pkg_skeleton()](srr_stats_pkg_skeleton)`
 
 ## Concept
 
@@ -38,7 +38,10 @@ helper
 d <- srr_stats_pkg_skeleton ()
 # The skeleton has 'TODO' standards, and also has only a few from the full
 # list expected for the categories specified there.
+
 srr_stats_pre_submit (d)
+
+unlink (d, recursive = TRUE)
 ```
 
 

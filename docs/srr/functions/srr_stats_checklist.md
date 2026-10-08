@@ -22,11 +22,11 @@ checklist. A suffix of `.md` will be automatically appended.
 
 ## Seealso
 
-Other helper: 
-`[srr_stats_categories](srr_stats_categories)()`,
-`[srr_stats_checklist_check](srr_stats_checklist_check)()`,
-`[srr_stats_pkg_skeleton](srr_stats_pkg_skeleton)()`,
-`[srr_stats_pre_submit](srr_stats_pre_submit)()`
+Other helper:
+`[srr_stats_categories()](srr_stats_categories)`,
+`[srr_stats_checklist_check()](srr_stats_checklist_check)`,
+`[srr_stats_pkg_skeleton()](srr_stats_pkg_skeleton)`,
+`[srr_stats_pre_submit()](srr_stats_pre_submit)`
 
 ## Concept
 

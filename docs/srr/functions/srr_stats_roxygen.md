@@ -23,13 +23,13 @@ srr_stats_roxygen(
 each of which is ultimately formatted into a sub-section of the standards.
 * `filename`: Name of 'R' source file in which to write
 `roxygen2`-formatted lists of standards.
-* `overwrite`: If `FALSE` (default) and `filename` already exists, a dialog
-will ask whether file should be overwritten.
+* `overwrite`: If `FALSE` (default) and `filename` already exists, a
+dialogue will ask whether file should be overwritten.
 
 ## Seealso
 
-Other roxygen: 
-`[srr_stats_roclet](srr_stats_roclet)()`
+Other roxygen:
+`[srr_stats_roclet()](srr_stats_roclet)`
 
 ## Concept
 
@@ -47,12 +47,15 @@ path <- srr_stats_pkg_skeleton ()
 f <- file.path (path, "R", "srr-stats-standards.R")
 file.exists (f)
 length (readLines (f)) # only 14 lines
+
 srr_stats_roxygen (
     category = "regression",
     file = f,
     overwrite = TRUE
 )
 length (readLines (f)) # now much longer
+
+unlink (path, recursive = TRUE)
 ```
 
 

@@ -17,8 +17,8 @@ exists to enable "@srrstats" tags to be parsed from `roxygen2`documentation.
 
 ## Seealso
 
-Other roxygen: 
-`[srr_stats_roxygen](srr_stats_roxygen)()`
+Other roxygen:
+`[srr_stats_roxygen()](srr_stats_roxygen)`
 
 ## Concept
 

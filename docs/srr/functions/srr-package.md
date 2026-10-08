@@ -1,8 +1,8 @@
-# srr: 'rOpenSci' Review Roclets
+# srr: 'rOpenSci' Software Review 'Roclets'
 
 ## Description
 
-Companion package to 'rOpenSci' statistical software review project.
+Companion package to 'rOpenSci' statistical software review project ('rOpenSci' authors, 2021; ), to facilitate documenting software compliance with statistical standards using 'Roxygen2' 'roclets'.
 
 ## Seealso
 
@@ -15,6 +15,9 @@ Useful links:
 ## Author
 
 ***Maintainer***: Mark Padgham [mark@ropensci.org](mailto:mark@ropensci.org) ([ORCID](https://orcid.org/0000-0003-2172-5265))
+Authors:
+
+* Mark Padgham [mark@ropensci.org](mailto:mark@ropensci.org) ([ORCID](https://orcid.org/0000-0003-2172-5265))
 
 ## Keyword
 

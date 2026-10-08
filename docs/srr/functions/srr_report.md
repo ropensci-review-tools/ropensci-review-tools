@@ -38,7 +38,10 @@ document.
 
 ```r
 path <- srr_stats_pkg_skeleton ()
+
 srr_report (path)
+
+unlink (path, recursive = TRUE)
 ```
 
 

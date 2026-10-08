@@ -17,20 +17,26 @@ markdown document in `.md` format, not `.Rmd` or anything else.
 
 ## Seealso
 
-Other helper: 
-`[srr_stats_categories](srr_stats_categories)()`,
-`[srr_stats_checklist](srr_stats_checklist)()`,
-`[srr_stats_pkg_skeleton](srr_stats_pkg_skeleton)()`,
-`[srr_stats_pre_submit](srr_stats_pre_submit)()`
+Other helper:
+`[srr_stats_categories()](srr_stats_categories)`,
+`[srr_stats_checklist()](srr_stats_checklist)`,
+`[srr_stats_pkg_skeleton()](srr_stats_pkg_skeleton)`,
+`[srr_stats_pre_submit()](srr_stats_pre_submit)`
 
 ## Concept
 
 helper
 
+## Value
+
+(Invisibly) A character vector of markdown-formatted lines
+containing the entire checklist of the specified file.
+
 ## Examples
 
 ```r
 f <- tempfile (fileext = ".md")
+
 srr_stats_checklist (category = "regression", filename = f)
 chk <- srr_stats_checklist_check (f)
 ```
