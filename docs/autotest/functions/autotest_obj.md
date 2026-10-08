@@ -45,4 +45,19 @@ object.
 
 class
 
+## Value
+
+An object of class `autotest_obj`, a list holding the parameters
+passed as arguments, used internally to represent one autotest test case.
+
+## Examples
+
+```r
+x <- autotest_obj (
+    package = "stats",
+    fn_name = "sd",
+    test_name = "test"
+)
+```
+
 

@@ -19,8 +19,8 @@ tests off.
 
 ## Seealso
 
-Other main_functions: 
-`[autotest_package](autotest_package)()`
+Other main_functions:
+`[autotest_package()](autotest_package)`
 
 ## Concept
 
@@ -31,5 +31,12 @@ main_functions
 An `autotest` object with each row listing one unique type of test
 which can be applied to every parameter (of the appropriate class) of each
 function.
+
+## Examples
+
+```r
+x <- autotest_types ()
+x
+```
 
 

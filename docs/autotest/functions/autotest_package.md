@@ -2,8 +2,9 @@
 
 ## Description
 
-Automatically test an entire package by converting examples to `yaml` format
-and submitting each to the [autotest_yaml](autotest_yaml) function.
+Automatically test an entire package by tracing calls made in its
+documented examples (and, for local source packages, its test suite) with
+`typetracer`, then testing each traced function call in turn.
 
 ## Usage
 
@@ -14,7 +15,7 @@ autotest_package(
   exclude = NULL,
   test = FALSE,
   test_data = NULL,
-  quiet = FALSE
+  progress = c("bar", "tests", "none")
 )
 ```
 
@@ -23,7 +24,8 @@ autotest_package(
 * `package`: Name of package, as either
 1. Path to local package source
 1. Name of installed package
-1. Full path to location of installed package if not on [.libPaths](.libPaths), or
+1. Full path to location of installed package if not on
+[.libPaths](.libPaths), or
 1. Default which presumes current directory is within package to be
 tested.
 * `functions`: Optional character vector containing names of functions of
@@ -37,7 +39,12 @@ with `test = TRUE`, without actually running them.
 which would be conducted. These tests have an additional flag, `test`, which
 defaults to `TRUE`. Setting any tests to `FALSE` will avoid running them when
 `test = TRUE`.
-* `quiet`: If 'FALSE', provide printed output on screen.
+* `progress`: Style of progress display while testing functions, one of:
+* `"bar"` (default) A `cli` progress bar. Automatically falls back
+to `"none"` when called from within a `knitr` document, to avoid
+literal ANSI escape sequences leaking into the rendered output.
+* `"tests"` One line per function tested, showing `[i / n]`.
+* `"none"` No progress display at all.
 
 ## Note
 
@@ -52,8 +59,8 @@ the corresponding message.
 
 ## Seealso
 
-Other main_functions: 
-`[autotest_types](autotest_types)()`
+Other main_functions:
+`[autotest_types()](autotest_types)`
 
 ## Concept
 
@@ -61,7 +68,7 @@ main_functions
 
 ## Value
 
-An `autotest_package` object which is derived from a `tibble``tbl_df` object. This has one row for each test, and the following nine
+An `autotest_package` object which is derived from a `tibble``tbl_df` object. This has one row for each test, and the following eight
 columns:
 
 1. `type` The type of result, either "dummy" for `test = FALSE`, or one
@@ -72,13 +79,19 @@ of "error", "warning", "diagnostic", or "message".
 1. `parameter_type` Expected type of parameter as identified by
 `autotest`.
 1. `operation` Description of the test
-1. `content` For `test = FALSE`, the expected behaviour of the test; for
-`test = TRUE`, the observed discrepancy with that expected behaviour
-1. `test` If `FALSE` (default), list all tests without implementing them,
-otherwise implement all tests.
-1. `yaml_hash' A unique hash which may be be used to extract the`yaml`
-specification of each test.
+1. `content` For `test = FALSE`, the expected behaviour of the
+test; for `test = TRUE`, the observed discrepancy with that expected
+behaviour
+1. `test` If `FALSE` (default), list all tests without
+implementing them, otherwise implement all tests.
 
 Some columns may contain NA values, as explained in the Note.
+
+## Examples
+
+```r
+x <- autotest_package (package = "stats", functions = "var", test = FALSE)
+x
+```
 
 

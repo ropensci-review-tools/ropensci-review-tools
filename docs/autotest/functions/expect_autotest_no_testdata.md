@@ -16,11 +16,11 @@ expect_autotest_no_testdata(object = NULL)
 
 ## Seealso
 
-Other expectations: 
-`[expect_autotest_no_err](expect_autotest_no_err)()`,
-`[expect_autotest_no_warn](expect_autotest_no_warn)()`,
-`[expect_autotest_notes](expect_autotest_notes)()`,
-`[expect_autotest_testdata](expect_autotest_testdata)()`
+Other expectations:
+`[expect_autotest_no_err()](expect_autotest_no_err)`,
+`[expect_autotest_no_warn()](expect_autotest_no_warn)`,
+`[expect_autotest_notes()](expect_autotest_notes)`,
+`[expect_autotest_testdata()](expect_autotest_testdata)`
 
 ## Concept
 
@@ -29,5 +29,14 @@ expectations
 ## Value
 
 (invisibly) The autotest object
+
+## Examples
+
+```r
+# Called within a 'testthat' test file of the local package itself:
+testthat::test_that ("autotest", {
+    testthat::expect_success (expect_autotest_no_testdata ())
+})
+```
 
 
