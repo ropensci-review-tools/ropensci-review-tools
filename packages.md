@@ -1,5 +1,6 @@
 autotest
 dashboard
+goodpractice
 pkgcheck
 pkgcheck-action
 pkgstats

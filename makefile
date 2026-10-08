@@ -10,7 +10,8 @@ grab: ## Grab all files from the R packages by calling 'pkgdocs-script'
 build: ## readthedocs 'make html' command
 	cd docs;	\
 	make html;	\
-	cd ..
+	cd ..;	\
+	rm -rf docs/_build
 
 open: $(INDEX).html ## Open the main 'html' page
 	xdg-open $(INDEX).html &
