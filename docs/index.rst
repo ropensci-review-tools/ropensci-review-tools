@@ -29,6 +29,7 @@ appropriate link.
    autotest/autotest.md
    dashboard/dashboard.md
    goodpractice/goodpractice.md
+   mirrors/mirrors.md
    pkgcheck/pkgcheck.md
    pkgcheck-action/pkgcheck-action.md
    pkgmatch/pkgmatch.md

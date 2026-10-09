@@ -1,6 +1,7 @@
 autotest
 dashboard
 goodpractice
+mirrors
 pkgcheck
 pkgcheck-action
 pkgmatch
