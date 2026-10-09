@@ -75,11 +75,11 @@ appropriate link.
    :class: note
 
     All repositories also include `pre-commit hooks <https://pre-commit.com>`_,
-    so each has a ``.pre-commit-config.yaml`` file, sometimes with extra hooks
-    in a ``.hooks/`` sub-directory. These can be activated by running the R
-    command, ``precommit::use_precommit()``, within the root directory of each
-    package. See the `precommit package
-    <https://lorenzwalthert.github.io/precommit/>`_ for details.
+    defined in a ``.pre-commit-config.yaml`` configuration file. The hooks need
+    to be activated for each local repository by running the R command,
+    ``precommit::use_precommit()``, within its root directory. See the
+    `precommit package <https://lorenzwalthert.github.io/precommit/>`_ for
+    details.
 
     These ``.pre-commit-config.yaml`` files should be regularly updated by
     running the same ``precommit::use_precommit()`` command.
