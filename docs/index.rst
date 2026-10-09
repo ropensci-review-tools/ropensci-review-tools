@@ -49,17 +49,39 @@ appropriate link.
        RRT_TEST_ALL=true
 
     Maintainers of this entire suite should always have that permanently set in
-    their `.Renviron` file.
+    their ``~/.Renviron`` file.
+
+.. admonition:: Makefiles
+   :class: attention
+
+   Most repositories include a `Makefile
+   <https://www.gnu.org/software/make/manual/make.html#Introduction>`_.
+   These work by typing ``make`` as a shell command -- not in an R console.
+   Entering ``make`` alone will usually show a menu of options which include
+   things like:
+
+   .. code-block:: bash
+
+      check                Run `rcmdcheck`
+      doc                  Update package documentation with `roxygen2`
+      help                 Show this help
+      pkgcheck             Run `pkgcheck` and print results to screen.
+      test                 Run test suite
+
+   ... and generally many more. For example ``make doc`` will then run
+   ``roxygenise()`` to update all docs.
 
 .. admonition:: Pre-commit hooks
    :class: note
 
     All repositories also include `pre-commit hooks <https://pre-commit.com>`_,
-    so each has a `.pre-commit-config.yaml` file, sometimes with extra hooks in
-    a `.hooks/` sub-directory. These can be activated by running the R command,
-    `precommit::use_precommit()`, within the root directory of each pacakge.
-    See the `precommit package <https://lorenzwalthert.github.io/precommit/>`_
-    for details.
+    so each has a ``.pre-commit-config.yaml`` file, sometimes with extra hooks
+    in a ``.hooks/`` sub-directory. These can be activated by running the R
+    command, ``precommit::use_precommit()``, within the root directory of each
+    pacakge. See the `precommit package
+    <https://lorenzwalthert.github.io/precommit/>`_ for details.
+
+----
 
 The following are links to notes on maintaining the individual components of
 the `"ropensci-review-tools" software ecosystem
