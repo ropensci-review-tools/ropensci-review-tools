@@ -49,7 +49,18 @@ one_docs2md <- function (p, path) {
 
         fshort <- utils::tail (strsplit (f, .Platform$file.sep) [[1]], 1L)
         fout <- file.path (path_loc_fns, gsub ("\\.Rd$", ".md", fshort))
-        md <- Rd2md::read_rdfile (f) |> Rd2md::as_markdown ()
+        # Rd2md has no methods for \dontrun, \donttest, \dontshow, or \Sexpr
+        # tags, and warns about each; those warnings are not actionable here.
+        md <- withCallingHandlers (
+            Rd2md::read_rdfile (f) |> Rd2md::as_markdown (),
+            warning = function (w) {
+                call <- paste (deparse (conditionCall (w)), collapse = "")
+                if (grepl ("Unknown as_markdown method", conditionMessage (w)) ||
+                    grepl ("warn_not_implemented", call)) {
+                    invokeRestart ("muffleWarning")
+                }
+            }
+        )
         writeLines (md, con = fout)
     }
 }
