@@ -11,7 +11,7 @@ build: ## readthedocs 'make html' command
 	cd docs;	\
 	make html;	\
 	cd ..;	\
-	rm -rf docs/_build
+	echo -e "The 'docs/_build' folder can be removed."
 
 open: $(INDEX).html ## Open the main 'html' page
 	xdg-open $(INDEX).html &

@@ -38,6 +38,19 @@ appropriate link.
    roreviewapi/roreviewapi.md
    srr/srr.md
 
+.. admonition:: Local Testing
+   :class: tip
+
+    Many of these packages have "extended tests" run only in response to a
+    local environment variable:
+
+    .. code-block:: bash
+
+       RRT_TEST_ALL = "true"
+
+    Maintainers of this entire suite should always have that permanently set in
+    their `.Renviron` file.
+
 The following are links to notes on maintaining the individual components of
 the `"ropensci-review-tools" software ecosystem
 <https://github.com/ropensci-review-tools>`_.
