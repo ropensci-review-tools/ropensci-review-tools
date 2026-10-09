@@ -51,6 +51,16 @@ appropriate link.
     Maintainers of this entire suite should always have that permanently set in
     their `.Renviron` file.
 
+.. admonition:: Pre-commit hooks
+   :class: note
+
+    All repositories also include `pre-commit hooks <https://pre-commit.com>`_,
+    so each has a `.pre-commit-config.yaml` file, sometimes with extra hooks in
+    a `.hooks/` sub-directory. These can be activated by running the R command,
+    `precommit::use_precommit()`, within the root directory of each pacakge.
+    See the `precommit package <https://lorenzwalthert.github.io/precommit/>`_
+    for details.
+
 The following are links to notes on maintaining the individual components of
 the `"ropensci-review-tools" software ecosystem
 <https://github.com/ropensci-review-tools>`_.
