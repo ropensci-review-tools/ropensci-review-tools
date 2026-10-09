@@ -26,18 +26,18 @@ appropriate link.
    :maxdepth: 1
    :caption: Packages
 
-   autotest/autotest.md
-   dashboard/dashboard.md
-   goodpractice/goodpractice.md
-   mirrors/mirrors.md
-   pkgcheck/pkgcheck.md
-   pkgcheck-action/pkgcheck-action.md
-   pkgmatch/pkgmatch.md
-   pkgstats/pkgstats.md
-   orgmetrics/orgmetrics.md
-   repometrics/repometrics.md
-   roreviewapi/roreviewapi.md
-   srr/srr.md
+   autotest <autotest/autotest.md>
+   dashboard <dashboard/dashboard.md>
+   goodpractice <goodpractice/goodpractice.md>
+   mirrors <mirrors/mirrors.md>
+   pkgcheck <pkgcheck/pkgcheck.md>
+   pkgcheck-action <pkgcheck-action/pkgcheck-action.md>
+   pkgmatch <pkgmatch/pkgmatch.md>
+   pkgstats <pkgstats/pkgstats.md>
+   orgmetrics <orgmetrics/orgmetrics.md>
+   repometrics <repometrics/repometrics.md>
+   roreviewapi <roreviewapi/roreviewapi.md>
+   srr <srr/srr.md>
 
 .. admonition:: Local Testing
    :class: tip

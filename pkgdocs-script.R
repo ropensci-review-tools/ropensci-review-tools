@@ -14,7 +14,8 @@ update_index_rst <- function (pkgs) {
     pkgs_index <- seq (pkgs_start, pkgs_end)
 
     wsp <- paste (rep (" ", 3L), collapse = "")
-    pkg_mds <- paste0 (wsp, pkgs, "/", pkgs, ".md")
+    # Explicit titles so menu entries are the repo names, not page titles:
+    pkg_mds <- paste0 (wsp, pkgs, " <", pkgs, "/", pkgs, ".md>")
 
     index <- c (
         index [seq_len (pkgs_start - 1L)],
