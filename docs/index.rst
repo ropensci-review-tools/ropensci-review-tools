@@ -46,7 +46,7 @@ appropriate link.
 
     .. code-block:: bash
 
-       RRT_TEST_ALL = "true"
+       RRT_TEST_ALL=true
 
     Maintainers of this entire suite should always have that permanently set in
     their `.Renviron` file.
