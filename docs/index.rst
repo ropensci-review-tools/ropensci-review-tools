@@ -78,8 +78,37 @@ appropriate link.
     so each has a ``.pre-commit-config.yaml`` file, sometimes with extra hooks
     in a ``.hooks/`` sub-directory. These can be activated by running the R
     command, ``precommit::use_precommit()``, within the root directory of each
-    pacakge. See the `precommit package
+    package. See the `precommit package
     <https://lorenzwalthert.github.io/precommit/>`_ for details.
+
+    These ``.pre-commit-config.yaml`` files should be regularly updated by
+    running the same ``precommit::use_precommit()`` command.
+
+    .. rubric:: What do hooks do?
+
+
+    The ``.pre-commit-config.yaml`` files include many standard hooks defined
+    in the `precommit package
+    <https://lorenzwalthert.github.io/precommit/>`_. Most repos also include
+    local hooks defined at the end of each ``.pre-commit-config.yaml`` file
+    under,
+
+    .. code-block:: yaml
+
+       repo: local
+       hooks:
+       - <hook definition>
+
+    These call local files within the ``.hooks/`` sub-directory to do things
+    like:
+
+    - Prevent local commits being made to the ``main`` branch if it is
+      protected on GitHub.
+    - Enforce increments of a sub-minor ``Version:`` in package ``DESCRIPTION``
+      files. Each commit must then be identified by a unique version number,
+      like ``1.2.3.015``, which denotes the 15th commit to version ``1.2.3``.
+    - Ensure that ``README`` badges taken from GitHub workflows precisely match
+      workflow names.
 
 ----
 
