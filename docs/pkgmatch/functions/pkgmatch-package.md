@@ -21,7 +21,8 @@ Authors:
 
 Other contributors:
 
-* Davis Vaughan [davis@posit.co](mailto:davis@posit.co) [contributor]
+* Davis Vaughan [contributor]
+* George Moroz ([ORCID](https://orcid.org/0000-0003-1990-6083)) [reviewer]
 
 ## Keyword
 

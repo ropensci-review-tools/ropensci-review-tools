@@ -46,8 +46,9 @@ of the first 5 best matching functions; see `?print.pkgmatch` for details.
 
 ```r
 corpus <- "ropensci"
+set.seed (1L)
 generate_pkgmatch_example_data (corpus = corpus)
-input <- "Package for pretty cli output"
+input <- "Package that uses libcurl for url requests"
 p <- pkgmatch_similar_fns (input, corpus = corpus)
 p # Default print method, lists 5 best matching functions
 head (p) # Shows first 5 rows of full `data.frame` object

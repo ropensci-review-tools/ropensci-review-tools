@@ -78,6 +78,7 @@ first few entries of these full data (default `n = 5`). To see all data, use
 ## Examples
 
 ```r
+set.seed (1L)
 # The following function simulates remote data in temporary directory, to
 # enable package usage without downloading. Do not run for normal usage.
 generate_pkgmatch_example_data ()

@@ -38,6 +38,7 @@ A (usually) smaller version of `x`, with all columns displayed.
 
 ```r
 corpus <- "cran"
+set.seed (1L)
 generate_pkgmatch_example_data (corpus = corpus)
 input <- "Download open spatial data from NASA"
 p <- pkgmatch_similar_pkgs (input, corpus = corpus)
