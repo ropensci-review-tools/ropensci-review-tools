@@ -1,4 +1,4 @@
-# goodpractice 
+# goodpractice  <a href="https://github.com/ropensci-review-tools/goodpractice" title="goodpractice on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 <img src="man/figures/logo.png" align="right" width="20%" height="20%" />
 

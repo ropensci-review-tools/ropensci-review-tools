@@ -1,5 +1,5 @@
 
-# rOpenSci Software Review Dashboard
+# rOpenSci Software Review Dashboard <a href="https://github.com/ropensci-review-tools/dashboard" title="dashboard on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 [![R-CMD-check](https://github.com/ropensci-review-tools/dashboard/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/ropensci-review-tools/dashboard/actions/workflows/R-CMD-check.yaml)
 [![codecov](https://codecov.io/gh/ropensci-review-tools/dashboard/branch/main/graph/badge.svg)](https://app.codecov.io/gh/ropensci-review-tools/dashboard)

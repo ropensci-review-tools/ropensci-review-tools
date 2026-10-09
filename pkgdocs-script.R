@@ -234,6 +234,28 @@ move_hex <- function (p, path) {
     }
 }
 
+# Add a GitHub icon, linking to the repo, inline at the end of the title of each
+# package page. Titles may be followed by the opening of an unclosed hex-image
+# link (`<a href=...>`), so the icon is inserted before any such tag. This must
+# be called after `move_hex()`, because that expects the title to be first.
+add_github_icon <- function (p, path) {
+
+    f <- file.path (path, "ropensci-review-tools", "docs", p, paste0 (p, ".md"))
+    url <- paste0 ("https://github.com/ropensci-review-tools/", p)
+    # 'sphinx_rtd_theme' bundles Font Awesome 4, which provides 'fa-github':
+    icon <- paste0 (
+        "<a href=\"", url, "\" title=\"", p, " on GitHub\" ",
+        "style=\"color: #000;\"><i class=\"fa fa-github\"></i></a>"
+    )
+
+    x <- brio::read_lines (f)
+    i <- grep ("^#\\s", x) [1]
+    title <- sub ("\\s*<a\\s.*$", "", x [i])
+    rest <- substring (x [i], nchar (title) + 1L)
+    x [i] <- paste0 (title, " ", icon, rest)
+
+    brio::write_lines (x, f)
+}
 
 for (p in pkgs) {
 
@@ -241,6 +263,7 @@ for (p in pkgs) {
     one_vignettes (p, path)
     one_readme (p, path)
     move_hex (p, path)
+    add_github_icon (p, path)
 }
 
 do_not_include <- normalizePath (c (

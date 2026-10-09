@@ -1,4 +1,4 @@
-# {pkgcheck} Github Action
+# {pkgcheck} Github Action <a href="https://github.com/ropensci-review-tools/pkgcheck-action" title="pkgcheck-action on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build & Push Docker](https://github.com/ropensci-review-tools/pkgcheck-action/actions/workflows/publish.yaml/badge.svg)](https://github.com/ropensci-review-tools/pkgcheck-action/actions/workflows/publish.yaml)

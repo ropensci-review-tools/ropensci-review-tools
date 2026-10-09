@@ -7,7 +7,7 @@ status](https://github.com/ropensci-review-tools/orgmetrics/workflows/R-CMD-chec
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-# orgmetrics
+# orgmetrics <a href="https://github.com/ropensci-review-tools/orgmetrics" title="orgmetrics on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 Metrics for your GitHub organization, collated from applying accompanying
 [`repometrics` package](https://docs.ropensci.org/repometrics/)

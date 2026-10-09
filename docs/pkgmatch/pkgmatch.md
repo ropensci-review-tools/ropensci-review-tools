@@ -11,7 +11,7 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 Downloads](https://cranlogs.r-pkg.org/badges/grand-total/pkgmatch?color=orange)](https://cran.r-project.org/package=pkgmatch)
 <!-- badges: end -->
 
-# pkgmatch
+# pkgmatch <a href="https://github.com/ropensci-review-tools/pkgmatch" title="pkgmatch on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 A tool to help find R packages by matching packages either to a text
 description, or to entire packages. Can find matching packages either

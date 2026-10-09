@@ -1,4 +1,4 @@
-# roreviewapi
+# roreviewapi <a href="https://github.com/ropensci-review-tools/roreviewapi" title="roreviewapi on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 <!-- badges: start -->
 

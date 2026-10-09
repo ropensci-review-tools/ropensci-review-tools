@@ -10,7 +10,7 @@ Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repost
 Downloads](https://cranlogs.r-pkg.org/badges/grand-total/pkgstats?color=orange)](https://cran.r-project.org/package=pkgstats)
 <!-- badges: end -->
 
-# pkgstats
+# pkgstats <a href="https://github.com/ropensci-review-tools/pkgstats" title="pkgstats on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 Extract summary statistics of R package structure and functionality. Not
 all statistics of course, but a good go at balancing insightful

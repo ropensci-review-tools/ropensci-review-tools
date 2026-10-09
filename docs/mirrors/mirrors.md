@@ -1,4 +1,4 @@
-# Scripts to mirror repositories
+# Scripts to mirror repositories <a href="https://github.com/ropensci-review-tools/mirrors" title="mirrors on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 This repo contains scripts to mirror all R package sources from
 [CRAN](https://cran.r-project.org),

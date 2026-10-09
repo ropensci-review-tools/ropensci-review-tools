@@ -12,7 +12,7 @@ Downloads](https://cranlogs.r-pkg.org/badges/grand-total/srr?color=orange)](http
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# srr
+# srr <a href="https://github.com/ropensci-review-tools/srr" title="srr on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 “srr” stands for **S**oftware **R**eview **R**oclets, and is
 [rOpenSci](https://ropensci.org)’s package for extending documentation

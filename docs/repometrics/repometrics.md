@@ -6,7 +6,7 @@
 Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
-# repometrics
+# repometrics <a href="https://github.com/ropensci-review-tools/repometrics" title="repometrics on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 Metrics for your code repository. A single function collates a wealth of data
 from commit histories and GitHub interactions, converts it all to standardised

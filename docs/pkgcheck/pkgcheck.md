@@ -1,4 +1,4 @@
-# pkgcheck
+# pkgcheck <a href="https://github.com/ropensci-review-tools/pkgcheck" title="pkgcheck on GitHub" style="color: #000;"><i class="fa fa-github"></i></a>
 
 <!-- badges: start -->
 

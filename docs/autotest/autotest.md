@@ -1,4 +1,4 @@
-# autotest <a href='https://docs.ropensci.org/autotest/'>
+# autotest <a href="https://github.com/ropensci-review-tools/autotest" title="autotest on GitHub" style="color: #000;"><i class="fa fa-github"></i></a> <a href='https://docs.ropensci.org/autotest/'>
 
 <img src='/data/mega/code/repos/ropensci-review-tools/ropensci-review-tools/_static/autotest/autotest.png' align="right" height=210 width=182></a>
 
