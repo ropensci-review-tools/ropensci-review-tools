@@ -566,5 +566,6 @@ functions/tags_data.md
 :maxdepth: 1
 
 vignettes/installation.md
+vignettes/pkgstats-data.md
 vignettes/pkgstats.md
 ```

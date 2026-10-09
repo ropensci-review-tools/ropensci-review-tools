@@ -67,22 +67,18 @@ one_docs2md <- function (p, path) {
 
 #' Render vignettes for one package to markdown and move to docs
 #'
-#' All vignettes are presumed to have `.Rmd` source files. If these do not also
-#' exist as `.md`, then they are first rendered before copying across.
+#' All vignettes are presumed to have `.Rmd` or `.qmd` source files. If these do
+#' not also exist as `.md`, then they are first rendered before copying across
+#' (`.Rmd` via 'rmarkdown', `.qmd` via 'quarto').
 #' @noRd
 one_vignettes <- function (p, path) {
 
     flist <- list.files (file.path (path, p, "vignettes"),
                          full.names = TRUE,
                          recursive = TRUE,
-                         pattern = "\\.Rmd")
+                         pattern = "\\.[Rq]md$")
 
-    flist_md <- vapply (flist, function (i) {
-                            i_rmd <- basename (i)
-                            i_md <- gsub ("\\.Rmd$", ".md", i_rmd)
-                            return (gsub (i_rmd, i_md, i))
-                         }, character (1),
-                         USE.NAMES = FALSE)
+    flist_md <- gsub ("\\.[Rq]md$", ".md", flist)
 
     if (length (flist_md) == 0L)
         return (NULL)
@@ -91,28 +87,35 @@ one_vignettes <- function (p, path) {
         
         if (!file.exists (flist_md [i])) {
 
-            # https://github.com/wch/webshot/issues/115
-            # Render a temporary copy with `always_allow_html: true` added to
-            # the YAML header, so original vignettes remain unchanged.
-            rmd <- brio::read_lines (flist [i])
-            yaml_end <- which (rmd == "---") [2]
-            if (!is.na (yaml_end) &&
-                !any (grepl ("^always_allow_html", rmd [seq_len (yaml_end)]))) {
-                rmd <- append (rmd, "always_allow_html: true", after = yaml_end - 1L)
-            }
-            tmp_rmd <- file.path (dirname (flist [i]),
-                                  paste0 ("tmp-", basename (flist [i])))
-            brio::write_lines (rmd, tmp_rmd)
+            if (grepl ("\\.qmd$", flist [i])) {
+                quarto::quarto_render (flist [i],
+                    output_format = "gfm",
+                    output_file = basename (flist_md [i]),
+                    quiet = TRUE)
+            } else {
+                # https://github.com/wch/webshot/issues/115
+                # Render a temporary copy with `always_allow_html: true` added
+                # to the YAML header, so original vignettes remain unchanged.
+                rmd <- brio::read_lines (flist [i])
+                yaml_end <- which (rmd == "---") [2]
+                if (!is.na (yaml_end) &&
+                    !any (grepl ("^always_allow_html", rmd [seq_len (yaml_end)]))) {
+                    rmd <- append (rmd, "always_allow_html: true", after = yaml_end - 1L)
+                }
+                tmp_rmd <- file.path (dirname (flist [i]),
+                                      paste0 ("tmp-", basename (flist [i])))
+                brio::write_lines (rmd, tmp_rmd)
 
-            withr::with_envvar (
-                c ("OPENSSL_CONF" = "/dev/null"), {
-                    rmarkdown::render (tmp_rmd,
-                        output_format = rmarkdown::md_document (variant = "gfm"),
-                        output_file = basename (flist_md [i]),
-                        envir = new.env (parent = globalenv ()),
-                        quiet = TRUE)
-            })
-            unlink (tmp_rmd)
+                withr::with_envvar (
+                    c ("OPENSSL_CONF" = "/dev/null"), {
+                        rmarkdown::render (tmp_rmd,
+                            output_format = rmarkdown::md_document (variant = "gfm"),
+                            output_file = basename (flist_md [i]),
+                            envir = new.env (parent = globalenv ()),
+                            quiet = TRUE)
+                })
+                unlink (tmp_rmd)
+            }
             message ("[", flist [i], "] has been rendered to [",
                      flist_md [i], "]")
         }
